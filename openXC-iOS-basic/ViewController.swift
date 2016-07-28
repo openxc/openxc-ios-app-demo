@@ -43,18 +43,18 @@ class ViewController: UIViewController {
   @IBAction func bps_switch(sender: AnyObject) {
     let sw = sender as! UISwitch
     if sw.on {
-      vm.addMeasurementTarget("brake_pedal_status", target: self, action: ViewController.bps_change)
+      vm.addMeasurementTarget("accelerator_pedal_position", target: self, action: ViewController.aps_change)
     } else {
-      vm.clearMeasurementTarget("brake_pedal_status")
+      vm.clearMeasurementTarget("accelerator_pedal_position")
     }
   }
   
   @IBAction func od_switch(sender: AnyObject) {
     let sw = sender as! UISwitch
     if sw.on {
-      vm.addMeasurementTarget("odometer", target: self, action: ViewController.od_change)
+      vm.addMeasurementTarget("windshield_wiper_status", target: self, action: ViewController.wws_change)
     } else {
-      vm.clearMeasurementTarget("odometer")
+      vm.clearMeasurementTarget("windshield_wiper_status")
     }
   }
   
@@ -97,16 +97,28 @@ class ViewController: UIViewController {
     vm = VehicleManager.sharedInstance
     vm.setManagerCallbackTarget(self, action: ViewController.manager_status_updates)
     vm.setManagerDebug(true)
-    vm.enableTraceFileSink("tracefile.txt")
+//    vm.enableTraceFileSink("tracefile.txt")
+//    vm.enableTraceFileSource("tracefile.txt",speed:50)
     vm.connect()
 
     vm.setMeasurementDefaultTarget(self, action: ViewController.default_measurement_change)
     vm.addMeasurementTarget("engine_speed", target: self, action: ViewController.es_change)
-    vm.addMeasurementTarget("brake_pedal_status", target: self, action: ViewController.bps_change)
-    vm.addMeasurementTarget("odometer", target: self, action: ViewController.od_change)
+    vm.addMeasurementTarget("accelerator_pedal_position", target: self, action: ViewController.aps_change)
+    vm.addMeasurementTarget("windshield_wiper_status", target: self, action: ViewController.wws_change)
     vm.addMeasurementTarget("headlamp_status", target: self, action: ViewController.hs_change)
 
-  
+    vm.setDiagnosticDefaultTarget(self, action: ViewController.default_diag_change)
+
+    vm.addDiagnosticTarget([1,1,2], target: self, action: ViewController.default_diag_change)
+    vm.addDiagnosticTarget([1,1,2,5], target: self, action: ViewController.default_diag_change)
+    
+    vm.setCanDefaultTarget(self, action: ViewController.default_can_change)
+    
+    vm.addCanTarget([1,1], target: self, action: ViewController.default_can_change)
+    vm.addCanTarget([1,2], target: self, action: ViewController.default_can_change)
+    
+
+    
   }
 
   override func didReceiveMemoryWarning() {
@@ -121,6 +133,19 @@ class ViewController: UIViewController {
   func manager_status_updates(rsp:NSDictionary) {
     let status = rsp.objectForKey("status") as! String
     print("VM status : ",status)
+  }
+  
+  func default_can_change(rsp:NSDictionary) {
+    let vr = rsp.objectForKey("vehiclemessage") as! VehicleCanResponse
+    
+    print("default diag msg: (bus)",vr.bus)
+  }
+  
+
+  func default_diag_change(rsp:NSDictionary) {
+    let vr = rsp.objectForKey("vehiclemessage") as! VehicleDiagnosticResponse
+
+    print("default diag msg: (bus)",vr.bus)
   }
   
   
@@ -153,17 +178,17 @@ class ViewController: UIViewController {
     }
   }
 
-  func bps_change(rsp:NSDictionary) {
+  func aps_change(rsp:NSDictionary) {
     let vr = rsp.objectForKey("vehiclemessage") as! VehicleMeasurementResponse
-    print("bps event:",vr.name," -- ",vr.value)
+    print("aps event:",vr.name," -- ",vr.value)
     dispatch_async(dispatch_get_main_queue()) {
       self.bps_lab.text = vr.value.debugDescription
     }
   }
   
-  func od_change(rsp:NSDictionary) {
+  func wws_change(rsp:NSDictionary) {
     let vr = rsp.objectForKey("vehiclemessage") as! VehicleMeasurementResponse
-    print("od event:",vr.name," -- ",vr.value)
+    print("wws event:",vr.name," -- ",vr.value)
     dispatch_async(dispatch_get_main_queue()) {
       self.od_lab.text = vr.value.debugDescription
     }
