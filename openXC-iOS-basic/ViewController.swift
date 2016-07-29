@@ -30,6 +30,21 @@ class ViewController: UIViewController {
     let cmdcode = vm.sendCommand(.device_id, target: self, action: ViewController.handle_cmd_response)
     print("sent devid cmd: code=\(cmdcode)")
   }
+  @IBAction func sendDiagCmd(sender: AnyObject) {
+    let dr = VehicleDiagnosticRequest()
+    dr.bus = 1
+    dr.message_id = 0x7df
+    dr.mode = 1
+    dr.pid = 0xc
+    let cmdcode = vm.sendDiagReq(dr, target: self, cmdaction: ViewController.handle_cmd_response, diagaction: ViewController.handle_diag_response)
+    print("sent diag cmd: code=\(cmdcode)")
+  }
+  @IBAction func sendPassthru(sender: AnyObject) {
+  }
+  @IBAction func sendNoPassthru(sender: AnyObject) {
+  }
+  
+  
   
   @IBAction func es_switch(sender: AnyObject) {
     let sw = sender as! UISwitch
@@ -109,13 +124,13 @@ class ViewController: UIViewController {
 
     vm.setDiagnosticDefaultTarget(self, action: ViewController.default_diag_change)
 
-    vm.addDiagnosticTarget([1,1,2], target: self, action: ViewController.default_diag_change)
-    vm.addDiagnosticTarget([1,1,2,5], target: self, action: ViewController.default_diag_change)
+//    vm.addDiagnosticTarget([1,1,2], target: self, action: ViewController.default_diag_change)
+//    vm.addDiagnosticTarget([1,1,2,5], target: self, action: ViewController.default_diag_change)
     
     vm.setCanDefaultTarget(self, action: ViewController.default_can_change)
     
-    vm.addCanTarget([1,1], target: self, action: ViewController.default_can_change)
-    vm.addCanTarget([1,2], target: self, action: ViewController.default_can_change)
+//    vm.addCanTarget([1,1], target: self, action: ViewController.default_can_change)
+//    vm.addCanTarget([1,2], target: self, action: ViewController.default_can_change)
     
 
     
@@ -211,6 +226,18 @@ class ViewController: UIViewController {
       cmdrspLabelStrings.removeFirst()
     }
     cmdrspLabelStrings.append("\(cr.command_response) -- \(cr.message) -- \(cr.status)")
+    dispatch_async(dispatch_get_main_queue()) {
+      self.cmd_lab.text = self.cmdrspLabelStrings.joinWithSeparator("\n")
+    }
+  }
+  
+  func handle_diag_response(rsp:NSDictionary) {
+    let cr = rsp.objectForKey("vehiclemessage") as! VehicleDiagnosticResponse
+    print("diag response : \(cr.success) : \(cr.timestamp)")
+    if cmdrspLabelStrings.count>5 {
+      cmdrspLabelStrings.removeFirst()
+    }
+    cmdrspLabelStrings.append("\(cr.bus) -- \(cr.message_id) -- \(cr.mode)")
     dispatch_async(dispatch_get_main_queue()) {
       self.cmd_lab.text = self.cmdrspLabelStrings.joinWithSeparator("\n")
     }

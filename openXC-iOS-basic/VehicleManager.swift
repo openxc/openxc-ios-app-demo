@@ -12,6 +12,7 @@ import CoreBluetooth
 
 enum VehicleMessageType: NSString {
   case MeasurementResponse
+  case CommandRequest
   case CommandResponse
   case DiagnosticRequest
   case DiagnosticResponse
@@ -21,6 +22,7 @@ enum VehicleMessageType: NSString {
 enum VehicleCommandType: NSString {
   case version
   case device_id
+  case passthrough
 }
 
 
@@ -63,6 +65,17 @@ class VehicleMeasurementResponse : VehicleBaseMessage {
   }
 }
 
+
+class VehicleCommandRequest : VehicleBaseMessage {
+  override init() {
+    super.init()
+    type = .CommandResponse
+  }
+  var command : VehicleCommandType = .version
+  var bus : NSString = ""
+  var enabled : Bool = false
+  var bypass : Bool = false
+}
 
 class VehicleCommandResponse : VehicleBaseMessage {
   override init() {
@@ -496,7 +509,7 @@ class VehicleManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     tupplekey.appendString(String(cmd.mode))
     tupplekey.appendString("-")
     if cmd.pid != nil {
-      tupplekey.appendString(String(cmd.mode))
+      tupplekey.appendString(String(cmd.pid))
     } else {
       tupplekey.appendString("X")
     }
@@ -635,12 +648,23 @@ class VehicleManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
       doSend = true
     }
     
-    let cmdjson : NSMutableString = ""
-    cmdjson.appendString("{\"command\":\"diagnostic_request\",\"action\":\"add\",\"diagnostic_request\":{\"bus\":\(cmd.bus),\"message_id\":\(cmd.message_id),\"mode\":\(cmd.mode)")
+//    let cmdjson : NSMutableString = "{\"command\":\"passthrough\",\"bus\":1,\"enabled\":true}\0"
+//    let cmdjson : NSMutableString = "{\"command\":\"passthrough\",\"bus\":1,\"enabled\":false}\0"
+    
+    
+    // TODO hard coded diagnostic command, with frequency 1Hz
+    let cmdjson : NSMutableString = "{\"command\":\"diagnostic_request\",\"action\":\"add\",\"request\":{\"bus\":1,\"id\":2015,\"mode\":1,\"pid\":12,\"frequency\":1}}\0"
+    
+    // TODO hard coded diagnostic command, one off
+//    let cmdjson : NSMutableString = "{\"command\":\"diagnostic_request\",\"action\":\"add\",\"request\":{\"bus\":1,\"id\":2015,\"mode\":1,\"pid\":12}}\0"
+    
+    
+/*    cmdjson.appendString("{\"command\":\"diagnostic_request\",\"action\":\"add\",\"request\":{\"bus\":\(cmd.bus),\"message_id\":\(cmd.message_id),\"mode\":\(cmd.mode)")
     if cmd.pid != nil {
       cmdjson.appendString(",\"pid\":\(cmd.pid)")
     }
     cmdjson.appendString("}}\0")
+*/
     BLETxDataBuffer.addObject(cmdjson.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
     
     if doSend {
@@ -734,7 +758,7 @@ class VehicleManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
       }
       let str = String(data: data_chunk,encoding: NSUTF8StringEncoding)
       if str != nil {
-                vmlog(str!)
+        vmlog(str!)
       } else {
         vmlog("not UTF8")
       }

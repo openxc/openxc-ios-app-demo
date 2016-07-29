@@ -142,7 +142,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7Bc-Ry-sik">
-                                <rect key="frame" x="238" y="462" width="51" height="30"/>
+                                <rect key="frame" x="233" y="457" width="51" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="Version?"/>
@@ -151,12 +151,39 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="phl-rP-ALF">
-                                <rect key="frame" x="238" y="496" width="51" height="30"/>
+                                <rect key="frame" x="233" y="485" width="51" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <state key="normal" title="DeviceId?"/>
                                 <connections>
                                     <action selector="sendDevCmd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bQD-FE-c7o"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uFS-mD-Snk">
+                                <rect key="frame" x="231" y="510" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Diag 0xc"/>
+                                <connections>
+                                    <action selector="sendDiagCmd:" destination="BYZ-38-t0r" eventType="touchUpInside" id="USK-FH-N8u"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="M1u-w9-UW4">
+                                <rect key="frame" x="235" y="429" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <state key="normal" title="passthru"/>
+                                <connections>
+                                    <action selector="sendPassthru:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FXt-E7-7Z9"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Irs-io-EQ6">
+                                <rect key="frame" x="230" y="404" width="57" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                <state key="normal" title="nopassthru"/>
+                                <connections>
+                                    <action selector="sendNoPassthru:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hB0-ZO-JS6"/>
                                 </connections>
                             </button>
                         </subviews>
