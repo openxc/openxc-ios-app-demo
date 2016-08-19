@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>openXC-iOS-basic.xcscheme</key>
+		<key>openXCenabler.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3A7243751D27691300656B2B</key>
+		<key>3A1016C01D5417AD006C5E93</key>
 		<dict>
 			<key>primary</key>
 			<true/>

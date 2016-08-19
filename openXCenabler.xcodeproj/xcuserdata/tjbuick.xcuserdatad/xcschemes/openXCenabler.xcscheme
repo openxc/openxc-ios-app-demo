@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3A7243751D27691300656B2B"
-               BuildableName = "openXC-iOS-basic.app"
-               BlueprintName = "openXC-iOS-basic"
-               ReferencedContainer = "container:openXC-iOS-basic.xcodeproj">
+               BlueprintIdentifier = "3A1016C01D5417AD006C5E93"
+               BuildableName = "openXCenabler.app"
+               BlueprintName = "openXCenabler"
+               ReferencedContainer = "container:openXCenabler.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +32,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A7243751D27691300656B2B"
-            BuildableName = "openXC-iOS-basic.app"
-            BlueprintName = "openXC-iOS-basic"
-            ReferencedContainer = "container:openXC-iOS-basic.xcodeproj">
+            BlueprintIdentifier = "3A1016C01D5417AD006C5E93"
+            BuildableName = "openXCenabler.app"
+            BlueprintName = "openXCenabler"
+            ReferencedContainer = "container:openXCenabler.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -55,10 +55,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A7243751D27691300656B2B"
-            BuildableName = "openXC-iOS-basic.app"
-            BlueprintName = "openXC-iOS-basic"
-            ReferencedContainer = "container:openXC-iOS-basic.xcodeproj">
+            BlueprintIdentifier = "3A1016C01D5417AD006C5E93"
+            BuildableName = "openXCenabler.app"
+            BlueprintName = "openXCenabler"
+            ReferencedContainer = "container:openXCenabler.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +74,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "3A7243751D27691300656B2B"
-            BuildableName = "openXC-iOS-basic.app"
-            BlueprintName = "openXC-iOS-basic"
-            ReferencedContainer = "container:openXC-iOS-basic.xcodeproj">
+            BlueprintIdentifier = "3A1016C01D5417AD006C5E93"
+            BuildableName = "openXCenabler.app"
+            BlueprintName = "openXCenabler"
+            ReferencedContainer = "container:openXCenabler.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
