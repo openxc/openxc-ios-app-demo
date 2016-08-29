@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "23BF58AA42EA6376FB260588450F8BE1C15ACC66",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "957824D7369BDB37B86AE392AA1AD5A40A3C8AC9" : 0,
+    "23BF58AA42EA6376FB260588450F8BE1C15ACC66" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DCCDBE74-6B26-4EF4-8A30-720C1D1C6418",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "957824D7369BDB37B86AE392AA1AD5A40A3C8AC9" : "openxc-ios-framework\/",
+    "23BF58AA42EA6376FB260588450F8BE1C15ACC66" : "openxc-ios-app-demo\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "openXCenabler",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "openXCenabler.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/openxc\/openxc-ios-app-demo",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "23BF58AA42EA6376FB260588450F8BE1C15ACC66"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/openxc\/openxc-ios-framework.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "957824D7369BDB37B86AE392AA1AD5A40A3C8AC9"
+    }
+  ]
+}

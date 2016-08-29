@@ -124,6 +124,8 @@ class StatusViewController: UIViewController {
   
   func msgRxdUpdate(t:NSTimer) {
     if vm.connectionState==VehicleManagerConnectionState.Operational {
+//      print("VM is receiving data from VI!")
+//      print("So far we've had ",vm.messageCount," messages")
       dispatch_async(dispatch_get_main_queue()) {
         self.msgRvcdLab.text = String(self.vm.messageCount)
       }
