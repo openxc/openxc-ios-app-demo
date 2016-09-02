@@ -49,6 +49,8 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     newTxt = newTxt+" success:"+vr.success.description
     if vr.value != nil {
       newTxt = newTxt+" value:"+vr.value!.description
+    } else {
+      newTxt = newTxt+" payload:"+vr.payload
     }
 
     if rspStrings.count>5 {
