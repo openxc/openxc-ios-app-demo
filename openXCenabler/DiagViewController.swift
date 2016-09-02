@@ -154,8 +154,13 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
       print("pid is ",cmd.pid)
     }
     
-    vm.sendDiagReq(cmd)
     
+    self.vm.sendDiagReq(cmd)
+    
+  // temp test  cmd.mode=2
+    
+  // temp test  vm.sendDiagReq(cmd)
+
     lastReq.text = "bus:"+String(cmd.bus)+" id:0x"+idField.text!+" mode:0x"+modeField.text!
     if cmd.pid != nil {
       lastReq.text = lastReq.text!+" pid:0x"+pidField.text!

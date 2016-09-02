@@ -50,6 +50,9 @@ class StatusViewController: UIViewController {
       
       vm.setManagerCallbackTarget(self, action: StatusViewController.manager_status_updates)
       vm.setManagerDebug(true)
+      
+  // temp test    vm.enableTraceFileSource("tracefile.txt",speed:100)
+      
       vm.connect()
 
     }
