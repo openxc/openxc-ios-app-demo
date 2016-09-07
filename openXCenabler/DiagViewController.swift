@@ -50,7 +50,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     if vr.value != nil {
       newTxt = newTxt+" value:"+vr.value!.description
     } else {
-      newTxt = newTxt+" payload:"+vr.payload
+      newTxt = newTxt+" payload:"+vr.payload.description
     }
 
     if rspStrings.count>5 {
@@ -157,12 +157,8 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    self.vm.sendDiagReq(cmd)
+    vm.sendDiagReq(cmd)
     
-  // temp test  cmd.mode=2
-    
-  // temp test  vm.sendDiagReq(cmd)
-
     lastReq.text = "bus:"+String(cmd.bus)+" id:0x"+idField.text!+" mode:0x"+modeField.text!
     if cmd.pid != nil {
       lastReq.text = lastReq.text!+" pid:0x"+pidField.text!

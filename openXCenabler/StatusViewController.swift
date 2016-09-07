@@ -9,7 +9,7 @@
 import UIKit
 import openXCiOSFramework
 
-class StatusViewController: UIViewController {
+class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
   @IBOutlet weak var actConLab: UILabel!
   @IBOutlet weak var msgRvcdLab: UILabel!
@@ -18,6 +18,9 @@ class StatusViewController: UIViewController {
   
   @IBOutlet weak var searchBtn: UIButton!
   
+  @IBOutlet weak var peripheralTable: UITableView!
+  
+
   var vm: VehicleManager!
   var timer: NSTimer!
   
@@ -33,6 +36,10 @@ class StatusViewController: UIViewController {
     print("loading VehicleManager")
     vm = VehicleManager.sharedInstance
    
+    vm.setManagerCallbackTarget(self, action: StatusViewController.manager_status_updates)
+    vm.setManagerDebug(true)
+//    vm.setAutoconnect(false)
+    
     
   }
 
@@ -48,12 +55,15 @@ class StatusViewController: UIViewController {
       
       timer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
       
-      vm.setManagerCallbackTarget(self, action: StatusViewController.manager_status_updates)
-      vm.setManagerDebug(true)
-      
   // temp test    vm.enableTraceFileSource("tracefile.txt",speed:100)
       
-      vm.connect()
+      vm.scan()
+
+      dispatch_async(dispatch_get_main_queue()) {
+        self.actConLab.text = "❓"
+        self.searchBtn.setTitle("SCANNING",forState:UIControlState.Normal)
+      }
+      
 
     }
     
@@ -66,10 +76,18 @@ class StatusViewController: UIViewController {
     let msg = VehicleManagerStatusMessage(rawValue: status)
     print("VM status : ",msg!)
     
+    
+    if msg==VehicleManagerStatusMessage.C5DETECTED {
+      dispatch_async(dispatch_get_main_queue()) {
+        self.peripheralTable.hidden = false
+        self.peripheralTable.reloadData()
+      }
+    }
     if msg==VehicleManagerStatusMessage.C5CONNECTED {
       dispatch_async(dispatch_get_main_queue()) {
+        self.peripheralTable.hidden = true
         self.actConLab.text = "✅"
-        self.searchBtn.titleLabel?.text = "BTLE VI CONNECTED"
+        self.searchBtn.setTitle("BTLE VI CONNECTED",forState:UIControlState.Normal)
       }
     }
     if msg==VehicleManagerStatusMessage.C5DISCONNECTED {
@@ -78,7 +96,7 @@ class StatusViewController: UIViewController {
         self.msgRvcdLab.text = "---"
         self.verLab.text = "---"
         self.devidLab.text = "---"
-        self.searchBtn.titleLabel?.text = "SEARCH FOR BTLE VI"
+        self.searchBtn.setTitle("SEARCH FOR BTLE VI",forState:UIControlState.Normal)
       }
     }
     
@@ -134,6 +152,42 @@ class StatusViewController: UIViewController {
       }
     }
   }
+
+  
+  
+  
+  
+  
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return vm.discoveredVI().count
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
+    var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell?
+    if (cell == nil) {
+      cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+    }
+    
+    let p = vm.discoveredVI()[indexPath.row] as String
+    
+    
+    cell!.textLabel?.text = p
+    cell!.textLabel?.font = UIFont(name:"Arial", size: 14.0)
+    cell!.textLabel?.textColor = UIColor.lightGrayColor()
+    
+    return cell!
+  }
+  
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    
+    let p = vm.discoveredVI()[indexPath.row] as String
+    
+    vm.connect(p)
+    
+
+  }
+  
 
   
   
