@@ -38,7 +38,6 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
    
     vm.setManagerCallbackTarget(self, action: StatusViewController.manager_status_updates)
     vm.setManagerDebug(true)
-//    vm.setAutoconnect(false)
     
     
   }
@@ -55,8 +54,23 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
       
       timer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
       
-  // temp test    vm.enableTraceFileSource("tracefile.txt",speed:100)
+      vm.setAutoconnect(false)
+      if NSUserDefaults.standardUserDefaults().boolForKey("autoConnectOn") {
+        vm.setAutoconnect(true)
+      }
       
+      if NSUserDefaults.standardUserDefaults().boolForKey("traceInputOn") {
+        if let name = NSUserDefaults.standardUserDefaults().valueForKey("traceInputFilename") as? NSString {
+          vm.enableTraceFileSource(name,speed:100)
+        }
+      }
+
+      if NSUserDefaults.standardUserDefaults().boolForKey("traceOutputOn") {
+        if let name = NSUserDefaults.standardUserDefaults().valueForKey("traceOutputFilename") as? NSString {
+          vm.enableTraceFileSink(name)
+        }
+      }
+
       vm.scan()
 
       dispatch_async(dispatch_get_main_queue()) {
@@ -101,7 +115,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     if msg==VehicleManagerStatusMessage.C5NOTIFYON {
-      
+     
       let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
       dispatch_after(delayTime, dispatch_get_main_queue()) {
         print("sending version cmd")
@@ -117,7 +131,6 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cm.command = .device_id
         self.vm.sendCommand(cm, target: self, action: StatusViewController.handle_cmd_response)
       }
-
       
       
     }
@@ -189,6 +202,9 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
   }
   
 
+  
+  
+  
   
   
 }

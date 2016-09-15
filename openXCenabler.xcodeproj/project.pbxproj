@@ -13,6 +13,7 @@
 		3A1016CC1D5417AD006C5E93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1016CA1D5417AD006C5E93 /* Main.storyboard */; };
 		3A1016CE1D5417AD006C5E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1016CD1D5417AD006C5E93 /* Assets.xcassets */; };
 		3A1016D11D5417AD006C5E93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1016CF1D5417AD006C5E93 /* LaunchScreen.storyboard */; };
+		3ABA7F5B1D88FB2700D75846 /* modalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */; };
 		3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834421D5ED054003FD370 /* SendCanViewController.swift */; };
 		3AE834461D5ED054003FD370 /* DiagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834431D5ED054003FD370 /* DiagViewController.swift */; };
 		3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834441D5ED054003FD370 /* CanViewController.swift */; };
@@ -61,6 +62,7 @@
 		3A1016CD1D5417AD006C5E93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A1016D01D5417AD006C5E93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A1016D21D5417AD006C5E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = modalSettingsView.swift; sourceTree = "<group>"; };
 		3AE834421D5ED054003FD370 /* SendCanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCanViewController.swift; sourceTree = "<group>"; };
 		3AE834431D5ED054003FD370 /* DiagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagViewController.swift; sourceTree = "<group>"; };
 		3AE834441D5ED054003FD370 /* CanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				3A1016C41D5417AD006C5E93 /* AppDelegate.swift */,
 				3A1016C61D5417AD006C5E93 /* StatusViewController.swift */,
 				3A1016C81D5417AD006C5E93 /* DashboardViewController.swift */,
+				3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */,
 				3A1016CA1D5417AD006C5E93 /* Main.storyboard */,
 				3A1016CD1D5417AD006C5E93 /* Assets.xcassets */,
 				3A1016CF1D5417AD006C5E93 /* LaunchScreen.storyboard */,
@@ -216,6 +219,7 @@
 				3AE834461D5ED054003FD370 /* DiagViewController.swift in Sources */,
 				3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */,
 				3A1016C91D5417AD006C5E93 /* DashboardViewController.swift in Sources */,
+				3ABA7F5B1D88FB2700D75846 /* modalSettingsView.swift in Sources */,
 				3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */,
 				3A1016C51D5417AD006C5E93 /* AppDelegate.swift in Sources */,
 				3A1016C71D5417AD006C5E93 /* StatusViewController.swift in Sources */,
