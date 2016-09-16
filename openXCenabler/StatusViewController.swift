@@ -37,6 +37,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     vm = VehicleManager.sharedInstance
    
     vm.setManagerCallbackTarget(self, action: StatusViewController.manager_status_updates)
+    vm.setCommandDefaultTarget(self, action: StatusViewController.handle_cmd_response)
     vm.setManagerDebug(true)
     
     
@@ -121,7 +122,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("sending version cmd")
         let cm = VehicleCommandRequest()
         cm.command = .version
-        self.vm.sendCommand(cm, target: self, action: StatusViewController.handle_cmd_response)
+        self.vm.sendCommand(cm)
       }
       
       let delayTime2 = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
@@ -129,7 +130,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         print("sending devid cmd")
         let cm = VehicleCommandRequest()
         cm.command = .device_id
-        self.vm.sendCommand(cm, target: self, action: StatusViewController.handle_cmd_response)
+        self.vm.sendCommand(cm)
       }
       
       
@@ -140,8 +141,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
   
   func handle_cmd_response(rsp:NSDictionary) {
     let cr = rsp.objectForKey("vehiclemessage") as! VehicleCommandResponse
-    let code = rsp.objectForKey("key") as! String
-    print("cmd response : \(code) : \(cr.command_response)")
+    print("cmd response : \(cr.command_response)")
     if cr.command_response.isEqualToString("version") {
       dispatch_async(dispatch_get_main_queue()) {
         self.verLab.text = cr.message as String
