@@ -11,6 +11,7 @@ import openXCiOSFramework
 
 class DiagViewController: UIViewController, UITextFieldDelegate {
 
+  // UI outlets
   @IBOutlet weak var busField: UITextField!
   @IBOutlet weak var idField: UITextField!
   @IBOutlet weak var modeField: UITextField!
@@ -21,12 +22,16 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
   
   var vm: VehicleManager!
 
+  // string array holding last X diag responses
   var rspStrings : [String] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    // grab VM instance
     vm = VehicleManager.sharedInstance
+
+    // set default diag response target
     vm.setDiagnosticDefaultTarget(self, action: DiagViewController.default_diag_rsp)
 
   }
@@ -38,10 +43,12 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
 
   
   func default_diag_rsp(rsp:NSDictionary) {
+    // extract the diag resp message
     let vr = rsp.objectForKey("vehiclemessage") as! VehicleDiagnosticResponse
     
     print("diag_rsp -  success:",vr.success)
     
+    // create the string we want to show in the received messages UI
     var newTxt = "bus:"+vr.bus.description+" id:0x"+String(format:"%x",vr.message_id)+" mode:0x"+String(format:"%x",vr.mode)
     if vr.pid != nil {
       newTxt = newTxt+" pid:0x"+String(format:"%x",vr.pid!)
@@ -53,11 +60,14 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
       newTxt = newTxt+" payload:"+vr.payload.description
     }
 
+    // save only the 5 response strings
     if rspStrings.count>5 {
       rspStrings.removeFirst()
     }
+    // append the new string
     rspStrings.append(newTxt)
 
+    // reload the label with the update string list
     dispatch_async(dispatch_get_main_queue()) {
       self.rspText.text = self.rspStrings.joinWithSeparator("\n")
     }
@@ -66,27 +76,31 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
   
   
   
-  
+  // text view delegate to clear keyboard
   func textFieldShouldReturn(textField: UITextField) -> Bool {
     textField.resignFirstResponder();
     return true;
   }
   
   
+  // diag send button hit
   @IBAction func sendHit(sender: AnyObject) {
 
-    // hide keyboard
+    // hide keyboard when the send button is hit
     for textField in self.view.subviews where textField is UITextField {
       textField.resignFirstResponder()
     }
 
+    // if the VM isn't operational, don't send anything
     if vm.connectionState != VehicleManagerConnectionState.Operational {
       lastReq.text = "Not connected to VI"
       return
     }
     
+    // create an empty diag request
     let cmd = VehicleDiagnosticRequest()
     
+    // check that the bus field is valid
     if let bus = busField.text as String? {
       if bus=="" {
         lastReq.text = "Invalid command : need a bus"
@@ -104,6 +118,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     }
     print("bus is ",cmd.bus)
     
+    // check that the msg id field is valid
     if let mid = idField.text as String? {
       if mid=="" {
         lastReq.text = "Invalid command : need a message_id"
@@ -121,7 +136,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     }
     print("mid is ",cmd.message_id)
     
-    
+    // check that the mode field is valid
     if let mode = modeField.text as String? {
       if mode=="" {
         lastReq.text = "Invalid command : need a mode"
@@ -139,6 +154,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     }
     print("mode is ",cmd.mode)
     
+    // check that the pid field is valid (or empty)
     if let pid = pidField.text as String? {
       if (pid=="") {
         // this is ok, it's optional
@@ -156,9 +172,10 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
       print("pid is ",cmd.pid)
     }
     
-    
+    // send the diag request
     vm.sendDiagReq(cmd)
     
+    // update the last request sent label
     lastReq.text = "bus:"+String(cmd.bus)+" id:0x"+idField.text!+" mode:0x"+modeField.text!
     if cmd.pid != nil {
       lastReq.text = lastReq.text!+" pid:0x"+pidField.text!

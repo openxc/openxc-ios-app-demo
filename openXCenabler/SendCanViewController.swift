@@ -11,6 +11,7 @@ import openXCiOSFramework
 
 class SendCanViewController: UIViewController, UITextFieldDelegate {
 
+  // UI outlets
   @IBOutlet weak var busField: UITextField!
   @IBOutlet weak var idField: UITextField!
   @IBOutlet weak var dataField: UITextField!
@@ -22,6 +23,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    // grab VM instance
     vm = VehicleManager.sharedInstance
 
   }
@@ -33,26 +35,31 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
 
   
   
+  // text view delegate to clear keyboard
   func textFieldShouldReturn(textField: UITextField) -> Bool {
     textField.resignFirstResponder();
     return true;
   }
   
   
+  // CAN send button hit
   @IBAction func sendHit(sender: AnyObject) {
     
-    // hide keyboard
+    // hide keyboard when the send button is hit
     for textField in self.view.subviews where textField is UITextField {
       textField.resignFirstResponder()
     }
     
+    // if the VM isn't operational, don't send anything
     if vm.connectionState != VehicleManagerConnectionState.Operational {
       lastReq.text = "Not connected to VI"
       return
     }
     
+    // create an empty CAN request
     let cmd = VehicleCanRequest()
     
+    // check that the bus field is valid
     if let bus = busField.text as String? {
       if bus=="" {
         lastReq.text = "Invalid command : need a bus"
@@ -70,6 +77,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     }
     print("bus is ",cmd.bus)
     
+    // check that the msg id field is valid
     if let mid = idField.text as String? {
       if mid=="" {
         lastReq.text = "Invalid command : need a message_id"
@@ -87,7 +95,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     }
     print("mid is ",cmd.id)
     
-    
+    // check that the payload field is valid
     if let payld = dataField.text as String? {
       if payld=="" {
         lastReq.text = "Invalid command : need a payload"
@@ -108,8 +116,10 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     }
     print("payload is ",cmd.data)
     
+    // send the CAN request
     vm.sendCanReq(cmd)
     
+    // update the last request sent label
     lastReq.text = "bus:"+String(cmd.bus)+" id:0x"+idField.text!+" payload:0x"+String(cmd.data)
     
   }
