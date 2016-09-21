@@ -661,7 +661,6 @@
                                         <rect key="frame" x="515" y="167" width="51" height="31"/>
                                         <connections>
                                             <action selector="autoChange:" destination="BHx-Nq-eLz" eventType="valueChanged" id="fbI-7y-lvJ"/>
-                                            <action selector="playChange:" destination="BHx-Nq-eLz" eventType="valueChanged" id="j7c-zl-pHB"/>
                                         </connections>
                                     </switch>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YNd-zw-uzn" userLabel="inFilename">

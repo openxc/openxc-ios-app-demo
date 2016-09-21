@@ -13,6 +13,8 @@
 		3A1016CC1D5417AD006C5E93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1016CA1D5417AD006C5E93 /* Main.storyboard */; };
 		3A1016CE1D5417AD006C5E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1016CD1D5417AD006C5E93 /* Assets.xcassets */; };
 		3A1016D11D5417AD006C5E93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1016CF1D5417AD006C5E93 /* LaunchScreen.storyboard */; };
+		3AAF15B91D9240920094E9D9 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAF15B51D92402C0094E9D9 /* ProtocolBuffers.framework */; };
+		3AAF15BA1D9240920094E9D9 /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AAF15B51D92402C0094E9D9 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3ABA7F5B1D88FB2700D75846 /* modalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */; };
 		3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834421D5ED054003FD370 /* SendCanViewController.swift */; };
 		3AE834461D5ED054003FD370 /* DiagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834431D5ED054003FD370 /* DiagViewController.swift */; };
@@ -46,6 +48,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3AAF15BA1D9240920094E9D9 /* ProtocolBuffers.framework in Embed Frameworks */,
 				3AE834571D60B830003FD370 /* openXCiOSFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -62,6 +65,7 @@
 		3A1016CD1D5417AD006C5E93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A1016D01D5417AD006C5E93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A1016D21D5417AD006C5E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AAF15B51D92402C0094E9D9 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ProtocolBuffers.framework; sourceTree = "<group>"; };
 		3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = modalSettingsView.swift; sourceTree = "<group>"; };
 		3AE834421D5ED054003FD370 /* SendCanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCanViewController.swift; sourceTree = "<group>"; };
 		3AE834431D5ED054003FD370 /* DiagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AE8345C1D60B97B003FD370 /* CoreBluetooth.framework in Frameworks */,
+				3AAF15B91D9240920094E9D9 /* ProtocolBuffers.framework in Frameworks */,
 				3AE834561D60B830003FD370 /* openXCiOSFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +91,7 @@
 		3A1016B81D5417AD006C5E93 = {
 			isa = PBXGroup;
 			children = (
+				3AAF15B51D92402C0094E9D9 /* ProtocolBuffers.framework */,
 				3AE8345B1D60B97B003FD370 /* CoreBluetooth.framework */,
 				3AE834491D6023E5003FD370 /* openxc-ios-framework.xcodeproj */,
 				3A1016C31D5417AD006C5E93 /* openXCenabler */,
@@ -344,6 +350,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = openXCenabler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -357,6 +367,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = openXCenabler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
