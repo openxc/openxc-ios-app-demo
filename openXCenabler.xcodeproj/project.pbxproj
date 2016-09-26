@@ -13,25 +13,25 @@
 		3A1016CC1D5417AD006C5E93 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1016CA1D5417AD006C5E93 /* Main.storyboard */; };
 		3A1016CE1D5417AD006C5E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1016CD1D5417AD006C5E93 /* Assets.xcassets */; };
 		3A1016D11D5417AD006C5E93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1016CF1D5417AD006C5E93 /* LaunchScreen.storyboard */; };
-		3A19DC9D1D994E860063B571 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19DC961D994D970063B571 /* openXCiOSFramework.framework */; };
-		3A19DC9E1D994E860063B571 /* openXCiOSFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19DC961D994D970063B571 /* openXCiOSFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3A19DCAF1D9954360063B571 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19DCAE1D9954360063B571 /* ProtocolBuffers.framework */; };
 		3A19DCB01D9954360063B571 /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19DCAE1D9954360063B571 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3ABA7F5B1D88FB2700D75846 /* modalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */; };
 		3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834421D5ED054003FD370 /* SendCanViewController.swift */; };
 		3AE834461D5ED054003FD370 /* DiagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834431D5ED054003FD370 /* DiagViewController.swift */; };
 		3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834441D5ED054003FD370 /* CanViewController.swift */; };
+		3AE9CE0B1D995A1600805C43 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE9CE081D99595F00805C43 /* openXCiOSFramework.framework */; };
+		3AE9CE0C1D995A1600805C43 /* openXCiOSFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3AE9CE081D99595F00805C43 /* openXCiOSFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3A19DC951D994D970063B571 /* PBXContainerItemProxy */ = {
+		3AE9CE071D99595F00805C43 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3A19DC911D994D970063B571 /* openxc-ios-framework.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 3A1017061D5941C8006C5E93;
 			remoteInfo = "openxc-ios-framework";
 		};
-		3A19DC9F1D994E860063B571 /* PBXContainerItemProxy */ = {
+		3AE9CE0D1D995A1600805C43 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3A19DC911D994D970063B571 /* openxc-ios-framework.xcodeproj */;
 			proxyType = 1;
@@ -47,8 +47,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3AE9CE0C1D995A1600805C43 /* openXCiOSFramework.framework in Embed Frameworks */,
 				3A19DCB01D9954360063B571 /* ProtocolBuffers.framework in Embed Frameworks */,
-				3A19DC9E1D994E860063B571 /* openXCiOSFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,7 +64,7 @@
 		3A1016CD1D5417AD006C5E93 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A1016D01D5417AD006C5E93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A1016D21D5417AD006C5E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3A19DC911D994D970063B571 /* openxc-ios-framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "openxc-ios-framework.xcodeproj"; path = "../openxc-ios-framework-test/openxc-ios-framework.xcodeproj"; sourceTree = "<group>"; };
+		3A19DC911D994D970063B571 /* openxc-ios-framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "openxc-ios-framework.xcodeproj"; path = "../openxc-ios-framework/openxc-ios-framework.xcodeproj"; sourceTree = "<group>"; };
 		3A19DCAE1D9954360063B571 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ProtocolBuffers.framework; sourceTree = "<group>"; };
 		3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = modalSettingsView.swift; sourceTree = "<group>"; };
 		3AE834421D5ED054003FD370 /* SendCanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCanViewController.swift; sourceTree = "<group>"; };
@@ -77,8 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AE9CE0B1D995A1600805C43 /* openXCiOSFramework.framework in Frameworks */,
 				3A19DCAF1D9954360063B571 /* ProtocolBuffers.framework in Frameworks */,
-				3A19DC9D1D994E860063B571 /* openXCiOSFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,10 +121,10 @@
 			path = openXCenabler;
 			sourceTree = "<group>";
 		};
-		3A19DC921D994D970063B571 /* Products */ = {
+		3AE9CE041D99595F00805C43 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A19DC961D994D970063B571 /* openXCiOSFramework.framework */,
+				3AE9CE081D99595F00805C43 /* openXCiOSFramework.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,7 +144,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				3A19DCA01D994E860063B571 /* PBXTargetDependency */,
+				3AE9CE0E1D995A1600805C43 /* PBXTargetDependency */,
 			);
 			name = openXCenabler;
 			productName = openXCenabler;
@@ -180,7 +180,7 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 3A19DC921D994D970063B571 /* Products */;
+					ProductGroup = 3AE9CE041D99595F00805C43 /* Products */;
 					ProjectRef = 3A19DC911D994D970063B571 /* openxc-ios-framework.xcodeproj */;
 				},
 			);
@@ -192,11 +192,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		3A19DC961D994D970063B571 /* openXCiOSFramework.framework */ = {
+		3AE9CE081D99595F00805C43 /* openXCiOSFramework.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = openXCiOSFramework.framework;
-			remoteRef = 3A19DC951D994D970063B571 /* PBXContainerItemProxy */;
+			remoteRef = 3AE9CE071D99595F00805C43 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -232,10 +232,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3A19DCA01D994E860063B571 /* PBXTargetDependency */ = {
+		3AE9CE0E1D995A1600805C43 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "openxc-ios-framework";
-			targetProxy = 3A19DC9F1D994E860063B571 /* PBXContainerItemProxy */;
+			targetProxy = 3AE9CE0D1D995A1600805C43 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

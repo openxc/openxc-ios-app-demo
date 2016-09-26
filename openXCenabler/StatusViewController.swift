@@ -77,7 +77,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
       // check to see if a trace input file has been set up
       if NSUserDefaults.standardUserDefaults().boolForKey("traceInputOn") {
         if let name = NSUserDefaults.standardUserDefaults().valueForKey("traceInputFilename") as? NSString {
-          vm.enableTraceFileSource(name,speed:100)
+          vm.enableTraceFileSource(name)
         }
       }
 
