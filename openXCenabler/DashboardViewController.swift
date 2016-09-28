@@ -8,8 +8,11 @@
 
 import UIKit
 import openXCiOSFramework
+import CoreMotion
+import CoreLocation
+import AVFoundation
 
-class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, NSURLConnectionDelegate {
 
   // measurement table
   @IBOutlet weak var dashTable: UITableView!
@@ -19,6 +22,22 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   
   // dictionary holding name/value from measurement messages
   var dashDict: NSMutableDictionary!
+  
+  // sensor related vars
+  private var sensorLoop: NSTimer = NSTimer()
+  private var headphones : String = "No"
+  private var motionManager : CMMotionManager = CMMotionManager()
+  private var locationManager : CLLocationManager = CLLocationManager()
+  private var lat : Double = 0
+  private var long : Double = 0
+  private var alt : Double = 0
+  private var head : Double = 0
+  private var speed : Double = 0.0
+  
+  // dweet related vars
+  private var dweetLoop: NSTimer = NSTimer()
+  private var dweetConn: NSURLConnection?
+  private var dweetRspData: NSMutableData?
   
   
   override func viewDidLoad() {
@@ -33,13 +52,55 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // initialize dictionary/table
     dashDict = NSMutableDictionary()
     dashTable.reloadData()
+    
+    locationManager.delegate=self;
+    locationManager.desiredAccuracy=kCLLocationAccuracyBest;
+    locationManager.distanceFilter=500;
+    locationManager.requestWhenInUseAuthorization()
+
+    
   }
   
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
+    print("in viewDidAppear")
     
+    sensorLoop.invalidate()
+    locationManager.stopUpdatingLocation()
+    motionManager.stopDeviceMotionUpdates()
+    
+    dweetLoop.invalidate()
+    
+    // TODO add settings
+    ///////////////////
+    if true {
+      
+      sensorLoop = NSTimer.scheduledTimerWithTimeInterval(0.25, target:self, selector:#selector(sensorUpdate), userInfo: nil, repeats:true)
+    
+      if CLLocationManager.locationServicesEnabled() {
+        locationManager.startUpdatingLocation()
+      }
+      
+      motionManager.deviceMotionUpdateInterval = 0.05
+      motionManager.startDeviceMotionUpdates()
+      
+    }
+    
+    // TODO add settings
+    ////////////////////
+    if true {
+      dweetLoop = NSTimer.scheduledTimerWithTimeInterval(1.5, target:self, selector:#selector(sendDweet), userInfo: nil, repeats:true)
+    }
+
+
   }
- 
+
+  override func viewWillDisappear(animated: Bool) {
+    super.viewWillDisappear(animated)
+    print("in viewDidDisappear")
+
+  }
+  
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
@@ -126,6 +187,113 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // selecting this table does nothing
   }
 
+  
+  
+  func sensorUpdate() {
+    print("in sensorLoop")
+    
+    if isHeadsetPluggedIn() {
+      dashDict.setObject("Yes", forKey:"phone_headphones_attached")
+    } else {
+      dashDict.setObject("No", forKey:"phone_headphones_attached")
+    }
 
+    dashDict.setObject(UIScreen.mainScreen().brightness, forKey:"phone_brightness")
+
+    if let motion = motionManager.deviceMotion {
+      let p = 180/M_PI*motion.attitude.pitch;
+      let r = 180/M_PI*motion.attitude.roll;
+      let y = 180/M_PI*motion.attitude.yaw;
+      dashDict.setObject(p, forKey:"phone_motion_pitch")
+      dashDict.setObject(r, forKey:"phone_motion_roll")
+      dashDict.setObject(y, forKey:"phone_motion_yaw")
+    }
+    
+    // update the table
+    dispatch_async(dispatch_get_main_queue()) {
+      self.dashTable.reloadData()
+    }
+    
+  }
+  
+  
+  func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    print("in locationMgr:didUpdateLocations")
+    if locations.count>0 {
+      print(locations.last)
+      let loc = locations.last!
+      dashDict.setObject(loc.coordinate.latitude, forKey:"phone_latitude")
+      dashDict.setObject(loc.coordinate.longitude, forKey:"phone_longitude")
+      dashDict.setObject(loc.altitude, forKey:"phone_altitude")
+      dashDict.setObject(loc.course, forKey:"phone_heading")
+      dashDict.setObject(loc.speed, forKey:"phone_speed")
+      // update the table
+      dispatch_async(dispatch_get_main_queue()) {
+        self.dashTable.reloadData()
+      }
+
+    }
+  }
+  
+  func isHeadsetPluggedIn() -> Bool {
+    let route = AVAudioSession.sharedInstance().currentRoute
+    for desc in route.outputs {
+      if desc.portType == AVAudioSessionPortHeadphones {
+        return true
+      }
+    }
+    return false
+  }
+  
+
+  func sendDweet() {
+    
+    if let conn = dweetConn {
+      // connection already exists!
+      conn.cancel()
+    }
+    dweetConn = nil
+    dweetRspData = NSMutableData()
+    
+    do {
+      let jsonData = try NSJSONSerialization.dataWithJSONObject(dashDict, options: .PrettyPrinted)
+      
+      let urlStr = NSURL(string:"https://dweet.io/dweet/for/timtest")
+      let postLength = String(format:"%lu", Double(jsonData.length))
+      
+      let request = NSMutableURLRequest()
+      request.URL = urlStr
+      request.HTTPMethod = "POST"
+      request.setValue(postLength,forHTTPHeaderField:"Content-Length")
+      request.setValue("application/json", forHTTPHeaderField:"Content-Type")
+      request.HTTPBody = jsonData
+      
+      dweetConn = NSURLConnection(request: request, delegate: self, startImmediately:true)
+      
+    } catch {
+      print("json encode error")
+    }
+    
+  
+    
+  }
+  
+  func connection(connection: NSURLConnection!, didReceiveData data: NSData!){
+
+    print("in didRxData")
+    dweetRspData?.appendData(data)
+    
+  }
+  
+  func connectionDidFinishLoading(connection: NSURLConnection!) {
+   
+    print("in didFinishLoading")
+    
+    let responseString = String(data:dweetRspData!,encoding:NSUTF8StringEncoding)
+    print(responseString)
+    
+  }
+    
+  
 }
 
