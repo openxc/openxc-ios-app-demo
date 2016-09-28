@@ -16,6 +16,8 @@
 		3A19DCAF1D9954360063B571 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19DCAE1D9954360063B571 /* ProtocolBuffers.framework */; };
 		3A19DCB01D9954360063B571 /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3A19DCAE1D9954360063B571 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3ABA7F5B1D88FB2700D75846 /* modalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */; };
+		3AE7C0AF1D9C0CF1001E92A4 /* adjectives.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AE7C0AE1D9C0CF1001E92A4 /* adjectives.txt */; };
+		3AE7C0B11D9C0CF6001E92A4 /* nouns.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AE7C0B01D9C0CF6001E92A4 /* nouns.txt */; };
 		3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834421D5ED054003FD370 /* SendCanViewController.swift */; };
 		3AE834461D5ED054003FD370 /* DiagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834431D5ED054003FD370 /* DiagViewController.swift */; };
 		3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834441D5ED054003FD370 /* CanViewController.swift */; };
@@ -67,6 +69,8 @@
 		3A19DC911D994D970063B571 /* openxc-ios-framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "openxc-ios-framework.xcodeproj"; path = "../openxc-ios-framework/openxc-ios-framework.xcodeproj"; sourceTree = "<group>"; };
 		3A19DCAE1D9954360063B571 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ProtocolBuffers.framework; sourceTree = "<group>"; };
 		3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = modalSettingsView.swift; sourceTree = "<group>"; };
+		3AE7C0AE1D9C0CF1001E92A4 /* adjectives.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = adjectives.txt; sourceTree = "<group>"; };
+		3AE7C0B01D9C0CF6001E92A4 /* nouns.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nouns.txt; sourceTree = "<group>"; };
 		3AE834421D5ED054003FD370 /* SendCanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCanViewController.swift; sourceTree = "<group>"; };
 		3AE834431D5ED054003FD370 /* DiagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagViewController.swift; sourceTree = "<group>"; };
 		3AE834441D5ED054003FD370 /* CanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +121,8 @@
 				3A1016CD1D5417AD006C5E93 /* Assets.xcassets */,
 				3A1016CF1D5417AD006C5E93 /* LaunchScreen.storyboard */,
 				3A1016D21D5417AD006C5E93 /* Info.plist */,
+				3AE7C0AE1D9C0CF1001E92A4 /* adjectives.txt */,
+				3AE7C0B01D9C0CF6001E92A4 /* nouns.txt */,
 			);
 			path = openXCenabler;
 			sourceTree = "<group>";
@@ -208,6 +214,8 @@
 			files = (
 				3A1016D11D5417AD006C5E93 /* LaunchScreen.storyboard in Resources */,
 				3A1016CE1D5417AD006C5E93 /* Assets.xcassets in Resources */,
+				3AE7C0B11D9C0CF6001E92A4 /* nouns.txt in Resources */,
+				3AE7C0AF1D9C0CF1001E92A4 /* adjectives.txt in Resources */,
 				3A1016CC1D5417AD006C5E93 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

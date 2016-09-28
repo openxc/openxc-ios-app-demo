@@ -71,9 +71,16 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     dweetLoop.invalidate()
     
-    // TODO add settings
-    ///////////////////
-    if true {
+    
+    if  NSUserDefaults.standardUserDefaults().boolForKey("sensorsOn") !=
+        NSUserDefaults.standardUserDefaults().boolForKey("lastSensorsOn") {
+      // clear the table if the sensor value changes
+      dashDict = NSMutableDictionary()
+      dashTable.reloadData()
+    }
+    NSUserDefaults.standardUserDefaults().setBool(NSUserDefaults.standardUserDefaults().boolForKey("sensorsOn"), forKey:"lastSensorsOn")
+    
+    if NSUserDefaults.standardUserDefaults().boolForKey("sensorsOn") {
       
       sensorLoop = NSTimer.scheduledTimerWithTimeInterval(0.25, target:self, selector:#selector(sensorUpdate), userInfo: nil, repeats:true)
     
@@ -86,9 +93,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
       
     }
     
-    // TODO add settings
-    ////////////////////
-    if true {
+    if NSUserDefaults.standardUserDefaults().boolForKey("dweetOutputOn") {
       dweetLoop = NSTimer.scheduledTimerWithTimeInterval(1.5, target:self, selector:#selector(sendDweet), userInfo: nil, repeats:true)
     }
 
@@ -190,7 +195,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   
   
   func sensorUpdate() {
-    print("in sensorLoop")
+    //print("in sensorLoop")
     
     if isHeadsetPluggedIn() {
       dashDict.setObject("Yes", forKey:"phone_headphones_attached")
@@ -258,17 +263,19 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     do {
       let jsonData = try NSJSONSerialization.dataWithJSONObject(dashDict, options: .PrettyPrinted)
       
-      let urlStr = NSURL(string:"https://dweet.io/dweet/for/timtest")
-      let postLength = String(format:"%lu", Double(jsonData.length))
-      
-      let request = NSMutableURLRequest()
-      request.URL = urlStr
-      request.HTTPMethod = "POST"
-      request.setValue(postLength,forHTTPHeaderField:"Content-Length")
-      request.setValue("application/json", forHTTPHeaderField:"Content-Type")
-      request.HTTPBody = jsonData
-      
-      dweetConn = NSURLConnection(request: request, delegate: self, startImmediately:true)
+      if let dweetname = NSUserDefaults.standardUserDefaults().stringForKey("dweetname") {
+        let urlStr = NSURL(string:"https://dweet.io/dweet/for/"+dweetname)
+        let postLength = String(format:"%lu", Double(jsonData.length))
+        
+        let request = NSMutableURLRequest()
+        request.URL = urlStr
+        request.HTTPMethod = "POST"
+        request.setValue(postLength,forHTTPHeaderField:"Content-Length")
+        request.setValue("application/json", forHTTPHeaderField:"Content-Type")
+        request.HTTPBody = jsonData
+        
+        dweetConn = NSURLConnection(request: request, delegate: self, startImmediately:true)
+      }
       
     } catch {
       print("json encode error")
@@ -280,17 +287,17 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   
   func connection(connection: NSURLConnection!, didReceiveData data: NSData!){
 
-    print("in didRxData")
+    //print("in didRxData")
     dweetRspData?.appendData(data)
     
   }
   
   func connectionDidFinishLoading(connection: NSURLConnection!) {
    
-    print("in didFinishLoading")
+    //print("in didFinishLoading")
     
-    let responseString = String(data:dweetRspData!,encoding:NSUTF8StringEncoding)
-    print(responseString)
+    //let responseString = String(data:dweetRspData!,encoding:NSUTF8StringEncoding)
+    //print(responseString)
     
   }
     
