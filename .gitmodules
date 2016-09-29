@@ -1,0 +1,3 @@
+[submodule "openxc-ios-framework"]
+	path = openxc-ios-framework
+	url = https://github.com/openxc/openxc-ios-framework.git
