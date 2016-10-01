@@ -16,6 +16,8 @@
 		3ABA7F5B1D88FB2700D75846 /* modalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */; };
 		3ACB65981D9D74B300359403 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACB65971D9D742B00359403 /* openXCiOSFramework.framework */; };
 		3ACB65991D9D74B300359403 /* openXCiOSFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACB65971D9D742B00359403 /* openXCiOSFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3ACB65A51D9D765400359403 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACB65A41D9D765400359403 /* ProtocolBuffers.framework */; };
+		3ACB65A61D9D765400359403 /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACB65A41D9D765400359403 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3AE7C0AF1D9C0CF1001E92A4 /* adjectives.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AE7C0AE1D9C0CF1001E92A4 /* adjectives.txt */; };
 		3AE7C0B11D9C0CF6001E92A4 /* nouns.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AE7C0B01D9C0CF6001E92A4 /* nouns.txt */; };
 		3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834421D5ED054003FD370 /* SendCanViewController.swift */; };
@@ -47,6 +49,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3ACB65A61D9D765400359403 /* ProtocolBuffers.framework in Embed Frameworks */,
 				3ACB65991D9D74B300359403 /* openXCiOSFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -65,6 +68,7 @@
 		3A1016D21D5417AD006C5E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = modalSettingsView.swift; sourceTree = "<group>"; };
 		3ACB65911D9D742B00359403 /* openxc-ios-framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "openxc-ios-framework.xcodeproj"; path = "openxc-ios-framework/openxc-ios-framework.xcodeproj"; sourceTree = "<group>"; };
+		3ACB65A41D9D765400359403 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = ProtocolBuffers.framework; path = "/Users/tjbuick/Library/Developer/Xcode/DerivedData/openXCenabler-aaiijbgzhyngcmaazjzhuscpnheo/Build/Products/Debug-iphoneos/ProtocolBuffers.framework"; sourceTree = "<absolute>"; };
 		3AE7C0AE1D9C0CF1001E92A4 /* adjectives.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = adjectives.txt; sourceTree = "<group>"; };
 		3AE7C0B01D9C0CF6001E92A4 /* nouns.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nouns.txt; sourceTree = "<group>"; };
 		3AE834421D5ED054003FD370 /* SendCanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCanViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ACB65A51D9D765400359403 /* ProtocolBuffers.framework in Frameworks */,
 				3ACB65981D9D74B300359403 /* openXCiOSFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +92,7 @@
 		3A1016B81D5417AD006C5E93 = {
 			isa = PBXGroup;
 			children = (
+				3ACB65A41D9D765400359403 /* ProtocolBuffers.framework */,
 				3ACB65911D9D742B00359403 /* openxc-ios-framework.xcodeproj */,
 				3A1016C31D5417AD006C5E93 /* openXCenabler */,
 				3A1016C21D5417AD006C5E93 /* Products */,

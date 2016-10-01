@@ -74,6 +74,12 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         vm.setAutoconnect(true)
       }
       
+      // check to see if the config is set for protobuf mode
+      vm.setProtobufMode(false)
+      if NSUserDefaults.standardUserDefaults().boolForKey("protobufOn") {
+        vm.setProtobufMode(true)
+      }
+      
       // check to see if a trace input file has been set up
       if NSUserDefaults.standardUserDefaults().boolForKey("traceInputOn") {
         if let name = NSUserDefaults.standardUserDefaults().valueForKey("traceInputFilename") as? NSString {

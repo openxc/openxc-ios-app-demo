@@ -505,7 +505,7 @@
                                     <constraint firstAttribute="trailing" secondItem="kAv-yt-f5S" secondAttribute="trailing" constant="21" id="269-X2-Dex"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kBR-dn-mj7" userLabel="mainview">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kBR-dn-mj7" userLabel="mainview">
                                 <rect key="frame" x="0.0" y="69" width="600" height="531"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrF-M3-utf">
@@ -654,11 +654,11 @@
                                     <constraint firstAttribute="trailing" secondItem="1cB-CX-gPF" secondAttribute="trailing" constant="36" id="HDJ-L2-auj"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-cU-4nM" userLabel="srcview">
+                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-cU-4nM" userLabel="srcview">
                                 <rect key="frame" x="0.0" y="69" width="600" height="531"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDe-KK-QML">
-                                        <rect key="frame" x="23" y="307" width="193" height="30"/>
+                                        <rect key="frame" x="23" y="372" width="193" height="30"/>
                                         <state key="normal" title="Back">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -684,8 +684,14 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Protobuf Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikY-wF-r1H">
+                                        <rect key="frame" x="23" y="231" width="193" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Include Phone Sensor Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYi-Ce-YNA">
-                                        <rect key="frame" x="23" y="240" width="245" height="21"/>
+                                        <rect key="frame" x="23" y="301" width="245" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -697,13 +703,19 @@
                                         </connections>
                                     </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bu8-DK-mtQ" userLabel="autoswitch">
-                                        <rect key="frame" x="515" y="167" width="51" height="31"/>
+                                        <rect key="frame" x="515" y="160" width="51" height="31"/>
                                         <connections>
                                             <action selector="autoChange:" destination="BHx-Nq-eLz" eventType="valueChanged" id="fbI-7y-lvJ"/>
                                         </connections>
                                     </switch>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="whO-TE-m4N" userLabel="protoswitch">
+                                        <rect key="frame" x="515" y="226" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="protoChange:" destination="BHx-Nq-eLz" eventType="valueChanged" id="ov5-Qj-1oi"/>
+                                        </connections>
+                                    </switch>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="s8O-iS-2Rh" userLabel="sensorswitch">
-                                        <rect key="frame" x="515" y="235" width="51" height="31"/>
+                                        <rect key="frame" x="515" y="296" width="51" height="31"/>
                                         <connections>
                                             <action selector="sensorChange:" destination="BHx-Nq-eLz" eventType="valueChanged" id="iFx-o9-lmI"/>
                                         </connections>
@@ -728,8 +740,14 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Configure the app to receive data from a VI set to Protobuf data format (instead of JSON)" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRV-Un-SZO">
+                                        <rect key="frame" x="23" y="245" width="199" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Sensor data will be displayed in the dashboard" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwc-q3-ZkE">
-                                        <rect key="frame" x="23" y="257" width="272" height="35"/>
+                                        <rect key="frame" x="23" y="319" width="272" height="35"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -737,6 +755,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="whO-TE-m4N" secondAttribute="trailing" constant="36" id="44I-Eq-jEw"/>
                                     <constraint firstAttribute="trailing" secondItem="Bu8-DK-mtQ" secondAttribute="trailing" constant="36" id="Ij6-EN-hzl"/>
                                     <constraint firstAttribute="trailing" secondItem="V3I-fx-rGt" secondAttribute="trailing" constant="36" id="M8I-cp-rsh"/>
                                     <constraint firstAttribute="trailing" secondItem="s8O-iS-2Rh" secondAttribute="trailing" constant="36" id="evA-bK-Wze"/>
@@ -762,6 +781,7 @@
                         <outlet property="mainView" destination="kBR-dn-mj7" id="GoH-oV-HZH"/>
                         <outlet property="playname" destination="YNd-zw-uzn" id="zO4-Vw-6Bc"/>
                         <outlet property="playswitch" destination="V3I-fx-rGt" id="7Uw-mw-iIl"/>
+                        <outlet property="protoswitch" destination="whO-TE-m4N" id="nll-g2-xln"/>
                         <outlet property="recView" destination="Gbt-vz-xcP" id="UAa-CG-tl3"/>
                         <outlet property="recname" destination="hHV-0x-5oy" id="PTu-Hj-Dcm"/>
                         <outlet property="recswitch" destination="1cB-CX-gPF" id="SMM-zJ-etF"/>

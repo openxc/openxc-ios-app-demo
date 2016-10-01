@@ -27,6 +27,8 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
   
   @IBOutlet weak var autoswitch: UISwitch!
   
+  @IBOutlet weak var protoswitch: UISwitch!
+  
   @IBOutlet weak var sensorswitch: UISwitch!
   
   override func viewDidLoad() {
@@ -83,6 +85,13 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     // update UI if necessary
     if sensorOn == true {
       sensorswitch.setOn(true, animated:false)
+    }
+    
+    // check saved value of protobuf switch
+    let protobufOn = NSUserDefaults.standardUserDefaults().boolForKey("protobufOn")
+    // update UI if necessary
+    if protobufOn == true {
+      protoswitch.setOn(true, animated:false)
     }
     
     // at first run, get a random dweet name
@@ -238,7 +247,11 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
   @IBAction func sensorChange(sender: UISwitch) {
     NSUserDefaults.standardUserDefaults().setBool(sender.on, forKey:"sensorsOn")
   }
-  
+  // protbuf mode switch changed, save it's value
+  @IBAction func protoChange(sender: UISwitch) {
+    NSUserDefaults.standardUserDefaults().setBool(sender.on, forKey:"protobufOn")
+  }
+
   // 'back' hit, clear all view and show initial menu view
   @IBAction func backHit(sender: AnyObject) {
     mainView.hidden = false

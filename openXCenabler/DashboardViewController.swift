@@ -124,6 +124,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     if val.isEqual(NSNull()) {
       val=""
     }
+    if vr.isEvented {
+      val = NSString(format:"%@:%@",vr.value as! NSString,vr.event as! NSString)
+    }
     // save the name key and value in the dictionary
     dashDict.setObject(val, forKey:name)
 
@@ -131,7 +134,11 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     dispatch_async(dispatch_get_main_queue()) {
         self.dashTable.reloadData()
     }
-    print("default measurement msg:",vr.name," -- ",vr.value)
+    if vr.isEvented {
+      print("default measurement msg:",vr.name," -- ",vr.value,":",vr.event)
+    } else {
+      print("default measurement msg:",vr.name," -- ",vr.value)
+    }
   }
 
   
