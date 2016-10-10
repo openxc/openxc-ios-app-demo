@@ -378,18 +378,16 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2UR-H1-RST" userLabel="bus Field">
-                                <rect key="frame" x="473" y="86" width="97" height="30"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Bqi-m5-gjg" userLabel="bussel">
+                                <rect key="frame" x="461" y="86" width="121" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="Dqq-ml-aq6"/>
-                                    <constraint firstAttribute="height" constant="30" id="nMz-Wn-jws"/>
+                                    <constraint firstAttribute="width" constant="121" id="k3r-OG-eBL"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="nsg-BH-JCA" id="y5g-Te-vYU"/>
-                                </connections>
-                            </textField>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                </segments>
+                            </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H04-ih-4DQ" userLabel="id Field">
                                 <rect key="frame" x="473" y="116" width="97" height="30"/>
                                 <constraints>
@@ -446,15 +444,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="3Od-oz-PWF" secondAttribute="trailing" constant="-20" id="O1O-my-waR"/>
                             <constraint firstItem="3Od-oz-PWF" firstAttribute="leading" secondItem="2tC-mM-19o" secondAttribute="leadingMargin" constant="-20" id="e6b-qx-BPD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ccp-sR-Htf" secondAttribute="trailing" constant="10" id="gBL-9g-vB4"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2UR-H1-RST" secondAttribute="trailing" constant="10" id="gIF-3W-FDt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H04-ih-4DQ" secondAttribute="trailing" constant="10" id="gVa-kc-Xsy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Bqi-m5-gjg" secondAttribute="trailing" constant="-2" id="ubg-nd-Svf"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Send CAN" id="J6u-F0-x0L">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="busField" destination="2UR-H1-RST" id="a0g-VX-CGF"/>
+                        <outlet property="bussel" destination="Bqi-m5-gjg" id="igO-4o-Erj"/>
                         <outlet property="dataField" destination="Ccp-sR-Htf" id="oZN-IR-KZg"/>
                         <outlet property="idField" destination="H04-ih-4DQ" id="rO8-mD-RDM"/>
                         <outlet property="lastReq" destination="vxF-CF-Cam" id="7ZR-x2-vlQ"/>
@@ -892,17 +890,16 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7Dr-Kn-OkU">
-                                <rect key="frame" x="473" y="86" width="97" height="30"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gwD-3g-6LY" userLabel="bussel">
+                                <rect key="frame" x="459" y="86" width="121" height="29"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="z80-eL-sa5"/>
+                                    <constraint firstAttribute="width" constant="121" id="nBF-kf-yHD"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="CQw-sU-6eO" id="QxH-X6-eIC"/>
-                                </connections>
-                            </textField>
+                                <segments>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
+                                </segments>
+                            </segmentedControl>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2QG-KT-cmk">
                                 <rect key="frame" x="473" y="116" width="97" height="30"/>
                                 <constraints>
@@ -950,15 +947,15 @@
                             <constraint firstAttribute="trailingMargin" secondItem="2QG-KT-cmk" secondAttribute="trailing" constant="10" id="bIG-b5-fWB"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kWr-kH-B8B" secondAttribute="trailing" constant="-20" id="df0-8B-P5Z"/>
                             <constraint firstItem="kWr-kH-B8B" firstAttribute="leading" secondItem="3NX-a2-Lzv" secondAttribute="leadingMargin" constant="-20" id="jYC-kK-TfD"/>
+                            <constraint firstItem="gwD-3g-6LY" firstAttribute="trailing" secondItem="3NX-a2-Lzv" secondAttribute="trailingMargin" id="kPK-sP-6cA"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Bie-dK-THp" secondAttribute="trailing" constant="10" id="m4r-G2-9iW"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="7Dr-Kn-OkU" secondAttribute="trailing" constant="10" id="xU2-of-eZI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Diagnostic" id="Sue-fr-RVV">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-15"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="busField" destination="7Dr-Kn-OkU" id="9lF-vj-4uI"/>
+                        <outlet property="bussel" destination="gwD-3g-6LY" id="8B0-PB-8RU"/>
                         <outlet property="idField" destination="2QG-KT-cmk" id="oHQ-Ux-lZU"/>
                         <outlet property="lastReq" destination="o3f-hI-v8j" id="M7y-xE-pet"/>
                         <outlet property="modeField" destination="Bie-dK-THp" id="MHs-Fs-Qu2"/>
@@ -972,6 +969,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0wW-1I-R6M"/>
+        <segue reference="DlW-1h-ve9"/>
     </inferredMetricsTieBreakers>
 </document>

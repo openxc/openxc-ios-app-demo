@@ -12,7 +12,7 @@ import openXCiOSFramework
 class DiagViewController: UIViewController, UITextFieldDelegate {
 
   // UI outlets
-  @IBOutlet weak var busField: UITextField!
+  @IBOutlet weak var bussel: UISegmentedControl!
   @IBOutlet weak var idField: UITextField!
   @IBOutlet weak var modeField: UITextField!
   @IBOutlet weak var pidField: UITextField!
@@ -83,6 +83,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
   }
   
   
+  // TODO radio button for bus
   // diag send button hit
   @IBAction func sendHit(sender: AnyObject) {
 
@@ -100,31 +101,18 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     // create an empty diag request
     let cmd = VehicleDiagnosticRequest()
     
-    // check that the bus field is valid
-    if let bus = busField.text as String? {
-      if bus=="" {
-        lastReq.text = "Invalid command : need a bus"
-        return
-      }
-      if let busInt = Int(bus) as NSInteger? {
-        cmd.bus = busInt
-      } else {
-        lastReq.text = "Invalid command : bus should be a number"
-        return
-      }
-    } else {
-      lastReq.text = "Invalid command : need a bus"
-      return
-    }
+    // look at segmented control for bus
+    cmd.bus = bussel.selectedSegmentIndex + 1
     print("bus is ",cmd.bus)
     
     // check that the msg id field is valid
     if let mid = idField.text as String? {
-      if mid=="" {
+      let midtrim = mid.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+      if midtrim=="" {
         lastReq.text = "Invalid command : need a message_id"
         return
       }
-      if let midInt = Int(mid,radix:16) as NSInteger? {
+      if let midInt = Int(midtrim,radix:16) as NSInteger? {
         cmd.message_id = midInt
       } else {
         lastReq.text = "Invalid command : message_id should be hex number (with no leading 0x)"
@@ -138,11 +126,12 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     
     // check that the mode field is valid
     if let mode = modeField.text as String? {
-      if mode=="" {
+      let modetrim = mode.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+      if modetrim=="" {
         lastReq.text = "Invalid command : need a mode"
         return
       }
-      if let modeInt = Int(mode,radix:16) as NSInteger? {
+      if let modeInt = Int(modetrim,radix:16) as NSInteger? {
         cmd.mode = modeInt
       } else {
         lastReq.text = "Invalid command : mode should be hex number (with no leading 0x)"
@@ -156,9 +145,10 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     
     // check that the pid field is valid (or empty)
     if let pid = pidField.text as String? {
-      if (pid=="") {
+      let pidtrim = pid.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+      if (pidtrim=="") {
         // this is ok, it's optional
-      } else if let pidInt = Int(pid,radix:16) as NSInteger? {
+      } else if let pidInt = Int(pidtrim,radix:16) as NSInteger? {
         cmd.pid = pidInt
       } else {
         lastReq.text = "Invalid command : pid should be hex number (with no leading 0x)"

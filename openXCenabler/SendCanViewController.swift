@@ -12,7 +12,7 @@ import openXCiOSFramework
 class SendCanViewController: UIViewController, UITextFieldDelegate {
 
   // UI outlets
-  @IBOutlet weak var busField: UITextField!
+  @IBOutlet weak var bussel: UISegmentedControl!
   @IBOutlet weak var idField: UITextField!
   @IBOutlet weak var dataField: UITextField!
   
@@ -59,31 +59,18 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     // create an empty CAN request
     let cmd = VehicleCanRequest()
     
-    // check that the bus field is valid
-    if let bus = busField.text as String? {
-      if bus=="" {
-        lastReq.text = "Invalid command : need a bus"
-        return
-      }
-      if let busInt = Int(bus) as NSInteger? {
-        cmd.bus = busInt
-      } else {
-        lastReq.text = "Invalid command : bus should be a number"
-        return
-      }
-    } else {
-      lastReq.text = "Invalid command : need a bus"
-      return
-    }
+    // look at segmented control for bus
+    cmd.bus = bussel.selectedSegmentIndex + 1
     print("bus is ",cmd.bus)
     
     // check that the msg id field is valid
     if let mid = idField.text as String? {
-      if mid=="" {
+      let midtrim = mid.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+      if midtrim=="" {
         lastReq.text = "Invalid command : need a message_id"
         return
       }
-      if let midInt = Int(mid,radix:16) as NSInteger? {
+      if let midInt = Int(midtrim,radix:16) as NSInteger? {
         cmd.id = midInt
       } else {
         lastReq.text = "Invalid command : message_id should be hex number (with no leading 0x)"
@@ -97,11 +84,12 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     
     // check that the payload field is valid
     if let payld = dataField.text as String? {
-      if payld=="" {
+      let payldtrim = payld.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+      if payldtrim=="" {
         lastReq.text = "Invalid command : need a payload"
         return
       }
-      if (Int(payld,radix:16) as NSInteger?) != nil {
+      if (Int(payldtrim,radix:16) as NSInteger?) != nil {
         cmd.data = dataField.text!
         if (cmd.data.length % 2) == 1 {
           cmd.data = "0" + dataField.text!

@@ -86,16 +86,16 @@ class CanViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     let k = sortedKeys[indexPath.row]
     
     // grab the CAN message based on the CAN key
-    let vm = canDict.objectForKey(k) as! VehicleCanResponse
+    let cr = canDict.objectForKey(k) as! VehicleCanResponse
     
     // convert timestamp to a normal time
-    let date = NSDate(timeIntervalSince1970: Double(vm.timestamp/1000))
+    let date = NSDate(timeIntervalSince1970: Double(cr.timestamp/1000))
     let dayTimePeriodFormatter = NSDateFormatter()
     dayTimePeriodFormatter.dateFormat = "hh:mm:ss"
     let dateString = dayTimePeriodFormatter.stringFromDate(date)
     
     // show the table row with the important contents of the CAN message
-    cell!.textLabel?.text = String(format:"%@  %2d  0x%3x   0x",dateString,vm.bus,vm.id)+(vm.data as String)
+    cell!.textLabel?.text = String(format:"%@  %2d  0x%3x   0x",dateString,cr.bus,cr.id)+(cr.data as String)
     cell!.textLabel?.font = UIFont(name:"Courier New", size: 14.0)
     cell!.textLabel?.textColor = UIColor.lightGrayColor()
     
