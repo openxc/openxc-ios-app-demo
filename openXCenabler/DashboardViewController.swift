@@ -125,7 +125,22 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
       val=""
     }
     if vr.isEvented {
-      val = NSString(format:"%@:%@",vr.value as! NSString,vr.event as! NSString)
+      var e:NSString
+      if vr.event is NSNumber {
+        let ne = vr.event as! NSNumber
+        if ne.isEqualToValue(NSNumber(bool: true)) {
+          e = "true";
+        } else if ne.isEqualToValue(NSNumber(bool:false)) {
+          e = "true";
+        } else {
+          // round any floating points
+          let ner = Double(round(10.0*Double(ne))/10)
+          e = String(ner)
+        }
+      } else {
+        e = vr.event.description
+      }
+      val = NSString(format:"%@:%@",vr.value.description,e)
     }
     // save the name key and value in the dictionary
     dashDict.setObject(val, forKey:name)
