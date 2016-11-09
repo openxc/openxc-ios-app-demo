@@ -4,3 +4,13 @@ OpenXC Enabler app that use all of the features of the [openxc-ios-framework](ht
 The OpenXC iOS Framework must be downloaded and included in this app. Make sure that openXCiOSFramework.framework is added as an “Embedded Binary” in the openXCenabler General project settings.
 
 Once the application & framework is downloaded, add both the frameworks(openxc-ios & protobuf) in "Link Binary with Libraries" under "Build Phases" and "Embedded Binary". 
+
+For more details please refer to this [document]()
+
+## Contributing
+
+Please see our [Contribution Documents]()
+
+## License
+Copyright (c) 2016 Ford Motor Company
+Licensed under the BSD license.
