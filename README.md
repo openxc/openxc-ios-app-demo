@@ -7,7 +7,7 @@ Once the application & framework is downloaded, add both the frameworks(openxc-i
 
 
 ## Building from XCode
-XCode7 and iOS9 must be installed to build the application. Refer to this [document]() for more details.
+XCode7 and iOS9 must be installed to build the application. Refer to this [step by step guide](https://github.com/openxc/openxc-ios-framework/blob/master/StepsToBuildOpenXCiOSFrameworkAndDemoApp.docx) for more details.
 
 
 ## Contributing
