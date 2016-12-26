@@ -39,41 +39,6 @@
 			remoteGlobalIDString = 3A1017051D5941C8006C5E93;
 			remoteInfo = "openxc-ios-framework";
 		};
-		E75EE6801E110D3400B2AE3B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E75EE6781E110D3400B2AE3B /* ProtocolBuffers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3F85569919C71BCF003802F2;
-			remoteInfo = ProtocolBuffers;
-		};
-		E75EE6821E110D3400B2AE3B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E75EE6781E110D3400B2AE3B /* ProtocolBuffers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3F8556A419C71BCF003802F2;
-			remoteInfo = UnitTesting;
-		};
-		E75EE6841E110D3400B2AE3B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E75EE6781E110D3400B2AE3B /* ProtocolBuffers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3F41061C1A1A667700742090;
-			remoteInfo = "ProtocolBuffers(OSX)";
-		};
-		E75EE6861E110D3400B2AE3B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E75EE6781E110D3400B2AE3B /* ProtocolBuffers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3F4106261A1A667800742090;
-			remoteInfo = "UnitTesting(OSX)";
-		};
-		E75EE6881E110D3400B2AE3B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E75EE6781E110D3400B2AE3B /* ProtocolBuffers.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3F31A1A91BA199C000F477C1;
-			remoteInfo = "ProtocolBuffers(watchOS)";
-		};
 		E75EE6951E110ED400B2AE3B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3A1016B91D5417AD006C5E93 /* Project object */;
@@ -113,7 +78,6 @@
 		3AE834421D5ED054003FD370 /* SendCanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCanViewController.swift; sourceTree = "<group>"; };
 		3AE834431D5ED054003FD370 /* DiagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagViewController.swift; sourceTree = "<group>"; };
 		3AE834441D5ED054003FD370 /* CanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanViewController.swift; sourceTree = "<group>"; };
-		E75EE6781E110D3400B2AE3B /* ProtocolBuffers.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ProtocolBuffers.xcodeproj; path = "openxc-ios-framework/protobuf/plugin/ProtocolBuffers/ProtocolBuffers.xcodeproj"; sourceTree = "<group>"; };
 		E75EE68A1E110E9D00B2AE3B /* openXCenablerUnitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = openXCenablerUnitTests.swift; sourceTree = "<group>"; };
 		E75EE6901E110ED400B2AE3B /* openXCenablerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = openXCenablerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = openXCenablerTests.swift; sourceTree = "<group>"; };
@@ -143,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				E75EE68A1E110E9D00B2AE3B /* openXCenablerUnitTests.swift */,
-				E75EE6781E110D3400B2AE3B /* ProtocolBuffers.xcodeproj */,
 				3ACB65911D9D742B00359403 /* openxc-ios-framework.xcodeproj */,
 				3A1016C31D5417AD006C5E93 /* openXCenabler */,
 				E75EE6911E110ED400B2AE3B /* openXCenablerTests */,
@@ -184,18 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				3ACB65971D9D742B00359403 /* openXCiOSFramework.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		E75EE6791E110D3400B2AE3B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E75EE6811E110D3400B2AE3B /* ProtocolBuffers.framework */,
-				E75EE6831E110D3400B2AE3B /* ProtocolBuffersTests.xctest */,
-				E75EE6851E110D3400B2AE3B /* ProtocolBuffers.framework */,
-				E75EE6871E110D3400B2AE3B /* UnitTesting(OSX).xctest */,
-				E75EE6891E110D3400B2AE3B /* ProtocolBuffers.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -285,10 +236,6 @@
 					ProductGroup = 3ACB65921D9D742B00359403 /* Products */;
 					ProjectRef = 3ACB65911D9D742B00359403 /* openxc-ios-framework.xcodeproj */;
 				},
-				{
-					ProductGroup = E75EE6791E110D3400B2AE3B /* Products */;
-					ProjectRef = E75EE6781E110D3400B2AE3B /* ProtocolBuffers.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -304,41 +251,6 @@
 			fileType = wrapper.framework;
 			path = openXCiOSFramework.framework;
 			remoteRef = 3ACB65961D9D742B00359403 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E75EE6811E110D3400B2AE3B /* ProtocolBuffers.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ProtocolBuffers.framework;
-			remoteRef = E75EE6801E110D3400B2AE3B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E75EE6831E110D3400B2AE3B /* ProtocolBuffersTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ProtocolBuffersTests.xctest;
-			remoteRef = E75EE6821E110D3400B2AE3B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E75EE6851E110D3400B2AE3B /* ProtocolBuffers.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ProtocolBuffers.framework;
-			remoteRef = E75EE6841E110D3400B2AE3B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E75EE6871E110D3400B2AE3B /* UnitTesting(OSX).xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "UnitTesting(OSX).xctest";
-			remoteRef = E75EE6861E110D3400B2AE3B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		E75EE6891E110D3400B2AE3B /* ProtocolBuffers.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = ProtocolBuffers.framework;
-			remoteRef = E75EE6881E110D3400B2AE3B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
