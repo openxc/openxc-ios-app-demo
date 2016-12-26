@@ -214,7 +214,7 @@
 				TargetAttributes = {
 					3A1016C01D5417AD006C5E93 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = TVG6KLCCT8;
+						DevelopmentTeam = 3QBMUUN95T;
 					};
 					E75EE68F1E110ED400B2AE3B = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -430,11 +430,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/openxc-ios-framework/protobuf/plugin/ProtocolBuffers/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = openXCenabler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.buglabs.openXCenabler;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.buglabs.openXCenabler-kanishka";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -450,11 +451,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/openxc-ios-framework/protobuf/plugin/ProtocolBuffers/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = openXCenabler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.buglabs.openXCenabler;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.buglabs.openXCenabler-kanishka";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
