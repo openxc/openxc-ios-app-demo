@@ -14,38 +14,30 @@
 		3A1016CE1D5417AD006C5E93 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A1016CD1D5417AD006C5E93 /* Assets.xcassets */; };
 		3A1016D11D5417AD006C5E93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A1016CF1D5417AD006C5E93 /* LaunchScreen.storyboard */; };
 		3ABA7F5B1D88FB2700D75846 /* modalSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */; };
-		3ACB65981D9D74B300359403 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACB65971D9D742B00359403 /* openXCiOSFramework.framework */; };
-		3ACB65991D9D74B300359403 /* openXCiOSFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACB65971D9D742B00359403 /* openXCiOSFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3AE7C0AF1D9C0CF1001E92A4 /* adjectives.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AE7C0AE1D9C0CF1001E92A4 /* adjectives.txt */; };
 		3AE7C0B11D9C0CF6001E92A4 /* nouns.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AE7C0B01D9C0CF6001E92A4 /* nouns.txt */; };
 		3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834421D5ED054003FD370 /* SendCanViewController.swift */; };
 		3AE834461D5ED054003FD370 /* DiagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834431D5ED054003FD370 /* DiagViewController.swift */; };
 		3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834441D5ED054003FD370 /* CanViewController.swift */; };
 		E75EE6931E110ED400B2AE3B /* openXCenablerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */; };
-		E7A872DC1E115BD4005C5E63 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ACB65971D9D742B00359403 /* openXCiOSFramework.framework */; };
+		E7C55C721E12D44D000A194D /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C55C711E12D446000A194D /* openXCiOSFramework.framework */; };
+		E7C55C751E12D45A000A194D /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C55C711E12D446000A194D /* openXCiOSFramework.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3ACB65961D9D742B00359403 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3ACB65911D9D742B00359403 /* openxc-ios-framework.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3A1017061D5941C8006C5E93;
-			remoteInfo = "openxc-ios-framework";
-		};
-		3ACB659A1D9D74B300359403 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3ACB65911D9D742B00359403 /* openxc-ios-framework.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 3A1017051D5941C8006C5E93;
-			remoteInfo = "openxc-ios-framework";
-		};
 		E75EE6951E110ED400B2AE3B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3A1016B91D5417AD006C5E93 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3A1016C01D5417AD006C5E93;
 			remoteInfo = openXCenabler;
+		};
+		E7C55C701E12D446000A194D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7C55C6B1E12D446000A194D /* openxc-ios-framework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3A1017061D5941C8006C5E93;
+			remoteInfo = "openxc-ios-framework";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -56,7 +48,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3ACB65991D9D74B300359403 /* openXCiOSFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -73,7 +64,6 @@
 		3A1016D01D5417AD006C5E93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A1016D21D5417AD006C5E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = modalSettingsView.swift; sourceTree = "<group>"; };
-		3ACB65911D9D742B00359403 /* openxc-ios-framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "openxc-ios-framework.xcodeproj"; path = "openxc-ios-framework/openxc-ios-framework.xcodeproj"; sourceTree = "<group>"; };
 		3AE7C0AE1D9C0CF1001E92A4 /* adjectives.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = adjectives.txt; sourceTree = "<group>"; };
 		3AE7C0B01D9C0CF6001E92A4 /* nouns.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nouns.txt; sourceTree = "<group>"; };
 		3AE834421D5ED054003FD370 /* SendCanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCanViewController.swift; sourceTree = "<group>"; };
@@ -83,6 +73,7 @@
 		E75EE6901E110ED400B2AE3B /* openXCenablerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = openXCenablerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = openXCenablerTests.swift; sourceTree = "<group>"; };
 		E75EE6941E110ED400B2AE3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7C55C6B1E12D446000A194D /* openxc-ios-framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "openxc-ios-framework.xcodeproj"; path = "openxc-ios-framework/openxc-ios-framework.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3ACB65981D9D74B300359403 /* openXCiOSFramework.framework in Frameworks */,
+				E7C55C721E12D44D000A194D /* openXCiOSFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7A872DC1E115BD4005C5E63 /* openXCiOSFramework.framework in Frameworks */,
+				E7C55C751E12D45A000A194D /* openXCiOSFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,11 +99,8 @@
 		3A1016B81D5417AD006C5E93 = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-=======
+				E7C55C6B1E12D446000A194D /* openxc-ios-framework.xcodeproj */,
 				E75EE68A1E110E9D00B2AE3B /* openXCenablerUnitTests.swift */,
->>>>>>> 408a4073bddbc8320538cf868d1481aa2372db9b
-				3ACB65911D9D742B00359403 /* openxc-ios-framework.xcodeproj */,
 				3A1016C31D5417AD006C5E93 /* openXCenabler */,
 				E75EE6911E110ED400B2AE3B /* openXCenablerTests */,
 				3A1016C21D5417AD006C5E93 /* Products */,
@@ -148,14 +136,6 @@
 			path = openXCenabler;
 			sourceTree = "<group>";
 		};
-		3ACB65921D9D742B00359403 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				3ACB65971D9D742B00359403 /* openXCiOSFramework.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		E75EE6911E110ED400B2AE3B /* openXCenablerTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +143,14 @@
 				E75EE6941E110ED400B2AE3B /* Info.plist */,
 			);
 			path = openXCenablerTests;
+			sourceTree = "<group>";
+		};
+		E7C55C6C1E12D446000A194D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E7C55C711E12D446000A194D /* openXCiOSFramework.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,7 +168,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				3ACB659B1D9D74B300359403 /* PBXTargetDependency */,
 			);
 			name = openXCenabler;
 			productName = openXCenabler;
@@ -217,7 +204,7 @@
 				TargetAttributes = {
 					3A1016C01D5417AD006C5E93 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 3QBMUUN95T;
+						DevelopmentTeam = TVG6KLCCT8;
 					};
 					E75EE68F1E110ED400B2AE3B = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -238,8 +225,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 3ACB65921D9D742B00359403 /* Products */;
-					ProjectRef = 3ACB65911D9D742B00359403 /* openxc-ios-framework.xcodeproj */;
+					ProductGroup = E7C55C6C1E12D446000A194D /* Products */;
+					ProjectRef = E7C55C6B1E12D446000A194D /* openxc-ios-framework.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -251,11 +238,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		3ACB65971D9D742B00359403 /* openXCiOSFramework.framework */ = {
+		E7C55C711E12D446000A194D /* openXCiOSFramework.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = openXCiOSFramework.framework;
-			remoteRef = 3ACB65961D9D742B00359403 /* PBXContainerItemProxy */;
+			remoteRef = E7C55C701E12D446000A194D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -308,11 +295,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3ACB659B1D9D74B300359403 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "openxc-ios-framework";
-			targetProxy = 3ACB659A1D9D74B300359403 /* PBXContainerItemProxy */;
-		};
 		E75EE6961E110ED400B2AE3B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3A1016C01D5417AD006C5E93 /* openXCenabler */;
@@ -433,12 +415,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/openxc-ios-framework/protobuf/plugin/ProtocolBuffers/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = openXCenabler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.buglabs.openXCenabler-kanishka";
+				PRODUCT_BUNDLE_IDENTIFIER = net.buglabs.openXCenabler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -454,12 +435,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/openxc-ios-framework/protobuf/plugin/ProtocolBuffers/build/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = openXCenabler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "net.buglabs.openXCenabler-kanishka";
+				PRODUCT_BUNDLE_IDENTIFIER = net.buglabs.openXCenabler;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -469,6 +449,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/openxc-ios-framework/protobuf/plugin/ProtocolBuffers/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = openXCenablerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ford.openXCenablerTests;
@@ -481,6 +465,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/openxc-ios-framework/protobuf/plugin/ProtocolBuffers/build/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = openXCenablerTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ford.openXCenablerTests;
