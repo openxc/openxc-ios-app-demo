@@ -27,7 +27,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
   var vm: VehicleManager!
   
   // timer for UI counter updates
-  var timer: NSTimer!
+  var timer: Timer!
   
   
   
@@ -35,8 +35,8 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     super.viewDidLoad()
     
     // change tab bar text colors
-    UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.grayColor()], forState:.Normal)
-    UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState:.Selected)
+    UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.gray], for:UIControlState())
+    UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for:.selected)
 
   
     // instantiate the VM
@@ -60,36 +60,36 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
 
   // this function is called when the scan button is hit
-  @IBAction func searchHit(sender: UIButton) {
+  @IBAction func searchHit(_ sender: UIButton) {
     
     // make sure we're not already connected first
-    if (vm.connectionState==VehicleManagerConnectionState.NotConnected) {
+    if (vm.connectionState==VehicleManagerConnectionState.notConnected) {
       
       // start a timer to update the UI with the total received messages
-      timer = NSTimer.scheduledTimerWithTimeInterval(0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
+      timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
       
       // check to see if the config is set for autoconnect mode
       vm.setAutoconnect(false)
-      if NSUserDefaults.standardUserDefaults().boolForKey("autoConnectOn") {
+      if UserDefaults.standard.bool(forKey: "autoConnectOn") {
         vm.setAutoconnect(true)
       }
       
       // check to see if the config is set for protobuf mode
       vm.setProtobufMode(false)
-      if NSUserDefaults.standardUserDefaults().boolForKey("protobufOn") {
+      if UserDefaults.standard.bool(forKey: "protobufOn") {
         vm.setProtobufMode(true)
       }
       
       // check to see if a trace input file has been set up
-      if NSUserDefaults.standardUserDefaults().boolForKey("traceInputOn") {
-        if let name = NSUserDefaults.standardUserDefaults().valueForKey("traceInputFilename") as? NSString {
+      if UserDefaults.standard.bool(forKey: "traceInputOn") {
+        if let name = UserDefaults.standard.value(forKey: "traceInputFilename") as? NSString {
           vm.enableTraceFileSource(name)
         }
       }
 
       // check to see if a trace output file has been configured
-      if NSUserDefaults.standardUserDefaults().boolForKey("traceOutputOn") {
-        if let name = NSUserDefaults.standardUserDefaults().valueForKey("traceOutputFilename") as? NSString {
+      if UserDefaults.standard.bool(forKey: "traceOutputOn") {
+        if let name = UserDefaults.standard.value(forKey: "traceOutputFilename") as? NSString {
           vm.enableTraceFileSink(name)
         }
       }
@@ -98,9 +98,9 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
       vm.scan()
 
       // update the UI
-      dispatch_async(dispatch_get_main_queue()) {
+      DispatchQueue.main.async {
         self.actConLab.text = "❓"
-        self.searchBtn.setTitle("SCANNING",forState:UIControlState.Normal)
+        self.searchBtn.setTitle("SCANNING",for:UIControlState())
       }
       
 
@@ -110,56 +110,56 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
   
   
   // this function receives all status updates from the VM
-  func manager_status_updates(rsp:NSDictionary) {
+  func manager_status_updates(_ rsp:NSDictionary) {
    
     // extract the status message
-    let status = rsp.objectForKey("status") as! Int
+    let status = rsp.object(forKey: "status") as! Int
     let msg = VehicleManagerStatusMessage(rawValue: status)
     print("VM status : ",msg!)
     
     
     // show/reload the table showing detected VIs
-    if msg==VehicleManagerStatusMessage.C5DETECTED {
-      dispatch_async(dispatch_get_main_queue()) {
-        self.peripheralTable.hidden = false
+    if msg==VehicleManagerStatusMessage.c5DETECTED {
+      DispatchQueue.main.async {
+        self.peripheralTable.isHidden = false
         self.peripheralTable.reloadData()
       }
     }
     
     // update the UI showing connected VI
-    if msg==VehicleManagerStatusMessage.C5CONNECTED {
-      dispatch_async(dispatch_get_main_queue()) {
-        self.peripheralTable.hidden = true
+    if msg==VehicleManagerStatusMessage.c5CONNECTED {
+      DispatchQueue.main.async {
+        self.peripheralTable.isHidden = true
         self.actConLab.text = "✅"
-        self.searchBtn.setTitle("BTLE VI CONNECTED",forState:UIControlState.Normal)
+        self.searchBtn.setTitle("BTLE VI CONNECTED",for:UIControlState())
       }
     }
     
     // update the UI showing disconnected VI
-    if msg==VehicleManagerStatusMessage.C5DISCONNECTED {
-      dispatch_async(dispatch_get_main_queue()) {
+    if msg==VehicleManagerStatusMessage.c5DISCONNECTED {
+      DispatchQueue.main.async {
         self.actConLab.text = "---"
         self.msgRvcdLab.text = "---"
         self.verLab.text = "---"
         self.devidLab.text = "---"
-        self.searchBtn.setTitle("SEARCH FOR BTLE VI",forState:UIControlState.Normal)
+        self.searchBtn.setTitle("SEARCH FOR BTLE VI",for:UIControlState())
       }
     }
     
     // when we see that notify is on, we can send 2 command requests
     // for version and device id, one after the other
-    if msg==VehicleManagerStatusMessage.C5NOTIFYON {
+    if msg==VehicleManagerStatusMessage.c5NOTIFYON {
      
-      let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.25 * Double(NSEC_PER_SEC)))
-      dispatch_after(delayTime, dispatch_get_main_queue()) {
+      let delayTime = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+      DispatchQueue.main.asyncAfter(deadline: delayTime) {
         print("sending version cmd")
         let cm = VehicleCommandRequest()
         cm.command = .version
         self.vm.sendCommand(cm)
       }
       
-      let delayTime2 = dispatch_time(DISPATCH_TIME_NOW, Int64(0.5 * Double(NSEC_PER_SEC)))
-      dispatch_after(delayTime2, dispatch_get_main_queue()) {
+      let delayTime2 = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+      DispatchQueue.main.asyncAfter(deadline: delayTime2) {
         print("sending devid cmd")
         let cm = VehicleCommandRequest()
         cm.command = .device_id
@@ -172,19 +172,19 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
   }
   
   // this function handles all command responses
-  func handle_cmd_response(rsp:NSDictionary) {
+  func handle_cmd_response(_ rsp:NSDictionary) {
     // extract the command response message
-    let cr = rsp.objectForKey("vehiclemessage") as! VehicleCommandResponse
+    let cr = rsp.object(forKey: "vehiclemessage") as! VehicleCommandResponse
     print("cmd response : \(cr.command_response)")
     
     // update the UI depending on the command type
-    if cr.command_response.isEqualToString("version") {
-      dispatch_async(dispatch_get_main_queue()) {
+    if cr.command_response.isEqual(to: "version") {
+      DispatchQueue.main.async {
         self.verLab.text = cr.message as String
       }
     }
-    if cr.command_response.isEqualToString("device_id") {
-      dispatch_async(dispatch_get_main_queue()) {
+    if cr.command_response.isEqual(to: "device_id") {
+      DispatchQueue.main.async {
         self.devidLab.text = cr.message as String
       }
     }
@@ -193,11 +193,11 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
   
   // this function is called by the timer, it updates the UI
-  func msgRxdUpdate(t:NSTimer) {
-    if vm.connectionState==VehicleManagerConnectionState.Operational {
+  func msgRxdUpdate(_ t:Timer) {
+    if vm.connectionState==VehicleManagerConnectionState.operational {
 //      print("VM is receiving data from VI!")
 //      print("So far we've had ",vm.messageCount," messages")
-      dispatch_async(dispatch_get_main_queue()) {
+      DispatchQueue.main.async {
         self.msgRvcdLab.text = String(self.vm.messageCount)
       }
     }
@@ -208,17 +208,17 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
   
   // table view delegate functions
   
-  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // how many VIs have been discovered
     return vm.discoveredVI().count
   }
   
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     // grab a cell
-    var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier("cell") as UITableViewCell?
+    var cell:UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell?
     if (cell == nil) {
-      cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "cell")
+      cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "cell")
     }
     
     // grab the name of the VI for this row
@@ -227,12 +227,12 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // display the name of the VI
     cell!.textLabel?.text = p
     cell!.textLabel?.font = UIFont(name:"Arial", size: 14.0)
-    cell!.textLabel?.textColor = UIColor.lightGrayColor()
+    cell!.textLabel?.textColor = UIColor.lightGray
     
     return cell!
   }
   
-  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
     // if a row is selected, connect to the selected VI
     let p = vm.discoveredVI()[indexPath.row] as String

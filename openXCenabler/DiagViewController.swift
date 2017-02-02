@@ -42,9 +42,9 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
   }
 
   
-  func default_diag_rsp(rsp:NSDictionary) {
+  func default_diag_rsp(_ rsp:NSDictionary) {
     // extract the diag resp message
-    let vr = rsp.objectForKey("vehiclemessage") as! VehicleDiagnosticResponse
+    let vr = rsp.object(forKey: "vehiclemessage") as! VehicleDiagnosticResponse
     
     print("diag_rsp -  success:",vr.success)
     
@@ -68,8 +68,8 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     rspStrings.append(newTxt)
 
     // reload the label with the update string list
-    dispatch_async(dispatch_get_main_queue()) {
-      self.rspText.text = self.rspStrings.joinWithSeparator("\n")
+    DispatchQueue.main.async {
+      self.rspText.text = self.rspStrings.joined(separator: "\n")
     }
 
   }
@@ -77,7 +77,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
   
   
   // text view delegate to clear keyboard
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.resignFirstResponder();
     return true;
   }
@@ -85,7 +85,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
   
   // TODO radio button for bus
   // diag send button hit
-  @IBAction func sendHit(sender: AnyObject) {
+  @IBAction func sendHit(_ sender: AnyObject) {
 
     // hide keyboard when the send button is hit
     for textField in self.view.subviews where textField is UITextField {
@@ -93,7 +93,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     }
 
     // if the VM isn't operational, don't send anything
-    if vm.connectionState != VehicleManagerConnectionState.Operational {
+    if vm.connectionState != VehicleManagerConnectionState.operational {
       lastReq.text = "Not connected to VI"
       return
     }
@@ -107,7 +107,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     
     // check that the msg id field is valid
     if let mid = idField.text as String? {
-      let midtrim = mid.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+      let midtrim = mid.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
       if midtrim=="" {
         lastReq.text = "Invalid command : need a message_id"
         return
@@ -126,7 +126,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     
     // check that the mode field is valid
     if let mode = modeField.text as String? {
-      let modetrim = mode.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+      let modetrim = mode.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
       if modetrim=="" {
         lastReq.text = "Invalid command : need a mode"
         return
@@ -145,7 +145,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     
     // check that the pid field is valid (or empty)
     if let pid = pidField.text as String? {
-      let pidtrim = pid.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+      let pidtrim = pid.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
       if (pidtrim=="") {
         // this is ok, it's optional
       } else if let pidInt = Int(pidtrim,radix:16) as NSInteger? {
