@@ -195,8 +195,8 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
   // this function is called by the timer, it updates the UI
   func msgRxdUpdate(_ t:Timer) {
     if vm.connectionState==VehicleManagerConnectionState.operational {
-//      print("VM is receiving data from VI!")
-//      print("So far we've had ",vm.messageCount," messages")
+      print("VM is receiving data from VI!")
+      print("So far we've had ",vm.messageCount," messages")
       DispatchQueue.main.async {
         self.msgRvcdLab.text = String(self.vm.messageCount)
       }
@@ -210,10 +210,16 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // how many VIs have been discovered
-    return vm.discoveredVI().count
+    print("discovered VI count",vm.discoveredVI().count)
+    tableView.dataSource = self
+
+    let count = vm.discoveredVI().count
+    return count
+    
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
     
     // grab a cell
     var cell:UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell?
