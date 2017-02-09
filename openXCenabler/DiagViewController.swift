@@ -159,7 +159,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     if cmd.pid==nil {
       print ("pid is nil")
     } else {
-      print("pid is ",cmd.pid)
+      print("pid is ",cmd.pid as Any)
     }
     
     // send the diag request

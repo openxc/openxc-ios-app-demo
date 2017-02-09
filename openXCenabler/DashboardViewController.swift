@@ -12,6 +12,8 @@ import CoreMotion
 import CoreLocation
 import AVFoundation
 
+// TODO: ToDo - Work on removing the warnings
+
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, NSURLConnectionDelegate {
 
   // measurement table
@@ -247,7 +249,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     print("in locationMgr:didUpdateLocations")
     if locations.count>0 {
-      print(locations.last)
+      print(locations.last as Any)
       let loc = locations.last!
       dashDict.setObject(loc.coordinate.latitude, forKey:"phone_latitude" as NSCopying)
       dashDict.setObject(loc.coordinate.longitude, forKey:"phone_longitude" as NSCopying)
@@ -296,6 +298,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         request.setValue("application/json", forHTTPHeaderField:"Content-Type")
         request.httpBody = jsonData
         
+        // TODO: ToDo - Change NSURLConnection to NSURLSession
         dweetConn = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately:true)
       }
       
