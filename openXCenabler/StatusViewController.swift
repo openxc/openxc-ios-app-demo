@@ -180,12 +180,12 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     print("cmd response : \(cr.command_response)")
     
     // update the UI depending on the command type
-    if cr.command_response.isEqual(to: "version") {
+    if cr.command_response.isEqual(to: ".version") {
       DispatchQueue.main.async {
         self.verLab.text = cr.message as String
       }
     }
-    if cr.command_response.isEqual(to: "device_id") {
+    if cr.command_response.isEqual(to: ".deviceid") {
       DispatchQueue.main.async {
         self.devidLab.text = cr.message as String
       }

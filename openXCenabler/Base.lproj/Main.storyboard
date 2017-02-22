@@ -848,7 +848,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dweet name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cOn-Z5-bdv">
-                                        <rect key="frame" x="88" y="263" width="265" height="25"/>
+                                        <rect key="frame" x="88" y="273.5" width="265" height="14.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="265" id="xqJ-ns-8pY"/>
                                         </constraints>
@@ -880,14 +880,13 @@
                                     <constraint firstItem="Egs-K4-ZEq" firstAttribute="top" secondItem="Gbt-vz-xcP" secondAttribute="top" constant="18" id="1YK-Zs-XnY"/>
                                     <constraint firstAttribute="trailing" secondItem="iVl-SY-SBY" secondAttribute="trailing" constant="46" id="B68-4K-bFm"/>
                                     <constraint firstItem="hHV-0x-5oy" firstAttribute="leading" secondItem="Gbt-vz-xcP" secondAttribute="leading" constant="42" id="DCy-mm-caW"/>
-                                    <constraint firstItem="YEC-V2-Wxw" firstAttribute="leading" secondItem="eDP-Gh-aKg" secondAttribute="leading" id="GOF-5p-B5j"/>
                                     <constraint firstAttribute="trailing" secondItem="1cB-CX-gPF" secondAttribute="trailing" constant="46" id="HDJ-L2-auj"/>
-                                    <constraint firstItem="cOn-Z5-bdv" firstAttribute="top" secondItem="eDP-Gh-aKg" secondAttribute="bottom" constant="26" id="LFq-bH-Rfl"/>
                                     <constraint firstItem="Egs-K4-ZEq" firstAttribute="leading" secondItem="Gbt-vz-xcP" secondAttribute="leading" constant="23" id="MLt-UX-3Cg"/>
                                     <constraint firstItem="r2J-n1-JYb" firstAttribute="top" secondItem="Egs-K4-ZEq" secondAttribute="bottom" constant="19" id="Pvz-c2-I0l"/>
                                     <constraint firstItem="hHV-0x-5oy" firstAttribute="top" secondItem="r2J-n1-JYb" secondAttribute="bottom" constant="30" id="R91-S7-9Zj"/>
                                     <constraint firstItem="cOn-Z5-bdv" firstAttribute="leading" secondItem="Gbt-vz-xcP" secondAttribute="leading" constant="88" id="S9C-m1-563"/>
                                     <constraint firstItem="Egs-K4-ZEq" firstAttribute="trailing" secondItem="r2J-n1-JYb" secondAttribute="trailing" id="SUl-UO-1sW"/>
+                                    <constraint firstItem="eDP-Gh-aKg" firstAttribute="leading" secondItem="YEC-V2-Wxw" secondAttribute="leading" id="U16-pX-KOZ"/>
                                     <constraint firstItem="Egs-K4-ZEq" firstAttribute="leading" secondItem="r2J-n1-JYb" secondAttribute="leading" id="UVZ-4R-tFr"/>
                                     <constraint firstItem="hHV-0x-5oy" firstAttribute="top" secondItem="dTp-E3-UNF" secondAttribute="bottom" constant="12" id="WhN-uL-HUc"/>
                                     <constraint firstItem="hHV-0x-5oy" firstAttribute="trailing" secondItem="q93-os-Ay0" secondAttribute="trailing" id="bHk-jZ-7Mf"/>
@@ -895,14 +894,14 @@
                                     <constraint firstItem="hHV-0x-5oy" firstAttribute="leading" secondItem="q93-os-Ay0" secondAttribute="leading" id="glI-dD-ReU"/>
                                     <constraint firstItem="dTp-E3-UNF" firstAttribute="top" secondItem="Egs-K4-ZEq" secondAttribute="bottom" constant="37" id="iMF-pP-h8L"/>
                                     <constraint firstItem="dTp-E3-UNF" firstAttribute="leading" secondItem="YEC-V2-Wxw" secondAttribute="leading" id="jqg-gU-two"/>
-                                    <constraint firstItem="q93-os-Ay0" firstAttribute="top" secondItem="eDP-Gh-aKg" secondAttribute="bottom" constant="1" id="mBj-3l-K5L"/>
+                                    <constraint firstItem="q93-os-Ay0" firstAttribute="top" secondItem="eDP-Gh-aKg" secondAttribute="bottom" constant="1" id="m5k-AT-BKd"/>
                                     <constraint firstItem="YEC-V2-Wxw" firstAttribute="top" secondItem="hHV-0x-5oy" secondAttribute="bottom" constant="48" id="mGI-ln-M1V"/>
+                                    <constraint firstItem="eDP-Gh-aKg" firstAttribute="leading" secondItem="hRJ-x1-Uke" secondAttribute="leading" id="oqt-67-4Mt"/>
                                     <constraint firstItem="YEC-V2-Wxw" firstAttribute="centerY" secondItem="iVl-SY-SBY" secondAttribute="centerY" id="pKU-Gb-W9l"/>
                                     <constraint firstItem="q93-os-Ay0" firstAttribute="top" secondItem="YEC-V2-Wxw" secondAttribute="bottom" constant="30" id="q44-ZV-7P1"/>
-                                    <constraint firstItem="eDP-Gh-aKg" firstAttribute="top" secondItem="hHV-0x-5oy" secondAttribute="bottom" constant="63" id="qIK-OV-ByA"/>
+                                    <constraint firstItem="eDP-Gh-aKg" firstAttribute="top" secondItem="hHV-0x-5oy" secondAttribute="bottom" constant="63" id="qRO-4e-i2K"/>
                                     <constraint firstItem="hRJ-x1-Uke" firstAttribute="top" secondItem="cOn-Z5-bdv" secondAttribute="bottom" constant="29" id="r7b-ZE-caj"/>
                                     <constraint firstItem="hRJ-x1-Uke" firstAttribute="top" secondItem="q93-os-Ay0" secondAttribute="bottom" constant="49" id="sDT-HG-NfX"/>
-                                    <constraint firstItem="eDP-Gh-aKg" firstAttribute="leading" secondItem="hRJ-x1-Uke" secondAttribute="leading" id="xjI-Ga-QTS"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6d-cU-4nM" userLabel="srcview">
