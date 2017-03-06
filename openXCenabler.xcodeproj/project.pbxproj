@@ -19,13 +19,8 @@
 		3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834421D5ED054003FD370 /* SendCanViewController.swift */; };
 		3AE834461D5ED054003FD370 /* DiagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834431D5ED054003FD370 /* DiagViewController.swift */; };
 		3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834441D5ED054003FD370 /* CanViewController.swift */; };
-		E738E74C1E4B0457004265CE /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E886671E4B038A0090B55E /* ProtocolBuffers.framework */; };
-		E738E74D1E4B0457004265CE /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7E886671E4B038A0090B55E /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E738E74F1E4B0481004265CE /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E886671E4B038A0090B55E /* ProtocolBuffers.framework */; };
-		E738E7501E4B0481004265CE /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7E886671E4B038A0090B55E /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E75EE6931E110ED400B2AE3B /* openXCenablerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */; };
 		E7DE50291E4B00F60015E7CE /* openXCiOSFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E7E886681E4B038A0090B55E /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E886671E4B038A0090B55E /* ProtocolBuffers.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,8 +61,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E738E74D1E4B0457004265CE /* ProtocolBuffers.framework in Embed Frameworks */,
-				E738E7501E4B0481004265CE /* ProtocolBuffers.framework in Embed Frameworks */,
 				E7DE50291E4B00F60015E7CE /* openXCiOSFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -103,9 +96,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E738E74C1E4B0457004265CE /* ProtocolBuffers.framework in Frameworks */,
-				E738E74F1E4B0481004265CE /* ProtocolBuffers.framework in Frameworks */,
-				E7E886681E4B038A0090B55E /* ProtocolBuffers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
