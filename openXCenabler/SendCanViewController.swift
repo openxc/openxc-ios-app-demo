@@ -36,14 +36,14 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
   
   
   // text view delegate to clear keyboard
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.resignFirstResponder();
     return true;
   }
   
   
   // CAN send button hit
-  @IBAction func sendHit(sender: AnyObject) {
+  @IBAction func sendHit(_ sender: AnyObject) {
     
     // hide keyboard when the send button is hit
     for textField in self.view.subviews where textField is UITextField {
@@ -51,7 +51,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     }
     
     // if the VM isn't operational, don't send anything
-    if vm.connectionState != VehicleManagerConnectionState.Operational {
+    if vm.connectionState != VehicleManagerConnectionState.operational {
       lastReq.text = "Not connected to VI"
       return
     }
@@ -65,7 +65,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     
     // check that the msg id field is valid
     if let mid = idField.text as String? {
-      let midtrim = mid.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+      let midtrim = mid.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
       if midtrim=="" {
         lastReq.text = "Invalid command : need a message_id"
         return
@@ -84,15 +84,15 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     
     // check that the payload field is valid
     if let payld = dataField.text as String? {
-      let payldtrim = payld.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+      let payldtrim = payld.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
       if payldtrim=="" {
         lastReq.text = "Invalid command : need a payload"
         return
       }
       if (Int(payldtrim,radix:16) as NSInteger?) != nil {
-        cmd.data = dataField.text!
+        cmd.data = dataField.text! as NSString
         if (cmd.data.length % 2) == 1 {
-          cmd.data = "0" + dataField.text!
+          cmd.data = "0" + dataField.text! as NSString
         }
       } else {
         lastReq.text = "Invalid command : payload should be hex number (with no leading 0x)"
