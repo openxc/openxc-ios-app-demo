@@ -179,13 +179,13 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     let cr = rsp.object(forKey: "vehiclemessage") as! VehicleCommandResponse
     print("cmd response : \(cr.command_response)")
     
-    // update the UI depending on the command type
-    if cr.command_response.isEqual(to: ".version") {
+    // update the UI depending on the command type- version,device_id works for JSON mode, not in protobuf - TODO
+    if cr.command_response.isEqual(to: "version") {
       DispatchQueue.main.async {
         self.verLab.text = cr.message as String
       }
     }
-    if cr.command_response.isEqual(to: ".deviceid") {
+    if cr.command_response.isEqual(to: "device_id") {
       DispatchQueue.main.async {
         self.devidLab.text = cr.message as String
       }
