@@ -16,7 +16,8 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var idField: UITextField!
   @IBOutlet weak var modeField: UITextField!
   @IBOutlet weak var pidField: UITextField!
-  
+  @IBOutlet weak var ploadField: UITextField!
+
   @IBOutlet weak var lastReq: UILabel!
   @IBOutlet weak var rspText: UITextView!
   
@@ -57,7 +58,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     if vr.value != nil {
       newTxt = newTxt+" value:"+vr.value!.description
     } else {
-      newTxt = newTxt+" payload:"+vr.payload.description
+      newTxt = newTxt+" payload:"+(vr.payload.description)
     }
 
     // save only the 5 response strings
@@ -162,6 +163,29 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
       print("pid is ",cmd.pid as Any)
     }
     
+    
+    
+   //TODO: add payload in diag request
+   
+    if let mload = ploadField.text as String? {
+        let mloadtrim = mload.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        if mloadtrim=="" {
+            // its optional
+        }
+        if mloadtrim.characters.count%2==0 { //payload must be even length
+            print("mloadtrim ",mloadtrim)
+            
+            
+            let appendedStr = "0x" + mloadtrim
+            print("appendedStr ",appendedStr)
+            
+            cmd.payload = appendedStr as NSString
+        }
+    } else {
+        lastReq.text = "Invalid command : payload should be even length"
+        return
+    }
+
     // send the diag request
     vm.sendDiagReq(cmd)
     
@@ -169,6 +193,9 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     lastReq.text = "bus:"+String(cmd.bus)+" id:0x"+idField.text!+" mode:0x"+modeField.text!
     if cmd.pid != nil {
       lastReq.text = lastReq.text!+" pid:0x"+pidField.text!
+    }
+    if !cmd.payload.isEqual(to: "") {
+        lastReq.text = lastReq.text!+" payload:"+ploadField.text!
     }
     
   }
