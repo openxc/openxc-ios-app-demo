@@ -58,7 +58,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     if vr.value != nil {
       newTxt = newTxt+" value:"+vr.value!.description
     } else {
-      newTxt = newTxt+" payload:"+vr.payload.description
+      newTxt = newTxt+" payload:"+(vr.payload.description)
     }
 
     // save only the 5 response strings
@@ -164,29 +164,28 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-   //TODO: add payload in diag request
     
+   //TODO: add payload in diag request
+   
     if let mload = ploadField.text as String? {
         let mloadtrim = mload.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         if mloadtrim=="" {
-
+            // its optional
         }
         if mloadtrim.characters.count%2==0 { //payload must be even length
-            
             print("mloadtrim ",mloadtrim)
             
-            let buf = [UInt8](mloadtrim.utf8)
-            print("buf ",buf)
             
-            cmd.payload = buf
-            print("cmd.payload ",cmd.payload)
+            let appendedStr = "0x" + mloadtrim
+            print("appendedStr ",appendedStr)
+            
+            cmd.payload = appendedStr as NSString
+        }
+    } else {
+        lastReq.text = "Invalid command : payload should be even length"
+        return
+    }
 
-        } else {
-            lastReq.text = "Invalid command : payload should be even length"
-            return
-        }
-        }
-    
     // send the diag request
     vm.sendDiagReq(cmd)
     
@@ -195,7 +194,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     if cmd.pid != nil {
       lastReq.text = lastReq.text!+" pid:0x"+pidField.text!
     }
-    if cmd.payload.isEmpty == false {
+    if !cmd.payload.isEqual(to: "") {
         lastReq.text = lastReq.text!+" payload:"+ploadField.text!
     }
     
