@@ -3,7 +3,7 @@
 //  openXCenabler
 //
 //  Created by Kanishka, Vedi (V.) on 26/12/16.
-//  Copyright © 2017 Ford. All rights reserved.
+//  Copyright © 2016 Bug Labs. All rights reserved.
 //
 
 import XCTest
