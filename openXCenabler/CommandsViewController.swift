@@ -195,7 +195,6 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         if cr.command_response.isEqual(to: "payload_format") {
             payloadFormatResp = String(cr.status)
         }
-        
         if cr.command_response.isEqual(to: "platform") {
             platformResp = cr.message as String
         }
@@ -205,7 +204,6 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         if cr.command_response.isEqual(to: "sd_mount_status") {
             sdCardResp = String(cr.status)
         }
-        
         // update the label
         DispatchQueue.main.async {
             self.populateCommandResponseLabel(rowNum: self.selectedRowInPicker)

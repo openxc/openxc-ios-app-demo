@@ -28,6 +28,10 @@
 		E7ADED0F1ED4245500B3A2B3 /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7ADED091ED4243400B3A2B3 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E7ADED111ED4245900B3A2B3 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; };
 		E7ADED121ED4245900B3A2B3 /* openXCiOSFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E78190A71ECC5B8C00DE3B18 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; };
+		E78190A81ECC5B9000DE3B18 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B85B511ECC373500A3E5CB /* ProtocolBuffers.framework */; };
+		E79380701EB20201000EF3FF /* CommandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E793806F1EB20201000EF3FF /* CommandsViewController.swift */; };
+		E79380711EB20201000EF3FF /* CommandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E793806F1EB20201000EF3FF /* CommandsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +80,14 @@
 		};
 /* End PBXCopyFilesBuildPhase section */
 
+			isa = PBXContainerItemProxy;
+			containerPortal = E79901BC1E3F5AFD00FB0579 /* openxc-ios-framework.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E7C63D391DDC56BB00EE9790;
+			remoteInfo = openXCiOSFrameworkTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		3A1016C11D5417AD006C5E93 /* openXCenabler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = openXCenabler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A1016C41D5417AD006C5E93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +122,8 @@
 				E7ADED0E1ED4245500B3A2B3 /* ProtocolBuffers.framework in Frameworks */,
 				E7ADED111ED4245900B3A2B3 /* openXCiOSFramework.framework in Frameworks */,
 				E7ADED081ED4243000B3A2B3 /* openXCiOSFramework.framework in Frameworks */,
+				E78190A81ECC5B9000DE3B18 /* ProtocolBuffers.framework in Frameworks */,
+				E78190A71ECC5B8C00DE3B18 /* openXCiOSFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +180,17 @@
 			sourceTree = "<group>";
 		};
 		E75EE6911E110ED400B2AE3B /* openXCenablerTests */ = {
+			isa = PBXGroup;
+			children = (
+				E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */,
+				E75EE6941E110ED400B2AE3B /* Info.plist */,
+			);
+			path = openXCenablerTests;
+			sourceTree = "<group>";
+		};
+		E79901BD1E3F5AFD00FB0579 /* Products */ = {
+			isa = PBXGroup;
+			children = (
 			isa = PBXGroup;
 			children = (
 				E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */,
@@ -355,6 +380,9 @@
 			isa = PBXTargetDependency;
 			name = "openxc-ios-framework";
 			targetProxy = E7ADED131ED4245900B3A2B3 /* PBXContainerItemProxy */;
+			isa = PBXTargetDependency;
+			target = 3A1016C01D5417AD006C5E93 /* openXCenabler */;
+			targetProxy = E75EE6951E110ED400B2AE3B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
