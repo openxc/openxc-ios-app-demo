@@ -37,74 +37,74 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     print("in modal viewDidLoad")
         
     // watch for changes to trace file output file name field
-    recname.addTarget(self, action: #selector(recFieldDidChange), forControlEvents: UIControlEvents.EditingChanged)
-    recname.hidden = true
+    recname.addTarget(self, action: #selector(recFieldDidChange), for: UIControlEvents.editingChanged)
+    recname.isHidden = true
     
     // watch for changes to dweet name field
-    dweetname.addTarget(self, action: #selector(dweetFieldDidChange), forControlEvents: UIControlEvents.EditingChanged)
-    dweetname.addTarget(self, action: #selector(keyboardWillShow), forControlEvents: UIControlEvents.EditingDidBegin)
-    dweetname.addTarget(self, action: #selector(keyboardWillHide), forControlEvents: UIControlEvents.EditingDidEnd)
-    dweetname.hidden = true
-    dweetnamelabel.hidden = true
+    dweetname.addTarget(self, action: #selector(dweetFieldDidChange), for: UIControlEvents.editingChanged)
+    dweetname.addTarget(self, action: #selector(keyboardWillShow), for: UIControlEvents.editingDidBegin)
+    dweetname.addTarget(self, action: #selector(keyboardWillHide), for: UIControlEvents.editingDidEnd)
+    dweetname.isHidden = true
+    dweetnamelabel.isHidden = true
 
     // watch for changes to trace file input file name field
-    playname.addTarget(self, action: #selector(playFieldDidChange), forControlEvents: UIControlEvents.EditingChanged)
-    playname.hidden = true
+    playname.addTarget(self, action: #selector(playFieldDidChange), for: UIControlEvents.editingChanged)
+    playname.isHidden = true
 
     // check saved value of trace output switch
-    let traceOutOn = NSUserDefaults.standardUserDefaults().boolForKey("traceOutputOn")
+    let traceOutOn = UserDefaults.standard.bool(forKey: "traceOutputOn")
     // update UI if necessary
     if traceOutOn == true {
       recswitch.setOn(true, animated:false)
-      recname.hidden = false
+      recname.isHidden = false
     }
-    if let name = NSUserDefaults.standardUserDefaults().valueForKey("traceOutputFilename") as? NSString {
+    if let name = UserDefaults.standard.value(forKey: "traceOutputFilename") as? NSString {
       recname.text = name as String
     }
     
     // check saved value of trace input switch
-    let traceInOn = NSUserDefaults.standardUserDefaults().boolForKey("traceInputOn")
+    let traceInOn = UserDefaults.standard.bool(forKey: "traceInputOn")
     // update UI if necessary
     if traceInOn == true {
       playswitch.setOn(true, animated:false)
-      playname.hidden = false
+      playname.isHidden = false
     }
-    if let name = NSUserDefaults.standardUserDefaults().valueForKey("traceInputFilename") as? NSString {
+    if let name = UserDefaults.standard.value(forKey: "traceInputFilename") as? NSString {
       playname.text = name as String
     }
     
     // check saved value of autoconnect switcg
-    let autoOn = NSUserDefaults.standardUserDefaults().boolForKey("autoConnectOn")
+    let autoOn = UserDefaults.standard.bool(forKey: "autoConnectOn")
     // update UI if necessary
     if autoOn == true {
       autoswitch.setOn(true, animated:false)
     }
     
     // check saved value of sensor switch
-    let sensorOn = NSUserDefaults.standardUserDefaults().boolForKey("sensorsOn")
+    let sensorOn = UserDefaults.standard.bool(forKey: "sensorsOn")
     // update UI if necessary
     if sensorOn == true {
       sensorswitch.setOn(true, animated:false)
     }
     
     // check saved value of protobuf switch
-    let protobufOn = NSUserDefaults.standardUserDefaults().boolForKey("protobufOn")
+    let protobufOn = UserDefaults.standard.bool(forKey: "protobufOn")
     // update UI if necessary
     if protobufOn == true {
       protoswitch.setOn(true, animated:false)
     }
     
     // at first run, get a random dweet name
-    if NSUserDefaults.standardUserDefaults().stringForKey("dweetname") == nil {
+    if UserDefaults.standard.string(forKey: "dweetname") == nil {
       let name : NSMutableString = ""
       
-      var fileroot = NSBundle.mainBundle().pathForResource("adjectives", ofType:"txt")
+      var fileroot = Bundle.main.path(forResource: "adjectives", ofType:"txt")
       if fileroot != nil {
         do {
           let filecontents = try String(contentsOfFile: fileroot!)
-          let allLines = filecontents.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
+          let allLines = filecontents.components(separatedBy: CharacterSet.newlines)
           let randnum = Int(arc4random_uniform(UInt32(allLines.count)))
-          name.appendString(allLines[randnum])
+          name.append(allLines[randnum])
         } catch {
           print("file load error")
           var randnum = arc4random_uniform(26)
@@ -120,15 +120,15 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
         name.appendFormat("%c",65+randnum)
       }
       
-      name.appendString("-")
+      name.append("-")
       
-      fileroot = NSBundle.mainBundle().pathForResource("nouns", ofType:"txt")
+      fileroot = Bundle.main.path(forResource: "nouns", ofType:"txt")
       if fileroot != nil {
         do {
           let filecontents = try String(contentsOfFile: fileroot!)
-          let allLines = filecontents.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet())
+          let allLines = filecontents.components(separatedBy: CharacterSet.newlines)
           let randnum = Int(arc4random_uniform(UInt32(allLines.count)))
-          name.appendString(allLines[randnum])
+          name.append(allLines[randnum])
         } catch {
           print("file load error")
           var randnum = arc4random_uniform(10)
@@ -145,18 +145,18 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
       }
       
       print("first load - dweet name is ",name)
-      NSUserDefaults.standardUserDefaults().setValue(name, forKey:"dweetname")
+      UserDefaults.standard.setValue(name, forKey:"dweetname")
       
     }
     // load the dweet name into the text field
-    dweetname.text = NSUserDefaults.standardUserDefaults().stringForKey("dweetname")
+    dweetname.text = UserDefaults.standard.string(forKey: "dweetname")
     // check value of dweet out switch
-    let dweetOn = NSUserDefaults.standardUserDefaults().boolForKey("dweetOutputOn")
+    let dweetOn = UserDefaults.standard.bool(forKey: "dweetOutputOn")
     // update UI if necessary
     if dweetOn == true {
       dweetswitch.setOn(true, animated:false)
-      dweetname.hidden = false
-      dweetnamelabel.hidden = false
+      dweetname.isHidden = false
+      dweetnamelabel.isHidden = false
     }
     
     
@@ -165,99 +165,99 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
   
   
   // text view delegate to clear keyboard
-  func textFieldShouldReturn(textField: UITextField) -> Bool {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.resignFirstResponder();
     return true;
   }
   
   // trace file output file name changed, save it in nsuserdefaults
-  func recFieldDidChange(textField: UITextField) {
-    NSUserDefaults.standardUserDefaults().setObject(textField.text, forKey:"traceOutputFilename")
+  func recFieldDidChange(_ textField: UITextField) {
+    UserDefaults.standard.set(textField.text, forKey:"traceOutputFilename")
   }
   
   // trace file input file name changed, save it in nsuserdefaults
-  func playFieldDidChange(textField: UITextField) {
-    NSUserDefaults.standardUserDefaults().setObject(textField.text, forKey:"traceInputFilename")
+  func playFieldDidChange(_ textField: UITextField) {
+    UserDefaults.standard.set(textField.text, forKey:"traceInputFilename")
   }
   
   // dweet output name changed, save it in nsuserdefaults
-  func dweetFieldDidChange(textField: UITextField) {
-  NSUserDefaults.standardUserDefaults().setObject(textField.text, forKey:"dweetname")
+  func dweetFieldDidChange(_ textField: UITextField) {
+  UserDefaults.standard.set(textField.text, forKey:"dweetname")
   }
   
   
   // close modal view
-  @IBAction func hideHit(sender: AnyObject) {
-    self.dismissViewControllerAnimated(true, completion: nil)
+  @IBAction func hideHit(_ sender: AnyObject) {
+    self.dismiss(animated: true, completion: nil)
   }
   
   
   // show 'about' view
-  @IBAction func aboutHit(sender: AnyObject) {
-    mainView.hidden = true
-    aboutView.hidden = false
+  @IBAction func aboutHit(_ sender: AnyObject) {
+    mainView.isHidden = true
+    aboutView.isHidden = false
   }
   
   // show 'record' view
-  @IBAction func recHit(sender: AnyObject) {
-    mainView.hidden = true
-    recView.hidden = false
+  @IBAction func recHit(_ sender: AnyObject) {
+    mainView.isHidden = true
+    recView.isHidden = false
   }
   // the trace output enabled switch changed, save it's new value
   // and show or hide the text field for filename accordingly
-  @IBAction func recChange(sender: UISwitch) {
-    NSUserDefaults.standardUserDefaults().setBool(sender.on, forKey:"traceOutputOn")
-    if sender.on {
-      recname.hidden = false
+  @IBAction func recChange(_ sender: UISwitch) {
+    UserDefaults.standard.set(sender.isOn, forKey:"traceOutputOn")
+    if sender.isOn {
+      recname.isHidden = false
     } else {
-      recname.hidden = true
+      recname.isHidden = true
     }
   }
-  @IBAction func dweetChange(sender: UISwitch) {
-    NSUserDefaults.standardUserDefaults().setBool(sender.on, forKey:"dweetOutputOn")
-    if sender.on {
-      dweetname.hidden = false
-      dweetnamelabel.hidden = false
+  @IBAction func dweetChange(_ sender: UISwitch) {
+    UserDefaults.standard.set(sender.isOn, forKey:"dweetOutputOn")
+    if sender.isOn {
+      dweetname.isHidden = false
+      dweetnamelabel.isHidden = false
     } else {
-      dweetname.hidden = true
-      dweetnamelabel.hidden = true
+      dweetname.isHidden = true
+      dweetnamelabel.isHidden = true
     }
   }
   
   // show 'sources' view
-  @IBAction func srcHit(sender: AnyObject) {
-    mainView.hidden = true
-    srcView.hidden = false
+  @IBAction func srcHit(_ sender: AnyObject) {
+    mainView.isHidden = true
+    srcView.isHidden = false
   }
   // the trace output enabled switch changed, save it's new value
   // and show or hide the text field for filename accordingly
-  @IBAction func playChange(sender: UISwitch) {
-    NSUserDefaults.standardUserDefaults().setBool(sender.on, forKey:"traceInputOn")
-    if sender.on {
-      playname.hidden = false
+  @IBAction func playChange(_ sender: UISwitch) {
+    UserDefaults.standard.set(sender.isOn, forKey:"traceInputOn")
+    if sender.isOn {
+      playname.isHidden = false
     } else {
-      playname.hidden = true
+      playname.isHidden = true
     }
   }
   // autoconnect switch changed, save it's value
-  @IBAction func autoChange(sender: UISwitch) {
-    NSUserDefaults.standardUserDefaults().setBool(sender.on, forKey:"autoConnectOn")
+  @IBAction func autoChange(_ sender: UISwitch) {
+    UserDefaults.standard.set(sender.isOn, forKey:"autoConnectOn")
   }
   // include sensor switch changed, save it's value
-  @IBAction func sensorChange(sender: UISwitch) {
-    NSUserDefaults.standardUserDefaults().setBool(sender.on, forKey:"sensorsOn")
+  @IBAction func sensorChange(_ sender: UISwitch) {
+    UserDefaults.standard.set(sender.isOn, forKey:"sensorsOn")
   }
   // protbuf mode switch changed, save it's value
-  @IBAction func protoChange(sender: UISwitch) {
-    NSUserDefaults.standardUserDefaults().setBool(sender.on, forKey:"protobufOn")
+  @IBAction func protoChange(_ sender: UISwitch) {
+    UserDefaults.standard.set(sender.isOn, forKey:"protobufOn")
   }
 
   // 'back' hit, clear all view and show initial menu view
-  @IBAction func backHit(sender: AnyObject) {
-    mainView.hidden = false
-    aboutView.hidden = true
-    recView.hidden = true
-    srcView.hidden = true
+  @IBAction func backHit(_ sender: AnyObject) {
+    mainView.isHidden = false
+    aboutView.isHidden = true
+    recView.isHidden = true
+    srcView.isHidden = true
   }
   
   
