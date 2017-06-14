@@ -160,40 +160,21 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 cm.command = .device_id
                 self.vm.sendCommand(cm)
             }
-            /*
-            let delayTime3 = DispatchTime.now() + Double(Int64(0.75 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime3) {
-                print("sending passthrough")
-                let cm = VehicleCommandRequest()
-                cm.command = .passthrough
-                self.vm.sendCommand(cm)
-            }
-            
-            let delayTime4 = DispatchTime.now() + Double(Int64(1.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime4) {
-                print("sending acceptance filter bypass")
-                let cm = VehicleCommandRequest()
-                cm.command = .af_bypass
-                self.vm.sendCommand(cm)
-            }
-            
-            let delayTime5 = DispatchTime.now() + Double(Int64(1.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.asyncAfter(deadline: delayTime5) {
-                print("sending payload format is json or not ")
-                let cm = VehicleCommandRequest()
-                cm.command = .payload_format
-                self.vm.sendCommand(cm)
-            }
-            */
         }
  
     }
     
     // this function handles all command responses
     func handle_cmd_response(_ rsp:NSDictionary) {
+         
         // extract the command response message
         let cr = rsp.object(forKey: "vehiclemessage") as! VehicleCommandResponse
         print("cmd response : \(cr.command_response)")
+        print("cmd msg : \(cr.message)")
+        print("cmd status : \(cr.status)")
+        print("cmd type : \(cr.type)")
+        print("cmd timestamp : \(cr.timestamp)")
+
         
         // update the UI depending on the command type- version,device_id works for JSON mode, not in protobuf - TODO
         
