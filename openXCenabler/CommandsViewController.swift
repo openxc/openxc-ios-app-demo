@@ -3,7 +3,7 @@
 //  openXCenabler
 //
 //  Created by Kanishka, Vedi (V.) on 27/04/17.
-//  Copyright © 2017 Bug Labs. All rights reserved.
+//  Copyright (c) 2016 Ford Motor Company Licensed under the BSD license.
 //
 
 import UIKit
