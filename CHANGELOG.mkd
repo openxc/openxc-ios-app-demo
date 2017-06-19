@@ -1,5 +1,10 @@
 # OpenXC iOS App Demo Changelog
 
+## v1.2.0
+
+* Command Support
+
+
 ## v1.1.0
 
 * Migration of the codebase to Swift3 to support iOS10 & XCode8
