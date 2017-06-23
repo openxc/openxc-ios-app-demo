@@ -33,13 +33,16 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var acitivityInd: UIActivityIndicatorView!
 
     
-    let commands = ["Version","Device Id","Passthrough CAN Mode","Acceptance Filter Bypass","Payload Format JSON"]
+    let commands = ["Version","Device Id","Passthrough CAN Mode","Acceptance Filter Bypass","Payload Format JSON", "Platform", "RTC Config", "SD Card Status"]
     
     var versionResp: String!
     var deviceIdResp: String!
     var passthroughResp: String!
     var accFilterBypassResp: String!
     var payloadFormatResp: String!
+    var platformResp: String!
+    var rtcConfigResp: String!
+    var sdCardResp: String!
 
     var selectedRowInPicker: Int!
 
@@ -138,6 +141,27 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             self.vm.sendCommand(cm)
             showActivityIndicator()
             break
+        case 5:
+            print("send platform details command")
+            let cm = VehicleCommandRequest()
+            cm.command = .platform
+            self.vm.sendCommand(cm)
+            showActivityIndicator()
+            break
+        case 6:
+            print("send rtc config command")
+            let cm = VehicleCommandRequest()
+            cm.command = .rtc_configuration
+            self.vm.sendCommand(cm)
+            showActivityIndicator()
+            break
+        case 7:
+            print("send sd card status command")
+            let cm = VehicleCommandRequest()
+            cm.command = .sd_mount_status
+            self.vm.sendCommand(cm)
+            showActivityIndicator()
+            break
         default:
             break
         }
@@ -171,7 +195,15 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         if cr.command_response.isEqual(to: "payload_format") {
             payloadFormatResp = String(cr.status)
         }
-        
+        if cr.command_response.isEqual(to: "platform") {
+            platformResp = cr.message as String
+        }
+        if cr.command_response.isEqual(to: "rtc_configuration") {
+            rtcConfigResp = String(cr.status)
+        }
+        if cr.command_response.isEqual(to: "sd_mount_status") {
+            sdCardResp = String(cr.status)
+        }
         // update the label
         DispatchQueue.main.async {
             self.populateCommandResponseLabel(rowNum: self.selectedRowInPicker)
@@ -264,6 +296,18 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             responseLab.text = payloadFormatResp
             formatLabel.isHidden = false
             pFormatSeg.isHidden = false
+            break
+        case 5:
+            sendCmndButton.isHidden = false
+            responseLab.text = platformResp
+            break
+        case 6:
+            sendCmndButton.isHidden = false
+            responseLab.text = rtcConfigResp
+            break
+        case 7:
+            sendCmndButton.isHidden = false
+            responseLab.text = sdCardResp
             break
         default:
             sendCmndButton.isHidden = true
