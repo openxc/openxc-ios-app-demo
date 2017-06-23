@@ -182,7 +182,6 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let vcCount = self.tabBarController?.viewControllers?.count
         cvc = self.tabBarController?.viewControllers?[vcCount!-1] as! CommandsViewController?
 
-        
         if cr.command_response.isEqual(to: "version") {
             DispatchQueue.main.async {
                 self.verLab.text = cr.message as String
