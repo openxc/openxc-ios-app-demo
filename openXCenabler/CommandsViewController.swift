@@ -60,8 +60,8 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         // grab VM instance
         vm = VehicleManager.sharedInstance
-        vm.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
-
+//        vm.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
+        vm.cmdObj?.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
         
         selectedRowInPicker = pickerView.selectedRow(inComponent: 0)
         print("selected row in picker...",selectedRowInPicker)
@@ -104,9 +104,10 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             }
             
             cm.command = .passthrough
-            self.vm.sendCommand(cm)
-            // activity indicator
+//            self.vm.sendCommand(cm)
+            vm.cmdObj?.sendCommand(cm)
 
+            // activity indicator
             showActivityIndicator()
             
             break
@@ -125,7 +126,7 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             }
             
             cm.command = .af_bypass
-            self.vm.sendCommand(cm)
+            vm.cmdObj?.sendCommand(cm)
             showActivityIndicator()
             break
         case 4:
@@ -138,28 +139,28 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 cm.format = "protobuf"
             }
             cm.command = .payload_format
-            self.vm.sendCommand(cm)
+            vm.cmdObj?.sendCommand(cm)
             showActivityIndicator()
             break
         case 5:
             print("send platform details command")
             let cm = VehicleCommandRequest()
             cm.command = .platform
-            self.vm.sendCommand(cm)
+            vm.cmdObj?.sendCommand(cm)
             showActivityIndicator()
             break
         case 6:
             print("send rtc config command")
             let cm = VehicleCommandRequest()
             cm.command = .rtc_configuration
-            self.vm.sendCommand(cm)
+            vm.cmdObj?.sendCommand(cm)
             showActivityIndicator()
             break
         case 7:
             print("send sd card status command")
             let cm = VehicleCommandRequest()
             cm.command = .sd_mount_status
-            self.vm.sendCommand(cm)
+            vm.cmdObj?.sendCommand(cm)
             showActivityIndicator()
             break
         default:

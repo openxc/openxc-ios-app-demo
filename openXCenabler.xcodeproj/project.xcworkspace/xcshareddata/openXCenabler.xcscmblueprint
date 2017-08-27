@@ -1,5 +1,4 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "23BF58AA42EA6376FB260588450F8BE1C15ACC66",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
 
   },
@@ -10,13 +9,13 @@
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "DCCDBE74-6B26-4EF4-8A30-720C1D1C6418",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "957824D7369BDB37B86AE392AA1AD5A40A3C8AC9" : "openxc-ios-app-demo\/openxc-ios-framework\/",
-    "0666B8749607A9097FA47BC516240266C4E79D1D" : "openxc-ios-app-demo\/openxc-ios-framework\/protobuf-swift\/",
-    "23BF58AA42EA6376FB260588450F8BE1C15ACC66" : "openxc-ios-app-demo\/"
+    "957824D7369BDB37B86AE392AA1AD5A40A3C8AC9" : "openxc-ios-framework\/",
+    "0666B8749607A9097FA47BC516240266C4E79D1D" : "openxc-ios-framework\/protobuf-swift\/",
+    "23BF58AA42EA6376FB260588450F8BE1C15ACC66" : ""
   },
-  "DVTSourceControlWorkspaceBlueprintNameKey" : "openXCenabler",
+  "DVTSourceControlWorkspaceBlueprintNameKey" : ".",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
-  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "openXCenabler.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : ".",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/alexeyxo\/protobuf-swift.git",
@@ -24,7 +23,7 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0666B8749607A9097FA47BC516240266C4E79D1D"
     },
     {
-      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/openxc\/openxc-ios-app-demo",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/openxc\/openxc-ios-app-demo.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "23BF58AA42EA6376FB260588450F8BE1C15ACC66"
     },
