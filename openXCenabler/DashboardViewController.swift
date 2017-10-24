@@ -310,7 +310,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
   }
   
-  func connection(_ connection: NSURLConnection!, didReceiveData data: Data!){
+    private func connection(_ connection: NSURLConnection!, didReceiveData data: Data!){
 
     //print("in didRxData")
     dweetRspData?.append(data)
