@@ -19,11 +19,11 @@
 		3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834421D5ED054003FD370 /* SendCanViewController.swift */; };
 		3AE834461D5ED054003FD370 /* DiagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834431D5ED054003FD370 /* DiagViewController.swift */; };
 		3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834441D5ED054003FD370 /* CanViewController.swift */; };
-		7DB633D91F9DCE6200519A8B /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDB1E561F9653E4009A3076 /* ProtocolBuffers.framework */; };
-		7DB633DA1F9DCE6200519A8B /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDB1E561F9653E4009A3076 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7DB633DB1F9DCE6200519A8B /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; };
-		7DB633DC1F9DCE6200519A8B /* openXCiOSFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7DDB1E711F973D20009A3076 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; };
+		7DB633E21F9F240500519A8B /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; };
+		7DB633E71F9F247100519A8B /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDB1E561F9653E4009A3076 /* ProtocolBuffers.framework */; };
+		7DB633E81F9F247100519A8B /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDB1E561F9653E4009A3076 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7DB633E91F9F247100519A8B /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; };
+		7DB633EA1F9F247100519A8B /* openXCiOSFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E75EE6931E110ED400B2AE3B /* openXCenablerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */; };
 		E78190A81ECC5B9000DE3B18 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B85B511ECC373500A3E5CB /* ProtocolBuffers.framework */; };
 		E79380701EB20201000EF3FF /* CommandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E793806F1EB20201000EF3FF /* CommandsViewController.swift */; };
@@ -31,7 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		7DB633DD1F9DCE6200519A8B /* PBXContainerItemProxy */ = {
+		7DB633EB1F9F247100519A8B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E79901BC1E3F5AFD00FB0579 /* openxc-ios-framework.xcodeproj */;
 			proxyType = 1;
@@ -62,14 +62,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		7DB633DF1F9DCE6200519A8B /* Embed Frameworks */ = {
+		7DB633ED1F9F247100519A8B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7DB633DC1F9DCE6200519A8B /* openXCiOSFramework.framework in Embed Frameworks */,
-				7DB633DA1F9DCE6200519A8B /* ProtocolBuffers.framework in Embed Frameworks */,
+				7DB633EA1F9F247100519A8B /* openXCiOSFramework.framework in Embed Frameworks */,
+				7DB633E81F9F247100519A8B /* ProtocolBuffers.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,9 +107,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E78190A81ECC5B9000DE3B18 /* ProtocolBuffers.framework in Frameworks */,
-				7DB633D91F9DCE6200519A8B /* ProtocolBuffers.framework in Frameworks */,
-				7DB633DB1F9DCE6200519A8B /* openXCiOSFramework.framework in Frameworks */,
-				7DDB1E711F973D20009A3076 /* openXCiOSFramework.framework in Frameworks */,
+				7DB633E71F9F247100519A8B /* ProtocolBuffers.framework in Frameworks */,
+				7DB633E91F9F247100519A8B /* openXCiOSFramework.framework in Frameworks */,
+				7DB633E21F9F240500519A8B /* openXCiOSFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,12 +202,12 @@
 				3A1016BD1D5417AD006C5E93 /* Sources */,
 				3A1016BE1D5417AD006C5E93 /* Frameworks */,
 				3A1016BF1D5417AD006C5E93 /* Resources */,
-				7DB633DF1F9DCE6200519A8B /* Embed Frameworks */,
+				7DB633ED1F9F247100519A8B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				7DB633DE1F9DCE6200519A8B /* PBXTargetDependency */,
+				7DB633EC1F9F247100519A8B /* PBXTargetDependency */,
 			);
 			name = openXCenabler;
 			productName = openXCenabler;
@@ -346,10 +346,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7DB633DE1F9DCE6200519A8B /* PBXTargetDependency */ = {
+		7DB633EC1F9F247100519A8B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "openxc-ios-framework";
-			targetProxy = 7DB633DD1F9DCE6200519A8B /* PBXContainerItemProxy */;
+			targetProxy = 7DB633EB1F9F247100519A8B /* PBXContainerItemProxy */;
 		};
 		E75EE6961E110ED400B2AE3B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
