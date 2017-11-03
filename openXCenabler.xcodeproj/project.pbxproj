@@ -19,12 +19,8 @@
 		3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834421D5ED054003FD370 /* SendCanViewController.swift */; };
 		3AE834461D5ED054003FD370 /* DiagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834431D5ED054003FD370 /* DiagViewController.swift */; };
 		3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834441D5ED054003FD370 /* CanViewController.swift */; };
-		7DB633D91F9DCE6200519A8B /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDB1E561F9653E4009A3076 /* ProtocolBuffers.framework */; };
-		7DB633DA1F9DCE6200519A8B /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDB1E561F9653E4009A3076 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7DB633DB1F9DCE6200519A8B /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; };
-		7DB633DC1F9DCE6200519A8B /* openXCiOSFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7DDB1E711F973D20009A3076 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; };
 		E75EE6931E110ED400B2AE3B /* openXCenablerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */; };
+		E78190A71ECC5B8C00DE3B18 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; };
 		E78190A81ECC5B9000DE3B18 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B85B511ECC373500A3E5CB /* ProtocolBuffers.framework */; };
 		E79380701EB20201000EF3FF /* CommandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E793806F1EB20201000EF3FF /* CommandsViewController.swift */; };
 		E79380711EB20201000EF3FF /* CommandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E793806F1EB20201000EF3FF /* CommandsViewController.swift */; };
@@ -107,9 +103,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E78190A81ECC5B9000DE3B18 /* ProtocolBuffers.framework in Frameworks */,
-				7DB633D91F9DCE6200519A8B /* ProtocolBuffers.framework in Frameworks */,
-				7DB633DB1F9DCE6200519A8B /* openXCiOSFramework.framework in Frameworks */,
-				7DDB1E711F973D20009A3076 /* openXCiOSFramework.framework in Frameworks */,
+				E78190A71ECC5B8C00DE3B18 /* openXCiOSFramework.framework in Frameworks */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +234,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Ford Motor Company";
 				TargetAttributes = {
 					3A1016C01D5417AD006C5E93 = {
@@ -493,7 +488,7 @@
 				INFOPLIST_FILE = openXCenabler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.ford.com;
+        PRODUCT_BUNDLE_IDENTIFIER = "net.ford.openXCenabler-kanishka1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
@@ -515,7 +510,7 @@
 				INFOPLIST_FILE = openXCenabler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = net.ford.com;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.ford.openXCenabler-kanishka1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
