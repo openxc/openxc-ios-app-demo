@@ -28,6 +28,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // the VM
     var vm: VehicleManager!
+    var cm: Command!
     
     // timer for UI counter updates
     var timer: Timer!
@@ -44,16 +45,14 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // instantiate the VM
         print("loading VehicleManager")
         vm = VehicleManager.sharedInstance
-        
+        cm = Command.sharedInstance
         // setup the status callback, and the command response callback
         vm.setManagerCallbackTarget(self, action: StatusViewController.manager_status_updates)
+        //vm.setCanDefaultTarget(self, action: StatusViewController.handle_cmd_response)
         
-        // Kanishka refactor - uncomment
-        self.vm.cmdObj = Command()
-        
-         self.vm.cmdObj?.setCommandDefaultTarget(self, action: StatusViewController.handle_cmd_response)
-    
-        
+        // setup the status callback, and the command response callback
+        //cm.setManagerCallbackTarget(self, action: StatusViewController.manager_status_updates)
+        vm.setCommandDefaultTarget(self, action: StatusViewController.handle_cmd_response)
         // turn on debug output
         vm.setManagerDebug(true)
     }
@@ -155,12 +154,8 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             DispatchQueue.main.asyncAfter(deadline: delayTime) {
                 print("sending version cmd")
                 let cm = VehicleCommandRequest()
-                print("cm....", cm)
-                print("self.vm....", self.vm)
-                print("self.vm.cmdObj....", self.vm.cmdObj as Any)
-
                 cm.command = .version
-                self.vm.cmdObj?.sendCommand(cm)
+                self.cm.sendCommand(cm)
             }
             
             let delayTime2 = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
@@ -168,7 +163,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 print("sending devid cmd")
                 let cm = VehicleCommandRequest()
                 cm.command = .device_id
-                self.vm.cmdObj?.sendCommand(cm)
+                self.cm.sendCommand(cm)
             }
         }
  
