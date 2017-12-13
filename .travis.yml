@@ -1,8 +1,8 @@
 language: objective-c
-osx_image: xcode8.1
+osx_image: xcode9.0
 xcode_project: openXCenabler.xcodeproj
 xcode_scheme: openXCenabler
-xcode_sdk: iphonesimulator10.1
+xcode_sdk: iphonesimulator11.0
 
 branches:
 - code_refactor
