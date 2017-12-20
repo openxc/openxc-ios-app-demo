@@ -1,11 +1,11 @@
 language: objective-c
-osx_image: xcode8.1
+osx_image: xcode9.0
 xcode_project: openXCenabler.xcodeproj
 xcode_scheme: openXCenabler
-xcode_sdk: iphonesimulator10.1
+xcode_sdk: iphonesimulator11.0
 
 branches:
 - master
 
 script:
-- xcodebuild build test -project openXCenabler.xcodeproj -scheme openXCenabler -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.1'  ONLY_ACTIVE_ARCH=NO
+- xcodebuild build test -project openXCenabler.xcodeproj -scheme openXCenabler -destination 'platform=iOS Simulator,name=iPhone 6s,OS=9.2'  ONLY_ACTIVE_ARCH=NO
