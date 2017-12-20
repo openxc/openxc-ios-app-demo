@@ -131,7 +131,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             DispatchQueue.main.async {
                 self.peripheralTable.isHidden = true
                 self.actConLab.text = "✅"
-                self.searchBtn.setTitle("BTLE VI CONNECTED",for:UIControlState())
+                self.searchBtn.setTitle("BLE VI CONNECTED",for:UIControlState())
             }
         }
         
