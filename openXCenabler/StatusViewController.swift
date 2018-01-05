@@ -19,6 +19,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var msgRvcdLab: UILabel!
     @IBOutlet weak var verLab: UILabel!
     @IBOutlet weak var devidLab: UILabel!
+    @IBOutlet weak var platformLab: UILabel!
     
     // scan/connect button
     @IBOutlet weak var searchBtn: UIButton!
@@ -131,7 +132,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             DispatchQueue.main.async {
                 self.peripheralTable.isHidden = true
                 self.actConLab.text = "✅"
-                self.searchBtn.setTitle("BTLE VI CONNECTED",for:UIControlState())
+                self.searchBtn.setTitle("BLE VI CONNECTED",for:UIControlState())
             }
         }
         
@@ -142,7 +143,8 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.msgRvcdLab.text = "---"
                 self.verLab.text = "---"
                 self.devidLab.text = "---"
-                self.searchBtn.setTitle("SEARCH FOR BTLE VI",for:UIControlState())
+                self.platformLab.text = "---"
+                self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
             }
         }
         
@@ -163,6 +165,13 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 print("sending devid cmd")
                 let cm = VehicleCommandRequest()
                 cm.command = .device_id
+                self.cm.sendCommand(cm)
+            }
+            let delayTime3 = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: delayTime3) {
+                print("sending Platform cmd")
+                let cm = VehicleCommandRequest()
+                cm.command = .platform
                 self.cm.sendCommand(cm)
             }
         }
@@ -198,6 +207,13 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if cr.command_response.isEqual(to: "device_id") {
             DispatchQueue.main.async {
                 self.devidLab.text = cr.message as String
+            }
+            cvc?.deviceIdResp = String(cr.message)
+            print("cvc deviceIdResp...",cvc?.deviceIdResp! as Any)
+        }
+        if cr.command_response.isEqual(to: "platform") {
+            DispatchQueue.main.async {
+                self.platformLab.text = cr.message as String
             }
             cvc?.deviceIdResp = String(cr.message)
             print("cvc deviceIdResp...",cvc?.deviceIdResp! as Any)

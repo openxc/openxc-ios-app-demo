@@ -21,6 +21,8 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var dweetswitch: UISwitch!
   @IBOutlet weak var dweetname: UITextField!
   @IBOutlet weak var dweetnamelabel: UILabel!
+    
+  @IBOutlet weak var appVersion: UILabel!
   
   @IBOutlet weak var playswitch: UISwitch!
   @IBOutlet weak var playname: UITextField!
@@ -35,7 +37,11 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     super.viewDidLoad()
     
     print("in modal viewDidLoad")
-        
+    let versionNumberString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+   // print("version:-\(versionNumberString)")
+    
+    appVersion.text = versionNumberString
+    
     // watch for changes to trace file output file name field
     recname.addTarget(self, action: #selector(recFieldDidChange), for: UIControlEvents.editingChanged)
     recname.isHidden = true
