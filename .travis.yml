@@ -5,6 +5,7 @@ xcode_scheme: openXCenabler
 xcode_sdk: iphonesimulator11.0
 
 branches:
+- master
 - next
 
 script:
