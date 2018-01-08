@@ -6,6 +6,6 @@ xcode_sdk: iphonesimulator11.0
 
 branches:
 - master
-
+- next
 script:
 - xcodebuild build test -project openXCenabler.xcodeproj -scheme openXCenabler -destination 'platform=iOS Simulator,name=iPhone 6s,OS=9.2'  ONLY_ACTIVE_ARCH=NO
