@@ -9,6 +9,7 @@
 import UIKit
 import openXCiOSFramework
 
+
 class modalSettingsView: UIViewController, UITextFieldDelegate {
 
   // UI outlets
@@ -43,7 +44,7 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     super.viewDidLoad()
     
     print("in modal viewDidLoad")
-     NM = NetworkData.sharedInstance
+    NM = NetworkData.sharedInstance
     // watch for changes to trace file output file name field
     recname.addTarget(self, action: #selector(recFieldDidChange), for: UIControlEvents.editingChanged)
     recname.isHidden = true
@@ -341,7 +342,8 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
             networkData.isHidden = true
             UserDefaults.standard.set(false, forKey:"networkdataOn")
             UserDefaults.standard.set("", forKey:"networkAdress")
-           NetworkData.sharedInstance.disconnectConnection()
+            NetworkData.sharedInstance.disconnectConnection()
+            
         }
     }
     
