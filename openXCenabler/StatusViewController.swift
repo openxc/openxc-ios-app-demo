@@ -99,13 +99,44 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
             // start the VI scan
-            vm.scan()
-            
-            // update the UI
-            DispatchQueue.main.async {
-                self.actConLab.text = "❓"
-                self.searchBtn.setTitle("SCANNING",for:UIControlState())
-            }
+            vm.scan(completionHandler:{(success) in
+                // update the UI
+                if(!success){
+                    let alertController = UIAlertController (title: "Setting", message: "Please enable Bluetooth", preferredStyle: .alert)
+                    let url = URL(string: "App-Prefs:root=Bluetooth")
+                    let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                        guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                            return
+                        }
+                        
+                        if UIApplication.shared.canOpenURL(url!) {
+                            if #available(iOS 10.0, *) {
+                                UIApplication.shared.open(url!, completionHandler: { (success) in
+                                    print("Settings opened: \(success)") // Prints true
+                                    
+                                })
+                            } else {
+                                // Fallback on earlier versions
+                            }
+                        }
+                    }
+                    alertController.addAction(settingsAction)
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                DispatchQueue.main.async {
+                    self.actConLab.text = "❓"
+                    self.searchBtn.setTitle("SCANNING",for:UIControlState())
+                    //                    let alertController = UIAlertController(title: "", message:
+                    //                        "Please check the BLE power is on ", preferredStyle: UIAlertControllerStyle.alert)
+                    //                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                    //                    self.present(alertController, animated: true, completion: nil)
+                }
+                
+            })
+
         }
     }
     
