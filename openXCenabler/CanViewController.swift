@@ -56,7 +56,7 @@ class CanViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     DispatchQueue.main.async {
       self.canTable.reloadData()
     }
-    print("default can msg:",key," -- ",val)
+    
   }
   
   

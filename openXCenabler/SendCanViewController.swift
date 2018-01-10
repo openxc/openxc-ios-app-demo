@@ -61,7 +61,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     
     // look at segmented control for bus
     cmd.bus = bussel.selectedSegmentIndex + 1
-    print("bus is ",cmd.bus)
+   
     
     // check that the msg id field is valid
     if let mid = idField.text as String? {
@@ -80,8 +80,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
       lastReq.text = "Invalid command : need a message_id"
       return
     }
-    print("mid is ",cmd.id)
-    
+   
     // check that the payload field is valid
     if let payld = dataField.text as String? {
       let payldtrim = payld.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -102,7 +101,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
       lastReq.text = "Invalid command : need a payload"
       return
     }
-    print("payload is ",cmd.data)
+   
     
     // send the CAN request
     vm.sendCanReq(cmd)

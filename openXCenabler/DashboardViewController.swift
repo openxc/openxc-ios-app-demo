@@ -65,7 +65,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    print("in viewDidAppear")
     
     sensorLoop.invalidate()
     locationManager.stopUpdatingLocation()
@@ -104,7 +103,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-    print("in viewDidDisappear")
 
   }
   
@@ -152,9 +150,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         self.dashTable.reloadData()
     }
     if vr.isEvented {
-      print("default measurement msg:",vr.name," -- ",vr.value,":",vr.event)
+      
     } else {
-      print("default measurement msg:",vr.name," -- ",vr.value)
+     
     }
   }
 
@@ -219,7 +217,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   
   
   func sensorUpdate() {
-    //print("in sensorLoop")
     
     if isHeadsetPluggedIn() {
       dashDict.setObject("Yes", forKey:"phone_headphones_attached" as NSCopying)
@@ -247,9 +244,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   
   
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    print("in locationMgr:didUpdateLocations")
+    
     if locations.count>0 {
-      print(locations.last as Any)
+  
       let loc = locations.last!
       dashDict.setObject(loc.coordinate.latitude, forKey:"phone_latitude" as NSCopying)
       dashDict.setObject(loc.coordinate.longitude, forKey:"phone_longitude" as NSCopying)
@@ -303,7 +300,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
       }
       
     } catch {
-      print("json encode error")
+    
     }
     
   
@@ -311,18 +308,13 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   }
   
     private func connection(_ connection: NSURLConnection!, didReceiveData data: Data!){
-
-    //print("in didRxData")
     dweetRspData?.append(data)
     
   }
   
   func connectionDidFinishLoading(_ connection: NSURLConnection!) {
-   
-    //print("in didFinishLoading")
     
     //let responseString = String(data:dweetRspData!,encoding:NSUTF8StringEncoding)
-    //print(responseString)
     
   }
     

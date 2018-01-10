@@ -35,10 +35,9 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    print("in modal viewDidLoad")
+
     let versionNumberString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-   // print("version:-\(versionNumberString)")
+   
     
     appVersion.text = versionNumberString
     
@@ -112,14 +111,14 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
           let randnum = Int(arc4random_uniform(UInt32(allLines.count)))
           name.append(allLines[randnum])
         } catch {
-          print("file load error")
+      
           var randnum = arc4random_uniform(26)
           name.appendFormat("%c",65+randnum)
           randnum = arc4random_uniform(26)
           name.appendFormat("%c",65+randnum)
         }
       } else {
-        print("file load error")
+   
         var randnum = arc4random_uniform(26)
         name.appendFormat("%c",65+randnum)
         randnum = arc4random_uniform(26)
@@ -136,21 +135,19 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
           let randnum = Int(arc4random_uniform(UInt32(allLines.count)))
           name.append(allLines[randnum])
         } catch {
-          print("file load error")
+         
           var randnum = arc4random_uniform(10)
           name.appendFormat("%c",30+randnum)
           randnum = arc4random_uniform(10)
           name.appendFormat("%c",30+randnum)
         }
       } else {
-        print("file load error")
+       
         var randnum = arc4random_uniform(10)
         name.appendFormat("%c",30+randnum)
         randnum = arc4random_uniform(10)
         name.appendFormat("%c",30+randnum)
       }
-      
-      print("first load - dweet name is ",name)
       UserDefaults.standard.setValue(name, forKey:"dweetname")
       
     }

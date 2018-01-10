@@ -44,7 +44,6 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         
         // instantiate the VM
-        print("loading VehicleManager")
         vm = VehicleManager.sharedInstance
         cm = Command.sharedInstance
         // setup the status callback, and the command response callback
@@ -116,7 +115,6 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // extract the status message
         let status = rsp.object(forKey: "status") as! Int
         let msg = VehicleManagerStatusMessage(rawValue: status)
-        print("VM status : ",msg!)
         
         
         // show/reload the table showing detected VIs
@@ -154,7 +152,6 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             let delayTime = DispatchTime.now() + Double(Int64(0.25 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: delayTime) {
-                print("sending version cmd")
                 let cm = VehicleCommandRequest()
                 cm.command = .version
                 self.cm.sendCommand(cm)
@@ -162,14 +159,12 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             let delayTime2 = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: delayTime2) {
-                print("sending devid cmd")
                 let cm = VehicleCommandRequest()
                 cm.command = .device_id
                 self.cm.sendCommand(cm)
             }
             let delayTime3 = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
             DispatchQueue.main.asyncAfter(deadline: delayTime3) {
-                print("sending Platform cmd")
                 let cm = VehicleCommandRequest()
                 cm.command = .platform
                 self.cm.sendCommand(cm)
@@ -183,11 +178,6 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
          
         // extract the command response message
         let cr = rsp.object(forKey: "vehiclemessage") as! VehicleCommandResponse
-        print("cmd response : \(cr.command_response)")
-        print("cmd msg : \(cr.message)")
-        print("cmd status : \(cr.status)")
-        print("cmd type : \(cr.type)")
-        print("cmd timestamp : \(cr.timestamp)")
 
         
         // update the UI depending on the command type- version,device_id works for JSON mode, not in protobuf - TODO
@@ -201,7 +191,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.verLab.text = cr.message as String
             }
             cvc?.versionResp = String(cr.message)
-            print("cvc versionResp...",cvc?.versionResp! as Any)
+          
 
         }
         if cr.command_response.isEqual(to: "device_id") {
@@ -209,14 +199,14 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.devidLab.text = cr.message as String
             }
             cvc?.deviceIdResp = String(cr.message)
-            print("cvc deviceIdResp...",cvc?.deviceIdResp! as Any)
+           
         }
         if cr.command_response.isEqual(to: "platform") {
             DispatchQueue.main.async {
                 self.platformLab.text = cr.message as String
             }
             cvc?.deviceIdResp = String(cr.message)
-            print("cvc deviceIdResp...",cvc?.deviceIdResp! as Any)
+            
         }
     }
     
@@ -224,8 +214,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // this function is called by the timer, it updates the UI
     func msgRxdUpdate(_ t:Timer) {
         if vm.connectionState==VehicleManagerConnectionState.operational {
-            print("VM is receiving data from VI!")
-            print("So far we've had ",vm.messageCount," messages")
+           
              DispatchQueue.main.async {
                 self.msgRvcdLab.text = String(self.vm.messageCount)
             }
@@ -238,7 +227,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // how many VIs have been discovered
-        print("discovered VI count",vm.discoveredVI().count)
+
         tableView.dataSource = self
         
         let count = vm.discoveredVI().count
