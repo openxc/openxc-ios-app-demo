@@ -23,6 +23,8 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var dweetswitch: UISwitch!
   @IBOutlet weak var dweetname: UITextField!
   @IBOutlet weak var dweetnamelabel: UILabel!
+    
+  @IBOutlet weak var appVersion: UILabel!
   
   @IBOutlet weak var playswitch: UISwitch!
   @IBOutlet weak var playname: UITextField!
@@ -42,9 +44,13 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    let versionNumberString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+   
     
-    print("in modal viewDidLoad")
+    appVersion.text = versionNumberString
     NM = NetworkData.sharedInstance
+
     // watch for changes to trace file output file name field
     recname.addTarget(self, action: #selector(recFieldDidChange), for: UIControlEvents.editingChanged)
     recname.isHidden = true
@@ -120,14 +126,14 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
           let randnum = Int(arc4random_uniform(UInt32(allLines.count)))
           name.append(allLines[randnum])
         } catch {
-          print("file load error")
+      
           var randnum = arc4random_uniform(26)
           name.appendFormat("%c",65+randnum)
           randnum = arc4random_uniform(26)
           name.appendFormat("%c",65+randnum)
         }
       } else {
-        print("file load error")
+   
         var randnum = arc4random_uniform(26)
         name.appendFormat("%c",65+randnum)
         randnum = arc4random_uniform(26)
@@ -144,21 +150,19 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
           let randnum = Int(arc4random_uniform(UInt32(allLines.count)))
           name.append(allLines[randnum])
         } catch {
-          print("file load error")
+         
           var randnum = arc4random_uniform(10)
           name.appendFormat("%c",30+randnum)
           randnum = arc4random_uniform(10)
           name.appendFormat("%c",30+randnum)
         }
       } else {
-        print("file load error")
+       
         var randnum = arc4random_uniform(10)
         name.appendFormat("%c",30+randnum)
         randnum = arc4random_uniform(10)
         name.appendFormat("%c",30+randnum)
       }
-      
-      print("first load - dweet name is ",name)
       UserDefaults.standard.setValue(name, forKey:"dweetname")
       
     }
