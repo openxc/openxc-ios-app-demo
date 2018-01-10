@@ -11,7 +11,6 @@ import openXCiOSFramework
 
 // TODO: ToDo - Work on removing the warnings
 
-
 class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // UI Labels
@@ -19,6 +18,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var msgRvcdLab: UILabel!
     @IBOutlet weak var verLab: UILabel!
     @IBOutlet weak var devidLab: UILabel!
+    @IBOutlet weak var NetworkImg: UIImageView!
     
     // scan/connect button
     @IBOutlet weak var searchBtn: UIButton!
@@ -28,7 +28,6 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // the VM
     var vm: VehicleManager!
-    var cm: Command!
     
     // timer for UI counter updates
     var timer: Timer!
@@ -45,18 +44,57 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // instantiate the VM
         print("loading VehicleManager")
         vm = VehicleManager.sharedInstance
-        cm = Command.sharedInstance
+//        if let name = UserDefaults.standard.value(forKey: "networkAdress") as? NSString {
+//
+//            networkDataFetch(Ip: name as String)
+//            self.NetworkImg.isHidden = false
+//            self.actConLab.text = ""
+//        }
         // setup the status callback, and the command response callback
         vm.setManagerCallbackTarget(self, action: StatusViewController.manager_status_updates)
-        //vm.setCanDefaultTarget(self, action: StatusViewController.handle_cmd_response)
-        
-        // setup the status callback, and the command response callback
-        //cm.setManagerCallbackTarget(self, action: StatusViewController.manager_status_updates)
         vm.setCommandDefaultTarget(self, action: StatusViewController.handle_cmd_response)
         // turn on debug output
         vm.setManagerDebug(true)
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        let name = UserDefaults.standard.value(forKey: "networkAdress") as? NSString
+        if name != ""{
+           // networkDataFetch(Ip: name as String)
+            if (vm.isNetworkConnected){
+            self.NetworkImg.isHidden = false
+            self.actConLab.text = ""
+            self.searchBtn.setTitle("WIFI CONNECTED",for:UIControlState())
+            return
+            }
+        }else{
+        self.NetworkImg.isHidden = true
+        self.actConLab.text = "---"
+        self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
+            let networkOn = UserDefaults.standard.bool(forKey: "networkdataOn")
+            if(networkOn){
+            let alertController = UIAlertController(title: "", message:
+                "No Data please check the host adress", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+    func networkDataFetch(Ip:String)  {
+        if (Ip != ""){
+            var myStringArr = Ip.components(separatedBy: ":")
+            let ip = myStringArr[0] //"0.0.0.0"
+            let port = Int(myStringArr[1]) //50001
+            NetworkData.sharedInstance.connect(ip: ip, portvalue: port!, completionHandler: { (success) in
+                print(success)
+                if(!success){
+                    let alertController = UIAlertController(title: "", message:
+                        "error ocured", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            })
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -67,7 +105,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func searchHit(_ sender: UIButton) {
         
         // make sure we're not already connected first
-        if (vm.connectionState==VehicleManagerConnectionState.notConnected) {
+        if (vm.connectionState==VehicleManagerConnectionState.notConnected ) {
             
             // start a timer to update the UI with the total received messages
             timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
@@ -90,23 +128,55 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     vm.enableTraceFileSource(name)
                 }
             }
-            
             // check to see if a trace output file has been configured
             if UserDefaults.standard.bool(forKey: "traceOutputOn") {
                 if let name = UserDefaults.standard.value(forKey: "traceOutputFilename") as? NSString {
                     vm.enableTraceFileSink(name)
                 }
             }
+            // start the VI scan handler
+            vm.scan(completionHandler:{(success) in
+                // update the UI
+                if(!success){
+                    let alertController = UIAlertController (title: "Setting", message: "Please enable Bluetooth", preferredStyle: .alert)
+                    let url = URL(string: "App-Prefs:root=Bluetooth")
+                    let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                        guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                            return
+                        }
+                        
+                        if UIApplication.shared.canOpenURL(url!) {
+                            if #available(iOS 10.0, *) {
+                                UIApplication.shared.open(url!, completionHandler: { (success) in
+                                    print("Settings opened: \(success)") // Prints true
+
+                                })
+                            } else {
+                                // Fallback on earlier versions
+                            }
+                        }
+                    }
+                    alertController.addAction(settingsAction)
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                DispatchQueue.main.async {
+                    self.actConLab.text = "❓"
+                    self.searchBtn.setTitle("SCANNING",for:UIControlState())
+//                    let alertController = UIAlertController(title: "", message:
+//                        "Please check the BLE power is on ", preferredStyle: UIAlertControllerStyle.alert)
+//                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+//                    self.present(alertController, animated: true, completion: nil)
+                }
             
-            // start the VI scan
-            vm.scan()
-            
-            // update the UI
-            DispatchQueue.main.async {
-                self.actConLab.text = "❓"
-                self.searchBtn.setTitle("SCANNING",for:UIControlState())
-            }
+            })
+  
         }
+
+        
+        
     }
     
     // this function receives all status updates from the VM
@@ -126,15 +196,26 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
         }
         
+        
         // update the UI showing connected VI
         if msg==VehicleManagerStatusMessage.c5CONNECTED {
             DispatchQueue.main.async {
                 self.peripheralTable.isHidden = true
                 self.actConLab.text = "✅"
+                self.NetworkImg.isHidden = true
                 self.searchBtn.setTitle("BLE VI CONNECTED",for:UIControlState())
             }
         }
-        
+        if (vm.isNetworkConnected) {
+            DispatchQueue.main.async {
+                self.peripheralTable.isHidden = true
+                self.actConLab.text = ""
+                self.NetworkImg.isHidden = false
+                self.searchBtn.setTitle("WIFI CONNECTED",for:UIControlState())
+                self.searchBtn.isEnabled = false
+
+            }
+        }
         // update the UI showing disconnected VI
         if msg==VehicleManagerStatusMessage.c5DISCONNECTED {
             DispatchQueue.main.async {
@@ -142,7 +223,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.msgRvcdLab.text = "---"
                 self.verLab.text = "---"
                 self.devidLab.text = "---"
-                self.searchBtn.setTitle("SEARCH FOR BTLE VI",for:UIControlState())
+                self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
             }
         }
         
@@ -155,7 +236,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 print("sending version cmd")
                 let cm = VehicleCommandRequest()
                 cm.command = .version
-                self.cm.sendCommand(cm)
+                self.vm.sendCommand(cm)
             }
             
             let delayTime2 = DispatchTime.now() + Double(Int64(0.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
@@ -163,7 +244,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 print("sending devid cmd")
                 let cm = VehicleCommandRequest()
                 cm.command = .device_id
-                self.cm.sendCommand(cm)
+                self.vm.sendCommand(cm)
             }
         }
  
@@ -208,8 +289,9 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // this function is called by the timer, it updates the UI
     func msgRxdUpdate(_ t:Timer) {
         if vm.connectionState==VehicleManagerConnectionState.operational {
-            print("VM is receiving data from VI!")
-            print("So far we've had ",vm.messageCount," messages")
+            //ranjan commented print statement
+            //print("VM is receiving data from VI!")
+           // print("So far we've had ",vm.messageCount," messages")
              DispatchQueue.main.async {
                 self.msgRvcdLab.text = String(self.vm.messageCount)
             }
