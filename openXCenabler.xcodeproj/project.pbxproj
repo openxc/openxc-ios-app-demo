@@ -20,8 +20,8 @@
 		3AE834461D5ED054003FD370 /* DiagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834431D5ED054003FD370 /* DiagViewController.swift */; };
 		3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834441D5ED054003FD370 /* CanViewController.swift */; };
 		7DB633E21F9F240500519A8B /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; };
-		7DB633E71F9F247100519A8B /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDB1E561F9653E4009A3076 /* ProtocolBuffers.framework */; };
-		7DB633E81F9F247100519A8B /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDB1E561F9653E4009A3076 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7DB633E71F9F247100519A8B /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		7DB633E81F9F247100519A8B /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7DB633E91F9F247100519A8B /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; };
 		7DB633EA1F9F247100519A8B /* openXCiOSFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E75EE6931E110ED400B2AE3B /* openXCenablerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */; };
@@ -31,7 +31,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-
 		7DB633EB1F9F247100519A8B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E79901BC1E3F5AFD00FB0579 /* openxc-ios-framework.xcodeproj */;
@@ -39,7 +38,6 @@
 			remoteGlobalIDString = 3A1017051D5941C8006C5E93;
 			remoteInfo = "openxc-ios-framework";
 		};
-
 		E75EE6951E110ED400B2AE3B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3A1016B91D5417AD006C5E93 /* Project object */;
@@ -64,18 +62,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-
 		7DB633ED1F9F247100519A8B /* Embed Frameworks */ = {
-
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-
 				7DB633EA1F9F247100519A8B /* openXCiOSFramework.framework in Embed Frameworks */,
-				7DB633E81F9F247100519A8B /* ProtocolBuffers.framework in Embed Frameworks */,
-
+				7DB633E81F9F247100519A8B /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,12 +91,7 @@
 		3AE834421D5ED054003FD370 /* SendCanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCanViewController.swift; sourceTree = "<group>"; };
 		3AE834431D5ED054003FD370 /* DiagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagViewController.swift; sourceTree = "<group>"; };
 		3AE834441D5ED054003FD370 /* CanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanViewController.swift; sourceTree = "<group>"; };
-		7D4692CE1FDFE34D0022DF98 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProtocolBuffers.framework; path = "../../../Library/Developer/Xcode/DerivedData/openXCenabler-cykiqmymbibzbiglrklbjvziqvvb/Build/Products/Debug-iphonesimulator/ProtocolBuffers.framework"; sourceTree = "<group>"; };
-		7D4692D11FDFE3600022DF98 /* openXCiOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = openXCiOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/openXCenabler-cykiqmymbibzbiglrklbjvziqvvb/Build/Products/Debug-iphonesimulator/openXCiOSFramework.framework"; sourceTree = "<group>"; };
 		7D4692D51FDFE5210022DF98 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ProtocolBuffers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E73ADBC71F52A3FA002D66E4 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProtocolBuffers.framework; path = "../../Library/Developer/Xcode/DerivedData/openXCenabler-bosufmwxsxaebzgpsksmazsjnmtl/Build/Products/Debug-iphoneos/ProtocolBuffers.framework"; sourceTree = "<group>"; };
-		E73ADBCD1F52A41F002D66E4 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProtocolBuffers.framework; path = "../../Library/Developer/Xcode/DerivedData/openXCenabler-bosufmwxsxaebzgpsksmazsjnmtl/Build/Products/Debug-iphonesimulator/ProtocolBuffers.framework"; sourceTree = "<group>"; };
-		E75EE68A1E110E9D00B2AE3B /* openXCenablerUnitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = openXCenablerUnitTests.swift; sourceTree = "<group>"; };
 		E75EE6901E110ED400B2AE3B /* openXCenablerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = openXCenablerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = openXCenablerTests.swift; sourceTree = "<group>"; };
 		E75EE6941E110ED400B2AE3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,12 +105,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-
 				E78190A81ECC5B9000DE3B18 /* ProtocolBuffers.framework in Frameworks */,
-				7DB633E71F9F247100519A8B /* ProtocolBuffers.framework in Frameworks */,
+				7DB633E71F9F247100519A8B /* (null) in Frameworks */,
 				7DB633E91F9F247100519A8B /* openXCiOSFramework.framework in Frameworks */,
 				7DB633E21F9F240500519A8B /* openXCiOSFramework.framework in Frameworks */,
-
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +127,6 @@
 			children = (
 				7D4692D51FDFE5210022DF98 /* ProtocolBuffers.framework */,
 				E79901BC1E3F5AFD00FB0579 /* openxc-ios-framework.xcodeproj */,
-				E75EE68A1E110E9D00B2AE3B /* openXCenablerUnitTests.swift */,
 				3A1016C31D5417AD006C5E93 /* openXCenabler */,
 				E75EE6911E110ED400B2AE3B /* openXCenablerTests */,
 				3A1016C21D5417AD006C5E93 /* Products */,
@@ -214,13 +200,11 @@
 				3A1016BD1D5417AD006C5E93 /* Sources */,
 				3A1016BE1D5417AD006C5E93 /* Frameworks */,
 				3A1016BF1D5417AD006C5E93 /* Resources */,
-
 				7DB633ED1F9F247100519A8B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-
 				7DB633EC1F9F247100519A8B /* PBXTargetDependency */,
 			);
 			name = openXCenabler;
@@ -260,6 +244,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = D95XHVNG2Z;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Manual;
 					};
 					E75EE68F1E110ED400B2AE3B = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -360,13 +345,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-
 		7DB633EC1F9F247100519A8B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "openxc-ios-framework";
 			targetProxy = 7DB633EB1F9F247100519A8B /* PBXContainerItemProxy */;
 		};
-
 		E75EE6961E110ED400B2AE3B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 3A1016C01D5417AD006C5E93 /* openXCenabler */;
@@ -501,7 +484,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = D95XHVNG2Z;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
@@ -509,7 +491,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ford.openxc;
-
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 3.0;
@@ -523,11 +504,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = D95XHVNG2Z;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
-
 				INFOPLIST_FILE = openXCenabler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
