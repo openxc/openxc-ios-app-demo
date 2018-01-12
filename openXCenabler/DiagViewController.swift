@@ -35,6 +35,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     // set default diag response target
     vm.setDiagnosticDefaultTarget(self, action: DiagViewController.default_diag_rsp)
 
+    
   }
   
   override func didReceiveMemoryWarning() {
@@ -42,7 +43,14 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     // Dispose of any resources that can be recreated.
   }
 
-  
+    override func viewDidAppear(_ animated: Bool) {
+        if(!vm.isBleConnected){
+            let alertController = UIAlertController(title: "", message:
+                "BLE is not connected to the Device", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
   func default_diag_rsp(_ rsp:NSDictionary) {
     // extract the diag resp message
     let vr = rsp.object(forKey: "vehiclemessage") as! VehicleDiagnosticResponse

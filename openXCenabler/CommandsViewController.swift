@@ -77,11 +77,23 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if(vm.isBleConnected){
+    }else{
+    let alertController = UIAlertController(title: "", message:
+    "BLE is not connected to the Device", preferredStyle: UIAlertControllerStyle.alert)
+    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+    self.present(alertController, animated: true, completion: nil)
+    }
+    }
     // MARK: Commands Function
 
     @IBAction func sendCmnd() {
+        
         let sRow = pickerView.selectedRow(inComponent: 0)
         
+        
+        if(vm.isBleConnected){
         
         switch sRow {
         case 0:
@@ -166,6 +178,12 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         default:
             break
         }
+        }else{
+            let alertController = UIAlertController(title: "", message:
+                "BLE is not connected to the Device", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
 
     }
     
@@ -216,7 +234,7 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func busSegmentedControlValueChanged() {
       
        
-        let selectedSegment = busSeg.selectedSegmentIndex
+        //let selectedSegment = busSeg.selectedSegmentIndex
 
     }
 

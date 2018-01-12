@@ -23,6 +23,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    
     // grab VM instance
     vm = VehicleManager.sharedInstance
 
@@ -40,7 +41,14 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     textField.resignFirstResponder();
     return true;
   }
-  
+    override func viewDidAppear(_ animated: Bool) {
+        if(!vm.isBleConnected){
+            let alertController = UIAlertController(title: "", message:
+                "BLE is not connected to the Device", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
   
   // CAN send button hit
   @IBAction func sendHit(_ sender: AnyObject) {
