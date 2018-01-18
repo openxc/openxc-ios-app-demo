@@ -1,4 +1,4 @@
 [submodule "openxc-ios-framework"]
 	path = openxc-ios-framework
 	url = https://github.com/openxc/openxc-ios-framework.git
-	branch = origin_ios11support
+	branch = origin_UI_Changes
