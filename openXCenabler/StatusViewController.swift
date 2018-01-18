@@ -168,10 +168,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 DispatchQueue.main.async {
                     self.actConLab.text = "❓"
                     self.searchBtn.setTitle("SCANNING",for:UIControlState())
-                    //                    let alertController = UIAlertController(title: "", message:
-                    //                        "Please check the BLE power is on ", preferredStyle: UIAlertControllerStyle.alert)
-                    //                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-                    //                    self.present(alertController, animated: true, completion: nil)
+                    
                 }
                 
             })

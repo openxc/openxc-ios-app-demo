@@ -192,9 +192,7 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         // extract the command response message
         let cr = rsp.object(forKey: "vehiclemessage") as! VehicleCommandResponse
         
-        
         // update the UI depending on the command type- version,device_id works for JSON mode, not in protobuf - TODO
-        
         
         if cr.command_response.isEqual(to: "version") {
                 versionResp = cr.message as String
