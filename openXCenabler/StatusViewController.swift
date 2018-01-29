@@ -20,6 +20,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var verLab: UILabel!
     @IBOutlet weak var devidLab: UILabel!
     @IBOutlet weak var platformLab: UILabel!
+     @IBOutlet weak var NetworkImg: UIImageView!
     
     // scan/connect button
     @IBOutlet weak var searchBtn: UIButton!
@@ -56,7 +57,45 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // turn on debug output
         vm.setManagerDebug(true)
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        let name = UserDefaults.standard.value(forKey: "networkAdress") as? NSString
+        if name != ""{
+            // networkDataFetch(Ip: name as String)
+            if (vm.isNetworkConnected){
+                self.NetworkImg.isHidden = false
+                self.actConLab.text = ""
+                self.searchBtn.setTitle("WIFI CONNECTED",for:UIControlState())
+                return
+            }
+        }else{
+            self.NetworkImg.isHidden = true
+            self.actConLab.text = "---"
+            self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
+            let networkOn = UserDefaults.standard.bool(forKey: "networkdataOn")
+            if(networkOn){
+                let alertController = UIAlertController(title: "", message:
+                    "No Data please check the host adress", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+    func networkDataFetch(Ip:String)  {
+        if (Ip != ""){
+            var myStringArr = Ip.components(separatedBy: ":")
+            let ip = myStringArr[0] //"0.0.0.0"
+            let port = Int(myStringArr[1]) //50001
+            NetworkData.sharedInstance.connect(ip: ip, portvalue: port!, completionHandler: { (success) in
+                print(success)
+                if(!success){
+                    let alertController = UIAlertController(title: "", message:
+                        "error ocured", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            })
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -105,7 +144,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let alertController = UIAlertController (title: "Setting", message: "Please enable Bluetooth", preferredStyle: .alert)
                     let url = URL(string: "App-Prefs:root=Bluetooth")
                     let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
-                        guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                        guard URL(string: UIApplicationOpenSettingsURLString) != nil else {
                             return
                         }
                         
@@ -161,10 +200,20 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             DispatchQueue.main.async {
                 self.peripheralTable.isHidden = true
                 self.actConLab.text = "✅"
+                self.NetworkImg.isHidden = true
                 self.searchBtn.setTitle("BLE VI CONNECTED",for:UIControlState())
             }
         }
-        
+        if (vm.isNetworkConnected) {
+            DispatchQueue.main.async {
+                self.peripheralTable.isHidden = true
+                self.actConLab.text = ""
+                self.NetworkImg.isHidden = false
+                self.searchBtn.setTitle("WIFI CONNECTED",for:UIControlState())
+                self.searchBtn.isEnabled = false
+                
+            }
+        }
         // update the UI showing disconnected VI
         if msg==VehicleManagerStatusMessage.c5DISCONNECTED {
             DispatchQueue.main.async {

@@ -23,6 +23,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    
     // grab VM instance
     vm = VehicleManager.sharedInstance
 
@@ -40,7 +41,12 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     textField.resignFirstResponder();
     return true;
   }
-  
+    override func viewDidAppear(_ animated: Bool) {
+        if(!vm.isBleConnected){
+            
+            AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
+        }
+    }
   
   // CAN send button hit
   @IBAction func sendHit(_ sender: AnyObject) {

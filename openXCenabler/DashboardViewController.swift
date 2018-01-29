@@ -48,18 +48,20 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // grab VM instance
     vm = VehicleManager.sharedInstance
     
-    // set default measurement target
-    vm.setMeasurementDefaultTarget(self, action: DashboardViewController.default_measurement_change)
-    
     // initialize dictionary/table
     dashDict = NSMutableDictionary()
     dashTable.reloadData()
     
+    // set default measurement target
+    vm.setMeasurementDefaultTarget(self, action: DashboardViewController.default_measurement_change)
+
     locationManager.delegate=self;
     locationManager.desiredAccuracy=kCLLocationAccuracyBest;
     locationManager.distanceFilter=500;
     locationManager.requestWhenInUseAuthorization()
 
+    
+   
     
   }
   
@@ -98,7 +100,11 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
       dweetLoop = Timer.scheduledTimer(timeInterval: 1.5, target:self, selector:#selector(sendDweet), userInfo: nil, repeats:true)
     }
 
-
+    if(!vm.isBleConnected){
+        
+        AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
+        
+    }
   }
 
   override func viewWillDisappear(_ animated: Bool) {

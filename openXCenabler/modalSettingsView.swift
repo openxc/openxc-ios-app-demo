@@ -194,7 +194,6 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
        // networkData.text = name as String
         let searchCharacter: Character = ":"
         if Ip.lowercased().characters.contains(searchCharacter) {
-           // print("word contains \(search Character)")
 
        // if (Ip != ""){
        
@@ -371,13 +370,5 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     }
   }
 
-    /*func callBack(){
-        if (VehicleManager.sharedInstance.isNetworkConnected){
-            let alertController = UIAlertController(title: "", message:
-                "connected sucessfully", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }*/
   
 }

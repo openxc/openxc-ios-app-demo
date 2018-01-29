@@ -10,7 +10,7 @@ import UIKit
 import openXCiOSFramework
 
 
-class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
     
     // the VM
     var vm: VehicleManager!
@@ -52,7 +52,7 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         super.viewDidLoad()
        
         hideAll()
-        
+      
         acitivityInd.center = self.view.center
         acitivityInd.hidesWhenStopped = true
         acitivityInd.activityIndicatorViewStyle =
@@ -77,11 +77,21 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if(!vm.isBleConnected){
+            
+            AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
+
+          }
+    }
     // MARK: Commands Function
 
     @IBAction func sendCmnd() {
+        
         let sRow = pickerView.selectedRow(inComponent: 0)
         
+        
+        if(vm.isBleConnected){
         
         switch sRow {
         case 0:
@@ -166,6 +176,10 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         default:
             break
         }
+        }else{
+            
+            AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage: errorMsgBLE)
+        }
 
     }
     
@@ -216,7 +230,7 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func busSegmentedControlValueChanged() {
       
        
-        let selectedSegment = busSeg.selectedSegmentIndex
+        //let selectedSegment = busSeg.selectedSegmentIndex
 
     }
 
