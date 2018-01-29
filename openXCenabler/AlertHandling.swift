@@ -7,21 +7,29 @@
 //
 
 import UIKit
-private let _sharedInstance = AlertHandling()
 
-class AlertHandling {
 
-    fileprivate var alert:UIAlertController?
+open class AlertHandling : NSObject {
+
+    static let _sharedInstance = AlertHandling()
+    public var alert:UIAlertController?
     
 //    fileprivate init(){
 //    }
 //
-    class var sharedInstance:AlertHandling{
-        return _sharedInstance
+//   open class var sharedInstance:AlertHandling{
+//        return _sharedInstance
+//    }
+    // Initialization
+    static open let sharedInstance: AlertHandling = {
+        let instance = AlertHandling()
+        return instance
+    }()
+    fileprivate override init() {
+        //connecting = false
     }
     
-    
-    func showAlert(onViewController viewController:UIViewController, withText text:String, withMessage message:String, style:UIAlertControllerStyle = .alert, actions:UIAlertAction...){
+   open func showAlert(onViewController viewController:UIViewController, withText text:String, withMessage message:String, style:UIAlertControllerStyle = .alert, actions:UIAlertAction...){
         alert = UIAlertController(title: text, message: message, preferredStyle: style)
         if actions.count == 0{
             alert!.addAction(self.getAlertAction(withTitle: "OK", handler: { _ -> Void in
@@ -36,7 +44,7 @@ class AlertHandling {
         viewController.present(alert!, animated: true, completion: nil)
     }
     
-    func getAlertAction(withTitle title:String, style:UIAlertActionStyle = .default, handler:((UIAlertAction)->Void)?)->UIAlertAction{
+    open func getAlertAction(withTitle title:String, style:UIAlertActionStyle = .default, handler:((UIAlertAction)->Void)?)->UIAlertAction{
         return UIAlertAction(title: title, style: style, handler: handler)
     }
 

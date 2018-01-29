@@ -10,7 +10,7 @@ import UIKit
 import openXCiOSFramework
 
 
-class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
     
     // the VM
     var vm: VehicleManager!
