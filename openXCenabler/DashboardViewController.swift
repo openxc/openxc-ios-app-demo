@@ -100,12 +100,12 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
       dweetLoop = Timer.scheduledTimer(timeInterval: 1.5, target:self, selector:#selector(sendDweet), userInfo: nil, repeats:true)
     }
 
-        if(!vm.isBleConnected){
-            let alertController = UIAlertController(title: "", message:
-                "BLE is not connected to the Device", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-        }
+
+    if(!vm.isBleConnected){
+        
+        AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
+        
+    }
   }
 
   override func viewWillDisappear(_ animated: Bool) {

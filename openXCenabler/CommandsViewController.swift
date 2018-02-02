@@ -10,7 +10,7 @@ import UIKit
 import openXCiOSFramework
 
 
-class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
     
     // the VM
     var vm: VehicleManager!
@@ -52,7 +52,7 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         super.viewDidLoad()
        
         hideAll()
-        
+      
         acitivityInd.center = self.view.center
         acitivityInd.hidesWhenStopped = true
         acitivityInd.activityIndicatorViewStyle =
@@ -78,13 +78,12 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if(vm.isBleConnected){
-    }else{
-    let alertController = UIAlertController(title: "", message:
-    "BLE is not connected to the Device", preferredStyle: UIAlertControllerStyle.alert)
-    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-    self.present(alertController, animated: true, completion: nil)
-    }
+
+        if(!vm.isBleConnected){
+            
+            AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
+
+          }
     }
     // MARK: Commands Function
 
@@ -179,10 +178,8 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             break
         }
         }else{
-            let alertController = UIAlertController(title: "", message:
-                "BLE is not connected to the Device", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-            self.present(alertController, animated: true, completion: nil)
+            AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage: errorMsgBLE)
+
         }
 
     }

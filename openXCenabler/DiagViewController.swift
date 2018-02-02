@@ -45,10 +45,8 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidAppear(_ animated: Bool) {
         if(!vm.isBleConnected){
-            let alertController = UIAlertController(title: "", message:
-                "BLE is not connected to the Device", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-            self.present(alertController, animated: true, completion: nil)
+
+            AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
         }
     }
   func default_diag_rsp(_ rsp:NSDictionary) {
