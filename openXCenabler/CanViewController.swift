@@ -43,8 +43,8 @@ class CanViewController: UIViewController, UITableViewDelegate, UITableViewDataS
   
     override func viewDidAppear(_ animated: Bool) {
         if(!vm.isBleConnected){
-            
             AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
+
         }
     }
   

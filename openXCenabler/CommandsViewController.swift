@@ -78,6 +78,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
+
         if(!vm.isBleConnected){
             
             AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
@@ -177,8 +178,8 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             break
         }
         }else{
-            
             AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage: errorMsgBLE)
+
         }
 
     }
@@ -188,9 +189,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         // extract the command response message
         let cr = rsp.object(forKey: "vehiclemessage") as! VehicleCommandResponse
         
-        
         // update the UI depending on the command type- version,device_id works for JSON mode, not in protobuf - TODO
-        
         
         if cr.command_response.isEqual(to: "version") {
                 versionResp = cr.message as String

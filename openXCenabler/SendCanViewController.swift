@@ -45,6 +45,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
         if(!vm.isBleConnected){
             
             AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
+
         }
     }
   

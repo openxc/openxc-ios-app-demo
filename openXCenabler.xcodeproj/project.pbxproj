@@ -19,6 +19,8 @@
 		3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834421D5ED054003FD370 /* SendCanViewController.swift */; };
 		3AE834461D5ED054003FD370 /* DiagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834431D5ED054003FD370 /* DiagViewController.swift */; };
 		3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834441D5ED054003FD370 /* CanViewController.swift */; };
+		7D17BF5720105CBB00F176D8 /* CommandViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D17BF5620105CBB00F176D8 /* CommandViewControllerTest.swift */; };
+		7D17BF5B20107F5A00F176D8 /* StatusViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D17BF5A20107F5A00F176D8 /* StatusViewControllerTest.swift */; };
 		7D33AE312019E71100224782 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D33AE2F2019E71000224782 /* openXCiOSFramework.framework */; };
 		7D37A6B6201EF4B200734F55 /* CommandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D37A6B5201EF4B200734F55 /* CommandsViewController.swift */; };
 		7D83F8672017172C00E989D1 /* AlertHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D83F8662017172C00E989D1 /* AlertHandling.swift */; };
@@ -27,6 +29,7 @@
 		7DB633EA1F9F247100519A8B /* openXCiOSFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7DCC147820063C8B00DF5794 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4692D51FDFE5210022DF98 /* ProtocolBuffers.framework */; };
 		7DCC147920063C8B00DF5794 /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4692D51FDFE5210022DF98 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7DF339E6200F148E00935D96 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF339E4200F148E00935D96 /* openXCiOSFramework.framework */; };
 		E75EE6931E110ED400B2AE3B /* openXCenablerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */; };
 		E78190A81ECC5B9000DE3B18 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B85B511ECC373500A3E5CB /* ProtocolBuffers.framework */; };
 /* End PBXBuildFile section */
@@ -92,6 +95,9 @@
 		3AE834421D5ED054003FD370 /* SendCanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCanViewController.swift; sourceTree = "<group>"; };
 		3AE834431D5ED054003FD370 /* DiagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagViewController.swift; sourceTree = "<group>"; };
 		3AE834441D5ED054003FD370 /* CanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanViewController.swift; sourceTree = "<group>"; };
+		7D17BF5620105CBB00F176D8 /* CommandViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandViewControllerTest.swift; sourceTree = "<group>"; };
+		7D17BF5A20107F5A00F176D8 /* StatusViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewControllerTest.swift; sourceTree = "<group>"; };
+		7D4692D51FDFE5210022DF98 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ProtocolBuffers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D33AE2F2019E71000224782 /* openXCiOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = openXCiOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/openXCenabler-aqgcinribrasdxdcauflwrtjddga/Build/Products/Debug-iphonesimulator/openXCiOSFramework.framework"; sourceTree = "<group>"; };
 		7D37A6B5201EF4B200734F55 /* CommandsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandsViewController.swift; sourceTree = "<group>"; };
 		7D4692D51FDFE5210022DF98 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ProtocolBuffers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,6 +116,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 				7DCC147820063C8B00DF5794 /* ProtocolBuffers.framework in Frameworks */,
 				E78190A81ECC5B9000DE3B18 /* ProtocolBuffers.framework in Frameworks */,
 				7D33AE312019E71100224782 /* openXCiOSFramework.framework in Frameworks */,
@@ -175,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */,
+				7D17BF5620105CBB00F176D8 /* CommandViewControllerTest.swift */,
+				7D17BF5A20107F5A00F176D8 /* StatusViewControllerTest.swift */,
 				E75EE6941E110ED400B2AE3B /* Info.plist */,
 			);
 			path = openXCenablerTests;
@@ -348,6 +357,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D17BF5B20107F5A00F176D8 /* StatusViewControllerTest.swift in Sources */,
+				7D17BF5720105CBB00F176D8 /* CommandViewControllerTest.swift in Sources */,
+				E79380711EB20201000EF3FF /* CommandsViewController.swift in Sources */,
 				E75EE6931E110ED400B2AE3B /* openXCenablerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
