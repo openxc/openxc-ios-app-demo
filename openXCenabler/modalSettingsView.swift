@@ -41,7 +41,7 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
    //ranjan added code for Network data
   @IBOutlet weak var networkDataswitch: UISwitch!
     var NM : NetworkData!
-  
+    var tfd: TraceFileData!
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -50,7 +50,8 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     
     appVersion.text = versionNumberString
     NM = NetworkData.sharedInstance
-
+    tfd = TraceFileData.sharedInstance
+    
     // watch for changes to trace file output file name field
     recname.addTarget(self, action: #selector(recFieldDidChange), for: UIControlEvents.editingChanged)
     recname.isHidden = true
@@ -77,6 +78,7 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     if traceOutOn == true {
       recswitch.setOn(true, animated:false)
       recname.isHidden = false
+      //tfd.traceFilesinkEnabled = true
     }
     if let name = UserDefaults.standard.value(forKey: "traceOutputFilename") as? NSString {
       recname.text = name as String
@@ -176,8 +178,7 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
       dweetname.isHidden = false
       dweetnamelabel.isHidden = false
     }
-    
-    
+
   }
 
   // text view delegate to clear keyboard
@@ -187,9 +188,19 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     networkDataFetch(Ip: textField.text!)
     
     }
+    if textField.tag == 102{
+        if UserDefaults.standard.bool(forKey: "traceInputOn") {
+            if let name = UserDefaults.standard.value(forKey: "traceInputFilename") as? NSString {
+                tfd.enableTraceFileSource(name)
+       
+            }
+        }
+        
+    }
     return true;
   }
-  //ranjan added code for Network data
+    
+    //ranjan added code for Network data
     func networkDataFetch(Ip:String)  {
        // networkData.text = name as String
         let searchCharacter: Character = ":"
@@ -221,10 +232,10 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
                 self.present(alertController, animated: true, completion: nil)
             }
         }else{
-            let alertController = UIAlertController(title: "", message:
-                "Please enter valid IP and host name", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-            self.present(alertController, animated: true, completion: nil)
+//            let alertController = UIAlertController(title: "", message:
+//                "Please enter valid IP and host name", preferredStyle: UIAlertControllerStyle.alert)
+//            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+//            self.present(alertController, animated: true, completion: nil)
         }
 
     }
@@ -273,8 +284,10 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     UserDefaults.standard.set(sender.isOn, forKey:"traceOutputOn")
     if sender.isOn {
       recname.isHidden = false
+     //tfd.traceFilesinkEnabled = true
     } else {
       recname.isHidden = true
+        //tfd.traceFilesinkEnabled = false
     }
   }
   @IBAction func dweetChange(_ sender: UISwitch) {
@@ -306,10 +319,13 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
             networkDataFetch(Ip: name as String)
             }
         }
-    }else{
-        
     }
-    
+    let traceInOn = UserDefaults.standard.bool(forKey: "traceInputOn")
+    // update UI if necessary
+    if traceInOn {
+        playname.becomeFirstResponder()
+    }
+
   }
   // the trace output enabled switch changed, save it's new value
   // and show or hide the text field for filename accordingly
@@ -317,8 +333,11 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     UserDefaults.standard.set(sender.isOn, forKey:"traceInputOn")
     if sender.isOn {
       playname.isHidden = false
+        playname.becomeFirstResponder()
     } else {
-      playname.isHidden = true
+        playname.resignFirstResponder()
+        playname.isHidden = true
+        tfd.disableTraceFileSource()
     }
   }
   // autoconnect switch changed, save it's value
@@ -340,13 +359,14 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     
         if sender.isOn {
             networkData.isHidden = false
+            networkData.becomeFirstResponder()
             UserDefaults.standard.set(sender.isOn, forKey:"networkdataOn")
         } else {
             networkData.isHidden = true
+            networkData.resignFirstResponder()
             UserDefaults.standard.set(false, forKey:"networkdataOn")
             UserDefaults.standard.set("", forKey:"networkAdress")
             NetworkData.sharedInstance.disconnectConnection()
-            
         }
     }
     

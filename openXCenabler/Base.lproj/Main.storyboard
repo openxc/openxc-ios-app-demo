@@ -461,7 +461,7 @@
                         <outlet property="NetworkImg" destination="qIm-dJ-9e6" id="FI8-eF-XGm"/>
                         <outlet property="actConLab" destination="twl-J0-AhF" id="Wcj-SL-8bT"/>
                         <outlet property="devidLab" destination="XOY-Ud-hZJ" id="DGt-jK-6T7"/>
-                        <outlet property="msgRvcdLab" destination="vmt-cZ-dyk" id="wNj-04-A8Y"/>
+                        <outlet property="msgRvcdLab" destination="vmt-cZ-dyk" id="RZy-ok-qYs"/>
                         <outlet property="peripheralTable" destination="nMN-Fz-g6C" id="8vC-vC-oIH"/>
                         <outlet property="platformLab" destination="Xi9-ZS-hYJ" id="tG2-84-yrs"/>
                         <outlet property="searchBtn" destination="pPj-fy-gM3" id="d2X-TH-VKG"/>
@@ -1084,13 +1084,13 @@
                                             <action selector="sensorChange:" destination="BHx-Nq-eLz" eventType="valueChanged" id="iFx-o9-lmI"/>
                                         </connections>
                                     </switch>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YNd-zw-uzn" userLabel="inFilename">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YNd-zw-uzn" userLabel="inFilename">
                                         <rect key="frame" x="42" y="85" width="170" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="170" id="BMB-AZ-nBs"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go"/>
                                         <connections>
                                             <outlet property="delegate" destination="BHx-Nq-eLz" id="YRC-lo-aEq"/>
                                         </connections>

@@ -14,12 +14,7 @@ open class AlertHandling : NSObject {
     static let _sharedInstance = AlertHandling()
     public var alert:UIAlertController?
     
-//    fileprivate init(){
-//    }
-//
-//   open class var sharedInstance:AlertHandling{
-//        return _sharedInstance
-//    }
+
     // Initialization
     static open let sharedInstance: AlertHandling = {
         let instance = AlertHandling()

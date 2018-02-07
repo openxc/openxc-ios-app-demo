@@ -21,7 +21,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   
   
   var vm: VehicleManager!
-  
+  var bm: BluetoothManager!
   // dictionary holding name/value from measurement messages
   var dashDict: NSMutableDictionary!
   
@@ -47,7 +47,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // grab VM instance
     vm = VehicleManager.sharedInstance
-    
+    bm = BluetoothManager.sharedInstance
     // initialize dictionary/table
     dashDict = NSMutableDictionary()
     dashTable.reloadData()
@@ -60,9 +60,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     locationManager.distanceFilter=500;
     locationManager.requestWhenInUseAuthorization()
 
-    
-   
-    
+
   }
   
   override func viewDidAppear(_ animated: Bool) {
@@ -99,9 +97,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     if UserDefaults.standard.bool(forKey: "dweetOutputOn") {
       dweetLoop = Timer.scheduledTimer(timeInterval: 1.5, target:self, selector:#selector(sendDweet), userInfo: nil, repeats:true)
     }
-
-    if(!vm.isBleConnected){
-        
+    
+    if(!bm.isBleConnected && !vm.isTraceFileConnected){
         AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
         
     }
@@ -308,9 +305,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     } catch {
     
     }
-    
-  
-    
+
   }
   
     private func connection(_ connection: NSURLConnection!, didReceiveData data: Data!){

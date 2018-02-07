@@ -15,6 +15,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     // the VM
     var vm: VehicleManager!
     var cm: Command!
+    var bm: BluetoothManager!
     
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var responseLab: UILabel!
@@ -62,6 +63,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         // grab VM instance
         vm = VehicleManager.sharedInstance
         cm = Command.sharedInstance
+        bm = BluetoothManager.sharedInstance
        // vm.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
         vm.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
         //vm.cmdObj?.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
@@ -78,7 +80,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if(!vm.isBleConnected){
+        if(!bm.isBleConnected){
             
             AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
 
@@ -91,7 +93,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         let sRow = pickerView.selectedRow(inComponent: 0)
         
         
-        if(vm.isBleConnected){
+        if(bm.isBleConnected){
         
         switch sRow {
         case 0:
