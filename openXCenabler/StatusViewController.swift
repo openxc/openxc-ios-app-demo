@@ -66,6 +66,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.actConLab.text = ""
                 self.searchBtn.setTitle("WIFI CONNECTED",for:UIControlState())
                 return
+
             }else{
                 self.NetworkImg.isHidden = true
                 self.actConLab.text = "---"
@@ -77,6 +78,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
                     self.present(alertController, animated: true, completion: nil)
                 }
+
             }
         }
     }
