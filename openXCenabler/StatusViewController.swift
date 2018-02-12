@@ -66,17 +66,17 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.actConLab.text = ""
                 self.searchBtn.setTitle("WIFI CONNECTED",for:UIControlState())
                 return
-            }
-        }else{
-            self.NetworkImg.isHidden = true
-            self.actConLab.text = "---"
-            self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
-            let networkOn = UserDefaults.standard.bool(forKey: "networkdataOn")
-            if(networkOn){
-                let alertController = UIAlertController(title: "", message:
-                    "No Data please check the host adress", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-                self.present(alertController, animated: true, completion: nil)
+            }else{
+                self.NetworkImg.isHidden = true
+                self.actConLab.text = "---"
+                self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
+                let networkOn = UserDefaults.standard.bool(forKey: "networkdataOn")
+                if(networkOn){
+                    let alertController = UIAlertController(title: "", message:
+                        "No Data please check the host adress", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+                }
             }
         }
     }
