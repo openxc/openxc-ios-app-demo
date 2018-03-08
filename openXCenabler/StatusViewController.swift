@@ -59,7 +59,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     override func viewDidAppear(_ animated: Bool) {
         let name = UserDefaults.standard.value(forKey: "networkAdress") as? NSString
-        if name != ""{
+        if name != nil{
             // networkDataFetch(Ip: name as String)
             if (vm.isNetworkConnected){
                 self.NetworkImg.isHidden = false
