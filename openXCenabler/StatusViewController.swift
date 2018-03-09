@@ -258,30 +258,30 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
          
         // extract the command response message
         let cr = rsp.object(forKey: "vehiclemessage") as! VehicleCommandResponse
-
+        
         
         // update the UI depending on the command type- version,device_id works for JSON mode, not in protobuf - TODO
         
         var cvc:CommandsViewController?
         let vcCount = self.tabBarController?.viewControllers?.count
         cvc = self.tabBarController?.viewControllers?[vcCount!-1] as! CommandsViewController?
-
-        if cr.command_response.isEqual(to: "version") {
+        
+        if cr.command_response.isEqual(to: "version") || cr.command_response.isEqual(to: ".version") {
             DispatchQueue.main.async {
                 self.verLab.text = cr.message as String
             }
             cvc?.versionResp = String(cr.message)
-          
-
+            
+            
         }
-        if cr.command_response.isEqual(to: "device_id") {
+        if cr.command_response.isEqual(to: "device_id") || cr.command_response.isEqual(to: ".deviceid"){
             DispatchQueue.main.async {
                 self.devidLab.text = cr.message as String
             }
             cvc?.deviceIdResp = String(cr.message)
-           
+            
         }
-        if cr.command_response.isEqual(to: "platform") {
+        if cr.command_response.isEqual(to: "platform") || cr.command_response.isEqual(to: ".platform") {
             DispatchQueue.main.async {
                 self.platformLab.text = cr.message as String
             }

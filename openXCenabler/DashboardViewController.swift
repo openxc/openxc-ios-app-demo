@@ -196,9 +196,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     if v is NSNumber {
       let nv = v as! NSNumber
       if nv.isEqual(to: NSNumber(value: true as Bool)) {
-        cell!.detailTextLabel?.text = "true"
+        cell!.detailTextLabel?.text = "On"
       } else if nv.isEqual(to: NSNumber(value: false as Bool)) {
-        cell!.detailTextLabel?.text = "false"
+        cell!.detailTextLabel?.text = "Off"
       } else {
         // round any floating points
         let nvr = Double(round(10.0*Double(nv))/10)

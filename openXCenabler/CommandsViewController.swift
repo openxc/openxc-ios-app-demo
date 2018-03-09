@@ -68,7 +68,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         
         selectedRowInPicker = pickerView.selectedRow(inComponent: 0)
        
-        populateCommandResponseLabel(rowNum: selectedRowInPicker)
+        //populateCommandResponseLabel(rowNum: selectedRowInPicker)
         
         busSeg.addTarget(self, action: #selector(busSegmentedControlValueChanged), for: .valueChanged)
         enabSeg.addTarget(self, action: #selector(enabSegmentedControlValueChanged), for: .valueChanged)
@@ -95,10 +95,18 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         
         switch sRow {
         case 0:
-            responseLab.text = versionResp
+
+            let cm = VehicleCommandRequest()
+            cm.command = .version
+            self.cm.sendCommand(cm)
+            showActivityIndicator()
             break
         case 1:
             responseLab.text = deviceIdResp
+            let cm = VehicleCommandRequest()
+            cm.command = .device_id
+            self.cm.sendCommand(cm)
+            showActivityIndicator()
             break
         case 2:
 
@@ -192,31 +200,31 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         // update the UI depending on the command type- version,device_id works for JSON mode, not in protobuf - TODO
         
         
-        if cr.command_response.isEqual(to: "version") {
-                versionResp = cr.message as String
+        if cr.command_response.isEqual(to: ".version") || cr.command_response.isEqual(to: ".version") {
+            versionResp = cr.message as String
         }
-        if cr.command_response.isEqual(to: "device_id") {
-                deviceIdResp = cr.message as String
+        if cr.command_response.isEqual(to: "device_id") || cr.command_response.isEqual(to: ".deviceid") {
+            deviceIdResp = cr.message as String
         }
         
-        if cr.command_response.isEqual(to: "passthrough") {
+        if cr.command_response.isEqual(to: "passthrough") || cr.command_response.isEqual(to: ".passthrough") {
             passthroughResp = String(cr.status)
         }
         
-        if cr.command_response.isEqual(to: "af_bypass") {
+        if cr.command_response.isEqual(to: "af_bypass") || cr.command_response.isEqual(to: ".acceptancefilterbypass"){
             accFilterBypassResp = String(cr.status)
         }
         
-        if cr.command_response.isEqual(to: "payload_format") {
+        if cr.command_response.isEqual(to: "payload_format") || cr.command_response.isEqual(to: ".payloadformat") {
             payloadFormatResp = String(cr.status)
         }
-        if cr.command_response.isEqual(to: "platform") {
+        if cr.command_response.isEqual(to: "platform") || cr.command_response.isEqual(to: ".platform") {
             platformResp = cr.message as String
         }
-        if cr.command_response.isEqual(to: "rtc_configuration") {
+        if cr.command_response.isEqual(to: "rtc_configuration") || cr.command_response.isEqual(to: ".rtcconfiguration"){
             rtcConfigResp = String(cr.status)
         }
-        if cr.command_response.isEqual(to: "sd_mount_status") {
+        if cr.command_response.isEqual(to: "sd_mount_status") || cr.command_response.isEqual(to: ".sdmountstatus") {
             sdCardResp = String(cr.status)
         }
         // update the label
@@ -270,6 +278,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         
         selectedRowInPicker = row
         populateCommandResponseLabel(rowNum: row)
+        responseLab.text = "---"
         
     }
     
@@ -281,11 +290,11 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
 
         switch rowNum {
         case 0:
-            sendCmndButton.isHidden = true
+            sendCmndButton.isHidden = false
             responseLab.text = versionResp
             break
         case 1:
-            sendCmndButton.isHidden = true
+            sendCmndButton.isHidden = false
             responseLab.text = deviceIdResp
             break
         case 2:
@@ -323,7 +332,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             responseLab.text = sdCardResp
             break
         default:
-            sendCmndButton.isHidden = true
+            sendCmndButton.isHidden = false
             responseLab.text = versionResp
         }
     }
