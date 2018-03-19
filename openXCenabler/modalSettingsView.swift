@@ -205,7 +205,6 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
        // networkData.text = name as String
         let searchCharacter: Character = ":"
         if Ip.lowercased().characters.contains(searchCharacter) {
-
        // if (Ip != ""){
        
         var myStringArr = Ip.components(separatedBy: ":")

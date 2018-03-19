@@ -65,7 +65,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
 
     override func viewDidAppear(_ animated: Bool) {
         let name = UserDefaults.standard.value(forKey: "networkAdress") as? NSString
-        if name != ""{
+        if name != nil || name == ""{
             // networkDataFetch(Ip: name as String)
             if (vm.isNetworkConnected){
                 self.NetworkImg.isHidden = false
@@ -76,7 +76,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.NetworkImg.isHidden = true
                 self.actConLab.text = "---"
                 self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
-                let networkOn = UserDefaults.standard.bool(forKey: "networkdataOn")
+                //let networkOn = UserDefaults.standard.bool(forKey: "networkdataOn")
                 
             }
         }
@@ -285,7 +285,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let vcCount = self.tabBarController?.viewControllers?.count
         cvc = self.tabBarController?.viewControllers?[vcCount!-1] as! CommandsViewController?
 
-        if cr.command_response.isEqual(to: "version") {
+        if cr.command_response.isEqual(to: "version") || cr.command_response.isEqual(to: ".version"){
             DispatchQueue.main.async {
                 self.verLab.text = cr.message as String
             }
@@ -293,14 +293,14 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
           
 
         }
-        if cr.command_response.isEqual(to: "device_id") {
+        if cr.command_response.isEqual(to: "device_id") || cr.command_response.isEqual(to: ".deviceid"){
             DispatchQueue.main.async {
                 self.devidLab.text = cr.message as String
             }
             cvc?.deviceIdResp = String(cr.message)
            
         }
-        if cr.command_response.isEqual(to: "platform") {
+        if cr.command_response.isEqual(to: "platform") || cr.command_response.isEqual(to: ".platform") {
             DispatchQueue.main.async {
                 self.platformLab.text = cr.message as String
             }

@@ -9,14 +9,13 @@
 import UIKit
 import openXCiOSFramework
 
-
-class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
+class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UITextFieldDelegate {
     
     // the VM
     var vm: VehicleManager!
     var cm: Command!
     var bm: BluetoothManager!
-    
+    var ObjectDic : NSMutableDictionary = NSMutableDictionary()
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var responseLab: UILabel!
     
@@ -34,8 +33,10 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
 
     @IBOutlet weak var acitivityInd: UIActivityIndicatorView!
 
+    @IBOutlet weak var customCommandTF : UITextField!
+    @IBOutlet weak var customCommandLbl : UILabel!
     
-    let commands = ["Version","Device Id","Passthrough CAN Mode","Acceptance Filter Bypass","Payload Format JSON", "Platform", "RTC Config", "SD Card Status"]
+    let commands = ["Version","Device Id","Passthrough CAN Mode","Acceptance Filter Bypass","Payload Format JSON", "Platform", "RTC Config", "SD Card Status","Custom Command"]
     
     var versionResp: String!
     var deviceIdResp: String!
@@ -45,6 +46,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     var platformResp: String!
     var rtcConfigResp: String!
     var sdCardResp: String!
+    var customCommandResp: String!
 
     var selectedRowInPicker: Int!
 
@@ -53,24 +55,23 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         super.viewDidLoad()
        
         hideAll()
-      
+        
+        customCommandTF.delegate = self
         acitivityInd.center = self.view.center
         acitivityInd.hidesWhenStopped = true
-        acitivityInd.activityIndicatorViewStyle =
-            UIActivityIndicatorViewStyle.whiteLarge
+        acitivityInd.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
         acitivityInd.isHidden = true
         
         // grab VM instance
         vm = VehicleManager.sharedInstance
         cm = Command.sharedInstance
         bm = BluetoothManager.sharedInstance
-       // vm.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
         vm.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
+        
         //vm.cmdObj?.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
         
         selectedRowInPicker = pickerView.selectedRow(inComponent: 0)
-       
-        populateCommandResponseLabel(rowNum: selectedRowInPicker)
+        //populateCommandResponseLabel(rowNum: selectedRowInPicker)
         
         busSeg.addTarget(self, action: #selector(busSegmentedControlValueChanged), for: .valueChanged)
         enabSeg.addTarget(self, action: #selector(enabSegmentedControlValueChanged), for: .valueChanged)
@@ -85,25 +86,119 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
 
           }
+
     }
     // MARK: Commands Function
 
     @IBAction func sendCmnd() {
         
         let sRow = pickerView.selectedRow(inComponent: 0)
-        
-        
+
+       
         if(bm.isBleConnected){
+            
+            if (sRow == 8){
+                self.convertToJson(string: customCommandTF.text!)
+                let jsonString = self.createJSON()
+                let value = validJson(strValue: jsonString)
+                if value{
+                   let cm1 = VehicleCommandRequest()
+                    cm1.command = .custom_command
+                    cm.customCommand(jsonString: jsonString)
+                    showActivityIndicator()
+                    
+                }else{
+                    print("Alert show")
+                }
+                
+            }else{
+            self.sendCommandWithValue(sRow: sRow)
+            }
+
+        }else{
+    
+            AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage: errorMsgBLE)
+        }
+
+    }
+
+    func convertDict(cleanedstring:String){
+        let searchCharacter: Character = ","
+        let searchCharacter1: Character = ":"
+        if cleanedstring.lowercased().characters.contains(searchCharacter) {
+            let fullNameArr = cleanedstring.split(separator: ",")
+            for  dataValue in fullNameArr{
+                if dataValue.lowercased().characters.contains(searchCharacter1) {
+                    let badchar = CharacterSet(charactersIn: "\"{}[]")
+                    let cleanedstring = dataValue.components(separatedBy: badchar).joined()
+                    let newString3 = cleanedstring.replacingOccurrences(of: "\"", with: "")
+                    let fullNameArr2 = newString3.split(separator: ":")
+                    
+                    ObjectDic[fullNameArr2[0]] = fullNameArr2[1]
+                }
+            }
+            
+            print(ObjectDic)
+        }else{
+            let fullNameArr2 = cleanedstring.split(separator: ":")
+            ObjectDic[fullNameArr2[0]] = fullNameArr2[1]
+            print(ObjectDic)
+        }
+    }
+    func convertToJson(string:String){
+
+        let trimmedString = string.trimmingCharacters(in: CharacterSet(charactersIn: "{}"))
+        
+        self.convertDict(cleanedstring: trimmedString)
+
+    }
+    
+    func createJSON() -> String{
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: ObjectDic, options: [])
+        let jsonString = String(data: jsonData!, encoding: .utf8)
+        print(jsonString as Any)
+        
+        return jsonString!
+        
+    }
+    func validJson(strValue:String) -> Bool {
+        
+        if (JSONSerialization.isValidJSONObject(ObjectDic)) {
+           // print("Valid Json")
+            return true
+        } else {
+           // print("InValid Json")
+            return false
+        }
+        
+    }
+
+
+
+    func  sendCommandWithValue(sRow:NSInteger){
         
         switch sRow {
         case 0:
-            responseLab.text = versionResp
+            //responseLab.text = ""
+            let cm = VehicleCommandRequest()
+            cm.command = .version
+            self.vm.sendCommand(cm)
+            // activity indicator
+            
+            showActivityIndicator()
             break
         case 1:
-            responseLab.text = deviceIdResp
+            //responseLab.text = ""
+            let cm = VehicleCommandRequest()
+            cm.command = .device_id
+            self.vm.sendCommand(cm)
+            // activity indicator
+            
+            showActivityIndicator()
             break
         case 2:
-
+            
             let cm = VehicleCommandRequest()
             
             // look at segmented control for bus
@@ -118,7 +213,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             }
             
             cm.command = .passthrough
-            self.cm.sendCommand(cm)
+            self.vm.sendCommand(cm)
             // activity indicator
             
             showActivityIndicator()
@@ -130,8 +225,8 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             
             // look at segmented control for bus
             cm.bus = busSeg.selectedSegmentIndex + 1
-           
-
+            
+            
             if bypassSeg.selectedSegmentIndex==0 {
                 cm.bypass = true
             } else {
@@ -139,7 +234,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             }
             
             cm.command = .af_bypass
-            self.cm.sendCommand(cm)
+            self.vm.sendCommand(cm)
             showActivityIndicator()
             break
         case 4:
@@ -152,38 +247,42 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
                 cm.format = "protobuf"
             }
             cm.command = .payload_format
-            self.cm.sendCommand(cm)
+            self.vm.sendCommand(cm)
             showActivityIndicator()
             break
         case 5:
             
             let cm = VehicleCommandRequest()
             cm.command = .platform
-            self.cm.sendCommand(cm)
+            self.vm.sendCommand(cm)
             showActivityIndicator()
             break
         case 6:
             let cm = VehicleCommandRequest()
             cm.command = .rtc_configuration
-            self.cm.sendCommand(cm)
+            self.vm.sendCommand(cm)
             showActivityIndicator()
             break
         case 7:
-           
+            
             let cm = VehicleCommandRequest()
             cm.command = .sd_mount_status
-            self.cm.sendCommand(cm)
+            self.vm.sendCommand(cm)
             showActivityIndicator()
+            break
+        case 8:
+            
+            let cm = VehicleCommandRequest()
+                cm.command = .custom_command
+                self.cm.sendCommand(cm)
+                showActivityIndicator()
+            
             break
         default:
             break
         }
-        }else{
-            
-            AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage: errorMsgBLE)
-        }
-
     }
+    
     
     // this function handles all command responses
     func handle_cmd_response(_ rsp:NSDictionary) {
@@ -193,33 +292,34 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         
         // update the UI depending on the command type- version,device_id works for JSON mode, not in protobuf - TODO
         
-        
-        if cr.command_response.isEqual(to: "version") {
+        if cr.command_response.isEqual(to: "version") || cr.command_response.isEqual(to: ".version") {
                 versionResp = cr.message as String
         }
-        if cr.command_response.isEqual(to: "device_id") {
+        if cr.command_response.isEqual(to: "device_id") || cr.command_response.isEqual(to: ".deviceid"){
                 deviceIdResp = cr.message as String
         }
         
-        if cr.command_response.isEqual(to: "passthrough") {
+        if cr.command_response.isEqual(to: "passthrough") || cr.command_response.isEqual(to: ".passthrough"){
             passthroughResp = String(cr.status)
         }
         
-        if cr.command_response.isEqual(to: "af_bypass") {
+        if cr.command_response.isEqual(to: "af_bypass") || cr.command_response.isEqual(to: ".acceptancefilterbypass") {
             accFilterBypassResp = String(cr.status)
         }
         
-        if cr.command_response.isEqual(to: "payload_format") {
+        if cr.command_response.isEqual(to: "payload_format") || cr.command_response.isEqual(to: ".payloadformat") {
             payloadFormatResp = String(cr.status)
         }
-        if cr.command_response.isEqual(to: "platform") {
+        if cr.command_response.isEqual(to: "platform") || cr.command_response.isEqual(to: ".platform"){
             platformResp = cr.message as String
         }
-        if cr.command_response.isEqual(to: "rtc_configuration") {
+        if cr.command_response.isEqual(to: "rtc_configuration") || cr.command_response.isEqual(to: ".rtcconfiguration") {
             rtcConfigResp = String(cr.status)
         }
-        if cr.command_response.isEqual(to: "sd_mount_status") {
+        if cr.command_response.isEqual(to: "sd_mount_status") || cr.command_response.isEqual(to: ".sdmountstatus"){
             sdCardResp = String(cr.status)
+        }else{
+            customCommandResp = String(cr.message)
         }
         // update the label
         DispatchQueue.main.async {
@@ -228,10 +328,8 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     }
     
     // MARK: Segment Control Function
-    
     func busSegmentedControlValueChanged() {
       
-       
         //let selectedSegment = busSeg.selectedSegmentIndex
 
     }
@@ -272,7 +370,14 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         
         selectedRowInPicker = row
         populateCommandResponseLabel(rowNum: row)
-        
+        responseLab.text = "---"
+        if (row == 8){
+            customCommandTF.isHidden = false
+            customCommandLbl.isHidden = false
+        }else{
+            customCommandTF.isHidden = true
+            customCommandLbl.isHidden = true
+        }
     }
     
     // MARK: UI Function
@@ -283,11 +388,11 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
 
         switch rowNum {
         case 0:
-            sendCmndButton.isHidden = true
+            sendCmndButton.isHidden = false
             responseLab.text = versionResp
             break
         case 1:
-            sendCmndButton.isHidden = true
+            sendCmndButton.isHidden = false
             responseLab.text = deviceIdResp
             break
         case 2:
@@ -324,11 +429,16 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             sendCmndButton.isHidden = false
             responseLab.text = sdCardResp
             break
+        case 8:
+            sendCmndButton.isHidden = false
+            responseLab.text = customCommandResp
+            break
         default:
             sendCmndButton.isHidden = true
             responseLab.text = versionResp
         }
     }
+
     
     func hideAll() {
         busSeg.isHidden = true
@@ -339,6 +449,8 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         enabledLabel.isHidden = true
         bypassLabel.isHidden = true
         formatLabel.isHidden = true
+        //customCommandTF.isHidden = true
+        //customCommandLbl.isHidden = true
     }
     
     func showActivityIndicator() {
@@ -353,4 +465,67 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         self.view.isUserInteractionEnabled = true
         
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        customCommandTF.resignFirstResponder()
+        return true
+    }
+    
+    /*
+     func  getTheValueForKey() -> NSInteger {
+     
+     // let dict = convertToDictionary(text: strValue)
+     if let name = ObjectDic["command"] as? String{
+     if name.isEqual("version"){
+     return vehicleCommand.version.rawValue
+     }
+     else if name.isEqual("device_id") {
+     return vehicleCommand.device_id.rawValue
+     }
+     else if name.isEqual("passthrough") {
+     return vehicleCommand.passthrough.rawValue
+     }
+     else if name.isEqual( "af_bypass") {
+     return vehicleCommand.af_bypass.rawValue
+     }
+     else if name.isEqual( "payload_format") {
+     return vehicleCommand.payload_format.rawValue
+     }
+     else if name.isEqual( "platform") {
+     return vehicleCommand.platform.rawValue
+     }
+     else if name.isEqual ("rtc_configuration") {
+     return vehicleCommand.rtc_configuration.rawValue
+     }
+     else if name.isEqual( "sd_mount_status") {
+     return vehicleCommand.sd_mount_status.rawValue
+     }else{
+     return vehicleCommand.custom_command.rawValue
+     }
+     }
+     // print("value:-\(vechileCommand)")
+     return 8
+     }*/
+    
+    
+    
+    //    func JSONParseDictionary(string: String) -> [String: AnyObject]{
+    //        let jsonString = customCommandTF.text
+    //
+    //        if let data = jsonString?.data(using: String.Encoding.utf8){
+    //
+    //            do{
+    //                if let dictionary = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: AnyObject]{
+    //
+    //                    return dictionary
+    //
+    //                }
+    //            }catch {
+    //
+    //                print("error")
+    //            }
+    //        }
+    //        return [String: AnyObject]()
+    //    }
+  
 }

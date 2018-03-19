@@ -35,7 +35,6 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     // set default diag response target
     vm.setDiagnosticDefaultTarget(self, action: DiagViewController.default_diag_rsp)
 
-    
   }
   
   override func didReceiveMemoryWarning() {
@@ -55,18 +54,19 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
 
     
     // create the string we want to show in the received messages UI
-    var newTxt = "bus:"+vr.bus.description+" id:0x"+String(format:"%x",vr.message_id)+" mode:0x"+String(format:"%x",vr.mode)
+    var newTxt = "bus:"+vr.bus.description+" id:0x"+String(format:"%x",vr.message_id)+" mode:0x"+String(format:"%x",vr.mode)+"timestamp"+String(vr.timestamp)
     if vr.pid != nil {
       newTxt = newTxt+" pid:0x"+String(format:"%x",vr.pid!)
     }
     newTxt = newTxt+" success:"+vr.success.description
     if vr.value != nil {
       newTxt = newTxt+" value:"+vr.value!.description
-    } else {
+    }
+    else {
       newTxt = newTxt+" payload:"+(vr.payload.description)
     }
 
-    // save only the 5 response strings
+  // save only the 5 response strings
     if rspStrings.count>5 {
       rspStrings.removeFirst()
     }
@@ -187,11 +187,16 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
         return
     }
 
+     // Get the Unix timestamp
+    let timestamp = NSDate().timeIntervalSince1970
+    cmd.timestamp = NSInteger(timestamp)
+    
+    
     // send the diag request
     vm.sendDiagReq(cmd)
     
     // update the last request sent label
-    lastReq.text = "bus:"+String(cmd.bus)+" id:0x"+idField.text!+" mode:0x"+modeField.text!
+    lastReq.text = "bus:"+String(cmd.bus)+" id:0x"+idField.text!+" mode:0x"+modeField.text!+"timestamp"+String(timestamp)
     if cmd.pid != nil {
       lastReq.text = lastReq.text!+" pid:0x"+pidField.text!
     }
