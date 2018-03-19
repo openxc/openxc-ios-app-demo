@@ -12,6 +12,7 @@ import CoreMotion
 import CoreLocation
 import AVFoundation
 
+
 // TODO: ToDo - Work on removing the warnings
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, NSURLConnectionDelegate {
@@ -21,7 +22,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   
   
   var vm: VehicleManager!
-  
+  var vmu :VehicleMessageUnit!
   // dictionary holding name/value from measurement messages
   var dashDict: NSMutableDictionary!
   
@@ -47,7 +48,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // grab VM instance
     vm = VehicleManager.sharedInstance
-    
+    vmu = VehicleMessageUnit.sharedInstance
     // initialize dictionary/table
     dashDict = NSMutableDictionary()
     dashTable.reloadData()
@@ -187,14 +188,17 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // grab the value based on the name key
     let v = dashDict.object(forKey: k)
 
+    let valueMeasurement  = vmu.getMesurementUnit(key: k, value: v as AnyObject)
+
+   //print(valueMeasurement)
     // main text in table is the measurement name
     cell!.textLabel?.text = k
-    cell!.textLabel?.font = UIFont(name:"Arial", size: 14.0)
+    cell!.textLabel?.font = UIFont(name:"Arial", size: 13.0)
     cell!.textLabel?.textColor = UIColor.lightGray
     
     // figure out if the value is a bool/number/string
-    if v is NSNumber {
-      let nv = v as! NSNumber
+    if valueMeasurement is NSNumber {
+      let nv = valueMeasurement as! NSNumber
       if nv.isEqual(to: NSNumber(value: true as Bool)) {
         cell!.detailTextLabel?.text = "On"
       } else if nv.isEqual(to: NSNumber(value: false as Bool)) {
@@ -205,9 +209,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         cell!.detailTextLabel?.text = String(nvr)
       }
     } else {
-      cell!.detailTextLabel?.text = (v! as AnyObject).description
+      cell!.detailTextLabel?.text = (valueMeasurement as AnyObject).description
     }
-    cell!.detailTextLabel?.font = UIFont(name:"Arial", size: 14.0)
+    cell!.detailTextLabel?.font = UIFont(name:"Arial", size: 13.0)
     cell!.detailTextLabel?.textColor = UIColor.lightGray
     
     cell!.backgroundColor = UIColor.clear
