@@ -14,6 +14,8 @@ import openXCiOSFramework
 
 class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+   
+    
     // UI Labels
     @IBOutlet weak var actConLab: UILabel!
     @IBOutlet weak var msgRvcdLab: UILabel!
@@ -66,7 +68,17 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.actConLab.text = ""
                 self.searchBtn.setTitle("WIFI CONNECTED",for:UIControlState())
                 return
-            }else{
+            }
+            else if vm.isBleConnected {
+                DispatchQueue.main.async {
+                    self.peripheralTable.isHidden = true
+                    self.actConLab.text = "✅"
+                    self.NetworkImg.isHidden = true
+                    self.searchBtn.setTitle("BLE VI CONNECTED",for:UIControlState())
+                }
+            }
+            else{
+                
                 self.NetworkImg.isHidden = true
                 self.actConLab.text = "---"
                 self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
@@ -285,7 +297,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             DispatchQueue.main.async {
                 self.platformLab.text = cr.message as String
             }
-            cvc?.deviceIdResp = String(cr.message)
+            cvc?.platformResp = String(cr.message)
             
         }
     }
