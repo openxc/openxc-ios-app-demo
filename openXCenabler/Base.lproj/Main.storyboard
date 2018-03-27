@@ -406,6 +406,21 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="i2t-qy-SbD"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1KK-40-bV9">
+                                <rect key="frame" x="251" y="261" width="113" height="34"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="113" id="kA3-8l-m1v"/>
+                                    <constraint firstAttribute="height" constant="34" id="zYg-t9-V6w"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Disconnect">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="disconnectHit:" destination="9pv-A4-QxB" eventType="touchUpInside" id="xkH-B2-MAG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -436,6 +451,8 @@
                             <constraint firstItem="Xi9-ZS-hYJ" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" constant="1" id="alz-Zs-bFO"/>
                             <constraint firstItem="C8I-p3-sTb" firstAttribute="firstBaseline" secondItem="twl-J0-AhF" secondAttribute="firstBaseline" id="bI9-Zm-4SL"/>
                             <constraint firstItem="qIm-dJ-9e6" firstAttribute="trailing" secondItem="twl-J0-AhF" secondAttribute="trailing" constant="2" id="cYW-qH-CgQ"/>
+                            <constraint firstItem="1KK-40-bV9" firstAttribute="leading" secondItem="pPj-fy-gM3" secondAttribute="trailing" constant="87" id="e0F-bu-N1y"/>
+                            <constraint firstItem="1KK-40-bV9" firstAttribute="baseline" secondItem="pPj-fy-gM3" secondAttribute="baseline" id="egy-w8-bqt"/>
                             <constraint firstItem="W5k-gD-FEj" firstAttribute="baseline" secondItem="ioC-fU-wIq" secondAttribute="baseline" id="ey7-LD-i4a"/>
                             <constraint firstItem="1Xl-eI-rYy" firstAttribute="firstBaseline" secondItem="Xi9-ZS-hYJ" secondAttribute="firstBaseline" id="hCJ-xI-plY"/>
                             <constraint firstAttribute="trailing" secondItem="a22-h9-8Z4" secondAttribute="trailing" id="hMu-rF-2ip"/>
@@ -461,6 +478,7 @@
                         <outlet property="NetworkImg" destination="qIm-dJ-9e6" id="FI8-eF-XGm"/>
                         <outlet property="actConLab" destination="twl-J0-AhF" id="Wcj-SL-8bT"/>
                         <outlet property="devidLab" destination="XOY-Ud-hZJ" id="DGt-jK-6T7"/>
+                        <outlet property="disconnectBtn" destination="1KK-40-bV9" id="bpH-31-gJi"/>
                         <outlet property="msgRvcdLab" destination="vmt-cZ-dyk" id="wNj-04-A8Y"/>
                         <outlet property="peripheralTable" destination="nMN-Fz-g6C" id="8vC-vC-oIH"/>
                         <outlet property="platformLab" destination="Xi9-ZS-hYJ" id="tG2-84-yrs"/>
@@ -470,7 +488,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2242" y="1294"/>
+            <point key="canvasLocation" x="2240.8000000000002" y="1293.1034482758621"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="wg7-f3-ORb">
@@ -1636,6 +1654,6 @@
         <image name="WIFI" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FLh-Cu-buY"/>
+        <segue reference="0wW-1I-R6M"/>
     </inferredMetricsTieBreakers>
 </document>
