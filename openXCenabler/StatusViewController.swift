@@ -14,6 +14,8 @@ import openXCiOSFramework
 
 class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+   
+    
     // UI Labels
     @IBOutlet weak var actConLab: UILabel!
     @IBOutlet weak var msgRvcdLab: UILabel!
@@ -75,6 +77,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.searchBtn.setTitle("BLE VI CONNECTED",for:UIControlState())
                 }
             }
+
         else if(vm.isTraceFileConnected){
             // start a timer to update the UI with the total received messages
             timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
@@ -86,6 +89,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
                 
             else{
+
                 self.NetworkImg.isHidden = true
                 self.actConLab.text = "---"
                 self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
