@@ -58,15 +58,34 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         vm.setManagerDebug(true)
     }
     override func viewDidAppear(_ animated: Bool) {
-        let name = UserDefaults.standard.value(forKey: "networkAdress") as? NSString
-        if name != nil{
+      //  let name = UserDefaults.standard.value(forKey: "networkAdress") as? NSString
+       // if name != nil{
             // networkDataFetch(Ip: name as String)
             if (vm.isNetworkConnected){
                 self.NetworkImg.isHidden = false
                 self.actConLab.text = ""
                 self.searchBtn.setTitle("WIFI CONNECTED",for:UIControlState())
                 return
-            }else{
+            }
+            else if vm.isBleConnected {
+                DispatchQueue.main.async {
+                    self.peripheralTable.isHidden = true
+                    self.actConLab.text = "✅"
+                    self.NetworkImg.isHidden = true
+                    self.searchBtn.setTitle("BLE VI CONNECTED",for:UIControlState())
+                }
+            }
+        else if(vm.isTraceFileConnected){
+            // start a timer to update the UI with the total received messages
+            timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
+            DispatchQueue.main.async {
+                self.actConLab.text = "✅"
+                self.searchBtn.setTitle("Trace File Playing",for:UIControlState())
+                
+            }
+        }
+                
+            else{
                 self.NetworkImg.isHidden = true
                 self.actConLab.text = "---"
                 self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
@@ -78,7 +97,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.present(alertController, animated: true, completion: nil)
                 }
             }
-        }
+        //}
     }
     func networkDataFetch(Ip:String)  {
         if (Ip != ""){
@@ -285,7 +304,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             DispatchQueue.main.async {
                 self.platformLab.text = cr.message as String
             }
-            cvc?.deviceIdResp = String(cr.message)
+            cvc?.platformResp = String(cr.message)
             
         }
     }

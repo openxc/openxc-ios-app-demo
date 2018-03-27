@@ -101,8 +101,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
       dweetLoop = Timer.scheduledTimer(timeInterval: 1.5, target:self, selector:#selector(sendDweet), userInfo: nil, repeats:true)
     }
 
-    if(!vm.isBleConnected){
-        
+    if(!bm.isBleConnected && !vm.isTraceFileConnected && !vm.isNetworkConnected){
         AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
         
     }
