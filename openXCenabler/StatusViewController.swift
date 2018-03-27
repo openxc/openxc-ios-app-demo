@@ -67,7 +67,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.searchBtn.setTitle("WIFI CONNECTED",for:UIControlState())
                 return
             }
-            else if vm.isBleConnected {
+            else if (vm.isBleConnected) {
                 DispatchQueue.main.async {
                     self.peripheralTable.isHidden = true
                     self.actConLab.text = "✅"
