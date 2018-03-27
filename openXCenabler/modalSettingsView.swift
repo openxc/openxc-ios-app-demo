@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import openXCiOSFramework
+
 
 class modalSettingsView: UIViewController, UITextFieldDelegate {
-  
+
   // UI outlets
   @IBOutlet weak var mainView: UIView!
   @IBOutlet weak var aboutView: UIView!
@@ -21,24 +23,42 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var dweetswitch: UISwitch!
   @IBOutlet weak var dweetname: UITextField!
   @IBOutlet weak var dweetnamelabel: UILabel!
+    
+  @IBOutlet weak var appVersion: UILabel!
   
   @IBOutlet weak var playswitch: UISwitch!
   @IBOutlet weak var playname: UITextField!
+    
+  @IBOutlet weak var networkData: UITextField!
+ 
   
   @IBOutlet weak var autoswitch: UISwitch!
   
   @IBOutlet weak var protoswitch: UISwitch!
   
   @IBOutlet weak var sensorswitch: UISwitch!
+    
+   //ranjan added code for Network data
+  @IBOutlet weak var networkDataswitch: UISwitch!
+    var NM : NetworkData!
   
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    let versionNumberString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+   
     
-    print("in modal viewDidLoad")
-        
+    appVersion.text = versionNumberString
+    NM = NetworkData.sharedInstance
+
     // watch for changes to trace file output file name field
     recname.addTarget(self, action: #selector(recFieldDidChange), for: UIControlEvents.editingChanged)
     recname.isHidden = true
+    
+    //ranjan added code for Network data
+    // watch for changes to trace file output file name field
+    networkData.addTarget(self, action: #selector(networkDataFieldDidChange), for:UIControlEvents.editingChanged)
+    networkData.isHidden = true
     
     // watch for changes to dweet name field
     dweetname.addTarget(self, action: #selector(dweetFieldDidChange), for: UIControlEvents.editingChanged)
@@ -79,7 +99,7 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     if autoOn == true {
       autoswitch.setOn(true, animated:false)
     }
-    
+   
     // check saved value of sensor switch
     let sensorOn = UserDefaults.standard.bool(forKey: "sensorsOn")
     // update UI if necessary
@@ -93,7 +113,7 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     if protobufOn == true {
       protoswitch.setOn(true, animated:false)
     }
-    
+
     // at first run, get a random dweet name
     if UserDefaults.standard.string(forKey: "dweetname") == nil {
       let name : NSMutableString = ""
@@ -106,14 +126,14 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
           let randnum = Int(arc4random_uniform(UInt32(allLines.count)))
           name.append(allLines[randnum])
         } catch {
-          print("file load error")
+      
           var randnum = arc4random_uniform(26)
           name.appendFormat("%c",65+randnum)
           randnum = arc4random_uniform(26)
           name.appendFormat("%c",65+randnum)
         }
       } else {
-        print("file load error")
+   
         var randnum = arc4random_uniform(26)
         name.appendFormat("%c",65+randnum)
         randnum = arc4random_uniform(26)
@@ -130,21 +150,19 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
           let randnum = Int(arc4random_uniform(UInt32(allLines.count)))
           name.append(allLines[randnum])
         } catch {
-          print("file load error")
+         
           var randnum = arc4random_uniform(10)
           name.appendFormat("%c",30+randnum)
           randnum = arc4random_uniform(10)
           name.appendFormat("%c",30+randnum)
         }
       } else {
-        print("file load error")
+       
         var randnum = arc4random_uniform(10)
         name.appendFormat("%c",30+randnum)
         randnum = arc4random_uniform(10)
         name.appendFormat("%c",30+randnum)
       }
-      
-      print("first load - dweet name is ",name)
       UserDefaults.standard.setValue(name, forKey:"dweetname")
       
     }
@@ -161,19 +179,65 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     
     
   }
-  
-  
-  
+
   // text view delegate to clear keyboard
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
     textField.resignFirstResponder();
+   if textField.tag == 101{
+    networkDataFetch(Ip: textField.text!)
+    
+    }
     return true;
   }
-  
+  //ranjan added code for Network data
+    func networkDataFetch(Ip:String)  {
+       // networkData.text = name as String
+        let searchCharacter: Character = ":"
+        if Ip.lowercased().characters.contains(searchCharacter) {
+
+       // if (Ip != ""){
+       
+        var myStringArr = Ip.components(separatedBy: ":")
+        let ip = myStringArr[0] //"0.0.0.0"
+            if (myStringArr[1] != ""){
+        let port = Int(myStringArr[1]) //50001
+                NetworkData.sharedInstance.connect(ip: ip, portvalue: port!, completionHandler: { (success) in
+                    print(success)
+                    if(success){
+                         UserDefaults.standard.set(Ip, forKey:"networkAdress")
+                        //self.callBack()
+                    }else{
+                        let alertController = UIAlertController(title: "", message:
+                                        "error ocured", preferredStyle: UIAlertControllerStyle.alert)
+                                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                                    self.present(alertController, animated: true, completion: nil)
+                    }
+                })
+                
+            }else{
+                let alertController = UIAlertController(title: "", message:
+                    "Please enter valid IP and host name", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }else{
+            let alertController = UIAlertController(title: "", message:
+                "Please enter valid IP and host name", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
+
+    }
+
   // trace file output file name changed, save it in nsuserdefaults
   func recFieldDidChange(_ textField: UITextField) {
     UserDefaults.standard.set(textField.text, forKey:"traceOutputFilename")
   }
+    //ranjan added code for Network data
+    // trace file output file name changed, save it in nsuserdefaults
+    func networkDataFieldDidChange(_ textField: UITextField) {
+        //UserDefaults.standard.set(textField.text, forKey:"networkAdress")
+    }
   
   // trace file input file name changed, save it in nsuserdefaults
   func playFieldDidChange(_ textField: UITextField) {
@@ -228,6 +292,24 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
   @IBAction func srcHit(_ sender: AnyObject) {
     mainView.isHidden = true
     srcView.isHidden = false
+    
+    //ranjan added code for Network data
+    // check saved value of Networkdata switch
+    let networkOn = UserDefaults.standard.bool(forKey: "networkdataOn")
+    // update UI if necessary
+    if networkOn == true {
+        networkDataswitch.setOn(true, animated:false)
+        networkData.isHidden = false
+        if let name = UserDefaults.standard.value(forKey: "networkAdress") as? NSString {
+    
+            if(!VehicleManager.sharedInstance.isNetworkConnected){
+            networkDataFetch(Ip: name as String)
+            }
+        }
+    }else{
+        
+    }
+    
   }
   // the trace output enabled switch changed, save it's new value
   // and show or hide the text field for filename accordingly
@@ -243,6 +325,7 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
   @IBAction func autoChange(_ sender: UISwitch) {
     UserDefaults.standard.set(sender.isOn, forKey:"autoConnectOn")
   }
+    
   // include sensor switch changed, save it's value
   @IBAction func sensorChange(_ sender: UISwitch) {
     UserDefaults.standard.set(sender.isOn, forKey:"sensorsOn")
@@ -251,7 +334,22 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
   @IBAction func protoChange(_ sender: UISwitch) {
     UserDefaults.standard.set(sender.isOn, forKey:"protobufOn")
   }
-
+//ranjan added code for Network data
+     // connect to network address to fetch data from network emulator
+  @IBAction func networkData(_ sender: UISwitch) {
+    
+        if sender.isOn {
+            networkData.isHidden = false
+            UserDefaults.standard.set(sender.isOn, forKey:"networkdataOn")
+        } else {
+            networkData.isHidden = true
+            UserDefaults.standard.set(false, forKey:"networkdataOn")
+            UserDefaults.standard.set("", forKey:"networkAdress")
+            NetworkData.sharedInstance.disconnectConnection()
+            
+        }
+    }
+    
   // 'back' hit, clear all view and show initial menu view
   @IBAction func backHit(_ sender: AnyObject) {
     mainView.isHidden = false
@@ -259,11 +357,7 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     recView.isHidden = true
     srcView.isHidden = true
   }
-  
-  
-  
-  
-  
+ 
   func keyboardWillShow() {
     if view.frame.origin.y == 0{
       self.view.frame.origin.y -= 120
@@ -275,8 +369,6 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
       self.view.frame.origin.y += 120
     }
   }
-  
-  
-  
+
   
 }

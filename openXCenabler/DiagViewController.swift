@@ -35,6 +35,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     // set default diag response target
     vm.setDiagnosticDefaultTarget(self, action: DiagViewController.default_diag_rsp)
 
+    
   }
   
   override func didReceiveMemoryWarning() {
@@ -42,12 +43,16 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     // Dispose of any resources that can be recreated.
   }
 
-  
+    override func viewDidAppear(_ animated: Bool) {
+        if(!vm.isBleConnected){
+            
+            AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
+        }
+    }
   func default_diag_rsp(_ rsp:NSDictionary) {
     // extract the diag resp message
     let vr = rsp.object(forKey: "vehiclemessage") as! VehicleDiagnosticResponse
-    
-    print("diag_rsp -  success:",vr.success)
+
     
     // create the string we want to show in the received messages UI
     var newTxt = "bus:"+vr.bus.description+" id:0x"+String(format:"%x",vr.message_id)+" mode:0x"+String(format:"%x",vr.mode)
@@ -104,7 +109,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     
     // look at segmented control for bus
     cmd.bus = bussel.selectedSegmentIndex + 1
-    print("bus is ",cmd.bus)
+
     
     // check that the msg id field is valid
     if let mid = idField.text as String? {
@@ -123,8 +128,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
       lastReq.text = "Invalid command : need a message_id"
       return
     }
-    print("mid is ",cmd.message_id)
-    
+
     // check that the mode field is valid
     if let mode = modeField.text as String? {
       let modetrim = mode.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -142,7 +146,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
       lastReq.text = "Invalid command : need a mode"
       return
     }
-    print("mode is ",cmd.mode)
+    //("mode is ",cmd.mode)
     
     // check that the pid field is valid (or empty)
     if let pid = pidField.text as String? {
@@ -158,9 +162,9 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     } else {
     }
     if cmd.pid==nil {
-      print ("pid is nil")
+
     } else {
-      print("pid is ",cmd.pid as Any)
+     
     }
     
     
@@ -173,11 +177,8 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
             // its optional
         }
         if mloadtrim.characters.count%2==0 { //payload must be even length
-            print("mloadtrim ",mloadtrim)
-            
-            
+
             let appendedStr = "0x" + mloadtrim
-            print("appendedStr ",appendedStr)
             
             cmd.payload = appendedStr as NSString
         }

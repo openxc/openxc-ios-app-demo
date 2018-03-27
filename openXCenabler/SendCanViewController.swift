@@ -23,6 +23,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    
     // grab VM instance
     vm = VehicleManager.sharedInstance
 
@@ -40,7 +41,12 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     textField.resignFirstResponder();
     return true;
   }
-  
+    override func viewDidAppear(_ animated: Bool) {
+        if(!vm.isBleConnected){
+            
+            AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
+        }
+    }
   
   // CAN send button hit
   @IBAction func sendHit(_ sender: AnyObject) {
@@ -61,7 +67,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     
     // look at segmented control for bus
     cmd.bus = bussel.selectedSegmentIndex + 1
-    print("bus is ",cmd.bus)
+   
     
     // check that the msg id field is valid
     if let mid = idField.text as String? {
@@ -80,8 +86,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
       lastReq.text = "Invalid command : need a message_id"
       return
     }
-    print("mid is ",cmd.id)
-    
+   
     // check that the payload field is valid
     if let payld = dataField.text as String? {
       let payldtrim = payld.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -102,7 +107,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
       lastReq.text = "Invalid command : need a payload"
       return
     }
-    print("payload is ",cmd.data)
+   
     
     // send the CAN request
     vm.sendCanReq(cmd)

@@ -10,11 +10,12 @@ import UIKit
 import openXCiOSFramework
 
 
-class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
     
     // the VM
     var vm: VehicleManager!
-
+    var cm: Command!
+    
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var responseLab: UILabel!
     
@@ -51,7 +52,7 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         super.viewDidLoad()
        
         hideAll()
-        
+      
         acitivityInd.center = self.view.center
         acitivityInd.hidesWhenStopped = true
         acitivityInd.activityIndicatorViewStyle =
@@ -60,11 +61,13 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
         // grab VM instance
         vm = VehicleManager.sharedInstance
+        cm = Command.sharedInstance
+       // vm.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
         vm.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
-
+        //vm.cmdObj?.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
         
         selectedRowInPicker = pickerView.selectedRow(inComponent: 0)
-        print("selected row in picker...",selectedRowInPicker)
+       
         populateCommandResponseLabel(rowNum: selectedRowInPicker)
         
         busSeg.addTarget(self, action: #selector(busSegmentedControlValueChanged), for: .valueChanged)
@@ -74,11 +77,21 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if(!vm.isBleConnected){
+            
+            AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
+
+          }
+    }
     // MARK: Commands Function
 
     @IBAction func sendCmnd() {
+        
         let sRow = pickerView.selectedRow(inComponent: 0)
-        print("selected row in picker...",sRow)
+        
+        
+        if(vm.isBleConnected){
         
         switch sRow {
         case 0:
@@ -88,13 +101,12 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             responseLab.text = deviceIdResp
             break
         case 2:
-            print("send passthrough command")
 
             let cm = VehicleCommandRequest()
             
             // look at segmented control for bus
             cm.bus = busSeg.selectedSegmentIndex + 1
-            print("bus is ",cm.bus)
+            
             
             
             if enabSeg.selectedSegmentIndex==0 {
@@ -104,19 +116,19 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             }
             
             cm.command = .passthrough
-            self.vm.sendCommand(cm)
+            self.cm.sendCommand(cm)
             // activity indicator
-
+            
             showActivityIndicator()
             
             break
         case 3:
-            print("send filter bypass command")
+            
             let cm = VehicleCommandRequest()
             
             // look at segmented control for bus
             cm.bus = busSeg.selectedSegmentIndex + 1
-            print("bus is ",cm.bus)
+           
 
             if bypassSeg.selectedSegmentIndex==0 {
                 cm.bypass = true
@@ -125,11 +137,11 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             }
             
             cm.command = .af_bypass
-            self.vm.sendCommand(cm)
+            self.cm.sendCommand(cm)
             showActivityIndicator()
             break
         case 4:
-            print("send payload format command")
+            
             let cm = VehicleCommandRequest()
             
             if pFormatSeg.selectedSegmentIndex==0 {
@@ -138,32 +150,35 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
                 cm.format = "protobuf"
             }
             cm.command = .payload_format
-            self.vm.sendCommand(cm)
+            self.cm.sendCommand(cm)
             showActivityIndicator()
             break
         case 5:
-            print("send platform details command")
+            
             let cm = VehicleCommandRequest()
             cm.command = .platform
-            self.vm.sendCommand(cm)
+            self.cm.sendCommand(cm)
             showActivityIndicator()
             break
         case 6:
-            print("send rtc config command")
             let cm = VehicleCommandRequest()
             cm.command = .rtc_configuration
-            self.vm.sendCommand(cm)
+            self.cm.sendCommand(cm)
             showActivityIndicator()
             break
         case 7:
-            print("send sd card status command")
+           
             let cm = VehicleCommandRequest()
             cm.command = .sd_mount_status
-            self.vm.sendCommand(cm)
+            self.cm.sendCommand(cm)
             showActivityIndicator()
             break
         default:
             break
+        }
+        }else{
+            
+            AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage: errorMsgBLE)
         }
 
     }
@@ -172,7 +187,7 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     func handle_cmd_response(_ rsp:NSDictionary) {
         // extract the command response message
         let cr = rsp.object(forKey: "vehiclemessage") as! VehicleCommandResponse
-        print("cmd response : \(cr.command_response)")
+        
         
         // update the UI depending on the command type- version,device_id works for JSON mode, not in protobuf - TODO
         
@@ -214,25 +229,24 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func busSegmentedControlValueChanged() {
       
-        print("bus segment value changed..")
-        let selectedSegment = busSeg.selectedSegmentIndex
-        print("selectedSegment..",selectedSegment)
+       
+        //let selectedSegment = busSeg.selectedSegmentIndex
 
     }
 
     func enabSegmentedControlValueChanged() {
         
-        print("enab segment value changed..")
+       
     }
 
     func bypassSegmentedControlValueChanged() {
         
-        print("bypass segment value changed..")
+      
     }
     
     func formatSegmentedControlValueChanged() {
         
-        print("format segment value changed..")
+      
     }
     
     // MARK: Picker Delgate Function
@@ -254,7 +268,6 @@ class CommandsViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        print("selected row...",row)
         selectedRowInPicker = row
         populateCommandResponseLabel(rowNum: row)
         

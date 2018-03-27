@@ -26,12 +26,14 @@ class CanViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     // grab VM instance
     vm = VehicleManager.sharedInstance
 
-    // set default CAN target
-    vm.setCanDefaultTarget(self, action: CanViewController.default_can_change)
-    
     // initialize dictionary/table
     canDict = NSMutableDictionary()
     canTable.reloadData()
+    
+    // set default CAN target
+    vm.setCanDefaultTarget(self, action: CanViewController.default_can_change)
+    
+   
   }
 
   override func didReceiveMemoryWarning() {
@@ -39,7 +41,12 @@ class CanViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     // Dispose of any resources that can be recreated.
   }
   
-  
+    override func viewDidAppear(_ animated: Bool) {
+        if(!vm.isBleConnected){
+            
+            AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
+        }
+    }
   
   func default_can_change(_ rsp:NSDictionary) {
     // extract the CAN message
@@ -56,7 +63,7 @@ class CanViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     DispatchQueue.main.async {
       self.canTable.reloadData()
     }
-    print("default can msg:",key," -- ",val)
+    
   }
   
   
