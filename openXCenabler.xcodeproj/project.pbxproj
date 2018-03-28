@@ -18,9 +18,12 @@
 		3AE7C0B11D9C0CF6001E92A4 /* nouns.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AE7C0B01D9C0CF6001E92A4 /* nouns.txt */; };
 		3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834421D5ED054003FD370 /* SendCanViewController.swift */; };
 		3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834441D5ED054003FD370 /* CanViewController.swift */; };
+		7D3127C32065085300DF9363 /* RadioButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3127C02065085300DF9363 /* RadioButtonsView.swift */; };
 		7D33AE312019E71100224782 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D33AE2F2019E71000224782 /* openXCiOSFramework.framework */; };
 		7D37A6B6201EF4B200734F55 /* CommandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D37A6B5201EF4B200734F55 /* CommandsViewController.swift */; };
 		7D47574420529B2500A81BC3 /* DiagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D47574320529B2500A81BC3 /* DiagViewController.swift */; };
+		7D790ADA2063C1B9004AAD5E /* DataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D790AD92063C1B9004AAD5E /* DataSourceController.swift */; };
+		7D790ADC2063C1DC004AAD5E /* RecordingSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D790ADB2063C1DC004AAD5E /* RecordingSourceController.swift */; };
 		7D83F8672017172C00E989D1 /* AlertHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D83F8662017172C00E989D1 /* AlertHandling.swift */; };
 		7D83F86C2017389500E989D1 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D83F86B2017389500E989D1 /* Utility.swift */; };
 		7DB633E91F9F247100519A8B /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; };
@@ -91,10 +94,13 @@
 		3AE7C0B01D9C0CF6001E92A4 /* nouns.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nouns.txt; sourceTree = "<group>"; };
 		3AE834421D5ED054003FD370 /* SendCanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCanViewController.swift; sourceTree = "<group>"; };
 		3AE834441D5ED054003FD370 /* CanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanViewController.swift; sourceTree = "<group>"; };
+		7D3127C02065085300DF9363 /* RadioButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonsView.swift; sourceTree = "<group>"; };
 		7D33AE2F2019E71000224782 /* openXCiOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = openXCiOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/openXCenabler-aqgcinribrasdxdcauflwrtjddga/Build/Products/Debug-iphonesimulator/openXCiOSFramework.framework"; sourceTree = "<group>"; };
 		7D37A6B5201EF4B200734F55 /* CommandsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandsViewController.swift; sourceTree = "<group>"; };
 		7D4692D51FDFE5210022DF98 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ProtocolBuffers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D47574320529B2500A81BC3 /* DiagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiagViewController.swift; sourceTree = "<group>"; };
+		7D790AD92063C1B9004AAD5E /* DataSourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceController.swift; sourceTree = "<group>"; };
+		7D790ADB2063C1DC004AAD5E /* RecordingSourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingSourceController.swift; sourceTree = "<group>"; };
 		7D83F8662017172C00E989D1 /* AlertHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHandling.swift; sourceTree = "<group>"; };
 		7D83F86B2017389500E989D1 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		7DF339E4200F148E00935D96 /* openXCiOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = openXCiOSFramework.framework; path = ../../../Desktop/openXCiOSFramework.framework; sourceTree = "<group>"; };
@@ -151,6 +157,7 @@
 		3A1016C31D5417AD006C5E93 /* openXCenabler */ = {
 			isa = PBXGroup;
 			children = (
+				7D3127C02065085300DF9363 /* RadioButtonsView.swift */,
 				7D47574320529B2500A81BC3 /* DiagViewController.swift */,
 				7D37A6B5201EF4B200734F55 /* CommandsViewController.swift */,
 				3AE834421D5ED054003FD370 /* SendCanViewController.swift */,
@@ -159,6 +166,8 @@
 				3A1016C61D5417AD006C5E93 /* StatusViewController.swift */,
 				3A1016C81D5417AD006C5E93 /* DashboardViewController.swift */,
 				3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */,
+				7D790AD92063C1B9004AAD5E /* DataSourceController.swift */,
+				7D790ADB2063C1DC004AAD5E /* RecordingSourceController.swift */,
 				3A1016CA1D5417AD006C5E93 /* Main.storyboard */,
 				3A1016CD1D5417AD006C5E93 /* Assets.xcassets */,
 				3A1016CF1D5417AD006C5E93 /* LaunchScreen.storyboard */,
@@ -335,12 +344,15 @@
 				7D47574420529B2500A81BC3 /* DiagViewController.swift in Sources */,
 				3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */,
 				3A1016C91D5417AD006C5E93 /* DashboardViewController.swift in Sources */,
+				7D790ADC2063C1DC004AAD5E /* RecordingSourceController.swift in Sources */,
 				3ABA7F5B1D88FB2700D75846 /* modalSettingsView.swift in Sources */,
+				7D3127C32065085300DF9363 /* RadioButtonsView.swift in Sources */,
 				3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */,
 				3A1016C51D5417AD006C5E93 /* AppDelegate.swift in Sources */,
 				3A1016C71D5417AD006C5E93 /* StatusViewController.swift in Sources */,
 				7D37A6B6201EF4B200734F55 /* CommandsViewController.swift in Sources */,
 				7D83F8672017172C00E989D1 /* AlertHandling.swift in Sources */,
+				7D790ADA2063C1B9004AAD5E /* DataSourceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

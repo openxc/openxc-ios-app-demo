@@ -95,13 +95,16 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
       motionManager.startDeviceMotionUpdates()
       
     }
+    if UserDefaults.standard.bool(forKey: "locationOn"){
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.startUpdatingLocation()
+        }
+    }
     
     if UserDefaults.standard.bool(forKey: "dweetOutputOn") {
       dweetLoop = Timer.scheduledTimer(timeInterval: 1.5, target:self, selector:#selector(sendDweet), userInfo: nil, repeats:true)
     }
-
-    if(!vm.isBleConnected){
-        
+    if(!vm.isBleConnected && !vm.isTraceFileConnected && !vm.isNetworkConnected){
         AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
         
     }
@@ -252,14 +255,31 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     
     if locations.count>0 {
-  
-      let loc = locations.last!
-      dashDict.setObject(loc.coordinate.latitude, forKey:"phone_latitude" as NSCopying)
-      dashDict.setObject(loc.coordinate.longitude, forKey:"phone_longitude" as NSCopying)
-      dashDict.setObject(loc.altitude, forKey:"phone_altitude" as NSCopying)
-      dashDict.setObject(loc.course, forKey:"phone_heading" as NSCopying)
-      dashDict.setObject(loc.speed, forKey:"phone_speed" as NSCopying)
+  let loc = locations.last!
+        if UserDefaults.standard.bool(forKey: "locationOn"){
+            if !UserDefaults.standard.bool(forKey: "sensorsOn"){
+                dashDict.setObject(loc.coordinate.latitude, forKey:"phone_latitude" as NSCopying)
+                dashDict.setObject(loc.coordinate.longitude, forKey:"phone_longitude" as NSCopying)
+            }else{
+                dashDict.setObject(loc.coordinate.latitude, forKey:"phone_latitude" as NSCopying)
+                dashDict.setObject(loc.coordinate.longitude, forKey:"phone_longitude" as NSCopying)
+                dashDict.setObject(loc.altitude, forKey:"phone_altitude" as NSCopying)
+                dashDict.setObject(loc.course, forKey:"phone_heading" as NSCopying)
+                dashDict.setObject(loc.speed, forKey:"phone_speed" as NSCopying)
+            
+        }
+        
       // update the table
+        }else{
+                if UserDefaults.standard.bool(forKey: "sensorsOn"){
+               
+                    dashDict.setObject(loc.coordinate.latitude, forKey:"phone_latitude" as NSCopying)
+                    dashDict.setObject(loc.coordinate.longitude, forKey:"phone_longitude" as NSCopying)
+                    dashDict.setObject(loc.altitude, forKey:"phone_altitude" as NSCopying)
+                    dashDict.setObject(loc.course, forKey:"phone_heading" as NSCopying)
+                    dashDict.setObject(loc.speed, forKey:"phone_speed" as NSCopying)
+            }
+        }
       DispatchQueue.main.async {
         self.dashTable.reloadData()
       }
