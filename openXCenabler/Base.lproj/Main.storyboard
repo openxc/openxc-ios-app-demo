@@ -1351,6 +1351,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="fJi-1d-iwc" userLabel="recswitch">
                                         <rect key="frame" x="310" y="60" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="recChange:" destination="ubb-Oq-AZH" eventType="touchUpInside" id="nVg-p4-CUA"/>
+                                        </connections>
                                     </switch>
                                     <textField opaque="NO" clipsSubviews="YES" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6tc-ZE-M8c" userLabel="filename">
                                         <rect key="frame" x="23" y="109" width="248" height="30"/>
@@ -1359,6 +1362,9 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ubb-Oq-AZH" id="TIL-lH-3C4"/>
+                                        </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record the vehicle data stream to a file" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxA-ru-fdU">
                                         <rect key="frame" x="23" y="83.5" width="298.5" height="13.5"/>
@@ -1371,6 +1377,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="K94-d9-L1s" userLabel="dweetswitch">
                                         <rect key="frame" x="310" y="160" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="dweetChange:" destination="ubb-Oq-AZH" eventType="touchUpInside" id="EWM-Yk-6Rq"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Output the measurement vehicle data stream to dweet.io" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aqg-Yi-Gqk">
                                         <rect key="frame" x="23" y="190" width="298.5" height="35"/>
@@ -1396,10 +1405,13 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gc8-6y-klU" userLabel="dweetname">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gc8-6y-klU" userLabel="dweetname">
                                         <rect key="frame" x="23" y="230" width="248" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="ubb-Oq-AZH" id="fs8-bA-0JX"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1443,6 +1455,7 @@
                     </view>
                     <connections>
                         <outlet property="dweetname" destination="gc8-6y-klU" id="xWa-Qb-Ino"/>
+                        <outlet property="dweetnamelabel" destination="mcU-7m-8Hq" id="25N-6H-FWN"/>
                         <outlet property="dweetswitch" destination="K94-d9-L1s" id="9kO-hG-CWV"/>
                         <outlet property="recname" destination="6tc-ZE-M8c" id="e8S-li-V9b"/>
                         <outlet property="recswitch" destination="fJi-1d-iwc" id="DBJ-gg-nph"/>
@@ -1543,7 +1556,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cfs-hs-ZYf" userLabel="inFilename">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="File Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cfs-hs-ZYf" userLabel="inFilename">
                                         <rect key="frame" x="22" y="102" width="218" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="218" id="DsN-bW-e0g"/>
@@ -1593,7 +1606,7 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="http://127.0.0.1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aTN-qK-r5Y">
+                                    <textField opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.0.0.0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aTN-qK-r5Y">
                                         <rect key="frame" x="20" y="174" width="220" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1606,7 +1619,7 @@
                                             <outlet property="delegate" destination="9i4-pc-krT" id="rCn-8Q-LWa"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="50001" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKb-Ba-sc3">
+                                    <textField opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="50001" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CKb-Ba-sc3">
                                         <rect key="frame" x="20" y="226" width="220" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -1639,7 +1652,7 @@
                                             <action selector="vehicleInterfaceBtn:" destination="9i4-pc-krT" eventType="touchUpInside" id="H4v-at-QWU"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QR3-W6-LL1">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bluetooth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QR3-W6-LL1">
                                         <rect key="frame" x="26" y="40" width="132" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1808,6 +1821,9 @@
                                     <state key="normal" title="Bluetooth">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="bluetoothBtnAction:" destination="9i4-pc-krT" eventType="touchUpInside" id="QUn-l6-C08"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EoD-mV-EOf">
                                     <rect key="frame" x="25" y="115" width="24" height="24"/>
@@ -1823,6 +1839,9 @@
                                     <state key="normal" title="Network">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="networkBtnAction:" destination="9i4-pc-krT" eventType="touchUpInside" id="qBr-zt-AG3"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0l8-kI-DIf">
                                     <rect key="frame" x="25" y="154" width="24" height="24"/>
@@ -1838,6 +1857,9 @@
                                     <state key="normal" title="Pre-recorded Tracefile">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="trscefileBtnAction:" destination="9i4-pc-krT" eventType="touchUpInside" id="0GA-TM-m2l"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EEp-J6-Q46">
                                     <rect key="frame" x="25" y="199" width="24" height="24"/>
@@ -1853,6 +1875,9 @@
                                     <state key="normal" title="None">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
+                                    <connections>
+                                        <action selector="noneBtnAction:" destination="9i4-pc-krT" eventType="touchUpInside" id="sfW-Lt-Fxv"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vs-3A-ZE2">
                                     <rect key="frame" x="230" y="214" width="86" height="30"/>

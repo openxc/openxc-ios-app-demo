@@ -44,8 +44,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // change tab bar text colors
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.gray], for:UIControlState())
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for:.selected)
-        
-        
+  
         // instantiate the VM
         vm = VehicleManager.sharedInstance
         cm = Command.sharedInstance
@@ -80,7 +79,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             else if(vm.isTraceFileConnected){
                 // start a timer to update the UI with the total received messages
-                timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
+                timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(self.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
                 DispatchQueue.main.async {
                     self.actConLab.text = "✅"
                     self.searchBtn.setTitle("Trace File Playing",for:UIControlState())
@@ -89,10 +88,16 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
                 
             else{
+                if ((timer != nil) && timer.isValid){
+                    timer.invalidate()
+                }
                 
+                 DispatchQueue.main.async {
                 self.NetworkImg.isHidden = true
-                self.actConLab.text = "None"
+                self.actConLab.text = "---"
+                self.msgRvcdLab.text = "---"
                 self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
+                }
                 let networkOn = UserDefaults.standard.bool(forKey: "networkdataOn")
                 if(networkOn){
                     let alertController = UIAlertController(title: "", message:
@@ -124,35 +129,89 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    
     // this function is called when the scan button is hit
     @IBAction func searchHit(_ sender: UIButton) {
-        
+        let vechileInterface = UserDefaults.standard.value(forKey: "vehicleInterface") as? NSString
         // make sure we're not already connected first
         if (vm.connectionState==VehicleManagerConnectionState.notConnected) {
             
             // start a timer to update the UI with the total received messages
             timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
             
+            if vechileInterface == "Network" {
+//                let alertController = UIAlertController(title: "", message:
+//                    "please select data source in setting page", preferredStyle: UIAlertControllerStyle.alert)
+//                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+//                self.present(alertController, animated: true, completion: nil)
+               // return
+            }
+            else if vechileInterface == "None" {
+                let alertController = UIAlertController(title: "", message:
+                    "please select data source in setting page", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                self.present(alertController, animated: true, completion: nil)
+               //return
+            }
+        
+            // check to see if a trace input file has been set up
+            else if vechileInterface == "Pre-recorded Tracefile"{
+                if let name = UserDefaults.standard.value(forKey: "traceInputFilename") as? NSString {
+                    vm.enableTraceFileSource(name)
+                }
+               // return
+            }else{
+                // start the VI scan
+                vm.scan(completionHandler:{(success) in
+                    // update the UI
+                    if(!success){
+                        let alertController = UIAlertController (title: "Setting", message: "Please enable Bluetooth", preferredStyle: .alert)
+                        let url = URL(string: "App-Prefs:root=Bluetooth")
+                        let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
+                            guard URL(string: UIApplicationOpenSettingsURLString) != nil else {
+                                return
+                            }
+                            
+                            if UIApplication.shared.canOpenURL(url!) {
+                                if #available(iOS 10.0, *) {
+                                    UIApplication.shared.open(url!, completionHandler: { (success) in
+                                        print("Settings opened: \(success)") // Prints true
+                                        
+                                    })
+                                } else {
+                                    // Fallback on earlier versions
+                                }
+                            }
+                        }
+                        alertController.addAction(settingsAction)
+                        let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+                        alertController.addAction(cancelAction)
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                    DispatchQueue.main.async {
+                        self.actConLab.text = "❓"
+                        self.searchBtn.setTitle("SCANNING",for:UIControlState())
+                        //                    let alertController = UIAlertController(title: "", message:
+                        //                        "Please check the BLE power is on ", preferredStyle: UIAlertControllerStyle.alert)
+                        //                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                        //                    self.present(alertController, animated: true, completion: nil)
+                    }
+                    
+                })
+                
+            }
+            
+            
             // check to see if the config is set for autoconnect mode
             vm.setAutoconnect(false)
             if UserDefaults.standard.bool(forKey: "autoConnectOn") {
                 vm.setAutoconnect(true)
             }
-            
             // check to see if the config is set for protobuf mode
             vm.setProtobufMode(false)
             if UserDefaults.standard.bool(forKey: "protobufOn") {
                 vm.setProtobufMode(true)
             }
-            
-            // check to see if a trace input file has been set up
-            if UserDefaults.standard.bool(forKey: "traceInputOn") {
-                if let name = UserDefaults.standard.value(forKey: "traceInputFilename") as? NSString {
-                    vm.enableTraceFileSource(name)
-                }
-            }
-            
             // check to see if a trace output file has been configured
             if UserDefaults.standard.bool(forKey: "traceOutputOn") {
                 if let name = UserDefaults.standard.value(forKey: "traceOutputFilename") as? NSString {
@@ -160,44 +219,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
             
-            // start the VI scan
-            vm.scan(completionHandler:{(success) in
-                // update the UI
-                if(!success){
-                    let alertController = UIAlertController (title: "Setting", message: "Please enable Bluetooth", preferredStyle: .alert)
-                    let url = URL(string: "App-Prefs:root=Bluetooth")
-                    let settingsAction = UIAlertAction(title: "Settings", style: .default) { (_) -> Void in
-                        guard URL(string: UIApplicationOpenSettingsURLString) != nil else {
-                            return
-                        }
-                        
-                        if UIApplication.shared.canOpenURL(url!) {
-                            if #available(iOS 10.0, *) {
-                                UIApplication.shared.open(url!, completionHandler: { (success) in
-                                    print("Settings opened: \(success)") // Prints true
-                                    
-                                })
-                            } else {
-                                // Fallback on earlier versions
-                            }
-                        }
-                    }
-                    alertController.addAction(settingsAction)
-                    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-                    alertController.addAction(cancelAction)
-                    
-                    self.present(alertController, animated: true, completion: nil)
-                }
-                DispatchQueue.main.async {
-                    self.actConLab.text = "❓"
-                    self.searchBtn.setTitle("SCANNING",for:UIControlState())
-                    //                    let alertController = UIAlertController(title: "", message:
-                    //                        "Please check the BLE power is on ", preferredStyle: UIAlertControllerStyle.alert)
-                    //                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-                    //                    self.present(alertController, animated: true, completion: nil)
-                }
-                
-            })
+
 
         }
     }
@@ -316,6 +338,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // this function is called by the timer, it updates the UI
     func msgRxdUpdate(_ t:Timer) {
+       
         if vm.connectionState==VehicleManagerConnectionState.operational {
            
              DispatchQueue.main.async {
