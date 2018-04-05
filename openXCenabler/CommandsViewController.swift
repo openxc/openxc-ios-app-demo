@@ -98,7 +98,10 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         if(bm.isBleConnected){
             
             if (sRow == 8){
-                self.convertToJson(string: customCommandTF.text!)
+                
+                let str = customCommandTF.text!
+                let stringq = str.description.replacingOccurrences(of: "\"", with: "")
+                self.convertToJson(string: stringq)
                 let jsonString = self.createJSON()
                 let value = validJson(strValue: jsonString)
                 if value{
@@ -108,7 +111,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
                     showActivityIndicator()
                     
                 }else{
-                    print("Alert show")
+                    AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage: errorMsgCustomCommand)
                 }
                 
             }else{

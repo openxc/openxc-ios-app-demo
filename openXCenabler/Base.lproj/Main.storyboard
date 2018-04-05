@@ -172,7 +172,7 @@
                                 <rect key="frame" x="16" y="249" width="343" height="37"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" smartQuotesType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="uM8-tL-Gmf" id="X0v-ML-LlI"/>
                                 </connections>
