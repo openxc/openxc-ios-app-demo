@@ -101,7 +101,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
         }
         else if  vehicleInterface == "Network" {
             if let hostName = (UserDefaults.standard.value(forKey: "networkHostName")  as? String){
-            networkDataHost.text = (UserDefaults.standard.value(forKey: "networkHostName")  as! String)
+                networkDataHost.text = hostName//(UserDefaults.standard.value(forKey: "networkHostName")  as! String)
             networkDataPort.text = (UserDefaults.standard.value(forKey: "networkPortName")  as! String)
                  }
              interfaceValue = vehicleInterface
@@ -110,7 +110,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
         }
         else if vehicleInterface == "Pre-recorded Tracefile" {
             if let tracefile = (UserDefaults.standard.value(forKey: "traceInputFilename")  as? String){
-            playname.text = (UserDefaults.standard.value(forKey: "traceInputFilename")  as! String)
+            playname.text = tracefile//(UserDefaults.standard.value(forKey: "traceInputFilename")  as! String)
             }
              interfaceValue = vehicleInterface
         }else{
