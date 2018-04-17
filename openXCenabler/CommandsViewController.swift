@@ -159,7 +159,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             
             print(ObjectDic)
         }else{
-            let fullNameArr2 = cleanedstring.split(separator: ":")
+            let fullNameArr2 = cleanedstring.components(separatedBy: ":")
             ObjectDic[fullNameArr2[0]] = fullNameArr2[1]
             print(ObjectDic)
         }
