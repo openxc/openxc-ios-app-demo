@@ -145,13 +145,13 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         let searchCharacter: Character = ","
         let searchCharacter1: Character = ":"
         if cleanedstring.lowercased().characters.contains(searchCharacter) {
-            let fullNameArr = cleanedstring.split(separator: ",")
+            let fullNameArr = cleanedstring.components(separatedBy: ",")
             for  dataValue in fullNameArr{
                 if dataValue.lowercased().characters.contains(searchCharacter1) {
                     let badchar = CharacterSet(charactersIn: "\"{}[]")
                     let cleanedstring = dataValue.components(separatedBy: badchar).joined()
                     let newString3 = cleanedstring.replacingOccurrences(of: "\"", with: "")
-                    let fullNameArr2 = newString3.split(separator: ":")
+                    let fullNameArr2 = newString3.components(separatedBy: ":")
                     
                     ObjectDic[fullNameArr2[0]] = fullNameArr2[1]
                 }
