@@ -168,6 +168,15 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="X2N-n1-PMH">
                                 <rect key="frame" x="177" y="331" width="20" height="20"/>
                             </activityIndicatorView>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="{&quot;key&quot;:&quot;value&quot;,&quot;key&quot;:&quot;value&quot;}" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Qi-2l-lYc">
+                                <rect key="frame" x="7" y="243" width="359" height="39"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" smartQuotesType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="uM8-tL-Gmf" id="aCL-Dv-EgT"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -184,7 +193,9 @@
                             <constraint firstItem="l1W-i0-7OC" firstAttribute="top" secondItem="J1r-B2-hYF" secondAttribute="bottom" constant="10" id="C1y-2H-3wU"/>
                             <constraint firstItem="sxb-kJ-vsJ" firstAttribute="top" secondItem="3vU-lg-Vdj" secondAttribute="bottom" constant="14" id="CPF-Q1-Kvc"/>
                             <constraint firstItem="ouf-Un-Rfc" firstAttribute="top" secondItem="q5T-EL-zrt" secondAttribute="bottom" constant="25" id="Ds3-Bj-Lmv"/>
+                            <constraint firstItem="6Qi-2l-lYc" firstAttribute="centerY" secondItem="3vU-lg-Vdj" secondAttribute="centerY" id="EgI-EK-KpR"/>
                             <constraint firstItem="3vU-lg-Vdj" firstAttribute="trailing" secondItem="sxb-kJ-vsJ" secondAttribute="trailing" constant="2" id="GCR-wo-s2K"/>
+                            <constraint firstItem="gCF-t9-4Xx" firstAttribute="top" secondItem="6Qi-2l-lYc" secondAttribute="bottom" constant="4" id="NS0-34-OfB"/>
                             <constraint firstItem="LJH-iX-4mf" firstAttribute="leading" secondItem="q5T-EL-zrt" secondAttribute="leading" id="Pin-s1-U1y"/>
                             <constraint firstItem="sxb-kJ-vsJ" firstAttribute="trailing" secondItem="oMt-Yk-nYQ" secondAttribute="trailing" id="PyW-5i-PcH"/>
                             <constraint firstItem="LJH-iX-4mf" firstAttribute="leading" secondItem="jWl-5H-6DI" secondAttribute="leading" id="R6G-Sv-cKB"/>
@@ -193,10 +204,12 @@
                             <constraint firstItem="ouf-Un-Rfc" firstAttribute="leading" secondItem="gCF-t9-4Xx" secondAttribute="leading" id="U72-0p-mX1"/>
                             <constraint firstItem="J1r-B2-hYF" firstAttribute="top" secondItem="gCF-t9-4Xx" secondAttribute="bottom" constant="8" symbolic="YES" id="VOL-oh-4Oj"/>
                             <constraint firstItem="oMt-Yk-nYQ" firstAttribute="trailing" secondItem="eHj-Gx-9Sh" secondAttribute="trailing" id="Wf1-q8-Pxo"/>
+                            <constraint firstItem="6Qi-2l-lYc" firstAttribute="centerX" secondItem="X2N-n1-PMH" secondAttribute="centerX" id="X6z-n1-Qg8"/>
                             <constraint firstItem="LJH-iX-4mf" firstAttribute="top" secondItem="YVC-4u-wwf" secondAttribute="bottom" id="Xbs-dl-mbI"/>
                             <constraint firstItem="q5T-EL-zrt" firstAttribute="centerX" secondItem="X2N-n1-PMH" secondAttribute="centerX" id="YNO-dT-I06"/>
                             <constraint firstItem="gCF-t9-4Xx" firstAttribute="top" secondItem="ouf-Un-Rfc" secondAttribute="bottom" constant="9" id="bkV-9R-mwC"/>
                             <constraint firstItem="J1r-B2-hYF" firstAttribute="leading" secondItem="X2N-n1-PMH" secondAttribute="trailing" constant="65" id="cRG-1u-G5S"/>
+                            <constraint firstItem="6Qi-2l-lYc" firstAttribute="leading" secondItem="jWl-5H-6DI" secondAttribute="leadingMargin" constant="-9" id="ddK-3l-eB6"/>
                             <constraint firstAttribute="trailing" secondItem="LJH-iX-4mf" secondAttribute="trailing" id="e7s-Kd-jNY"/>
                             <constraint firstItem="ShR-o2-hVP" firstAttribute="top" secondItem="gea-uE-17r" secondAttribute="bottom" id="eXe-ut-W5Q"/>
                             <constraint firstItem="q5T-EL-zrt" firstAttribute="top" secondItem="Bsc-YI-Qyz" secondAttribute="bottom" constant="10" id="fdV-Ga-au7"/>
@@ -223,6 +236,7 @@
                         <outlet property="busSeg" destination="ouf-Un-Rfc" id="Co2-EF-y4v"/>
                         <outlet property="bypassLabel" destination="oMt-Yk-nYQ" id="oNE-oR-cL4"/>
                         <outlet property="bypassSeg" destination="J1r-B2-hYF" id="VVn-E7-K5W"/>
+                        <outlet property="customCommandTF" destination="6Qi-2l-lYc" id="kRD-nC-clp"/>
                         <outlet property="enabSeg" destination="gCF-t9-4Xx" id="44L-16-qGT"/>
                         <outlet property="enabledLabel" destination="sxb-kJ-vsJ" id="NvK-fV-Cmt"/>
                         <outlet property="formatLabel" destination="eHj-Gx-9Sh" id="UwF-aw-zsU"/>
@@ -1957,6 +1971,6 @@
         <image name="WIFI" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FLh-Cu-buY"/>
+        <segue reference="d7V-sw-X5y"/>
     </inferredMetricsTieBreakers>
 </document>

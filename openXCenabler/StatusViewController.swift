@@ -311,7 +311,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let vcCount = self.tabBarController?.viewControllers?.count
         cvc = self.tabBarController?.viewControllers?[vcCount!-1] as! CommandsViewController?
 
-        if cr.command_response.isEqual(to: "version") {
+        if cr.command_response.isEqual(to: "version") || cr.command_response.isEqual(to: ".version") {
             DispatchQueue.main.async {
                 self.verLab.text = cr.message as String
             }
@@ -319,14 +319,14 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
           
 
         }
-        if cr.command_response.isEqual(to: "device_id") {
+        if cr.command_response.isEqual(to: "device_id") || cr.command_response.isEqual(to: ".deviceid") {
             DispatchQueue.main.async {
                 self.devidLab.text = cr.message as String
             }
             cvc?.deviceIdResp = String(cr.message)
            
         }
-        if cr.command_response.isEqual(to: "platform") {
+        if cr.command_response.isEqual(to: "platform") || cr.command_response.isEqual(to: ".platform"){
             DispatchQueue.main.async {
                 self.platformLab.text = cr.message as String
             }
