@@ -44,7 +44,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     var platformResp: String!
     var rtcConfigResp: String!
     var sdCardResp: String!
-     var customCommandResp: String!
+    var customCommandResp: String!
     
     var selectedRowInPicker: Int!
 
