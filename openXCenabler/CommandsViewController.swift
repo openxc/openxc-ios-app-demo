@@ -71,10 +71,10 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
        
         populateCommandResponseLabel(rowNum: selectedRowInPicker)
         
-        busSeg.addTarget(self, action: #selector(busSegmentedControlValueChanged), for: .valueChanged)
-        enabSeg.addTarget(self, action: #selector(enabSegmentedControlValueChanged), for: .valueChanged)
-        bypassSeg.addTarget(self, action: #selector(bypassSegmentedControlValueChanged), for: .valueChanged)
-        pFormatSeg.addTarget(self, action: #selector(formatSegmentedControlValueChanged), for: .valueChanged)
+       // busSeg.addTarget(self, action: #selector(busSegmentedControlValueChanged), for: .valueChanged)
+       // enabSeg.addTarget(self, action: #selector(enabSegmentedControlValueChanged), for: .valueChanged)
+        //bypassSeg.addTarget(self, action: #selector(bypassSegmentedControlValueChanged), for: .valueChanged)
+       // pFormatSeg.addTarget(self, action: #selector(formatSegmentedControlValueChanged), for: .valueChanged)
 
     }
     
@@ -95,12 +95,16 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         if(vm.isBleConnected){
             
             if (sRow == 8){
-                
+                if(customCommandTF.text == nil||customCommandTF.text == ""){
+                    AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage: errorMsgforText)
+                    return
+                }
                 let str = customCommandTF.text!
                 let stringq = str.description.replacingOccurrences(of: "\"", with: "")
                 self.convertToJson(string: stringq)
                 let jsonString = self.createJSON()
                 let value = validJson(strValue: jsonString)
+                
                 if value{
                     let cm1 = VehicleCommandRequest()
                     cm1.command = .custom_command
@@ -321,29 +325,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         }
     }
     
-    // MARK: Segment Control Function
-    
-    func busSegmentedControlValueChanged() {
-      
-       
-        //let selectedSegment = busSeg.selectedSegmentIndex
 
-    }
-
-    func enabSegmentedControlValueChanged() {
-        
-       
-    }
-
-    func bypassSegmentedControlValueChanged() {
-        
-      
-    }
-    
-    func formatSegmentedControlValueChanged() {
-        
-      
-    }
     
     // MARK: Picker Delgate Function
 
@@ -462,6 +444,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         customCommandTF.resignFirstResponder()
+       
         return true
     }
 }
