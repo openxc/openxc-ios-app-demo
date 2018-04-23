@@ -141,9 +141,9 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
             // check to see if the config is set for protobuf mode
-            vm.setProtobufMode(false)
+            self.vm.setProtobufMode(false)
             if UserDefaults.standard.bool(forKey: "protobufOn") {
-                vm.setProtobufMode(true)
+                self.vm.setProtobufMode(true)
             }
             
             // check to see if a trace input file has been set up
