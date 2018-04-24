@@ -251,9 +251,9 @@
 				TargetAttributes = {
 					3A1016C01D5417AD006C5E93 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = D95XHVNG2Z;
+						DevelopmentTeam = 3QBMUUN95T;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					E75EE68F1E110ED400B2AE3B = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -494,16 +494,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = D95XHVNG2Z;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3QBMUUN95T;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = openXCenabler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ford.openxc;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ford.openxc-k";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6ddae70a-eda6-45cf-932a-7a07ba10e466";
-				PROVISIONING_PROFILE_SPECIFIER = "OpenXC Dev profile";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -515,16 +515,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = D95XHVNG2Z;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3QBMUUN95T;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
 				INFOPLIST_FILE = openXCenabler/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ford.openxc;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ford.openxc-k";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6ddae70a-eda6-45cf-932a-7a07ba10e466";
-				PROVISIONING_PROFILE_SPECIFIER = "OpenXC Dev profile";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

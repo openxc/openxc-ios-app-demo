@@ -35,9 +35,16 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     // set default diag response target
     vm.setDiagnosticDefaultTarget(self, action: DiagViewController.default_diag_rsp)
 
-    
+    // set custom target for specific Diagnostic request
+    vm.addDiagnosticTarget([1,2016,12], target: self, action: DiagViewController.new_diag_rsp)
+
   }
   
+    // method for custom taregt - specific diagnostic request
+    func new_diag_rsp(_ rsp:NSDictionary) {
+        print("in new diag response")
+    }
+    
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
