@@ -36,7 +36,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     vm.setDiagnosticDefaultTarget(self, action: DiagViewController.default_diag_rsp)
 
     // set custom target for specific Diagnostic request
-    vm.addDiagnosticTarget([1,2016,12], target: self, action: DiagViewController.new_diag_rsp)
+    vm.addDiagnosticTarget([1,2015,1], target: self, action: DiagViewController.new_diag_rsp)
 
   }
   
