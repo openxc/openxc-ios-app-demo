@@ -12,6 +12,7 @@ import CoreMotion
 import CoreLocation
 import AVFoundation
 
+
 // TODO: ToDo - Work on removing the warnings
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, NSURLConnectionDelegate {
@@ -21,7 +22,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   
   
   var vm: VehicleManager!
-  
+  var vmu :VehicleMessageUnit!
   // dictionary holding name/value from measurement messages
   var dashDict: NSMutableDictionary!
   
@@ -47,7 +48,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // grab VM instance
     vm = VehicleManager.sharedInstance
-    
+    vmu = VehicleMessageUnit.sharedInstance
     // initialize dictionary/table
     dashDict = NSMutableDictionary()
     dashTable.reloadData()
@@ -95,15 +96,11 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
       motionManager.startDeviceMotionUpdates()
       
     }
-    if UserDefaults.standard.bool(forKey: "locationOn"){
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-        }
-    }
     
     if UserDefaults.standard.bool(forKey: "dweetOutputOn") {
       dweetLoop = Timer.scheduledTimer(timeInterval: 1.5, target:self, selector:#selector(sendDweet), userInfo: nil, repeats:true)
     }
+
     if(!vm.isBleConnected && !vm.isTraceFileConnected && !vm.isNetworkConnected){
         AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
         
@@ -190,27 +187,30 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // grab the value based on the name key
     let v = dashDict.object(forKey: k)
 
+    let valueMeasurement  = vmu.getMesurementUnit(key: k, value: v as AnyObject)
+
+   //print(valueMeasurement)
     // main text in table is the measurement name
     cell!.textLabel?.text = k
-    cell!.textLabel?.font = UIFont(name:"Arial", size: 14.0)
+    cell!.textLabel?.font = UIFont(name:"Arial", size: 13.0)
     cell!.textLabel?.textColor = UIColor.lightGray
     
     // figure out if the value is a bool/number/string
-    if v is NSNumber {
-      let nv = v as! NSNumber
+    if valueMeasurement is NSNumber {
+      let nv = valueMeasurement as! NSNumber
       if nv.isEqual(to: NSNumber(value: true as Bool)) {
-        cell!.detailTextLabel?.text = "true"
+        cell!.detailTextLabel?.text = "On"
       } else if nv.isEqual(to: NSNumber(value: false as Bool)) {
-        cell!.detailTextLabel?.text = "false"
+        cell!.detailTextLabel?.text = "Off"
       } else {
         // round any floating points
         let nvr = Double(round(10.0*Double(nv))/10)
         cell!.detailTextLabel?.text = String(nvr)
       }
     } else {
-      cell!.detailTextLabel?.text = (v! as AnyObject).description
+      cell!.detailTextLabel?.text = (valueMeasurement as AnyObject).description
     }
-    cell!.detailTextLabel?.font = UIFont(name:"Arial", size: 14.0)
+    cell!.detailTextLabel?.font = UIFont(name:"Arial", size: 13.0)
     cell!.detailTextLabel?.textColor = UIColor.lightGray
     
     cell!.backgroundColor = UIColor.clear
@@ -255,31 +255,14 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     
     if locations.count>0 {
-  let loc = locations.last!
-        if UserDefaults.standard.bool(forKey: "locationOn"){
-            if !UserDefaults.standard.bool(forKey: "sensorsOn"){
-                dashDict.setObject(loc.coordinate.latitude, forKey:"phone_latitude" as NSCopying)
-                dashDict.setObject(loc.coordinate.longitude, forKey:"phone_longitude" as NSCopying)
-            }else{
-                dashDict.setObject(loc.coordinate.latitude, forKey:"phone_latitude" as NSCopying)
-                dashDict.setObject(loc.coordinate.longitude, forKey:"phone_longitude" as NSCopying)
-                dashDict.setObject(loc.altitude, forKey:"phone_altitude" as NSCopying)
-                dashDict.setObject(loc.course, forKey:"phone_heading" as NSCopying)
-                dashDict.setObject(loc.speed, forKey:"phone_speed" as NSCopying)
-            
-        }
-        
+  
+      let loc = locations.last!
+      dashDict.setObject(loc.coordinate.latitude, forKey:"phone_latitude" as NSCopying)
+      dashDict.setObject(loc.coordinate.longitude, forKey:"phone_longitude" as NSCopying)
+      dashDict.setObject(loc.altitude, forKey:"phone_altitude" as NSCopying)
+      dashDict.setObject(loc.course, forKey:"phone_heading" as NSCopying)
+      dashDict.setObject(loc.speed, forKey:"phone_speed" as NSCopying)
       // update the table
-        }else{
-                if UserDefaults.standard.bool(forKey: "sensorsOn"){
-               
-                    dashDict.setObject(loc.coordinate.latitude, forKey:"phone_latitude" as NSCopying)
-                    dashDict.setObject(loc.coordinate.longitude, forKey:"phone_longitude" as NSCopying)
-                    dashDict.setObject(loc.altitude, forKey:"phone_altitude" as NSCopying)
-                    dashDict.setObject(loc.course, forKey:"phone_heading" as NSCopying)
-                    dashDict.setObject(loc.speed, forKey:"phone_speed" as NSCopying)
-            }
-        }
       DispatchQueue.main.async {
         self.dashTable.reloadData()
       }
