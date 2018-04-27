@@ -34,7 +34,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
 
     // set default diag response target
     vm.setDiagnosticDefaultTarget(self, action: DiagViewController.default_diag_rsp)
-
+    
     
   }
   
