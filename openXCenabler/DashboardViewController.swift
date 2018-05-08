@@ -162,10 +162,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
   }
 
-  
-  
-  
-  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // table size based on what's in the dictionary
     return dashDict.count
@@ -187,7 +183,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // grab the value based on the name key
     let v = dashDict.object(forKey: k)
 
-    let valueMeasurement  = vmu.getMesurementUnit(key: k, value: v as AnyObject)
+    //let valueMeasurement  = vmu.getMesurementUnit(key: k, value: v as AnyObject)
 
    //print(valueMeasurement)
     // main text in table is the measurement name
@@ -196,8 +192,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     cell!.textLabel?.textColor = UIColor.lightGray
     
     // figure out if the value is a bool/number/string
-    if valueMeasurement is NSNumber {
-      let nv = valueMeasurement as! NSNumber
+    if v is NSNumber {
+      let nv = v as! NSNumber
       if nv.isEqual(to: NSNumber(value: true as Bool)) {
         cell!.detailTextLabel?.text = "On"
       } else if nv.isEqual(to: NSNumber(value: false as Bool)) {
@@ -205,10 +201,22 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
       } else {
         // round any floating points
         let nvr = Double(round(10.0*Double(nv))/10)
-        cell!.detailTextLabel?.text = String(nvr)
+        let valueMeasure1 = String(format:"%.2f",nvr)
+        let valueMeasure = vmu.getMesurementUnit(key: k, value: valueMeasure1 as AnyObject)
+        cell!.detailTextLabel?.text = (valueMeasure as! String)
       }
     } else {
-      cell!.detailTextLabel?.text = (valueMeasurement as AnyObject).description
+       // if valueMeasurement is NSNumber {
+        let floatvalue = (v as AnyObject).doubleValue
+        let nvr = Double(round(10.0*Double(floatvalue!))/10)
+        if nvr != 0.0{
+            let valueMeasure1 = String(format:"%.2f",nvr)
+            let valueMeasure = vmu.getMesurementUnit(key: k, value: valueMeasure1 as AnyObject)
+            cell!.detailTextLabel?.text = (valueMeasure as! String)//(valueMeasurement as AnyObject).description
+        }
+       else{
+            cell!.detailTextLabel?.text = (v as AnyObject).description
+        }
     }
     cell!.detailTextLabel?.font = UIFont(name:"Arial", size: 13.0)
     cell!.detailTextLabel?.textColor = UIColor.lightGray
