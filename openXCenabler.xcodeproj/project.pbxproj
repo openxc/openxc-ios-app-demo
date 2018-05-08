@@ -30,6 +30,8 @@
 		7DB633EA1F9F247100519A8B /* openXCiOSFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7DCC147820063C8B00DF5794 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4692D51FDFE5210022DF98 /* ProtocolBuffers.framework */; };
 		7DCC147920063C8B00DF5794 /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4692D51FDFE5210022DF98 /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7DD480272097237400B9034B /* CommandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD480262097237400B9034B /* CommandsViewController.swift */; };
+		7DD48029209723A000B9034B /* DiagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD48028209723A000B9034B /* DiagViewController.swift */; };
 		E75EE6931E110ED400B2AE3B /* openXCenablerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */; };
 		E78190A81ECC5B9000DE3B18 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B85B511ECC373500A3E5CB /* ProtocolBuffers.framework */; };
 /* End PBXBuildFile section */
@@ -341,7 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D83F86C2017389500E989D1 /* Utility.swift in Sources */,
-				7D47574420529B2500A81BC3 /* DiagViewController.swift in Sources */,
+				7DD48029209723A000B9034B /* DiagViewController.swift in Sources */,
 				3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */,
 				3A1016C91D5417AD006C5E93 /* DashboardViewController.swift in Sources */,
 				7D790ADC2063C1DC004AAD5E /* RecordingSourceController.swift in Sources */,
