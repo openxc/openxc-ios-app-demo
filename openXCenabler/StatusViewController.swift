@@ -61,14 +61,72 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     override func viewDidAppear(_ animated: Bool) {
       //  let name = UserDefaults.standard.value(forKey: "networkAdress") as? NSString
+        
+        // check to see if a trace input file has been set up
+        if (UserDefaults.standard.value(forKey: "vehicleInterface") as! String == "Pre-recorded Tracefile" ){
+        if let name = UserDefaults.standard.value(forKey: "traceInputFilename") as? NSString {
+            if(!vm.isTraceFileConnected){
+            vm.enableTraceFileSource(name)
+            self.searchBtn.isEnabled = false
+                timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
+                DispatchQueue.main.async {
+                    self.actConLab.text = "✅"
+                    self.searchBtn.setTitle("Trace File Playing",for:UIControlState())
+                    self.verLab.text = "---"
+                    self.devidLab.text = "---"
+                    self.platformLab.text = "---"
+                }
+            }else{
+                DispatchQueue.main.async {
+                                    self.actConLab.text = "✅"
+                                    self.searchBtn.setTitle("Trace File Playing",for:UIControlState())
+                    
+                               }
+            }
+            
+            }
+        
+       return
+         }
+        // check to see if a trace input file has been set up
+        if (UserDefaults.standard.value(forKey: "vehicleInterface") as! String == "None" ){
+
+            
+            DispatchQueue.main.async {
+                self.actConLab.text = "---"
+                self.msgRvcdLab.text = "---"
+                self.verLab.text = "---"
+                self.devidLab.text = "---"
+                self.platformLab.text = "---"
+                self.searchBtn.setTitle("None",for:UIControlState())
+                self.searchBtn.isEnabled = false
+            }
+                return
+        }
        // if name != nil{
             // networkDataFetch(Ip: name as String)
+        if (UserDefaults.standard.value(forKey: "vehicleInterface") as! String == "Network" ){
             if (vm.isNetworkConnected){
+                DispatchQueue.main.async {
                 self.NetworkImg.isHidden = false
                 self.actConLab.text = ""
                 self.searchBtn.setTitle("WIFI CONNECTED",for:UIControlState())
-                return
+                }
+                
+            }else{
+                DispatchQueue.main.async {
+                    self.actConLab.text = "---"
+                    self.msgRvcdLab.text = "---"
+                    self.verLab.text = "---"
+                    self.devidLab.text = "---"
+                    self.platformLab.text = "---"
+                    self.searchBtn.setTitle("WIFI NOT CONNECTED",for:UIControlState())
+                    self.searchBtn.isEnabled = false
+                }
             }
+            return
+        }
+                
             else if (vm.isBleConnected) {
                 DispatchQueue.main.async {
                     self.peripheralTable.isHidden = true
@@ -78,20 +136,22 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
 
-        else if(vm.isTraceFileConnected){
-            // start a timer to update the UI with the total received messages
-            timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
-            DispatchQueue.main.async {
-                self.actConLab.text = "✅"
-                self.searchBtn.setTitle("Trace File Playing",for:UIControlState())
-                
-            }
-        }
+//        else if(vm.isTraceFileConnected){
+//            // start a timer to update the UI with the total received messages
+//            timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
+//            DispatchQueue.main.async {
+//                self.actConLab.text = "✅"
+//                self.searchBtn.setTitle("Trace File Playing",for:UIControlState())
+//
+//            }
+       // }
                 
             else{
 
+                self.searchBtn.isEnabled = true
                 self.NetworkImg.isHidden = true
                 self.actConLab.text = "---"
+                 self.msgRvcdLab.text = "---"
                 self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
                 let networkOn = UserDefaults.standard.bool(forKey: "networkdataOn")
                 if(networkOn){
@@ -147,11 +207,13 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
             // check to see if a trace input file has been set up
-            if UserDefaults.standard.bool(forKey: "traceInputOn") {
-                if let name = UserDefaults.standard.value(forKey: "traceInputFilename") as? NSString {
-                    vm.enableTraceFileSource(name)
-                }
-            }
+            //if UserDefaults.standard.bool(forKey: "traceInputOn") {
+           // if let name = UserDefaults.standard.value(forKey: "traceInputFilename") as? NSString {
+                  //  vm.enableTraceFileSource(name)
+                   // self.searchBtn.isEnabled = false
+               
+               // }
+           // }
             
             // check to see if a trace output file has been configured
             if UserDefaults.standard.bool(forKey: "traceOutputOn") {
@@ -237,6 +299,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
             }
         }
+      
         // update the UI showing disconnected VI
         if msg==VehicleManagerStatusMessage.c5DISCONNECTED {
             DispatchQueue.main.async {

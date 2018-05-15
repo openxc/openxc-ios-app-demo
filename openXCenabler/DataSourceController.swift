@@ -115,7 +115,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
             }
              interfaceValue = vehicleInterface
         }else{
-            interfaceValue =  titleLabel.text
+            interfaceValue = "None"
            
         }
          self.setValueVehicleInterface()
@@ -201,6 +201,8 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
         tracefileBtn.isSelected = false
         noneBtn.isSelected = false
         interfaceValue = "Bluetooth"
+        PopupView.removeFromSuperview()
+        self.setValueVehicleInterface()
     }
     @IBAction func networkBtnAction(_ sender: Any) {
         
@@ -209,6 +211,8 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
         tracefileBtn.isSelected = false
         noneBtn.isSelected = false
         interfaceValue = "Network"
+        PopupView.removeFromSuperview()
+        self.setValueVehicleInterface()
     }
     @IBAction func trscefileBtnAction(_ sender: Any) {
         
@@ -217,6 +221,8 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
         tracefileBtn.isSelected = true
         noneBtn.isSelected = false
         interfaceValue = "Pre-recorded Tracefile"
+        PopupView.removeFromSuperview()
+        self.setValueVehicleInterface()
     }
     @IBAction func noneBtnAction(_ sender: Any) {
         
@@ -225,6 +231,8 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
         tracefileBtn.isSelected = false
         noneBtn.isSelected = true
         interfaceValue = "None"
+        PopupView.removeFromSuperview()
+        self.setValueVehicleInterface()
     }
     func setValueForRadioBtn(){
         if  (interfaceValue == "Bluetooth") {
@@ -254,7 +262,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     }
     func setValueVehicleInterface(){
         
-       /* if  (interfaceValue == "None") {
+        if  (interfaceValue == "None") {
             
             playname.isUserInteractionEnabled = false
             networkDataHost.isUserInteractionEnabled = false
@@ -273,7 +281,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
             networkDataPort.text = ""
             networkDataHost.text = ""
             playname.text = ""
-        }*/
+        }
          if  (interfaceValue == "Pre-recorded Tracefile") {
             playname.isUserInteractionEnabled = true
             
