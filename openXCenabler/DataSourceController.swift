@@ -43,7 +43,6 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     //Singleton Instance
     var NM : NetworkData!
     var vm : VehicleManager!
-    
     // timer for UI counter updates
     var timer: Timer!
     
@@ -52,6 +51,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
  
          NM = NetworkData.sharedInstance
          vm = VehicleManager.sharedInstance
+       
         // Do any additional setup after loading the view.
         PopupView.backgroundColor = UIColor(white: 1, alpha: 0.5)
         
@@ -102,7 +102,8 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
         else if  vehicleInterface == "Network" {
             if let hostName = (UserDefaults.standard.value(forKey: "networkHostName")  as? String){
                 networkDataHost.text = hostName//(UserDefaults.standard.value(forKey: "networkHostName")  as! String)
-            networkDataPort.text = (UserDefaults.standard.value(forKey: "networkPortName")  as! String)
+                networkDataPort.text = (UserDefaults.standard.value(forKey: "networkPortName")  as! String)
+               
                  }
              interfaceValue = vehicleInterface
            
@@ -114,9 +115,13 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
             playname.text = tracefile//(UserDefaults.standard.value(forKey: "traceInputFilename")  as! String)
             }
              interfaceValue = vehicleInterface
-        }else{
+        }
+        else if vehicleInterface ==  "None"{
             interfaceValue = "None"
            
+        }else{
+            titleLabel.text = "Bluetooth"
+            interfaceValue = "Bluetooth"
         }
          self.setValueVehicleInterface()
     }
@@ -165,6 +170,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     }
     //Dismiss button main view Action
     @IBAction func dismissView(_ sender: AnyObject) {
+     
         self.dismiss(animated: true, completion: nil)
     }
     //Vehicle interface button main view Action
@@ -296,7 +302,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
             UserDefaults.standard.set(interfaceValue, forKey:"vehicleInterface")
             titleLabel.text = interfaceValue
             NM.disconnectConnection()
-            
+            //vm.isBleConnected = false
             networkDataPort.text = ""
             networkDataHost.text = ""
         }
@@ -403,8 +409,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
                     "Please enter valid port number", preferredStyle: UIAlertControllerStyle.alert)
                 alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
                 self.present(alertController, animated: true, completion: nil)
-               // networkDataPort.resignFirstResponder()
-                //networkDataHost.resignFirstResponder()
+   
             }
         }
         return true;
@@ -430,38 +435,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
                 }
             })
         }
-           // else{
-//            let alertController = UIAlertController(title: "", message:
-//                "Please enter valid host name and port", preferredStyle: UIAlertControllerStyle.alert)
-//            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-//            self.present(alertController, animated: true, completion: nil)
-//            networkDataPort.resignFirstResponder()
-//            networkDataHost.resignFirstResponder()
-//        }
-        
-       /* let searchCharacter: Character = ":"
-        if Ip.lowercased().characters.contains(searchCharacter) {
-            
-            // if (Ip != ""){
-            
-            var myStringArr = Ip.components(separatedBy: ":")
-            let ip = myStringArr[0] //"0.0.0.0"
-            if (myStringArr[1] != ""){
-                let port = Int(myStringArr[1]) //50001
-               
-                
-            }else{
-                let alertController = UIAlertController(title: "", message:
-                    "Please enter valid IP and host name", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-                self.present(alertController, animated: true, completion: nil)
-            }
-        }else{
-            let alertController = UIAlertController(title: "", message:
-                "Please enter valid IP and host name", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-            self.present(alertController, animated: true, completion: nil)
-        }*/
+
         
     }
     
@@ -480,21 +454,6 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     }
     
  
-    //ranjan added code for Network data
-    // connect to network address to fetch data from network emulator
-//    @IBAction func networkData(_ sender: UISwitch) {
-//
-//        if sender.isOn {
-//           // networkData.isHidden = false
-//            UserDefaults.standard.set(sender.isOn, forKey:"networkdataOn")
-//        } else {
-//            //networkData.isHidden = true
-//            UserDefaults.standard.set(false, forKey:"networkdataOn")
-//            UserDefaults.standard.set("", forKey:"networkAdress")
-//            NetworkData.sharedInstance.disconnectConnection()
-//
-//        }
-//    }
     func keyboardWillShow() {
         if view.frame.origin.y == 0{
             self.view.frame.origin.y -= 120
@@ -509,25 +468,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     
     // show 'sources' view
     @IBAction func srcHit(_ sender: AnyObject) {
-        /*  mainView.isHidden = true
-         srcView.isHidden = false
-         
-         //ranjan added code for Network data
-         // check saved value of Networkdata switch
-         let networkOn = UserDefaults.standard.bool(forKey: "networkdataOn")
-         // update UI if necessary
-         if networkOn == true {
-         networkDataswitch.setOn(true, animated:false)
-         networkData.isHidden = false
-         if let name = UserDefaults.standard.value(forKey: "networkAdress") as? NSString {
-         
-         if(!VehicleManager.sharedInstance.isNetworkConnected){
-         networkDataFetch(Ip: name as String)
-         }
-         }
-         }else{
-         
-         }*/
+        
         
     }
     /*
