@@ -69,11 +69,11 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 if (vm.isBleConnected) {
                     DispatchQueue.main.async {
                         
-                        self.searchBtn.isEnabled = true
+                       // self.searchBtn.isEnabled = true
                         self.NetworkImg.isHidden = true
-                        self.actConLab.text = "---"
-                        self.msgRvcdLab.text = "---"
-                        self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
+                        //self.actConLab.text = "---"
+                       //self.msgRvcdLab.text = "---"
+                        //self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
                     }
                 }else{
                     self.searchBtn.isEnabled = true
@@ -93,8 +93,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         if let port = (UserDefaults.standard.value(forKey: "networkPortName") as? String){
                             self.networkDataFetch(hostName: name ,PortName: port )
                         }
-                        
-                        
+
                     }else{
                         DispatchQueue.main.async {
                             self.actConLab.text = ""
@@ -169,11 +168,11 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
          } else{
             
-            self.searchBtn.isEnabled = true
-            self.NetworkImg.isHidden = true
-            self.actConLab.text = "---"
-            self.msgRvcdLab.text = "---"
-            self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
+//            self.searchBtn.isEnabled = true
+//            self.NetworkImg.isHidden = true
+//            self.actConLab.text = "---"
+//            self.msgRvcdLab.text = "---"
+//            self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
             
         }
         // check to see if a trace input file has been set up
@@ -189,9 +188,10 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             NetworkData.sharedInstance.connect(ip:hostName, portvalue: port!, completionHandler: { (success) in
                 print(success)
                 if(success){
+                     self.timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
+                    if self.vm.messageCount > 0{
                     UserDefaults.standard.set(hostName, forKey:"networkHostName")
                     UserDefaults.standard.set(PortName, forKey:"networkPortName")
-                    self.timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
                     DispatchQueue.main.async {
                         
                         self.NetworkImg.isHidden = true
@@ -202,6 +202,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         self.searchBtn.setTitle("WIFI CONNECTED",for:UIControlState())
                         self.searchBtn.isEnabled = false
                     }
+                 }
                     //self.callBack()
                 }else{
                     DispatchQueue.main.async {

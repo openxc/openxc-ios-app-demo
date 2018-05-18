@@ -125,44 +125,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
         }
          self.setValueVehicleInterface()
     }
-   /*
-    //if we have no permission to access user location, then ask user for permission.
-    func isAuthorizedtoGetUserLocation() {
-        
-        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse     {
-            locationManager.requestWhenInUseAuthorization()
-        }
-    }
-    
-    
-    //this method will be called each time when a user change his location access preference.
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedWhenInUse {
-            print("User allowed us to access location")
-            //do whatever init activities here.
-        }
-    }
-    
-    
-    //this method is called by the framework on         locationManager.requestLocation();
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("Did location updates is called")
-        let userLocation:CLLocation = locations[0] as CLLocation
-        
-        // Call stopUpdatingLocation() to stop listening for location updates,
-        // other wise this function will be called every time when user location changes.
-        
-        // manager.stopUpdatingLocation()
-        
-        print("user latitude = \(userLocation.coordinate.latitude)")
-        print("user longitude = \(userLocation.coordinate.longitude)")
-        //store the user location here to firebase or somewhere
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Did location updates is called but failed getting location \(error)")
-    }
-    */
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -403,6 +366,8 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
         if textField.tag == 103{
             if (textField.text != ""){
             self.networkDataFetch(hostName: networkDataHost.text!,PortName: networkDataPort.text!)
+                UserDefaults.standard.set(networkDataHost.text!, forKey:"networkHostName")
+                UserDefaults.standard.set(networkDataPort.text!, forKey:"networkPortName")
             textField.resignFirstResponder();
             }else{
                 let alertController = UIAlertController(title: "", message:
@@ -432,6 +397,8 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
                         "error ocured in connection", preferredStyle: UIAlertControllerStyle.alert)
                     alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
                     self.present(alertController, animated: true, completion: nil)
+                    UserDefaults.standard.set(nil, forKey:"networkHostName")
+                    UserDefaults.standard.set(nil, forKey:"networkPortName")
                 }
             })
         }
