@@ -33,7 +33,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     // the VM
     var vm: VehicleManager!
     var cm: Command!
-    
+   
     // timer for UI counter updates
     var timer: Timer!
     
@@ -49,6 +49,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // instantiate the VM
         vm = VehicleManager.sharedInstance
         cm = Command.sharedInstance
+        
         // setup the status callback, and the command response callback
         vm.setManagerCallbackTarget(self, action: StatusViewController.manager_status_updates)
         //vm.setCanDefaultTarget(self, action: StatusViewController.handle_cmd_response)
@@ -61,64 +62,170 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     override func viewDidAppear(_ animated: Bool) {
       //  let name = UserDefaults.standard.value(forKey: "networkAdress") as? NSString
-       // if name != nil{
-            // networkDataFetch(Ip: name as String)
-            if (vm.isNetworkConnected){
-                self.NetworkImg.isHidden = false
-                self.actConLab.text = ""
-                self.searchBtn.setTitle("WIFI CONNECTED",for:UIControlState())
+        
+        
+         if let name = (UserDefaults.standard.value(forKey: "vehicleInterface") as? String) {
+            if name == "Bluetooth"{
+                if (vm.isBleConnected) {
+                    DispatchQueue.main.async {
+                        
+                       // self.searchBtn.isEnabled = true
+                        self.NetworkImg.isHidden = true
+                        //self.actConLab.text = "---"
+                       //self.msgRvcdLab.text = "---"
+                        //self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
+                    }
+                }else{
+                    self.searchBtn.isEnabled = true
+                    self.NetworkImg.isHidden = true
+                    self.actConLab.text = "---"
+                    self.msgRvcdLab.text = "---"
+                    self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
+                }
+                return
+                
+            }
+            
+            
+            if name == "Network"{
+                if (!vm.isNetworkConnected){
+                    if let name = (UserDefaults.standard.value(forKey: "networkHostName") as? String) {
+                        if let port = (UserDefaults.standard.value(forKey: "networkPortName") as? String){
+                            self.networkDataFetch(hostName: name ,PortName: port )
+                        }
+
+                    }else{
+                        DispatchQueue.main.async {
+                            self.actConLab.text = ""
+                            self.verLab.text = "---"
+                            self.devidLab.text = "---"
+                            self.platformLab.text = "---"
+                            self.msgRvcdLab.text = "---"
+                            self.searchBtn.setTitle("WIFI NOT CONNECTED",for:UIControlState())
+                            self.searchBtn.isEnabled = false
+                            let alertController = UIAlertController(title: "", message:
+                                "please check the host adress", preferredStyle: UIAlertControllerStyle.alert)
+                            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                        
+                    }
+                    
+                    
+                }else{
+                    timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
+                    DispatchQueue.main.async {
+                        
+                        self.NetworkImg.isHidden = false
+                        self.actConLab.text = ""
+                        self.verLab.text = "---"
+                        self.devidLab.text = "---"
+                        self.platformLab.text = "---"
+                        //self.msgRvcdLab.text = "---"
+                        self.searchBtn.setTitle("WIFI  CONNECTED",for:UIControlState())
+                        self.searchBtn.isEnabled = false
+                    }
+                }
                 return
             }
-            else if (vm.isBleConnected) {
+            
+            
+            if name == "None"{
                 DispatchQueue.main.async {
-                    self.peripheralTable.isHidden = true
-                    self.actConLab.text = "✅"
-                    self.NetworkImg.isHidden = true
-                    self.searchBtn.setTitle("BLE VI CONNECTED",for:UIControlState())
+                    self.actConLab.text = "---"
+                    self.msgRvcdLab.text = "---"
+                    self.verLab.text = "---"
+                    self.devidLab.text = "---"
+                    self.platformLab.text = "---"
+                    self.searchBtn.setTitle("None",for:UIControlState())
+                    self.searchBtn.isEnabled = false
                 }
+                return
             }
-
-        else if(vm.isTraceFileConnected){
-            // start a timer to update the UI with the total received messages
-            timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
-            DispatchQueue.main.async {
-                self.actConLab.text = "✅"
-                self.searchBtn.setTitle("Trace File Playing",for:UIControlState())
-                
+            
+            if name == "Pre-recorded Tracefile"{
+                if let traceFileName = UserDefaults.standard.value(forKey: "traceInputFilename") as? NSString{
+                    if(!vm.isTraceFileConnected){
+                        vm.enableTraceFileSource(traceFileName)
+                        self.searchBtn.isEnabled = false
+                        timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
+                        DispatchQueue.main.async {
+                            self.actConLab.text = "✅"
+                            self.searchBtn.setTitle("Trace File Playing",for:UIControlState())
+                            self.verLab.text = "---"
+                            self.devidLab.text = "---"
+                            self.platformLab.text = "---"
+                        }
+                    }else{
+                        DispatchQueue.main.async {
+                            self.actConLab.text = "✅"
+                            self.searchBtn.setTitle("Trace File Playing",for:UIControlState())
+                            
+                        }
+                    }
+                }
+                return
             }
+         } else{
+            
+//            self.searchBtn.isEnabled = true
+//            self.NetworkImg.isHidden = true
+//            self.actConLab.text = "---"
+//            self.msgRvcdLab.text = "---"
+//            self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
+            
         }
-                
-            else{
+        // check to see if a trace input file has been set up
 
-                self.NetworkImg.isHidden = true
-                self.actConLab.text = "---"
-                self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
-                let networkOn = UserDefaults.standard.bool(forKey: "networkdataOn")
-                if(networkOn){
-                    let alertController = UIAlertController(title: "", message:
-                        "No Data please check the host adress", preferredStyle: UIAlertControllerStyle.alert)
-                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-                    self.present(alertController, animated: true, completion: nil)
-                }
-            }
-        //}
-    }
-    func networkDataFetch(Ip:String)  {
-        if (Ip != ""){
-            var myStringArr = Ip.components(separatedBy: ":")
-            let ip = myStringArr[0] //"0.0.0.0"
-            let port = Int(myStringArr[1]) //50001
-            NetworkData.sharedInstance.connect(ip: ip, portvalue: port!, completionHandler: { (success) in
+}
+    //ranjan added code for Network data
+    func networkDataFetch(hostName:String,PortName:String)  {
+        // networkData.text = name as String
+        
+        //let ip  = hostName
+        let port  = Int(PortName)
+        if(hostName != "" && PortName != ""){
+            NetworkData.sharedInstance.connect(ip:hostName, portvalue: port!, completionHandler: { (success) in
                 print(success)
-                if(!success){
-                    let alertController = UIAlertController(title: "", message:
-                        "error ocured", preferredStyle: UIAlertControllerStyle.alert)
-                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-                    self.present(alertController, animated: true, completion: nil)
+                if(success){
+                     self.timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
+                    if self.vm.messageCount > 0{
+                    UserDefaults.standard.set(hostName, forKey:"networkHostName")
+                    UserDefaults.standard.set(PortName, forKey:"networkPortName")
+                    DispatchQueue.main.async {
+                        
+                        self.NetworkImg.isHidden = true
+                        self.actConLab.text = ""
+                        self.verLab.text = "---"
+                        self.devidLab.text = "---"
+                        self.platformLab.text = "---"
+                        self.searchBtn.setTitle("WIFI CONNECTED",for:UIControlState())
+                        self.searchBtn.isEnabled = false
+                    }
+                 }
+                    //self.callBack()
+                }else{
+                    DispatchQueue.main.async {
+                        self.actConLab.text = ""
+                        self.verLab.text = "---"
+                        self.devidLab.text = "---"
+                        self.platformLab.text = "---"
+                        self.msgRvcdLab.text = "---"
+                        self.searchBtn.setTitle("WIFI NOT CONNECTED",for:UIControlState())
+                        self.searchBtn.isEnabled = false
+                        let alertController = UIAlertController(title: "", message:
+                            "error ocured in connection", preferredStyle: UIAlertControllerStyle.alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                    
                 }
             })
         }
+
+        
     }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -147,11 +254,13 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             }
             
             // check to see if a trace input file has been set up
-            if UserDefaults.standard.bool(forKey: "traceInputOn") {
-                if let name = UserDefaults.standard.value(forKey: "traceInputFilename") as? NSString {
-                    vm.enableTraceFileSource(name)
-                }
-            }
+            //if UserDefaults.standard.bool(forKey: "traceInputOn") {
+           // if let name = UserDefaults.standard.value(forKey: "traceInputFilename") as? NSString {
+                  //  vm.enableTraceFileSource(name)
+                   // self.searchBtn.isEnabled = false
+               
+               // }
+           // }
             
             // check to see if a trace output file has been configured
             if UserDefaults.standard.bool(forKey: "traceOutputOn") {
@@ -237,8 +346,10 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
             }
         }
+      
         // update the UI showing disconnected VI
         if msg==VehicleManagerStatusMessage.c5DISCONNECTED {
+            if(!vm.isTraceFileConnected){
             DispatchQueue.main.async {
                 self.actConLab.text = "---"
                 self.msgRvcdLab.text = "---"
@@ -246,6 +357,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.devidLab.text = "---"
                 self.platformLab.text = "---"
                 self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
+            }
             }
         }
         
@@ -316,7 +428,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // this function is called by the timer, it updates the UI
     func msgRxdUpdate(_ t:Timer) {
-        if vm.connectionState==VehicleManagerConnectionState.operational {
+        if vm.connectionState==VehicleManagerConnectionState.operational || vm.isNetworkConnected{
            
              DispatchQueue.main.async {
                 self.msgRvcdLab.text = String(self.vm.messageCount)
