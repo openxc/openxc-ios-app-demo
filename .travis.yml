@@ -9,4 +9,4 @@ branches:
 - next
 
 script:
-- xcodebuild build test -project openXCenabler.xcodeproj -scheme openXCenabler -destination 'platform=iOS Simulator,name=iPhone 6s,OS=9.2'  ONLY_ACTIVE_ARCH=NO
+- xcodebuild build test -project openXCenabler.xcodeproj -scheme openXCenabler -destination 'platform=iOS Simulator,name=iPhone 6s,OS=10.0'  ONLY_ACTIVE_ARCH=NO
