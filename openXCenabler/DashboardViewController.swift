@@ -22,6 +22,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   
   
   var vm: VehicleManager!
+  var bm : BluetoothManager!
+  var tfm : TraceFileManager!
   var vmu :VehicleMessageUnit!
   // dictionary holding name/value from measurement messages
   var dashDict: NSMutableDictionary!
@@ -49,6 +51,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // grab VM instance
     vm = VehicleManager.sharedInstance
     vmu = VehicleMessageUnit.sharedInstance
+    bm = BluetoothManager.sharedInstance
+    tfm = TraceFileManager.sharedInstance
+    
     // initialize dictionary/table
     dashDict = NSMutableDictionary()
     dashTable.reloadData()
@@ -101,7 +106,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
       dweetLoop = Timer.scheduledTimer(timeInterval: 1.5, target:self, selector:#selector(sendDweet), userInfo: nil, repeats:true)
     }
 
-    if(!vm.isBleConnected && !vm.isTraceFileConnected && !vm.isNetworkConnected){
+    if(!bm.isBleConnected && !vm.isTraceFileConnected && !vm.isNetworkConnected){
         AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
         
     }

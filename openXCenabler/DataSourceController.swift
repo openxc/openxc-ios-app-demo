@@ -43,6 +43,8 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     //Singleton Instance
     var NM : NetworkData!
     var vm : VehicleManager!
+    var tfm: TraceFileManager!
+    var bm: BluetoothManager!
     // timer for UI counter updates
     var timer: Timer!
     
@@ -51,7 +53,8 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
  
          NM = NetworkData.sharedInstance
          vm = VehicleManager.sharedInstance
-       
+         tfm = TraceFileManager.sharedInstance
+         bm = BluetoothManager.sharedInstance
         // Do any additional setup after loading the view.
         PopupView.backgroundColor = UIColor(white: 1, alpha: 0.5)
         
@@ -244,7 +247,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
             UserDefaults.standard.set(interfaceValue, forKey:"vehicleInterface")
             titleLabel.text = interfaceValue
             
-            vm.disableTraceFileSource()
+            tfm.disableTraceFileSource()
             NM.disconnectConnection()
             
             networkDataPort.text = ""
@@ -265,7 +268,6 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
             UserDefaults.standard.set(interfaceValue, forKey:"vehicleInterface")
             titleLabel.text = interfaceValue
             NM.disconnectConnection()
-            //vm.isBleConnected = false
             networkDataPort.text = ""
             networkDataHost.text = ""
         }
@@ -282,7 +284,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
                 networkDataPort.text = (UserDefaults.standard.value(forKey: "networkPortName")  as! String)
             }
            
-            vm.disableTraceFileSource()
+            tfm.disableTraceFileSource()
             playname.text = ""
         }
         else  {
@@ -302,7 +304,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
             }
             //titleLabel.text = interfaceValue
             
-            vm.disableTraceFileSource()
+            tfm.disableTraceFileSource()
             NM.disconnectConnection()
             
             networkDataPort.text = ""
@@ -324,7 +326,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     @IBAction func autoChange(_ sender: UISwitch) {
         UserDefaults.standard.set(sender.isOn, forKey:"autoConnectOn")
         if sender.isOn{
-        vm.setAutoconnect(true)
+        bm.setAutoconnect(true)
         }
     }
     
@@ -347,7 +349,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
             textField.resignFirstResponder()
             UserDefaults.standard.set(playname.text, forKey:"traceInputFilename")
             //if let name = UserDefaults.standard.value(forKey: "traceOutputFilename") as? NSString {
-            vm.enableTraceFileSource(playname.text! as NSString)
+            tfm.enableTraceFileSource(playname.text! as NSString)
            
            //}
            

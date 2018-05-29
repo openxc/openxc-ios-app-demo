@@ -14,6 +14,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     
     // the VM
     var vm: VehicleManager!
+    var bm: BluetoothManager!
     var cm: Command!
     var ObjectDic : NSMutableDictionary = NSMutableDictionary()
     @IBOutlet weak var pickerView: UIPickerView!
@@ -34,7 +35,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     @IBOutlet weak var acitivityInd: UIActivityIndicatorView!
     @IBOutlet weak var customCommandTF : UITextField!
     
-    let commands = ["Version","Device Id","Passthrough CAN Mode","Acceptance Filter Bypass","Payload Format JSON", "Platform", "RTC Config", "SD Card Status","Custom Command"]
+    let commands = ["Version","Device Id","Passthrough CAN Mode","Acceptance Filter Bypass","Payload Format", "Platform", "RTC Config", "SD Card Status","Custom Command"]
     
     var versionResp: String!
     var deviceIdResp: String!
@@ -62,6 +63,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         
         // grab VM instance
         vm = VehicleManager.sharedInstance
+        bm = BluetoothManager.sharedInstance
         cm = Command.sharedInstance
         // vm.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
         vm.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
@@ -79,7 +81,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if(!vm.isBleConnected){
+        if(!bm.isBleConnected){
             
             AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
             
@@ -92,9 +94,14 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         let sRow = pickerView.selectedRow(inComponent: 0)
         
         
-        if(vm.isBleConnected){
+        if(bm.isBleConnected){
             
-            if (sRow == 8){
+            if (sRow == 8 ){
+                
+                if UserDefaults.standard.bool(forKey: "protobufOn"){
+                    AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage: errorMsgcustomCommand)
+                    return
+                }
                 if(customCommandTF.text == nil||customCommandTF.text == ""){
                     AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage: errorMsgforText)
                     return
@@ -306,6 +313,16 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         }
         
         if cr.command_response.isEqual(to: "payload_format") || cr.command_response.isEqual(to: ".payloadformat") {
+            if(cr.status){
+            if !vm.jsonMode && pFormatSeg.selectedSegmentIndex==0 {
+            vm.setProtobufMode(false)
+            UserDefaults.standard.set(false, forKey:"protobufOn")
+            }
+            if vm.jsonMode && pFormatSeg.selectedSegmentIndex==1{
+                vm.setProtobufMode(true)
+                UserDefaults.standard.set(true, forKey:"protobufOn")
+            }
+            }
             payloadFormatResp = String(cr.status)
         }
         if cr.command_response.isEqual(to: "platform") || cr.command_response.isEqual(to: ".platform"){

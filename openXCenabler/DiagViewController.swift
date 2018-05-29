@@ -22,7 +22,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var rspText: UITextView!
   
   var vm: VehicleManager!
-
+    var bm : BluetoothManager!
   // string array holding last X diag responses
   var rspStrings : [String] = []
   
@@ -31,7 +31,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
 
     // grab VM instance
     vm = VehicleManager.sharedInstance
-
+    bm = BluetoothManager.sharedInstance
     // set default diag response target
     vm.setDiagnosticDefaultTarget(self, action: DiagViewController.default_diag_rsp)
 
@@ -51,7 +51,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
   }
 
     override func viewDidAppear(_ animated: Bool) {
-        if(!vm.isBleConnected){
+        if(!bm.isBleConnected){
             
             AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
         }
@@ -107,7 +107,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     }
     
     // if the VM isn't operational, don't send anything
-    if vm.connectionState != VehicleManagerConnectionState.operational {
+    if bm.connectionState != VehicleManagerConnectionState.operational {
         lastReq.text = "Not connected to VI"
         return
     }

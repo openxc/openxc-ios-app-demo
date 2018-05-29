@@ -509,7 +509,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ranjan sahu (KXGDAG4DLG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ranjan sahu (KXGDAG4DLG)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = D95XHVNG2Z;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
@@ -518,7 +518,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ford.openxc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7a72eff7-f0bd-4c3d-a652-a72257080e07";
+				PROVISIONING_PROFILE = "5437cd9f-41e7-4e97-8599-4cf4a06aaf8f";
 				PROVISIONING_PROFILE_SPECIFIER = "OpenXC Dev profile";
 				SWIFT_VERSION = 3.0;
 			};
@@ -530,7 +530,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Ranjan sahu (KXGDAG4DLG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ranjan sahu (KXGDAG4DLG)";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = D95XHVNG2Z;
 				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";

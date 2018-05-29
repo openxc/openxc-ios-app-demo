@@ -15,7 +15,7 @@ class CanViewController: UIViewController, UITableViewDelegate, UITableViewDataS
   @IBOutlet weak var canTable: UITableView!
 
   var vm: VehicleManager!
-  
+  var bm: BluetoothManager!
   // dictionary holding CAN key/CAN message from measurement messages
   var canDict: NSMutableDictionary!
   
@@ -25,7 +25,7 @@ class CanViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // grab VM instance
     vm = VehicleManager.sharedInstance
-
+    bm = BluetoothManager.sharedInstance
     // initialize dictionary/table
     canDict = NSMutableDictionary()
     canTable.reloadData()
@@ -42,7 +42,7 @@ class CanViewController: UIViewController, UITableViewDelegate, UITableViewDataS
   }
   
     override func viewDidAppear(_ animated: Bool) {
-        if(!vm.isBleConnected){
+        if(!bm.isBleConnected){
             
             AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
         }
