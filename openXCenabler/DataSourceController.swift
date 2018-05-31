@@ -19,7 +19,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     @IBOutlet weak var networkBtn: UIButton!
     @IBOutlet weak var tracefileBtn: UIButton!
     @IBOutlet weak var noneBtn: UIButton!
-    
+    @IBOutlet weak var acitivityInd: UIActivityIndicatorView!
     @IBOutlet weak var titleLabel: UILabel!
     
     //Tracefile play back switch and textfield
@@ -58,7 +58,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
         // Do any additional setup after loading the view.
         PopupView.backgroundColor = UIColor(white: 1, alpha: 0.5)
         
-        
+        vm.setCommandDefaultTarget(self, action: DataSourceController.handle_cmd_response)
          //ranjan added code for Network data
          // watch for changes to network file output file name field
          networkDataHost.addTarget(self, action: #selector(networkDataFieldDidChange), for:UIControlEvents.editingChanged)
@@ -336,12 +336,63 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     }
     // protbuf mode switch changed, save it's value
     @IBAction func protoChange(_ sender: UISwitch) {
-        UserDefaults.standard.set(sender.isOn, forKey:"protobufOn")
         if sender.isOn {
-            vm.setProtobufMode(true)
+            self.payloadFormatCommand(platformFormat:"protobuf")
+        }else{
+            self.payloadFormatCommand(platformFormat:"json")
         }
+        UserDefaults.standard.set(sender.isOn, forKey:"protobufOn")
     }
   
+    func payloadFormatCommand(platformFormat:NSString) {
+        if bm.isBleConnected{
+        let cm = VehicleCommandRequest()
+        if (platformFormat == "protobuf" ){
+           cm.format = "protobuf"
+        }
+        else{
+           cm.format = "json"
+        }
+        
+        cm.command = .payload_format
+        self.vm.sendCommand(cm)
+        //showActivityIndicator()
+            
+        }
+    }
+    func showActivityIndicator() {
+        //acitivityInd.startAnimating()
+        self.view.alpha = 0.5
+       
+        
+    }
+    func hideActivityIndicator() {
+        //acitivityInd.stopAnimating()
+        self.view.alpha = 1.0
+       
+        
+    }
+    // MARK: UI Function
+    
+    func handle_cmd_response(_ rsp:NSDictionary) {
+       // self.hideActivityIndicator()
+        // extract the command response message
+        let cr = rsp.object(forKey: "vehiclemessage") as! VehicleCommandResponse
+        
+        
+        if(cr.status){
+            if !vm.jsonMode {
+                vm.setProtobufMode(false)
+                UserDefaults.standard.set(false, forKey:"protobufOn")
+                return
+            }
+            if vm.jsonMode {
+                vm.setProtobufMode(true)
+                UserDefaults.standard.set(true, forKey:"protobufOn")
+                return
+            }
+        }
+    }
     // text view delegate to clear keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
        

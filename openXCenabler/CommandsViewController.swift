@@ -46,6 +46,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     var rtcConfigResp: String!
     var sdCardResp: String!
     var customCommandResp: String!
+    var isJsonFormat:Bool!
     
     var selectedRowInPicker: Int!
     
@@ -60,7 +61,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         acitivityInd.activityIndicatorViewStyle =
             UIActivityIndicatorViewStyle.whiteLarge
         acitivityInd.isHidden = true
-        
+
         // grab VM instance
         vm = VehicleManager.sharedInstance
         bm = BluetoothManager.sharedInstance
@@ -77,6 +78,8 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         // enabSeg.addTarget(self, action: #selector(enabSegmentedControlValueChanged), for: .valueChanged)
         //bypassSeg.addTarget(self, action: #selector(bypassSegmentedControlValueChanged), for: .valueChanged)
         // pFormatSeg.addTarget(self, action: #selector(formatSegmentedControlValueChanged), for: .valueChanged)
+        
+         isJsonFormat = vm.jsonMode
         
     }
     
@@ -98,7 +101,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             
             if (sRow == 8 ){
                 
-                if UserDefaults.standard.bool(forKey: "protobufOn"){
+                if !vm.jsonMode{
                     AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage: errorMsgcustomCommand)
                     return
                 }
@@ -148,7 +151,6 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         let jsonData = try? JSONSerialization.data(withJSONObject: ObjectDic, options: [])
         let jsonString = String(data: jsonData!, encoding: .utf8)
         print(jsonString as Any)
-        
         return jsonString!
         
     }
@@ -238,7 +240,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             } else {
                 cm.bypass = false
             }
-            
+        
             cm.command = .af_bypass
             self.vm.sendCommand(cm)
             showActivityIndicator()
@@ -253,8 +255,14 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
                 cm.format = "protobuf"
             }
             cm.command = .payload_format
+            if !vm.jsonMode && pFormatSeg.selectedSegmentIndex==0{
             self.vm.sendCommand(cm)
             showActivityIndicator()
+            }
+            if vm.jsonMode && pFormatSeg.selectedSegmentIndex==1{
+                self.vm.sendCommand(cm)
+                showActivityIndicator()
+            }
             break
         case 5:
             
@@ -314,16 +322,19 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         
         if cr.command_response.isEqual(to: "payload_format") || cr.command_response.isEqual(to: ".payloadformat") {
             if(cr.status){
-            if !vm.jsonMode && pFormatSeg.selectedSegmentIndex==0 {
+            if !vm.jsonMode && !isJsonFormat{
             vm.setProtobufMode(false)
             UserDefaults.standard.set(false, forKey:"protobufOn")
             }
-            if vm.jsonMode && pFormatSeg.selectedSegmentIndex==1{
+            if vm.jsonMode && isJsonFormat{
                 vm.setProtobufMode(true)
                 UserDefaults.standard.set(true, forKey:"protobufOn")
+                 payloadFormatResp = String(cr.status)
+             
             }
             }
             payloadFormatResp = String(cr.status)
+            isJsonFormat = vm.jsonMode
         }
         if cr.command_response.isEqual(to: "platform") || cr.command_response.isEqual(to: ".platform"){
             platformResp = cr.message as String
@@ -341,7 +352,6 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             self.populateCommandResponseLabel(rowNum: self.selectedRowInPicker)
         }
     }
-    
     
     
     // MARK: Picker Delgate Function
