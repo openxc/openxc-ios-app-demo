@@ -249,12 +249,15 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
             
             tfm.disableTraceFileSource()
             NM.disconnectConnection()
+            if (bm.isBleConnected) {
+                bm.disconnect()
+            }
             
             networkDataPort.text = ""
             networkDataHost.text = ""
             playname.text = ""
         }
-         if  (interfaceValue == "Pre-recorded Tracefile") {
+         else if  (interfaceValue == "Pre-recorded Tracefile") {
             playname.isUserInteractionEnabled = true
             
             networkDataHost.backgroundColor = UIColor.lightGray
@@ -268,6 +271,9 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
             UserDefaults.standard.set(interfaceValue, forKey:"vehicleInterface")
             titleLabel.text = interfaceValue
             NM.disconnectConnection()
+            if (bm.isBleConnected) {
+                bm.disconnect()
+            }
             networkDataPort.text = ""
             networkDataHost.text = ""
         }
@@ -283,7 +289,9 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
                 networkDataHost.text = name
                 networkDataPort.text = (UserDefaults.standard.value(forKey: "networkPortName")  as! String)
             }
-           
+            if (bm.isBleConnected) {
+                bm.disconnect()
+            }
             tfm.disableTraceFileSource()
             playname.text = ""
         }

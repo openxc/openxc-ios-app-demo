@@ -17,7 +17,8 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var modeField: UITextField!
   @IBOutlet weak var pidField: UITextField!
   @IBOutlet weak var ploadField: UITextField!
-
+  @IBOutlet weak var requestBtn: UIButton!
+    
   @IBOutlet weak var lastReq: UILabel!
   @IBOutlet weak var rspText: UITextView!
   
@@ -69,8 +70,10 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     newTxt = newTxt+" success:"+vr.success.description
     if vr.value != nil {
         newTxt = newTxt+" value:"+vr.value!.description
+    }else{
+        newTxt = newTxt+" value:"+vr.value!.description
     }
-    else {
+    if vr.payload != nil {
         newTxt = newTxt+" payload:"+(vr.payload.description)
     }
     
@@ -84,8 +87,10 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     // reload the label with the update string list
     DispatchQueue.main.async {
         self.rspText.text = self.rspStrings.joined(separator: "\n")
+        self.requestBtn.isEnabled = true
     }
 
+    print("Daignostic Value..........\(self.rspStrings)")
   }
   
   
@@ -210,6 +215,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     }
     if !cmd.payload.isEqual(to: "") {
         lastReq.text = lastReq.text!+" payload:"+ploadField.text!
+        requestBtn.isEnabled = false
     }
   }
 

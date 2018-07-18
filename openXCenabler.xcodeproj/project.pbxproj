@@ -18,7 +18,6 @@
 		3AE7C0B11D9C0CF6001E92A4 /* nouns.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3AE7C0B01D9C0CF6001E92A4 /* nouns.txt */; };
 		3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834421D5ED054003FD370 /* SendCanViewController.swift */; };
 		3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE834441D5ED054003FD370 /* CanViewController.swift */; };
-		7D3127C32065085300DF9363 /* RadioButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D3127C02065085300DF9363 /* RadioButtonsView.swift */; };
 		7D33AE312019E71100224782 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D33AE2F2019E71000224782 /* openXCiOSFramework.framework */; };
 		7D790ADA2063C1B9004AAD5E /* DataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D790AD92063C1B9004AAD5E /* DataSourceController.swift */; };
 		7D790ADC2063C1DC004AAD5E /* RecordingSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D790ADB2063C1DC004AAD5E /* RecordingSourceController.swift */; };
@@ -95,7 +94,6 @@
 		3AE7C0B01D9C0CF6001E92A4 /* nouns.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nouns.txt; sourceTree = "<group>"; };
 		3AE834421D5ED054003FD370 /* SendCanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCanViewController.swift; sourceTree = "<group>"; };
 		3AE834441D5ED054003FD370 /* CanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanViewController.swift; sourceTree = "<group>"; };
-		7D3127C02065085300DF9363 /* RadioButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButtonsView.swift; sourceTree = "<group>"; };
 		7D33AE2F2019E71000224782 /* openXCiOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = openXCiOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/openXCenabler-aqgcinribrasdxdcauflwrtjddga/Build/Products/Debug-iphonesimulator/openXCiOSFramework.framework"; sourceTree = "<group>"; };
 		7D4692D51FDFE5210022DF98 /* ProtocolBuffers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ProtocolBuffers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D790AD92063C1B9004AAD5E /* DataSourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceController.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 			children = (
 				7D87B40F20AAB44E008AC5D2 /* DiagViewController.swift */,
 				7DA27A272085F28000089514 /* CommandsViewController.swift */,
-				7D3127C02065085300DF9363 /* RadioButtonsView.swift */,
 				3AE834421D5ED054003FD370 /* SendCanViewController.swift */,
 				3AE834441D5ED054003FD370 /* CanViewController.swift */,
 				3A1016C41D5417AD006C5E93 /* AppDelegate.swift */,
@@ -348,7 +345,6 @@
 				7D790ADC2063C1DC004AAD5E /* RecordingSourceController.swift in Sources */,
 				7D87B41020AAB44E008AC5D2 /* DiagViewController.swift in Sources */,
 				3ABA7F5B1D88FB2700D75846 /* modalSettingsView.swift in Sources */,
-				7D3127C32065085300DF9363 /* RadioButtonsView.swift in Sources */,
 				7DA27A282085F28000089514 /* CommandsViewController.swift in Sources */,
 				3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */,
 				3A1016C51D5417AD006C5E93 /* AppDelegate.swift in Sources */,

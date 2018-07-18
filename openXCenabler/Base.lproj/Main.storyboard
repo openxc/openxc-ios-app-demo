@@ -420,12 +420,28 @@
                                     <outlet property="delegate" destination="9pv-A4-QxB" id="i2t-qy-SbD"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ceN-pV-EP6">
+                                <rect key="frame" x="260" y="261" width="102" height="34"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="AD8-PL-TVm"/>
+                                    <constraint firstAttribute="width" constant="102" id="fg1-lc-HZZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Disconnect">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="disconnectHit:" destination="9pv-A4-QxB" eventType="touchUpInside" id="vnI-OW-G6m"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vmt-cZ-dyk" firstAttribute="trailing" secondItem="ioC-fU-wIq" secondAttribute="trailing" id="0F4-YG-aPV"/>
                             <constraint firstItem="1Xl-eI-rYy" firstAttribute="baseline" secondItem="Xi9-ZS-hYJ" secondAttribute="baseline" id="1Uv-oz-5KL"/>
                             <constraint firstItem="W5k-gD-FEj" firstAttribute="leading" secondItem="zct-LP-Qof" secondAttribute="leading" id="3Hx-MH-wUj"/>
+                            <constraint firstItem="ceN-pV-EP6" firstAttribute="baseline" secondItem="pPj-fy-gM3" secondAttribute="baseline" id="4Ld-he-jQF"/>
                             <constraint firstItem="twl-J0-AhF" firstAttribute="leading" secondItem="vmt-cZ-dyk" secondAttribute="leading" id="8YN-nS-cVJ"/>
                             <constraint firstItem="W5k-gD-FEj" firstAttribute="top" secondItem="aYu-Na-dM4" secondAttribute="bottom" constant="5" id="9Dd-T4-qhM"/>
                             <constraint firstItem="aYu-Na-dM4" firstAttribute="top" secondItem="C8I-p3-sTb" secondAttribute="bottom" constant="5" id="9SW-qX-yqN"/>
@@ -446,6 +462,7 @@
                             <constraint firstItem="qIm-dJ-9e6" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="55" id="Ua3-lF-kVa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qIm-dJ-9e6" secondAttribute="trailing" constant="-3" id="Uct-gd-PnI"/>
                             <constraint firstItem="C8I-p3-sTb" firstAttribute="baseline" secondItem="twl-J0-AhF" secondAttribute="baseline" id="VkP-uI-9E7"/>
+                            <constraint firstItem="ceN-pV-EP6" firstAttribute="trailing" secondItem="qIm-dJ-9e6" secondAttribute="trailing" id="Y5Y-nf-oyh"/>
                             <constraint firstItem="vmt-cZ-dyk" firstAttribute="leading" secondItem="ioC-fU-wIq" secondAttribute="leading" id="Zob-9S-Z8b"/>
                             <constraint firstItem="Xi9-ZS-hYJ" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" constant="1" id="alz-Zs-bFO"/>
                             <constraint firstItem="C8I-p3-sTb" firstAttribute="firstBaseline" secondItem="twl-J0-AhF" secondAttribute="firstBaseline" id="bI9-Zm-4SL"/>
@@ -475,6 +492,7 @@
                         <outlet property="NetworkImg" destination="qIm-dJ-9e6" id="FI8-eF-XGm"/>
                         <outlet property="actConLab" destination="twl-J0-AhF" id="Wcj-SL-8bT"/>
                         <outlet property="devidLab" destination="XOY-Ud-hZJ" id="DGt-jK-6T7"/>
+                        <outlet property="disconnectBtn" destination="ceN-pV-EP6" id="6rm-Qn-LnQ"/>
                         <outlet property="msgRvcdLab" destination="vmt-cZ-dyk" id="wNj-04-A8Y"/>
                         <outlet property="peripheralTable" destination="nMN-Fz-g6C" id="8vC-vC-oIH"/>
                         <outlet property="platformLab" destination="Xi9-ZS-hYJ" id="tG2-84-yrs"/>
@@ -484,7 +502,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2242" y="1294"/>
+            <point key="canvasLocation" x="2240.8000000000002" y="1293.1034482758621"/>
         </scene>
         <!--Dashboard-->
         <scene sceneID="wg7-f3-ORb">
@@ -1289,6 +1307,7 @@
                         <outlet property="modeField" destination="Bie-dK-THp" id="MHs-Fs-Qu2"/>
                         <outlet property="pidField" destination="89q-1P-bn8" id="nOW-87-MXF"/>
                         <outlet property="ploadField" destination="vzS-ry-byS" id="kgL-10-w1x"/>
+                        <outlet property="requestBtn" destination="rMM-3n-ldU" id="pUn-GH-s9g"/>
                         <outlet property="rspText" destination="xmU-ma-KT8" id="v4Q-AP-KE0"/>
                     </connections>
                 </viewController>
@@ -1971,6 +1990,6 @@
         <image name="WIFI" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FLh-Cu-buY"/>
+        <segue reference="0wW-1I-R6M"/>
     </inferredMetricsTieBreakers>
 </document>

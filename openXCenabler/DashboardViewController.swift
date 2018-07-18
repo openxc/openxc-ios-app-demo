@@ -74,6 +74,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
+    if !bm.isBleConnected {
+    dashDict = NSMutableDictionary()
+      dashTable.reloadData()
+    }
     sensorLoop.invalidate()
     locationManager.stopUpdatingLocation()
     motionManager.stopDeviceMotionUpdates()
@@ -108,7 +112,8 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 
     if(!bm.isBleConnected && !vm.isTraceFileConnected && !vm.isNetworkConnected){
         AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
-        
+        dashDict = NSMutableDictionary()
+        dashTable.reloadData()
     }
   }
 

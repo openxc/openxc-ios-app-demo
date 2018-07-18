@@ -26,7 +26,8 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // scan/connect button
     @IBOutlet weak var searchBtn: UIButton!
-    
+    // disconnect button
+    @IBOutlet weak var disconnectBtn: UIButton!
     // table for holding/showing discovered VIs
     @IBOutlet weak var peripheralTable: UITableView!
     
@@ -41,7 +42,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.disconnectBtn.isHidden = true
         // change tab bar text colors
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.gray], for:UIControlState())
         UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for:.selected)
@@ -71,6 +72,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 if (bm.isBleConnected) {
                     DispatchQueue.main.async {
                         
+                        self.disconnectBtn.isHidden = false
                        // self.searchBtn.isEnabled = true
                         self.NetworkImg.isHidden = true
                         //self.actConLab.text = "---"
@@ -78,6 +80,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                         //self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
                     }
                 }else{
+                    self.disconnectBtn.isHidden = true
                     self.searchBtn.isEnabled = true
                     self.NetworkImg.isHidden = true
                     self.actConLab.text = "---"
@@ -331,11 +334,14 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // update the UI showing connected VI
         if msg==VehicleManagerStatusMessage.c5CONNECTED {
+            vm.setCommandDefaultTarget(self, action: StatusViewController.handle_cmd_response)
             DispatchQueue.main.async {
+                self.disconnectBtn.isHidden = false
                 self.peripheralTable.isHidden = true
                 self.actConLab.text = "✅"
                 self.NetworkImg.isHidden = true
                 self.searchBtn.setTitle("BLE VI CONNECTED",for:UIControlState())
+              
             }
         }
         if (vm.isNetworkConnected) {
@@ -359,6 +365,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.devidLab.text = "---"
                 self.platformLab.text = "---"
                 self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
+                self.disconnectBtn.isHidden = true
             }
             }
         }
@@ -438,7 +445,17 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-
+    // this function is called when the scan button is hit
+    @IBAction func disconnectHit(_ sender: UIButton) {
+        
+        print(" in disconnect")
+        print(bm.connectionState)
+        
+        // make sure we're not already connected first
+        if (bm.isBleConnected) {
+            bm.disconnect()
+        }
+    }
     
     // table view delegate functions
     
