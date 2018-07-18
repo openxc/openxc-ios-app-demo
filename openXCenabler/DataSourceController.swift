@@ -41,7 +41,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     var locationManager = CLLocationManager()
     
     //Singleton Instance
-    var NM : NetworkData!
+    var NM : NetworkDataManager!
     var vm : VehicleManager!
     var tfm: TraceFileManager!
     var bm: BluetoothManager!
@@ -51,7 +51,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     override func viewDidLoad() {
         super.viewDidLoad()
  
-         NM = NetworkData.sharedInstance
+        NM = NetworkDataManager.sharedInstance
          vm = VehicleManager.sharedInstance
          tfm = TraceFileManager.sharedInstance
          bm = BluetoothManager.sharedInstance
@@ -447,7 +447,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
          //let ip  = hostName
          let port  = Int(PortName)
         if(hostName != "" && PortName != ""){
-            NetworkData.sharedInstance.connect(ip:hostName, portvalue: port!, completionHandler: { (success) in
+            NetworkDataManager.sharedInstance.connect(ip:hostName, portvalue: port!, completionHandler: { (success) in
                 print(success)
                 if(success){
                     UserDefaults.standard.set(hostName, forKey:"networkHostName")

@@ -190,7 +190,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         //let ip  = hostName
         let port  = Int(PortName)
         if(hostName != "" && PortName != ""){
-            NetworkData.sharedInstance.connect(ip:hostName, portvalue: port!, completionHandler: { (success) in
+            NetworkDataManager.sharedInstance.connect(ip:hostName, portvalue: port!, completionHandler: { (success) in
                 print(success)
                 if(success){
                      self.timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
