@@ -71,11 +71,9 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     if vr.value != nil {
         newTxt = newTxt+" value:"+vr.value!.description
     }else{
-        newTxt = newTxt+" value:"+vr.value!.description
-    }
-    if vr.payload != nil {
         newTxt = newTxt+" payload:"+(vr.payload.description)
     }
+   
     
     // save only the 5 response strings
     if rspStrings.count>5 {
