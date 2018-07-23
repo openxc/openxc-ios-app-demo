@@ -185,43 +185,43 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         
     }
     func  sendCommandWithValue(sRow:NSInteger){
-        
+         let vcm = VehicleCommandRequest()
         switch sRow {
         case 0:
             //responseLab.text = ""
-            let cm = VehicleCommandRequest()
-            cm.command = .version
-            self.vm.sendCommand(cm)
+           
+            vcm.command = .version
+            self.cm.sendCommand(vcm)
             // activity indicator
             
             showActivityIndicator()
             break
         case 1:
             //responseLab.text = ""
-            let cm = VehicleCommandRequest()
-            cm.command = .device_id
-            self.vm.sendCommand(cm)
+            //let cm = VehicleCommandRequest()
+            vcm.command = .device_id
+            self.cm.sendCommand(vcm)
             // activity indicator
             
             showActivityIndicator()
             break
         case 2:
             
-            let cm = VehicleCommandRequest()
+            //let cm = VehicleCommandRequest()
             
             // look at segmented control for bus
-            cm.bus = busSeg.selectedSegmentIndex + 1
+            vcm.bus = busSeg.selectedSegmentIndex + 1
             
             
             
             if enabSeg.selectedSegmentIndex==0 {
-                cm.enabled = true
+                vcm.enabled = true
             } else {
-                cm.enabled = false
+                vcm.enabled = false
             }
             
-            cm.command = .passthrough
-            self.vm.sendCommand(cm)
+            vcm.command = .passthrough
+            self.cm.sendCommand(vcm)
             // activity indicator
             
             showActivityIndicator()
@@ -229,66 +229,66 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             break
         case 3:
             
-            let cm = VehicleCommandRequest()
+            //let cm = VehicleCommandRequest()
             
             // look at segmented control for bus
-            cm.bus = busSeg.selectedSegmentIndex + 1
+            vcm.bus = busSeg.selectedSegmentIndex + 1
             
             
             if bypassSeg.selectedSegmentIndex==0 {
-                cm.bypass = true
+                vcm.bypass = true
             } else {
-                cm.bypass = false
+                vcm.bypass = false
             }
         
-            cm.command = .af_bypass
-            self.vm.sendCommand(cm)
+            vcm.command = .af_bypass
+            self.cm.sendCommand(vcm)
             showActivityIndicator()
             break
         case 4:
             
-            let cm = VehicleCommandRequest()
+            //let cm = VehicleCommandRequest()
             
             if pFormatSeg.selectedSegmentIndex==0 {
-                cm.format = "json"
+                vcm.format = "json"
             } else {
-                cm.format = "protobuf"
+                vcm.format = "protobuf"
             }
-            cm.command = .payload_format
+            vcm.command = .payload_format
             if !vm.jsonMode && pFormatSeg.selectedSegmentIndex==0{
-            self.vm.sendCommand(cm)
+            self.cm.sendCommand(vcm)
             showActivityIndicator()
             }
             if vm.jsonMode && pFormatSeg.selectedSegmentIndex==1{
-                self.vm.sendCommand(cm)
+                self.cm.sendCommand(vcm)
                 showActivityIndicator()
             }
             break
         case 5:
             
-            let cm = VehicleCommandRequest()
-            cm.command = .platform
-            self.vm.sendCommand(cm)
+            //let cm = VehicleCommandRequest()
+            vcm.command = .platform
+            self.cm.sendCommand(vcm)
             showActivityIndicator()
             break
         case 6:
-            let cm = VehicleCommandRequest()
-            cm.command = .rtc_configuration
-            self.vm.sendCommand(cm)
+            //let cm = VehicleCommandRequest()
+            vcm.command = .rtc_configuration
+            self.cm.sendCommand(vcm)
             showActivityIndicator()
             break
         case 7:
             
-            let cm = VehicleCommandRequest()
-            cm.command = .sd_mount_status
-            self.vm.sendCommand(cm)
+            //let cm = VehicleCommandRequest()
+            vcm.command = .sd_mount_status
+            self.cm.sendCommand(vcm)
             showActivityIndicator()
             break
         case 8:
             
-            let cm = VehicleCommandRequest()
-            cm.command = .custom_command
-            self.vm.sendCommand(cm)
+            //let cm = VehicleCommandRequest()
+            vcm.command = .custom_command
+            self.cm.sendCommand(vcm)
             showActivityIndicator()
             
             break
