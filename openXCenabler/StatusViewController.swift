@@ -150,10 +150,10 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             if name == "Pre-recorded Tracefile"{
                 if let traceFileName = UserDefaults.standard.value(forKey: "traceInputFilename") as? NSString{
+                    timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
                     if(!vm.isTraceFileConnected){
                         tfm.enableTraceFileSource(traceFileName)
                         self.searchBtn.isEnabled = false
-                        timer = Timer.scheduledTimer(timeInterval: 0.25, target: self, selector: #selector(StatusViewController.msgRxdUpdate(_:)), userInfo: nil, repeats: true)
                         DispatchQueue.main.async {
                             self.actConLab.text = "✅"
                             self.searchBtn.setTitle("Trace File Playing",for:UIControlState())
@@ -162,6 +162,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                             self.platformLab.text = "---"
                         }
                     }else{
+                        
                         DispatchQueue.main.async {
                             self.actConLab.text = "✅"
                             self.searchBtn.setTitle("Trace File Playing",for:UIControlState())
@@ -437,7 +438,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     // this function is called by the timer, it updates the UI
     func msgRxdUpdate(_ t:Timer) {
-        if bm.connectionState == VehicleManagerConnectionState.operational || vm.isNetworkConnected{
+        if bm.connectionState == VehicleManagerConnectionState.operational || vm.isNetworkConnected || vm.isTraceFileConnected{
            
              DispatchQueue.main.async {
                 self.msgRvcdLab.text = String(self.bm.messageCount)
