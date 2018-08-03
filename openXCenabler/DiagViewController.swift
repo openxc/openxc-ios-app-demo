@@ -17,12 +17,13 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var modeField: UITextField!
   @IBOutlet weak var pidField: UITextField!
   @IBOutlet weak var ploadField: UITextField!
-
+  @IBOutlet weak var requestBtn: UIButton!
+    
   @IBOutlet weak var lastReq: UILabel!
   @IBOutlet weak var rspText: UITextView!
   
   var vm: VehicleManager!
-
+    var bm : BluetoothManager!
   // string array holding last X diag responses
   var rspStrings : [String] = []
   
@@ -31,7 +32,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
 
     // grab VM instance
     vm = VehicleManager.sharedInstance
-
+    bm = BluetoothManager.sharedInstance
     // set default diag response target
     vm.setDiagnosticDefaultTarget(self, action: DiagViewController.default_diag_rsp)
 
@@ -51,7 +52,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
   }
 
     override func viewDidAppear(_ animated: Bool) {
-        if(!vm.isBleConnected){
+        if(!bm.isBleConnected){
             
             AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
         }
@@ -69,10 +70,10 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     newTxt = newTxt+" success:"+vr.success.description
     if vr.value != nil {
         newTxt = newTxt+" value:"+vr.value!.description
-    }
-    else {
+    }else{
         newTxt = newTxt+" payload:"+(vr.payload.description)
     }
+   
     
     // save only the 5 response strings
     if rspStrings.count>5 {
@@ -84,8 +85,10 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     // reload the label with the update string list
     DispatchQueue.main.async {
         self.rspText.text = self.rspStrings.joined(separator: "\n")
+        self.requestBtn.isEnabled = true
     }
 
+    print("Daignostic Value..........\(self.rspStrings)")
   }
   
   
@@ -107,7 +110,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     }
     
     // if the VM isn't operational, don't send anything
-    if vm.connectionState != VehicleManagerConnectionState.operational {
+    if bm.connectionState != VehicleManagerConnectionState.operational {
         lastReq.text = "Not connected to VI"
         return
     }
@@ -210,6 +213,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     }
     if !cmd.payload.isEqual(to: "") {
         lastReq.text = lastReq.text!+" payload:"+ploadField.text!
+        requestBtn.isEnabled = false
     }
   }
 

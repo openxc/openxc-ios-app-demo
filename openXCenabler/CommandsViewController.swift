@@ -14,6 +14,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     
     // the VM
     var vm: VehicleManager!
+    var bm: BluetoothManager!
     var cm: Command!
     var ObjectDic : NSMutableDictionary = NSMutableDictionary()
     @IBOutlet weak var pickerView: UIPickerView!
@@ -34,7 +35,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     @IBOutlet weak var acitivityInd: UIActivityIndicatorView!
     @IBOutlet weak var customCommandTF : UITextField!
     
-    let commands = ["Version","Device Id","Passthrough CAN Mode","Acceptance Filter Bypass","Payload Format JSON", "Platform", "RTC Config", "SD Card Status","Custom Command"]
+    let commands = ["Version","Device Id","Passthrough CAN Mode","Acceptance Filter Bypass","Payload Format", "Platform", "RTC Config", "SD Card Status","Custom Command"]
     
     var versionResp: String!
     var deviceIdResp: String!
@@ -45,6 +46,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     var rtcConfigResp: String!
     var sdCardResp: String!
     var customCommandResp: String!
+    var isJsonFormat:Bool!
     
     var selectedRowInPicker: Int!
     
@@ -59,9 +61,10 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         acitivityInd.activityIndicatorViewStyle =
             UIActivityIndicatorViewStyle.whiteLarge
         acitivityInd.isHidden = true
-        
+
         // grab VM instance
         vm = VehicleManager.sharedInstance
+        bm = BluetoothManager.sharedInstance
         cm = Command.sharedInstance
         // vm.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
         vm.setCommandDefaultTarget(self, action: CommandsViewController.handle_cmd_response)
@@ -76,10 +79,12 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         //bypassSeg.addTarget(self, action: #selector(bypassSegmentedControlValueChanged), for: .valueChanged)
         // pFormatSeg.addTarget(self, action: #selector(formatSegmentedControlValueChanged), for: .valueChanged)
         
+         isJsonFormat = vm.jsonMode
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if(!vm.isBleConnected){
+        if(!bm.isBleConnected){
             
             AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
             
@@ -92,9 +97,14 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         let sRow = pickerView.selectedRow(inComponent: 0)
         
         
-        if(vm.isBleConnected){
+        if(bm.isBleConnected){
             
-            if (sRow == 8){
+            if (sRow == 8 ){
+                
+                if !vm.jsonMode{
+                    AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage: errorMsgcustomCommand)
+                    return
+                }
                 if(customCommandTF.text == nil||customCommandTF.text == ""){
                     AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage: errorMsgforText)
                     return
@@ -141,7 +151,6 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         let jsonData = try? JSONSerialization.data(withJSONObject: ObjectDic, options: [])
         let jsonString = String(data: jsonData!, encoding: .utf8)
         print(jsonString as Any)
-        
         return jsonString!
         
     }
@@ -176,43 +185,43 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         
     }
     func  sendCommandWithValue(sRow:NSInteger){
-        
+         let vcm = VehicleCommandRequest()
         switch sRow {
         case 0:
             //responseLab.text = ""
-            let cm = VehicleCommandRequest()
-            cm.command = .version
-            self.vm.sendCommand(cm)
+           
+            vcm.command = .version
+            self.cm.sendCommand(vcm)
             // activity indicator
             
             showActivityIndicator()
             break
         case 1:
             //responseLab.text = ""
-            let cm = VehicleCommandRequest()
-            cm.command = .device_id
-            self.vm.sendCommand(cm)
+            //let cm = VehicleCommandRequest()
+            vcm.command = .device_id
+            self.cm.sendCommand(vcm)
             // activity indicator
             
             showActivityIndicator()
             break
         case 2:
             
-            let cm = VehicleCommandRequest()
+            //let cm = VehicleCommandRequest()
             
             // look at segmented control for bus
-            cm.bus = busSeg.selectedSegmentIndex + 1
+            vcm.bus = busSeg.selectedSegmentIndex + 1
             
             
             
             if enabSeg.selectedSegmentIndex==0 {
-                cm.enabled = true
+                vcm.enabled = true
             } else {
-                cm.enabled = false
+                vcm.enabled = false
             }
             
-            cm.command = .passthrough
-            self.vm.sendCommand(cm)
+            vcm.command = .passthrough
+            self.cm.sendCommand(vcm)
             // activity indicator
             
             showActivityIndicator()
@@ -220,60 +229,66 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             break
         case 3:
             
-            let cm = VehicleCommandRequest()
+            //let cm = VehicleCommandRequest()
             
             // look at segmented control for bus
-            cm.bus = busSeg.selectedSegmentIndex + 1
+            vcm.bus = busSeg.selectedSegmentIndex + 1
             
             
             if bypassSeg.selectedSegmentIndex==0 {
-                cm.bypass = true
+                vcm.bypass = true
             } else {
-                cm.bypass = false
+                vcm.bypass = false
             }
-            
-            cm.command = .af_bypass
-            self.vm.sendCommand(cm)
+        
+            vcm.command = .af_bypass
+            self.cm.sendCommand(vcm)
             showActivityIndicator()
             break
         case 4:
             
-            let cm = VehicleCommandRequest()
+            //let cm = VehicleCommandRequest()
             
             if pFormatSeg.selectedSegmentIndex==0 {
-                cm.format = "json"
+                vcm.format = "json"
             } else {
-                cm.format = "protobuf"
+                vcm.format = "protobuf"
             }
-            cm.command = .payload_format
-            self.vm.sendCommand(cm)
+            vcm.command = .payload_format
+            if !vm.jsonMode && pFormatSeg.selectedSegmentIndex==0{
+            self.cm.sendCommand(vcm)
             showActivityIndicator()
+            }
+            if vm.jsonMode && pFormatSeg.selectedSegmentIndex==1{
+                self.cm.sendCommand(vcm)
+                showActivityIndicator()
+            }
             break
         case 5:
             
-            let cm = VehicleCommandRequest()
-            cm.command = .platform
-            self.vm.sendCommand(cm)
+            //let cm = VehicleCommandRequest()
+            vcm.command = .platform
+            self.cm.sendCommand(vcm)
             showActivityIndicator()
             break
         case 6:
-            let cm = VehicleCommandRequest()
-            cm.command = .rtc_configuration
-            self.vm.sendCommand(cm)
+            //let cm = VehicleCommandRequest()
+            vcm.command = .rtc_configuration
+            self.cm.sendCommand(vcm)
             showActivityIndicator()
             break
         case 7:
             
-            let cm = VehicleCommandRequest()
-            cm.command = .sd_mount_status
-            self.vm.sendCommand(cm)
+            //let cm = VehicleCommandRequest()
+            vcm.command = .sd_mount_status
+            self.cm.sendCommand(vcm)
             showActivityIndicator()
             break
         case 8:
             
-            let cm = VehicleCommandRequest()
-            cm.command = .custom_command
-            self.vm.sendCommand(cm)
+            //let cm = VehicleCommandRequest()
+            vcm.command = .custom_command
+            self.cm.sendCommand(vcm)
             showActivityIndicator()
             
             break
@@ -306,7 +321,20 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         }
         
         if cr.command_response.isEqual(to: "payload_format") || cr.command_response.isEqual(to: ".payloadformat") {
+            if(cr.status){
+            if !vm.jsonMode && !isJsonFormat{
+            vm.setProtobufMode(false)
+            UserDefaults.standard.set(false, forKey:"protobufOn")
+            }
+            if vm.jsonMode && isJsonFormat{
+                vm.setProtobufMode(true)
+                UserDefaults.standard.set(true, forKey:"protobufOn")
+                 payloadFormatResp = String(cr.status)
+             
+            }
+            }
             payloadFormatResp = String(cr.status)
+            isJsonFormat = vm.jsonMode
         }
         if cr.command_response.isEqual(to: "platform") || cr.command_response.isEqual(to: ".platform"){
             platformResp = cr.message as String
@@ -324,7 +352,6 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             self.populateCommandResponseLabel(rowNum: self.selectedRowInPicker)
         }
     }
-    
     
     
     // MARK: Picker Delgate Function

@@ -9,6 +9,7 @@
 import Foundation
 
 public var errorMSG: String = "Error"
-public var errorMsgBLE: String = "BLE is not connected to the Device"
-public var errorMsgCustomCommand: String = "it is not a valid json"
-public var errorMsgforText: String = "you need to enter the value "
+public var errorMsgBLE: String = "BLE is not connected to the Device. "
+public var errorMsgCustomCommand: String = "it is not a valid json. "
+public var errorMsgforText: String = "you need to enter the value. "
+public var errorMsgcustomCommand: String = "Change to json mode for custom command. "
