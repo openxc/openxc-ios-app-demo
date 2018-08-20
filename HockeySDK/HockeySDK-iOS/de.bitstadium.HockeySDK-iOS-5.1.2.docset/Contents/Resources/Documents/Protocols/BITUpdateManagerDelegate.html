@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BITUpdateManagerDelegate Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Protocol/BITUpdateManagerDelegate" class="dashAnchor"></a>
+    <a title="BITUpdateManagerDelegate Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">HockeySDK Docs</a> (95% documented)</p>
+        <p class="header-right"><a href="https://github.com/bitstadium/HockeySDK-iOS/"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fsupport%2Ehockeyapp%2Enet%2Fkb%2Fdocsets%2FHockeySDK%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">HockeySDK Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        BITUpdateManagerDelegate Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../installation--setup.html">Installation &amp; Setup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../migration-kits.html">Migration Kits</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../How To.html">How To</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../app-versioning.html">App Versioning</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../set-custom-alertviewhandler.html">Set Custom AlertViewHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../upload-symbols.html">Upload Symbols</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Troubleshooting.html">Troubleshooting</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../crash-reporting-not-working.html">Crash Reporting Not Working</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Release Notes.html">Release Notes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../changelog.html">Changelog</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/BITAuthenticator.html">BITAuthenticator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITCrashAttachment.html">BITCrashAttachment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITCrashDetails.html">BITCrashDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITCrashManager.html">BITCrashManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITCrashMetaData.html">BITCrashMetaData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITFeedbackActivity.html">BITFeedbackActivity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITFeedbackComposeViewController.html">BITFeedbackComposeViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Classes.html#/c:objc(cs)BITFeedbackListViewController">BITFeedbackListViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITFeedbackManager.html">BITFeedbackManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITHockeyAttachment.html">BITHockeyAttachment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITMetricsManager.html">BITMetricsManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITStoreUpdateManager.html">BITStoreUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITUpdateManager.html">BITUpdateManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Enumerations.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/BITAuthenticatorAppRestrictionEnforcementFrequency.html">BITAuthenticatorAppRestrictionEnforcementFrequency</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITAuthenticatorIdentificationType.html">BITAuthenticatorIdentificationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITAuthenticatorReason.html">BITAuthenticatorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITCrashErrorReason.html">BITCrashErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITCrashManagerStatus.html">BITCrashManagerStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITCrashManagerUserInput.html">BITCrashManagerUserInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITEnvironment.html">BITEnvironment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITFeedbackComposeResult.html">BITFeedbackComposeResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITFeedbackErrorReason.html">BITFeedbackErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITFeedbackObservationMode.html">BITFeedbackObservationMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITFeedbackUserDataElement.html">BITFeedbackUserDataElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITHockeyErrorReason.html">BITHockeyErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITLogLevel.html">BITLogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITStoreUpdateSetting.html">BITStoreUpdateSetting</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITUpdateErrorReason.html">BITUpdateErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITUpdateSetting.html">BITUpdateSetting</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/BITAuthenticatorDelegate.html">BITAuthenticatorDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITCrashManagerDelegate.html">BITCrashManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITFeedbackComposeViewControllerDelegate.html">BITFeedbackComposeViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITFeedbackManagerDelegate.html">BITFeedbackManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITHockeyManagerDelegate.html">BITHockeyManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITStoreUpdateManagerDelegate.html">BITStoreUpdateManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITUpdateManagerDelegate.html">BITUpdateManagerDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Type Definitions.html">Other Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Type Definitions.html#/c:BITCrashManager.h@T@BITCrashManagerPostCrashSignalCallback">BITCrashManagerPostCrashSignalCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Type Definitions.html#/c:BITCrashManager.h@T@BITCustomAlertViewHandler">BITCustomAlertViewHandler</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Structures.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/BITCrashManagerCallbacks.html">BITCrashManagerCallbacks</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>BITUpdateManagerDelegate</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">BITUpdateManagerDelegate</span> <span class="o">&lt;</span><span class="n">NSObject</span><span class="o">&gt;</span></code></pre>
+
+                </div>
+              </div>
+            <p>The <code>BITUpdateManagerDelegate</code> formal protocol defines methods further configuring
+the behaviour of <code><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></code>.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Update"></a>
+                <a name="//apple_ref/objc/Section/Update" class="dashAnchor"></a>
+                <a href="#/Update">
+                  <h3 class="section-name">Update</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)BITUpdateManagerDelegate(im)shouldDisplayUpdateAlertForUpdateManager:forShortVersion:forVersion:"></a>
+                    <a name="//apple_ref/objc/Method/-shouldDisplayUpdateAlertForUpdateManager:forShortVersion:forVersion:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)BITUpdateManagerDelegate(im)shouldDisplayUpdateAlertForUpdateManager:forShortVersion:forVersion:">-shouldDisplayUpdateAlertForUpdateManager:forShortVersion:forVersion:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return if update alert should be shown</p>
+
+<p>If you want to display your own user interface when there is an update available,
+implement this method, present your user interface and return <em>NO</em>. In this case
+it is your responsibility to call <code>BITUpdateManager showUpdateView</code></p>
+
+<p>Note: This delegate will be invoked on startup and every time the app becomes
+active again!</p>
+
+<p>When returning <em>YES</em> the default blocking UI will be shown.</p>
+
+<p>When running the app from the App Store, this delegate is ignored.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">shouldDisplayUpdateAlertForUpdateManager</span><span class="p">:</span>
+            <span class="p">(</span><span class="n"><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">updateManager</span>
+                                 <span class="nf">forShortVersion</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">shortVersion</span>
+                                      <span class="nf">forVersion</span><span class="p">:(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">version</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">shouldDisplayUpdateAlert</span><span class="p">(</span><span class="k">for</span> <span class="nv">updateManager</span><span class="p">:</span> <span class="kt"><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></span><span class="o">!</span><span class="p">,</span> <span class="n">forShortVersion</span> <span class="nv">shortVersion</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span><span class="p">,</span> <span class="n">forVersion</span> <span class="nv">version</span><span class="p">:</span> <span class="kt">String</span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>updateManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></code> instance invoking this delegate</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>shortVersion</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The latest available version</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>version</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The latest available version</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Expiry"></a>
+                <a name="//apple_ref/objc/Section/Expiry" class="dashAnchor"></a>
+                <a href="#/Expiry">
+                  <h3 class="section-name">Expiry</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)BITUpdateManagerDelegate(im)shouldDisplayExpiryAlertForUpdateManager:"></a>
+                    <a name="//apple_ref/objc/Method/-shouldDisplayExpiryAlertForUpdateManager:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)BITUpdateManagerDelegate(im)shouldDisplayExpiryAlertForUpdateManager:">-shouldDisplayExpiryAlertForUpdateManager:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return if expiry alert should be shown if date is reached</p>
+
+<p>If you want to display your own user interface when the expiry date is reached,
+implement this method, present your user interface and return <em>NO</em>. In this case
+it is your responsibility to make the app unusable!</p>
+
+<p>Note: This delegate will be invoked on startup and every time the app becomes
+active again!</p>
+
+<p>When returning <em>YES</em> the default blocking UI will be shown.</p>
+
+<p>When running the app from the App Store, this delegate is ignored.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    [BITUpdateManager expiryDate]
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    [BITUpdateManagerDelegate didDisplayExpiryAlertForUpdateManager:]
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">shouldDisplayExpiryAlertForUpdateManager</span><span class="p">:</span>
+    <span class="p">(</span><span class="n"><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">updateManager</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">shouldDisplayExpiryAlert</span><span class="p">(</span><span class="k">for</span> <span class="nv">updateManager</span><span class="p">:</span> <span class="kt"><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>updateManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></code> instance invoking this delegate</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)BITUpdateManagerDelegate(im)didDisplayExpiryAlertForUpdateManager:"></a>
+                    <a name="//apple_ref/objc/Method/-didDisplayExpiryAlertForUpdateManager:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)BITUpdateManagerDelegate(im)didDisplayExpiryAlertForUpdateManager:">-didDisplayExpiryAlertForUpdateManager:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Invoked once a default expiry alert is shown</p>
+
+<p>Once expiry date is reached and the default blocking UI is shown,
+this delegate method is invoked to provide you the possibility to do any
+desired additional processing.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    [BITUpdateManager expiryDate]
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    [BITUpdateManagerDelegate shouldDisplayExpiryAlertForUpdateManager:]
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">didDisplayExpiryAlertForUpdateManager</span><span class="p">:(</span><span class="n"><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">updateManager</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">didDisplayExpiryAlert</span><span class="p">(</span><span class="k">for</span> <span class="nv">updateManager</span><span class="p">:</span> <span class="kt"><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>updateManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></code> instance invoking this delegate</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Privacy"></a>
+                <a name="//apple_ref/objc/Section/Privacy" class="dashAnchor"></a>
+                <a href="#/Privacy">
+                  <h3 class="section-name">Privacy</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)BITUpdateManagerDelegate(im)updateManagerShouldSendUsageData:"></a>
+                    <a name="//apple_ref/objc/Method/-updateManagerShouldSendUsageData:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)BITUpdateManagerDelegate(im)updateManagerShouldSendUsageData:">-updateManagerShouldSendUsageData:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return NO if usage data should not be send</p>
+
+<p>The update  module send usage data by default, if the application is <em>NOT</em>
+ running in an App Store version. Implement this delegate and
+ return NO if you want to disable this.</p>
+
+<p>If you intend to implement a user setting to let them enable or disable
+ sending usage data, this delegate should be used to return that value.</p>
+
+<p>Usage data contains the following information:</p>
+<li>App Version</li>
+<li>iOS Version</li>
+<li>Device type</li>
+<li>Language</li>
+<li>Installation timestamp</li>
+<li><p>Usage time</p></li>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>When setting this to <code>NO</code>, you will <em>NOT</em> know if this user is actually testing!</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">updateManagerShouldSendUsageData</span><span class="p">:(</span><span class="n"><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">updateManager</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">updateManagerShouldSendUsageData</span><span class="p">(</span><span class="n">_</span> <span class="nv">updateManager</span><span class="p">:</span> <span class="kt"><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>updateManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></code> instance invoking this delegate</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Privacy2"></a>
+                <a name="//apple_ref/objc/Section/Privacy" class="dashAnchor"></a>
+                <a href="#/Privacy2">
+                  <h3 class="section-name">Privacy</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)BITUpdateManagerDelegate(im)willStartDownloadAndUpdate:"></a>
+                    <a name="//apple_ref/objc/Method/-willStartDownloadAndUpdate:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)BITUpdateManagerDelegate(im)willStartDownloadAndUpdate:">-willStartDownloadAndUpdate:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Implement this method to be notified before an update starts.</p>
+
+<p>The update manager will send this delegate message <em>just</em> before the system
+ call to update the application is placed, but after the user has already chosen
+ to install the update.</p>
+
+<p>There is no guarantee that the update will actually start after this delegate
+ message is sent.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">willStartDownloadAndUpdate</span><span class="p">:(</span><span class="n"><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">updateManager</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">willStartDownloadAndUpdate</span><span class="p">(</span><span class="n">_</span> <span class="nv">updateManager</span><span class="p">:</span> <span class="kt"><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>updateManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></code> instance invoking this delegate</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)BITUpdateManagerDelegate(im)updateManagerWillExitApp:"></a>
+                    <a name="//apple_ref/objc/Method/-updateManagerWillExitApp:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)BITUpdateManagerDelegate(im)updateManagerWillExitApp:">-updateManagerWillExitApp:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Invoked right before the app will exit to allow app update to start (&gt;= iOS8 only)</p>
+
+<p>The iOS installation mechanism only starts if the app the should be updated is currently
+not running. On all iOS versions up to iOS 7, the system did automatically exit the app
+in these cases. Since iOS 8 this isn&rsquo;t done any longer.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">updateManagerWillExitApp</span><span class="p">:(</span><span class="n"><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">updateManager</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">updateManagerWillExitApp</span><span class="p">(</span><span class="n">_</span> <span class="nv">updateManager</span><span class="p">:</span> <span class="kt"><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>updateManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Classes/BITUpdateManager.html">BITUpdateManager</a></code> instance invoking this delegate</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://www.microsoft.com" target="_blank" rel="external">Microsoft Corp</a>. All rights reserved. (Last updated: 2018-01-08)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BITCrashManager Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Class/BITCrashManager" class="dashAnchor"></a>
+    <a title="BITCrashManager Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">HockeySDK Docs</a> (95% documented)</p>
+        <p class="header-right"><a href="https://github.com/bitstadium/HockeySDK-iOS/"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fsupport%2Ehockeyapp%2Enet%2Fkb%2Fdocsets%2FHockeySDK%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">HockeySDK Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        BITCrashManager Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../installation--setup.html">Installation &amp; Setup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../migration-kits.html">Migration Kits</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../How To.html">How To</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../app-versioning.html">App Versioning</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../set-custom-alertviewhandler.html">Set Custom AlertViewHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../upload-symbols.html">Upload Symbols</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Troubleshooting.html">Troubleshooting</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../crash-reporting-not-working.html">Crash Reporting Not Working</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Release Notes.html">Release Notes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../changelog.html">Changelog</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/BITAuthenticator.html">BITAuthenticator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITCrashAttachment.html">BITCrashAttachment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITCrashDetails.html">BITCrashDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITCrashManager.html">BITCrashManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITCrashMetaData.html">BITCrashMetaData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITFeedbackActivity.html">BITFeedbackActivity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITFeedbackComposeViewController.html">BITFeedbackComposeViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Classes.html#/c:objc(cs)BITFeedbackListViewController">BITFeedbackListViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITFeedbackManager.html">BITFeedbackManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITHockeyAttachment.html">BITHockeyAttachment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITMetricsManager.html">BITMetricsManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITStoreUpdateManager.html">BITStoreUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITUpdateManager.html">BITUpdateManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Enumerations.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/BITAuthenticatorAppRestrictionEnforcementFrequency.html">BITAuthenticatorAppRestrictionEnforcementFrequency</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITAuthenticatorIdentificationType.html">BITAuthenticatorIdentificationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITAuthenticatorReason.html">BITAuthenticatorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITCrashErrorReason.html">BITCrashErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITCrashManagerStatus.html">BITCrashManagerStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITCrashManagerUserInput.html">BITCrashManagerUserInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITEnvironment.html">BITEnvironment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITFeedbackComposeResult.html">BITFeedbackComposeResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITFeedbackErrorReason.html">BITFeedbackErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITFeedbackObservationMode.html">BITFeedbackObservationMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITFeedbackUserDataElement.html">BITFeedbackUserDataElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITHockeyErrorReason.html">BITHockeyErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITLogLevel.html">BITLogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITStoreUpdateSetting.html">BITStoreUpdateSetting</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITUpdateErrorReason.html">BITUpdateErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITUpdateSetting.html">BITUpdateSetting</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/BITAuthenticatorDelegate.html">BITAuthenticatorDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITCrashManagerDelegate.html">BITCrashManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITFeedbackComposeViewControllerDelegate.html">BITFeedbackComposeViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITFeedbackManagerDelegate.html">BITFeedbackManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITHockeyManagerDelegate.html">BITHockeyManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITStoreUpdateManagerDelegate.html">BITStoreUpdateManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITUpdateManagerDelegate.html">BITUpdateManagerDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Type Definitions.html">Other Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Type Definitions.html#/c:BITCrashManager.h@T@BITCrashManagerPostCrashSignalCallback">BITCrashManagerPostCrashSignalCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Type Definitions.html#/c:BITCrashManager.h@T@BITCustomAlertViewHandler">BITCustomAlertViewHandler</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Structures.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/BITCrashManagerCallbacks.html">BITCrashManagerCallbacks</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>BITCrashManager</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">BITCrashManager</span> <span class="p">:</span> <span class="nc"><a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a></span></code></pre>
+
+                </div>
+              </div>
+            <p>The crash reporting module.</p>
+
+<p>This is the HockeySDK module for handling crash reports, including when distributed via the App Store.
+As a foundation it is using the open source, reliable and async-safe crash reporting framework
+<a href="https://code.google.com/p/plcrashreporter/">PLCrashReporter</a>.</p>
+
+<p>This module works as a wrapper around the underlying crash reporting framework and provides functionality to
+detect new crashes, queues them if networking is not available, present a user interface to approve sending
+the reports to the HockeyApp servers and more.</p>
+
+<p>It also provides options to add additional meta information to each crash report, like <code>userName</code>, <code>userEmail</code>
+via <code><a href="../Protocols/BITHockeyManagerDelegate.html">BITHockeyManagerDelegate</a></code> protocol, and additional textual log information via <code><a href="../Protocols/BITCrashManagerDelegate.html">BITCrashManagerDelegate</a></code>
+protocol and a way to detect startup crashes so you can adjust your startup process to get these crash reports
+too and delay your app initialization.</p>
+
+<p>Crashes are send the next time the app starts. If <code>crashManagerStatus</code> is set to <code>BITCrashManagerStatusAutoSend</code>,
+crashes will be send without any user interaction, otherwise an alert will appear allowing the users to decide
+whether they want to send the report or not. This module is not sending the reports right when the crash happens
+deliberately, because if is not safe to implement such a mechanism while being async-safe (any Objective-C code
+is <em>NOT</em> async-safe!) and not causing more danger like a deadlock of the device, than helping. We found that users
+do start the app again because most don&rsquo;t know what happened, and you will get by far most of the reports.</p>
+
+<p>Sending the reports on startup is done asynchronously (non-blocking). This is the only safe way to ensure
+that the app won&rsquo;t be possibly killed by the iOS watchdog process, because startup could take too long
+and the app could not react to any user input when network conditions are bad or connectivity might be
+very slow.</p>
+
+<p>It is possible to check upon startup if the app crashed before using <code>didCrashInLastSession</code> and also how much
+time passed between the app launch and the crash using <code>timeIntervalCrashInLastSessionOccurred</code>. This allows you
+to add additional code to your app delaying the app start until the crash has been successfully send if the crash
+occurred within a critical startup timeframe, e.g. after 10 seconds. The <code><a href="../Protocols/BITCrashManagerDelegate.html">BITCrashManagerDelegate</a></code> protocol provides
+various delegates to inform the app about it&rsquo;s current status so you can continue the remaining app startup setup
+after sending has been completed. The documentation contains a guide
+<a href="HowTo-Handle-Crashes-On-Startup">How to handle Crashes on startup</a> with an example on how to do that.</p>
+
+<p>More background information on this topic can be found in the following blog post by Landon Fuller, the
+developer of <a href="https://www.plcrashreporter.org">PLCrashReporter</a>, about writing reliable and
+safe crash reporting: <a href="http://goo.gl/WvTBR">Reliable Crash Reporting</a></p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    If you start the app with the Xcode debugger attached, detecting crashes will <em>NOT</em> be enabled!
+
+</div>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Configuration"></a>
+                <a name="//apple_ref/objc/Section/Configuration" class="dashAnchor"></a>
+                <a href="#/Configuration">
+                  <h3 class="section-name">Configuration</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)BITCrashManager(py)crashManagerStatus"></a>
+                    <a name="//apple_ref/objc/Property/crashManagerStatus" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)BITCrashManager(py)crashManagerStatus">crashManagerStatus</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set the default status of the Crash Manager</p>
+
+<p>Defines if the crash reporting feature should be disabled, ask the user before
+ sending each crash report or send crash reports automatically without
+ asking.</p>
+
+<p>The default value is <code>BITCrashManagerStatusAlwaysAsk</code>. The user can switch to
+ <code>BITCrashManagerStatusAutoSend</code> by choosing <q>Always</q> in the dialog (since 
+ <code><a href="../Classes/BITCrashManager.html#/c:objc(cs)BITCrashManager(py)showAlwaysButton">showAlwaysButton</a></code> default is <em>YES</em>).</p>
+
+<p>The current value is always stored in User Defaults with the key
+ <code><a href="../Enums/BITCrashManagerStatus.html">BITCrashManagerStatus</a></code>.</p>
+
+<p>If you intend to implement a user setting to let them enable or disable
+ crash reporting, this delegate should be used to return that value. You also
+ have to make sure the new value is stored in the UserDefaults with the key
+ <code><a href="../Enums/BITCrashManagerStatus.html">BITCrashManagerStatus</a></code>.</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    BITCrashManagerStatus
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    showAlwaysButton
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span>
+    <span class="n"><a href="../Enums/BITCrashManagerStatus.html">BITCrashManagerStatus</a></span> <span class="n">crashManagerStatus</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">crashManagerStatus</span><span class="p">:</span> <span class="nf">BITCrashManagerStatus</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)BITCrashManager(py)enableMachExceptionHandler"></a>
+                    <a name="//apple_ref/objc/Property/enableMachExceptionHandler" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)BITCrashManager(py)enableMachExceptionHandler">enableMachExceptionHandler</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Trap fatal signals via a Mach exception server.</p>
+
+<p>By default the SDK is using the safe and proven in-process BSD Signals for catching crashes.
+  This option provides an option to enable catching fatal signals via a Mach exception server
+  instead.</p>
+
+<p>We strongly advice <em>NOT</em> to enable Mach exception handler in release versions of your apps!</p>
+
+<p>Default: <em>NO</em></p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    The Mach exception handler executes in-process, and will interfere with debuggers when
+they attempt to suspend all active threads (which will include the Mach exception handler).
+Mach-based handling should <em>NOT</em> be used when a debugger is attached. The SDK will not
+enabled catching exceptions if the app is started with the debugger running. If you attach
+the debugger during runtime, this may cause issues the Mach exception handler is enabled!
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    isDebuggerAttached
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">getter</span><span class="o">=</span><span class="n">isMachExceptionHandlerEnabled</span><span class="p">,</span> <span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span>
+    <span class="n">BOOL</span> <span class="n">enableMachExceptionHandler</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isMachExceptionHandlerEnabled</span><span class="p">:</span> <span class="nf">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)BITCrashManager(py)enableOnDeviceSymbolication"></a>
+                    <a name="//apple_ref/objc/Property/enableOnDeviceSymbolication" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)BITCrashManager(py)enableOnDeviceSymbolication">enableOnDeviceSymbolication</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Enable on device symbolication for system symbols</p>
+
+<p>By default, the SDK does not symbolicate on the device, since this can
+  take a few seconds at each crash. Also note that symbolication on the
+  device might not be able to retrieve all symbols.</p>
+
+<p>Enable if you want to analyze crashes on unreleased OS versions.</p>
+
+<p>Default: <em>NO</em></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">getter</span><span class="o">=</span><span class="n">isOnDeviceSymbolicationEnabled</span><span class="p">,</span> <span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span>
+    <span class="n">BOOL</span> <span class="n">enableOnDeviceSymbolication</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isOnDeviceSymbolicationEnabled</span><span class="p">:</span> <span class="nf">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)BITCrashManager(py)enableAppNotTerminatingCleanlyDetection"></a>
+                    <a name="//apple_ref/objc/Property/enableAppNotTerminatingCleanlyDetection" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)BITCrashManager(py)enableAppNotTerminatingCleanlyDetection">enableAppNotTerminatingCleanlyDetection</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>EXPERIMENTAL: Enable heuristics to detect the app not terminating cleanly</p>
+
+<p>This allows it to get a crash report if the app got killed while being in the foreground
+  because of one of the following reasons:</p>
+
+<ul>
+<li>The main thread was blocked for too long</li>
+<li>The app took too long to start up</li>
+<li>The app tried to allocate too much memory. If iOS did send a memory warning before killing the app because of this reason, <code><a href="../Classes/BITCrashManager.html#/c:objc(cs)BITCrashManager(py)didReceiveMemoryWarningInLastSession">didReceiveMemoryWarningInLastSession</a></code> returns <code>YES</code>.</li>
+<li>Permitted background duration if main thread is running in an endless loop</li>
+<li>App failed to resume in time if main thread is running in an endless loop</li>
+<li>If <code><a href="../Classes/BITCrashManager.html#/c:objc(cs)BITCrashManager(py)enableMachExceptionHandler">enableMachExceptionHandler</a></code> is not activated, crashed due to stack overflow will also be reported</li>
+</ul>
+
+<p>The following kills can <em>NOT</em> be detected:</p>
+
+<ul>
+<li>Terminating the app takes too long</li>
+<li>Permitted background duration too long for all other cases</li>
+<li>App failed to resume in time for all other cases</li>
+<li>possibly more cases</li>
+</ul>
+
+<p>Crash reports triggered by this mechanisms do <em>NOT</em> contain any stack traces since the time of the kill
+  cannot be intercepted and hence no stack trace of the time of the kill event can&rsquo;t be gathered.</p>
+
+<p>The heuristic is implemented as follows:
+  If the app never gets a <code>UIApplicationDidEnterBackgroundNotification</code> or <code>UIApplicationWillTerminateNotification</code>
+  notification, PLCrashReporter doesn&rsquo;t detect a crash itself, and the app starts up again, it is assumed that
+  the app got either killed by iOS while being in foreground or a crash occurred that couldn&rsquo;t be detected.</p>
+
+<p>Default: <em>NO</em></p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>This is a heuristic and it <em>MAY</em> report false positives! It has been tested with iOS 6.1 and iOS 7.
+Depending on Apple changing notification events, new iOS version may cause more false positives!</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>lastSessionCrashDetails</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>didReceiveMemoryWarningInLastSession</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p><code>BITCrashManagerDelegate considerAppNotTerminatedCleanlyReportForCrashManager:</code></p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p><a href="https://developer.apple.com/library/ios/technotes/tn2151/_index.html">Apple Technical Note TN2151</a></p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p><a href="https://developer.apple.com/library/ios/qa/qa1693/_index.html">Apple Technical Q&amp;A QA1693</a></p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">getter</span><span class="o">=</span><span class="n">isAppNotTerminatingCleanlyDetectionEnabled</span><span class="p">,</span> <span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span>
+          <span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">enableAppNotTerminatingCleanlyDetection</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">isAppNotTerminatingCleanlyDetectionEnabled</span><span class="p">:</span> <span class="nf">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)BITCrashManager(im)setCrashCallbacks:"></a>
+                    <a name="//apple_ref/objc/Method/-setCrashCallbacks:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)BITCrashManager(im)setCrashCallbacks:">-setCrashCallbacks:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Set the callbacks that will be executed prior to program termination after a crash has occurred</p>
+
+<p>PLCrashReporter provides support for executing an application specified function in the context
+ of the crash reporter&rsquo;s signal handler, after the crash report has been written to disk.</p>
+
+<p>Writing code intended for execution inside of a signal handler is exceptionally difficult, and is <em>NOT</em> recommended!</p>
+
+<p><em>Program Flow and Signal Handlers</em></p>
+
+<p>When the signal handler is called the normal flow of the program is interrupted, and your program is an unknown state. Locks may be held, the heap may be corrupt (or in the process of being updated), and your signal handler may invoke a function that was being executed at the time of the signal. This may result in deadlocks, data corruption, and program termination.</p>
+
+<p><em>Async-Safe Functions</em></p>
+
+<p>A subset of functions are defined to be async-safe by the OS, and are safely callable from within a signal handler. If you do implement a custom post-crash handler, it must be async-safe. A table of POSIX-defined async-safe functions and additional information is available from the <a href="https://www.securecoding.cert.org/confluence/display/seccode/SIG30-C.+Call+only+asynchronous-safe+functions+within+signal+handlers">CERT programming guide - SIG30-C</a>.</p>
+
+<p>Most notably, the Objective-C runtime itself is not async-safe, and Objective-C may not be used within a signal handler.</p>
+
+<p>Documentation taken from PLCrashReporter: <a href="https://www.plcrashreporter.org/documentation/api/v1.2-rc2/async_safety.html">https://www.plcrashreporter.org/documentation/api/v1.2-rc2/async_safety.html</a></p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    BITCrashManagerPostCrashSignalCallback
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>BITCrashManagerCallbacks</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setCrashCallbacks</span><span class="p">:(</span><span class="n"><a href="../Structs/BITCrashManagerCallbacks.html">BITCrashManagerCallbacks</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">callbacks</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setCrash</span><span class="p">(</span><span class="n">_</span> <span class="nv">callbacks</span><span class="p">:</span> <span class="kt">UnsafeMutablePointer</span><span class="o">&lt;</span><span class="kt"><a href="../Structs/BITCrashManagerCallbacks.html">BITCrashManagerCallbacks</a></span><span class="o">&gt;!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>callbacks</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A pointer to an initialized PLCrashReporterCallback structure, see <a href="https://www.plcrashreporter.org/documentation/api/v1.2-rc2/struct_p_l_crash_reporter_callbacks.html">https://www.plcrashreporter.org/documentation/api/v1.2-rc2/struct_p_l_crash_reporter_callbacks.html</a></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)BITCrashManager(py)showAlwaysButton"></a>
+                    <a name="//apple_ref/objc/Property/showAlwaysButton" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)BITCrashManager(py)showAlwaysButton">showAlwaysButton</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Flag that determines if an <q>Always</q> option should be shown</p>
+
+<p>If enabled the crash reporting alert will also present an <q>Always</q> option, so
+the user doesn&rsquo;t have to approve every single crash over and over again.</p>
+
+<p>If If <code><a href="../Classes/BITCrashManager.html#/c:objc(cs)BITCrashManager(py)crashManagerStatus">crashManagerStatus</a></code> is set to <code>BITCrashManagerStatusAutoSend</code>, this property
+has no effect, since no alert will be presented.</p>
+
+<p>Default: <em>YES</em></p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    crashManagerStatus
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">getter</span><span class="o">=</span><span class="n">shouldShowAlwaysButton</span><span class="p">,</span> <span class="n">assign</span><span class="p">,</span> <span class="n">readwrite</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span>
+    <span class="n">BOOL</span> <span class="n">showAlwaysButton</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">shouldShowAlwaysButton</span><span class="p">:</span> <span class="nf">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Crash%20Meta%20Information"></a>
+                <a name="//apple_ref/objc/Section/Crash Meta Information" class="dashAnchor"></a>
+                <a href="#/Crash%20Meta%20Information">
+                  <h3 class="section-name">Crash Meta Information</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)BITCrashManager(py)didCrashInLastSession"></a>
+                    <a name="//apple_ref/objc/Property/didCrashInLastSession" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)BITCrashManager(py)didCrashInLastSession">didCrashInLastSession</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Indicates if the app crash in the previous session</p>
+
+<p>Use this on startup, to check if the app starts the first time after it crashed
+previously. You can use this also to disable specific events, like asking
+the user to rate your app.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>This property only has a correct value, once <code>[BITHockeyManager startManager]</code> was
+invoked!</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>lastSessionCrashDetails</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">didCrashInLastSession</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">didCrashInLastSession</span><span class="p">:</span> <span class="nf">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)BITCrashManager(im)handleUserInput:withUserProvidedMetaData:"></a>
+                    <a name="//apple_ref/objc/Method/-handleUserInput:withUserProvidedMetaData:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)BITCrashManager(im)handleUserInput:withUserProvidedMetaData:">-handleUserInput:withUserProvidedMetaData:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Provides an interface to pass user input from a custom alert to a crash report</p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>BITCrashManagerUserInput</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>BITCrashMetaData</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">handleUserInput</span><span class="p">:(</span><span class="n"><a href="../Enums/BITCrashManagerUserInput.html">BITCrashManagerUserInput</a></span><span class="p">)</span><span class="nv">userInput</span>
+    <span class="nf">withUserProvidedMetaData</span><span class="p">:(</span><span class="n"><a href="../Classes/BITCrashMetaData.html">BITCrashMetaData</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">userProvidedMetaData</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">handle</span><span class="p">(</span><span class="n">_</span> <span class="nv">userInput</span><span class="p">:</span> <span class="kt"><a href="../Enums/BITCrashManagerUserInput.html">BITCrashManagerUserInput</a></span><span class="p">,</span> <span class="n">withUserProvidedMetaData</span> <span class="nv">userProvidedMetaData</span><span class="p">:</span> <span class="kt"><a href="../Classes/BITCrashMetaData.html">BITCrashMetaData</a></span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>userInput</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Defines the users action wether to send, always send, or not to send the crash report.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>userProvidedMetaData</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The content of this optional BITCrashMetaData instance will be attached to the crash report and allows to ask the user for e.g. additional comments or info.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Returns YES if the input is a valid option and successfully triggered further processing of the crash report</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)BITCrashManager(im)setAlertViewHandler:"></a>
+                    <a name="//apple_ref/objc/Method/-setAlertViewHandler:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)BITCrashManager(im)setAlertViewHandler:">-setAlertViewHandler:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Lets you set a custom block which handles showing a custom UI and asking the user
+whether they want to send the crash report.</p>
+
+<p>This replaces the default alert the SDK would show!</p>
+
+<p>You can use this to present any kind of user interface which asks the user for additional information,
+e.g. what they did in the app before the app crashed.</p>
+
+<p>In addition to this you should always ask your users if they agree to send crash reports, send them
+always or not and return the result when calling <code>handleUserInput:withUserProvidedCrashDescription</code>.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>This is not available when compiled for Watch OS!</p>
+
+</div>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>Block needs to call the <code>[BITCrashManager handleUserInput:withUserProvidedMetaData:]</code> method!</p>
+
+</div>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>This needs to be set before calling <code>[BITHockeyManager startManager]</code>!</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setAlertViewHandler</span><span class="p">:(</span><span class="n"><a href="../Other Type Definitions.html#/c:BITCrashManager.h@T@BITCustomAlertViewHandler">BITCustomAlertViewHandler</a></span><span class="p">)</span><span class="nv">alertViewHandler</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">setAlertViewHandler</span><span class="p">(</span><span class="n">_</span> <span class="nv">alertViewHandler</span><span class="p">:</span> <span class="kt"><a href="../Other Type Definitions.html#/c:BITCrashManager.h@T@BITCustomAlertViewHandler">BITCustomAlertViewHandler</a></span><span class="o">!</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>alertViewHandler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>A block that is responsible for loading, presenting and and dismissing your custom user interface which prompts the user if they want to send crash reports. The block is also responsible for triggering further processing of the crash reports.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)BITCrashManager(py)lastSessionCrashDetails"></a>
+                    <a name="//apple_ref/objc/Property/lastSessionCrashDetails" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)BITCrashManager(py)lastSessionCrashDetails">lastSessionCrashDetails</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Provides details about the crash that occurred in the last app session</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n"><a href="../Classes/BITCrashDetails.html">BITCrashDetails</a></span> <span class="o">*</span><span class="n">lastSessionCrashDetails</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">lastSessionCrashDetails</span><span class="p">:</span> <span class="nf">BITCrashDetails</span><span class="o">!</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)BITCrashManager(py)didReceiveMemoryWarningInLastSession"></a>
+                    <a name="//apple_ref/objc/Property/didReceiveMemoryWarningInLastSession" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)BITCrashManager(py)didReceiveMemoryWarningInLastSession">didReceiveMemoryWarningInLastSession</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Indicates if the app did receive a low memory warning in the last session</p>
+
+<p>It may happen that low memory warning where send but couldn&rsquo;t be logged, since iOS
+killed the app before updating the flag in the filesystem did complete.</p>
+
+<p>This property may be true in case of low memory kills, but it doesn&rsquo;t have to be! Apps
+can also be killed without the app ever receiving a low memory warning.</p>
+
+<p>Also the app could have received a low memory warning, but the reason for being killed was
+actually different.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>This property only has a correct value, once <code>[BITHockeyManager startManager]</code> was
+invoked!</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>enableAppNotTerminatingCleanlyDetection</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>lastSessionCrashDetails</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span> <span class="n">BOOL</span> <span class="n">didReceiveMemoryWarningInLastSession</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">didReceiveMemoryWarningInLastSession</span><span class="p">:</span> <span class="nf">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)BITCrashManager(py)timeIntervalCrashInLastSessionOccurred"></a>
+                    <a name="//apple_ref/objc/Property/timeIntervalCrashInLastSessionOccurred" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)BITCrashManager(py)timeIntervalCrashInLastSessionOccurred">timeIntervalCrashInLastSessionOccurred</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Provides the time between startup and crash in seconds</p>
+
+<p>Use this in together with <code><a href="../Classes/BITCrashManager.html#/c:objc(cs)BITCrashManager(py)didCrashInLastSession">didCrashInLastSession</a></code> to detect if the app crashed very
+early after startup. This can be used to delay app initialization until the crash
+report has been sent to the server or if you want to do any other actions like
+cleaning up some cache data etc.</p>
+
+<p>Note that sending a crash reports starts as early as 1.5 seconds after the application
+did finish launching!</p>
+
+<p>The <code><a href="../Protocols/BITCrashManagerDelegate.html">BITCrashManagerDelegate</a></code> protocol provides some delegates to inform if sending
+a crash report was finished successfully, ended in error or was cancelled by the user.</p>
+
+<p><em>Default</em>: <em>-1</em></p>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    didCrashInLastSession
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    BITCrashManagerDelegate
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">@property</span> <span class="p">(</span><span class="n">readonly</span><span class="p">,</span> <span class="n">nonatomic</span><span class="p">)</span>
+    <span class="n">NSTimeInterval</span> <span class="n">timeIntervalCrashInLastSessionOccurred</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">timeIntervalCrashInLastSessionOccurred</span><span class="p">:</span> <span class="nf">TimeInterval</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Helper"></a>
+                <a name="//apple_ref/objc/Section/Helper" class="dashAnchor"></a>
+                <a href="#/Helper">
+                  <h3 class="section-name">Helper</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)BITCrashManager(im)isDebuggerAttached"></a>
+                    <a name="//apple_ref/objc/Method/-isDebuggerAttached" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)BITCrashManager(im)isDebuggerAttached">-isDebuggerAttached</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Detect if a debugger is attached to the app process</p>
+
+<p>This is only invoked once on app startup and can not detect if the debugger is being
+  attached during runtime!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">isDebuggerAttached</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">isDebuggerAttached</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>BOOL if the debugger is attached on app startup</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(cs)BITCrashManager(im)generateTestCrash"></a>
+                    <a name="//apple_ref/objc/Method/-generateTestCrash" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(cs)BITCrashManager(im)generateTestCrash">-generateTestCrash</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Lets the app crash for easy testing of the SDK</p>
+
+<p>The best way to use this is to trigger the crash with a button action.</p>
+
+<p>Make sure not to let the app crash in <code>applicationDidFinishLaunching</code> or any other
+ startup method! Since otherwise the app would crash before the SDK could process it.</p>
+
+<p>Note that our SDK provides support for handling crashes that happen early on startup.
+ Check the documentation for more information on how to use this.</p>
+
+<p>If the SDK detects an App Store environment, it will <em>NOT</em> cause the app to crash!</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">generateTestCrash</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">generateTestCrash</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://www.microsoft.com" target="_blank" rel="external">Microsoft Corp</a>. All rights reserved. (Last updated: 2018-01-08)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

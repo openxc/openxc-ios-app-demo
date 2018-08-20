@@ -96,7 +96,6 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         
         let sRow = pickerView.selectedRow(inComponent: 0)
         
-        
         if(bm.isBleConnected){
             
             if (sRow == 8 ){
@@ -230,10 +229,8 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         case 3:
             
             //let cm = VehicleCommandRequest()
-            
             // look at segmented control for bus
             vcm.bus = busSeg.selectedSegmentIndex + 1
-            
             
             if bypassSeg.selectedSegmentIndex==0 {
                 vcm.bypass = true
@@ -302,7 +299,6 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         // extract the command response message
         let cr = rsp.object(forKey: "vehiclemessage") as! VehicleCommandResponse
         
-        
         // update the UI depending on the command type- version,device_id works for JSON mode, not in protobuf - TODO
         
         if cr.command_response.isEqual(to: "version") || cr.command_response.isEqual(to: ".version") {
@@ -330,7 +326,6 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
                 vm.setProtobufMode(true)
                 UserDefaults.standard.set(true, forKey:"protobufOn")
                  payloadFormatResp = String(cr.status)
-             
             }
             }
             payloadFormatResp = String(cr.status)

@@ -61,7 +61,6 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     // extract the diag resp message
     let vr = rsp.object(forKey: "vehiclemessage") as! VehicleDiagnosticResponse
     
-    
     // create the string we want to show in the received messages UI
     var newTxt = "bus:"+vr.bus.description+" id:0x"+String(format:"%x",vr.message_id)+" mode:0x"+String(format:"%x",vr.mode)+"timestamp"+String(vr.timestamp)
     if vr.pid != nil {
