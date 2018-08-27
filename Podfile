@@ -10,8 +10,9 @@ source 'https://github.com/CocoaPods/Specs.git'
 
   #pod 'openxc-ios-framework', :git => 'https://github.com/openxc/openxc-ios-framework.git', :branch => 'next'
 
-#pod "HockeySDK"
+pod "HockeySDK"
 pod 'ProtocolBuffers-Swift' ,'2.4.3'
+pod 'OpenXCFramework-Swift'
 
   target 'openXCenablerTests' do
     inherit! :search_paths
