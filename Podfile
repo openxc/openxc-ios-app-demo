@@ -12,7 +12,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 pod "HockeySDK"
 pod 'ProtocolBuffers-Swift' ,'2.4.3'
-pod 'OpenXCFramework-Swift'
+pod 'OpenXCFramework-Swift',:path => '../CocoapodSetup'
 
   target 'openXCenablerTests' do
     inherit! :search_paths
