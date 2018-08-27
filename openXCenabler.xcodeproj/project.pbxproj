@@ -31,7 +31,9 @@
 		7DA27A282085F28000089514 /* CommandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA27A272085F28000089514 /* CommandsViewController.swift */; };
 		7DB633E91F9F247100519A8B /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; };
 		7DB633EA1F9F247100519A8B /* openXCiOSFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E79901C31E3F5AFD00FB0579 /* openXCiOSFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		7DD48029209723A000B9034B /* (null) in Sources */ = {isa = PBXBuildFile; };
+		7DD48029209723A000B9034B /* BuildFile in Sources */ = {isa = PBXBuildFile; };
+		B0E7B97EB960802CB8F21778 /* Pods_openXCenabler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 913141B6B42A97C568E317D7 /* Pods_openXCenabler.framework */; };
+		BD05621EE8675D731793ED31 /* Pods_openXCenablerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 199C8B3557BC3B2638AFEA14 /* Pods_openXCenablerTests.framework */; };
 		E75EE6931E110ED400B2AE3B /* openXCenablerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */; };
 		E78190A81ECC5B9000DE3B18 /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B85B511ECC373500A3E5CB /* ProtocolBuffers.framework */; };
 /* End PBXBuildFile section */
@@ -83,6 +85,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		199C8B3557BC3B2638AFEA14 /* Pods_openXCenablerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_openXCenablerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A1016C11D5417AD006C5E93 /* openXCenabler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = openXCenabler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A1016C41D5417AD006C5E93 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A1016C61D5417AD006C5E93 /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +99,8 @@
 		3AE7C0B01D9C0CF6001E92A4 /* nouns.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nouns.txt; sourceTree = "<group>"; };
 		3AE834421D5ED054003FD370 /* SendCanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendCanViewController.swift; sourceTree = "<group>"; };
 		3AE834441D5ED054003FD370 /* CanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanViewController.swift; sourceTree = "<group>"; };
+		4E7CF5B9B77C99B3DEC11C60 /* Pods-openXCenabler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openXCenabler.release.xcconfig"; path = "Target Support Files/Pods-openXCenabler/Pods-openXCenabler.release.xcconfig"; sourceTree = "<group>"; };
+		6B6C6DDFCD859BFD300BCC19 /* Pods-openXCenablerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openXCenablerTests.release.xcconfig"; path = "Target Support Files/Pods-openXCenablerTests/Pods-openXCenablerTests.release.xcconfig"; sourceTree = "<group>"; };
 		7D06AAD62118801100B27CDE /* ProtocolBuffers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ProtocolBuffers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D33AE2F2019E71000224782 /* openXCiOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = openXCiOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/openXCenabler-aqgcinribrasdxdcauflwrtjddga/Build/Products/Debug-iphonesimulator/openXCiOSFramework.framework"; sourceTree = "<group>"; };
 		7D6C02782119847500C80569 /* project.pbxproj */ = {isa = PBXFileReference; lastKnownFileType = text.pbxproject; name = project.pbxproj; path = openXCenabler.xcodeproj/project.pbxproj; sourceTree = "<group>"; };
@@ -118,11 +123,14 @@
 		7DA9BEE32119B875004E6DB1 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		7DA9BEE42119B875004E6DB1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7DF339E4200F148E00935D96 /* openXCiOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = openXCiOSFramework.framework; path = ../../../Desktop/openXCiOSFramework.framework; sourceTree = "<group>"; };
+		816F6312D097048E3B4E56FE /* Pods-openXCenablerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openXCenablerTests.debug.xcconfig"; path = "Target Support Files/Pods-openXCenablerTests/Pods-openXCenablerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		913141B6B42A97C568E317D7 /* Pods_openXCenabler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_openXCenabler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75EE6901E110ED400B2AE3B /* openXCenablerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = openXCenablerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E75EE6921E110ED400B2AE3B /* openXCenablerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = openXCenablerTests.swift; sourceTree = "<group>"; };
 		E75EE6941E110ED400B2AE3B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E79901BC1E3F5AFD00FB0579 /* openxc-ios-framework.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "openxc-ios-framework.xcodeproj"; path = "openxc-ios-framework/openxc-ios-framework.xcodeproj"; sourceTree = "<group>"; };
 		E7B85B511ECC373500A3E5CB /* ProtocolBuffers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ProtocolBuffers.framework; path = "../../Library/Developer/Xcode/DerivedData/openXCenabler-dtbvzqnttfvvgiadwizgfuibvfzo/Build/Products/Debug-iphonesimulator/ProtocolBuffers.framework"; sourceTree = "<group>"; };
+		FB4EC3AEC019EB274B3AF21C /* Pods-openXCenabler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openXCenabler.debug.xcconfig"; path = "Target Support Files/Pods-openXCenabler/Pods-openXCenabler.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +143,7 @@
 				7D06AAD72118801100B27CDE /* ProtocolBuffers.framework in Frameworks */,
 				7D33AE312019E71100224782 /* openXCiOSFramework.framework in Frameworks */,
 				7DB633E91F9F247100519A8B /* openXCiOSFramework.framework in Frameworks */,
+				B0E7B97EB960802CB8F21778 /* Pods_openXCenabler.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD05621EE8675D731793ED31 /* Pods_openXCenablerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +168,7 @@
 				E75EE6911E110ED400B2AE3B /* openXCenablerTests */,
 				3A1016C21D5417AD006C5E93 /* Products */,
 				E7E886661E4B038A0090B55E /* Frameworks */,
+				7349ABF15CE6D758F70425A4 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -193,6 +204,18 @@
 				7D83F86B2017389500E989D1 /* Utility.swift */,
 			);
 			path = openXCenabler;
+			sourceTree = "<group>";
+		};
+		7349ABF15CE6D758F70425A4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FB4EC3AEC019EB274B3AF21C /* Pods-openXCenabler.debug.xcconfig */,
+				4E7CF5B9B77C99B3DEC11C60 /* Pods-openXCenabler.release.xcconfig */,
+				816F6312D097048E3B4E56FE /* Pods-openXCenablerTests.debug.xcconfig */,
+				6B6C6DDFCD859BFD300BCC19 /* Pods-openXCenablerTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		7DA9BED02119B875004E6DB1 /* HockeySDK */ = {
@@ -303,6 +326,8 @@
 				7DF339E4200F148E00935D96 /* openXCiOSFramework.framework */,
 				7D33AE2F2019E71000224782 /* openXCiOSFramework.framework */,
 				E7B85B511ECC373500A3E5CB /* ProtocolBuffers.framework */,
+				913141B6B42A97C568E317D7 /* Pods_openXCenabler.framework */,
+				199C8B3557BC3B2638AFEA14 /* Pods_openXCenablerTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -314,10 +339,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A1016D51D5417AD006C5E93 /* Build configuration list for PBXNativeTarget "openXCenabler" */;
 			buildPhases = (
+				7C50A57AF77ACCB87004A0A0 /* [CP] Check Pods Manifest.lock */,
 				3A1016BD1D5417AD006C5E93 /* Sources */,
 				3A1016BE1D5417AD006C5E93 /* Frameworks */,
 				3A1016BF1D5417AD006C5E93 /* Resources */,
 				7DB633ED1F9F247100519A8B /* Embed Frameworks */,
+				6593579E4ECDA87E4F6FD889 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -333,6 +360,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E75EE6971E110ED400B2AE3B /* Build configuration list for PBXNativeTarget "openXCenablerTests" */;
 			buildPhases = (
+				ECF789184F335ECCCBC450E6 /* [CP] Check Pods Manifest.lock */,
 				E75EE68C1E110ED400B2AE3B /* Sources */,
 				E75EE68D1E110ED400B2AE3B /* Frameworks */,
 				E75EE68E1E110ED400B2AE3B /* Resources */,
@@ -435,13 +463,82 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6593579E4ECDA87E4F6FD889 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-openXCenabler/Pods-openXCenabler-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ProtocolBuffers-Swift/ProtocolBuffers.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtocolBuffers.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-openXCenabler/Pods-openXCenabler-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C50A57AF77ACCB87004A0A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-openXCenabler-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECF789184F335ECCCBC450E6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-openXCenablerTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3A1016BD1D5417AD006C5E93 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7D83F86C2017389500E989D1 /* Utility.swift in Sources */,
-				7DD48029209723A000B9034B /* (null) in Sources */,
+				7DD48029209723A000B9034B /* BuildFile in Sources */,
 				3AE834451D5ED054003FD370 /* SendCanViewController.swift in Sources */,
 				3A1016C91D5417AD006C5E93 /* DashboardViewController.swift in Sources */,
 				7D790ADC2063C1DC004AAD5E /* RecordingSourceController.swift in Sources */,
@@ -603,6 +700,7 @@
 		};
 		3A1016D61D5417AD006C5E93 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB4EC3AEC019EB274B3AF21C /* Pods-openXCenabler.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -624,6 +722,7 @@
 		};
 		3A1016D71D5417AD006C5E93 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E7CF5B9B77C99B3DEC11C60 /* Pods-openXCenabler.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -645,6 +744,7 @@
 		};
 		E75EE6981E110ED400B2AE3B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 816F6312D097048E3B4E56FE /* Pods-openXCenablerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -662,6 +762,7 @@
 		};
 		E75EE6991E110ED400B2AE3B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B6C6DDFCD859BFD300BCC19 /* Pods-openXCenablerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
