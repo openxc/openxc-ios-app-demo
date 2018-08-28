@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>BITHockeyManagerDelegate Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/objc/Protocol/BITHockeyManagerDelegate" class="dashAnchor"></a>
+    <a title="BITHockeyManagerDelegate Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">HockeySDK Docs</a> (95% documented)</p>
+        <p class="header-right"><a href="https://github.com/bitstadium/HockeySDK-iOS/"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fsupport%2Ehockeyapp%2Enet%2Fkb%2Fdocsets%2FHockeySDK%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">HockeySDK Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        BITHockeyManagerDelegate Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../installation--setup.html">Installation &amp; Setup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../migration-kits.html">Migration Kits</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../How To.html">How To</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../app-versioning.html">App Versioning</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../set-custom-alertviewhandler.html">Set Custom AlertViewHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../upload-symbols.html">Upload Symbols</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Troubleshooting.html">Troubleshooting</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../crash-reporting-not-working.html">Crash Reporting Not Working</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Release Notes.html">Release Notes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../changelog.html">Changelog</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/BITAuthenticator.html">BITAuthenticator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITCrashAttachment.html">BITCrashAttachment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITCrashDetails.html">BITCrashDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITCrashManager.html">BITCrashManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITCrashMetaData.html">BITCrashMetaData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITFeedbackActivity.html">BITFeedbackActivity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITFeedbackComposeViewController.html">BITFeedbackComposeViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Classes.html#/c:objc(cs)BITFeedbackListViewController">BITFeedbackListViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITFeedbackManager.html">BITFeedbackManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITHockeyAttachment.html">BITHockeyAttachment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITMetricsManager.html">BITMetricsManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITStoreUpdateManager.html">BITStoreUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/BITUpdateManager.html">BITUpdateManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Enumerations.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/BITAuthenticatorAppRestrictionEnforcementFrequency.html">BITAuthenticatorAppRestrictionEnforcementFrequency</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITAuthenticatorIdentificationType.html">BITAuthenticatorIdentificationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITAuthenticatorReason.html">BITAuthenticatorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITCrashErrorReason.html">BITCrashErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITCrashManagerStatus.html">BITCrashManagerStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITCrashManagerUserInput.html">BITCrashManagerUserInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITEnvironment.html">BITEnvironment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITFeedbackComposeResult.html">BITFeedbackComposeResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITFeedbackErrorReason.html">BITFeedbackErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITFeedbackObservationMode.html">BITFeedbackObservationMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITFeedbackUserDataElement.html">BITFeedbackUserDataElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITHockeyErrorReason.html">BITHockeyErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITLogLevel.html">BITLogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITStoreUpdateSetting.html">BITStoreUpdateSetting</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITUpdateErrorReason.html">BITUpdateErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/BITUpdateSetting.html">BITUpdateSetting</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/BITAuthenticatorDelegate.html">BITAuthenticatorDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITCrashManagerDelegate.html">BITCrashManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITFeedbackComposeViewControllerDelegate.html">BITFeedbackComposeViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITFeedbackManagerDelegate.html">BITFeedbackManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITHockeyManagerDelegate.html">BITHockeyManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITStoreUpdateManagerDelegate.html">BITStoreUpdateManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/BITUpdateManagerDelegate.html">BITUpdateManagerDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Type Definitions.html">Other Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Other Type Definitions.html#/c:BITCrashManager.h@T@BITCrashManagerPostCrashSignalCallback">BITCrashManagerPostCrashSignalCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Other Type Definitions.html#/c:BITCrashManager.h@T@BITCustomAlertViewHandler">BITCustomAlertViewHandler</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Other Structures.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/BITCrashManagerCallbacks.html">BITCrashManagerCallbacks</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>BITHockeyManagerDelegate</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight objective_c"><code><span class="k">@protocol</span> <span class="nc">BITHockeyManagerDelegate</span> <span class="o">&lt;</span>
+    <span class="n">NSObject</span><span class="p">,</span> <span class="n"><a href="../Protocols/BITCrashManagerDelegate.html">BITCrashManagerDelegate</a></span><span class="p">,</span> <span class="n"><a href="../Protocols/BITUpdateManagerDelegate.html">BITUpdateManagerDelegate</a></span><span class="p">,</span>
+    <span class="n"><a href="../Protocols/BITFeedbackManagerDelegate.html">BITFeedbackManagerDelegate</a></span><span class="p">,</span> <span class="n"><a href="../Protocols/BITAuthenticatorDelegate.html">BITAuthenticatorDelegate</a></span><span class="o">&gt;</span></code></pre>
+
+                </div>
+              </div>
+            <p>The <code>BITHockeyManagerDelegate</code> formal protocol defines methods further configuring
+ the behaviour of <code>BITHockeyManager</code>, as well as the delegate of the modules it manages.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/App%20Identifier%20usage"></a>
+                <a name="//apple_ref/objc/Section/App Identifier usage" class="dashAnchor"></a>
+                <a href="#/App%20Identifier%20usage">
+                  <h3 class="section-name">App Identifier usage</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)BITHockeyManagerDelegate(im)shouldUseLiveIdentifierForHockeyManager:"></a>
+                    <a name="//apple_ref/objc/Method/-shouldUseLiveIdentifierForHockeyManager:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)BITHockeyManagerDelegate(im)shouldUseLiveIdentifierForHockeyManager:">-shouldUseLiveIdentifierForHockeyManager:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Implement to force the usage of the live identifier</p>
+
+<p>This is useful if you are e.g. distributing an enterprise app inside your company
+and want to use the <code>liveIdentifier</code> for that even though it is not running from
+the App Store.</p>
+
+<p>Example:</p>
+<pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">shouldUseLiveIdentifierForHockeyManager</span><span class="p">:(</span><span class="n">BITHockeyManager</span> <span class="o">*</span><span class="p">)</span><span class="nv">hockeyManager</span> <span class="p">{</span>
+<span class="cp">#ifdef (CONFIGURATION_AppStore)
+</span>  <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="cp">#endif
+</span>  <span class="k">return</span> <span class="nb">NO</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="nf">shouldUseLiveIdentifierForHockeyManager</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">BITHockeyManager</span> <span class="o">*</span><span class="p">)</span><span class="nv">hockeyManager</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">shouldUseLiveIdentifier</span><span class="p">(</span><span class="k">for</span> <span class="nv">hockeyManager</span><span class="p">:</span> <span class="kt">BITHockeyManager</span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hockeyManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>BITHockeyManager instance</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/UI%20presentation"></a>
+                <a name="//apple_ref/objc/Section/UI presentation" class="dashAnchor"></a>
+                <a href="#/UI%20presentation">
+                  <h3 class="section-name">UI presentation</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)BITHockeyManagerDelegate(im)viewControllerForHockeyManager:componentManager:"></a>
+                    <a name="//apple_ref/objc/Method/-viewControllerForHockeyManager:componentManager:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)BITHockeyManagerDelegate(im)viewControllerForHockeyManager:componentManager:">-viewControllerForHockeyManager:componentManager:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return a custom parent view controller for presenting modal sheets</p>
+
+<p>By default the SDK is using the root UIWindow instance to present any required
+view controllers. Overwrite this if this doesn&rsquo;t result in a satisfying
+behavior or if you want to define any other parent view controller.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">UIViewController</span> <span class="o">*</span><span class="p">)</span>
+<span class="nf">viewControllerForHockeyManager</span><span class="p">:(</span><span class="n">BITHockeyManager</span> <span class="o">*</span><span class="p">)</span><span class="nv">hockeyManager</span>
+              <span class="nf">componentManager</span><span class="p">:(</span><span class="n"><a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">componentManager</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">viewController</span><span class="p">(</span><span class="k">for</span> <span class="nv">hockeyManager</span><span class="p">:</span> <span class="kt">BITHockeyManager</span><span class="o">!</span><span class="p">,</span> <span class="nv">componentManager</span><span class="p">:</span> <span class="kt"><a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a></span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">UIViewController</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hockeyManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>BITHockeyManager</code> HockeyManager instance invoking this delegate</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>componentManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a></code> component instance invoking this delegate, can be <code><a href="../Classes/BITCrashManager.html">BITCrashManager</a></code> or <code><a href="../Classes/BITFeedbackManager.html">BITFeedbackManager</a></code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Additional%20meta%20data"></a>
+                <a name="//apple_ref/objc/Section/Additional meta data" class="dashAnchor"></a>
+                <a href="#/Additional%20meta%20data">
+                  <h3 class="section-name">Additional meta data</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)BITHockeyManagerDelegate(im)userIDForHockeyManager:componentManager:"></a>
+                    <a name="//apple_ref/objc/Method/-userIDForHockeyManager:componentManager:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)BITHockeyManagerDelegate(im)userIDForHockeyManager:componentManager:">-userIDForHockeyManager:componentManager:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return the userid that should used in the SDK components</p>
+
+<p>Right now this is used by the <code><a href="../Classes/BITCrashManager.html">BITCrashManager</a></code> to attach to a crash report.
+ <code><a href="../Classes/BITFeedbackManager.html">BITFeedbackManager</a></code> uses it too for assigning the user to a discussion thread.</p>
+
+<p>In addition, if this returns not nil for <code><a href="../Classes/BITFeedbackManager.html">BITFeedbackManager</a></code> the user will
+ not be asked for any user details by the component, including userName or userEmail.</p>
+
+<p>You can find out the component requesting the userID like this:</p>
+<pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">userIDForHockeyManager</span><span class="p">:(</span><span class="n">BITHockeyManager</span> <span class="o">*</span><span class="p">)</span><span class="nv">hockeyManager</span> <span class="nf">componentManager</span><span class="p">:(</span><span class="n">BITHockeyBaseManager</span> <span class="o">*</span><span class="p">)</span><span class="nv">componentManager</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">componentManager</span> <span class="o">==</span> <span class="n">hockeyManager</span><span class="p">.</span><span class="n">feedbackManager</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">UserIDForFeedback</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">componentManager</span> <span class="o">==</span> <span class="n">hockeyManager</span><span class="p">.</span><span class="n">crashManager</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">UserIDForCrashReports</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>For crash reports, this delegate is invoked on the startup after the crash!</p>
+
+<p>Alternatively you can also use <code>[BITHockeyManager userID]</code> which will cache the value in the keychain.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>When returning a non nil value for the <code><a href="../Classes/BITCrashManager.html">BITCrashManager</a></code> component, crash reports
+are not anonymous any more and the crash alerts will not show the word <q>anonymous</q>!</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>userNameForHockeyManager:componentManager:</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>userEmailForHockeyManager:componentManager:</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>[BITHockeyManager userID]</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">userIDForHockeyManager</span><span class="p">:(</span><span class="n">BITHockeyManager</span> <span class="o">*</span><span class="p">)</span><span class="nv">hockeyManager</span>
+                    <span class="nf">componentManager</span><span class="p">:(</span><span class="n"><a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">componentManager</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">userID</span><span class="p">(</span><span class="k">for</span> <span class="nv">hockeyManager</span><span class="p">:</span> <span class="kt">BITHockeyManager</span><span class="o">!</span><span class="p">,</span> <span class="nv">componentManager</span><span class="p">:</span> <span class="kt"><a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a></span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hockeyManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>BITHockeyManager</code> HockeyManager instance invoking this delegate</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>componentManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a></code> component instance invoking this delegate, can be <code><a href="../Classes/BITCrashManager.html">BITCrashManager</a></code> or <code><a href="../Classes/BITFeedbackManager.html">BITFeedbackManager</a></code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)BITHockeyManagerDelegate(im)userNameForHockeyManager:componentManager:"></a>
+                    <a name="//apple_ref/objc/Method/-userNameForHockeyManager:componentManager:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)BITHockeyManagerDelegate(im)userNameForHockeyManager:componentManager:">-userNameForHockeyManager:componentManager:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return the user name that should used in the SDK components</p>
+
+<p>Right now this is used by the <code><a href="../Classes/BITCrashManager.html">BITCrashManager</a></code> to attach to a crash report.
+ <code><a href="../Classes/BITFeedbackManager.html">BITFeedbackManager</a></code> uses it too for assigning the user to a discussion thread.</p>
+
+<p>In addition, if this returns not nil for <code><a href="../Classes/BITFeedbackManager.html">BITFeedbackManager</a></code> the user will
+ not be asked for any user details by the component, including userName or userEmail.</p>
+
+<p>You can find out the component requesting the user name like this:</p>
+<pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">userNameForHockeyManager</span><span class="p">:(</span><span class="n">BITHockeyManager</span> <span class="o">*</span><span class="p">)</span><span class="nv">hockeyManager</span> <span class="nf">componentManager</span><span class="p">:(</span><span class="n">BITHockeyBaseManager</span> <span class="o">*</span><span class="p">)</span><span class="nv">componentManager</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">componentManager</span> <span class="o">==</span> <span class="n">hockeyManager</span><span class="p">.</span><span class="n">feedbackManager</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">UserNameForFeedback</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">componentManager</span> <span class="o">==</span> <span class="n">hockeyManager</span><span class="p">.</span><span class="n">crashManager</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">UserNameForCrashReports</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+  <span class="p">}</span>
+</code></pre>
+
+<p>}</p>
+
+<p>For crash reports, this delegate is invoked on the startup after the crash!</p>
+
+<p>Alternatively you can also use <code>[BITHockeyManager userName]</code> which will cache the value in the keychain.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>When returning a non nil value for the <code><a href="../Classes/BITCrashManager.html">BITCrashManager</a></code> component, crash reports
+are not anonymous any more and the crash alerts will not show the word <q>anonymous</q>!</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>userIDForHockeyManager:componentManager:</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>userEmailForHockeyManager:componentManager:</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>[BITHockeyManager userName]</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">userNameForHockeyManager</span><span class="p">:(</span><span class="n">BITHockeyManager</span> <span class="o">*</span><span class="p">)</span><span class="nv">hockeyManager</span>
+                      <span class="nf">componentManager</span><span class="p">:(</span><span class="n"><a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">componentManager</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">userName</span><span class="p">(</span><span class="k">for</span> <span class="nv">hockeyManager</span><span class="p">:</span> <span class="kt">BITHockeyManager</span><span class="o">!</span><span class="p">,</span> <span class="nv">componentManager</span><span class="p">:</span> <span class="kt"><a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a></span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hockeyManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>BITHockeyManager</code> HockeyManager instance invoking this delegate</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>componentManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a></code> component instance invoking this delegate, can be <code><a href="../Classes/BITCrashManager.html">BITCrashManager</a></code> or <code><a href="../Classes/BITFeedbackManager.html">BITFeedbackManager</a></code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:objc(pl)BITHockeyManagerDelegate(im)userEmailForHockeyManager:componentManager:"></a>
+                    <a name="//apple_ref/objc/Method/-userEmailForHockeyManager:componentManager:" class="dashAnchor"></a>
+                    <a class="token" href="#/c:objc(pl)BITHockeyManagerDelegate(im)userEmailForHockeyManager:componentManager:">-userEmailForHockeyManager:componentManager:</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Return the users email address that should used in the SDK components</p>
+
+<p>Right now this is used by the <code><a href="../Classes/BITCrashManager.html">BITCrashManager</a></code> to attach to a crash report.
+ <code><a href="../Classes/BITFeedbackManager.html">BITFeedbackManager</a></code> uses it too for assigning the user to a discussion thread.</p>
+
+<p>In addition, if this returns not nil for <code><a href="../Classes/BITFeedbackManager.html">BITFeedbackManager</a></code> the user will
+ not be asked for any user details by the component, including userName or userEmail.</p>
+
+<p>You can find out the component requesting the user email like this:</p>
+<pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">userEmailForHockeyManager</span><span class="p">:(</span><span class="n">BITHockeyManager</span> <span class="o">*</span><span class="p">)</span><span class="nv">hockeyManager</span> <span class="nf">componentManager</span><span class="p">:(</span><span class="n">BITHockeyBaseManager</span> <span class="o">*</span><span class="p">)</span><span class="nv">componentManager</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">componentManager</span> <span class="o">==</span> <span class="n">hockeyManager</span><span class="p">.</span><span class="n">feedbackManager</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">UserEmailForFeedback</span><span class="p">;</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">componentManager</span> <span class="o">==</span> <span class="n">hockeyManager</span><span class="p">.</span><span class="n">crashManager</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">UserEmailForCrashReports</span><span class="p">;</span>
+   <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>For crash reports, this delegate is invoked on the startup after the crash!</p>
+
+<p>Alternatively you can also use <code>[BITHockeyManager userEmail]</code> which will cache the value in the keychain.</p>
+<div class="aside aside-warning">
+    <p class="aside-title">Warning</p>
+    <p>When returning a non nil value for the <code><a href="../Classes/BITCrashManager.html">BITCrashManager</a></code> component, crash reports
+are not anonymous any more and the crash alerts will not show the word <q>anonymous</q>!</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>userIDForHockeyManager:componentManager:</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>userNameForHockeyManager:componentManager:</p>
+
+</div>
+<div class="aside aside-see">
+    <p class="aside-title">See</p>
+    <p>[BITHockeyManager userEmail]</p>
+
+</div>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Objective-C</p>
+                          <pre class="highlight objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">userEmailForHockeyManager</span><span class="p">:(</span><span class="n">BITHockeyManager</span> <span class="o">*</span><span class="p">)</span><span class="nv">hockeyManager</span>
+                       <span class="nf">componentManager</span><span class="p">:</span>
+                           <span class="p">(</span><span class="n"><a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a></span> <span class="o">*</span><span class="p">)</span><span class="nv">componentManager</span><span class="p">;</span></code></pre>
+
+                        </div>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">optional</span> <span class="kd">func</span> <span class="nf">userEmail</span><span class="p">(</span><span class="k">for</span> <span class="nv">hockeyManager</span><span class="p">:</span> <span class="kt">BITHockeyManager</span><span class="o">!</span><span class="p">,</span> <span class="nv">componentManager</span><span class="p">:</span> <span class="kt"><a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a></span><span class="o">!</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">String</span><span class="o">!</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hockeyManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>BITHockeyManager</code> HockeyManager instance invoking this delegate</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>componentManager</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a></code> component instance invoking this delegate, can be <code><a href="../Classes/BITCrashManager.html">BITCrashManager</a></code> or <code><a href="../Classes/BITFeedbackManager.html">BITFeedbackManager</a></code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://www.microsoft.com" target="_blank" rel="external">Microsoft Corp</a>. All rights reserved. (Last updated: 2018-01-08)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>

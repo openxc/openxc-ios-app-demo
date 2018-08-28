@@ -12,6 +12,7 @@ import CoreMotion
 import CoreLocation
 import AVFoundation
 
+
 // TODO: ToDo - Work on removing the warnings
 
 class DashboardViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, NSURLConnectionDelegate {
@@ -21,7 +22,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   
   
   var vm: VehicleManager!
-  
+  var bm : BluetoothManager!
+  var tfm : TraceFileManager!
+  var vmu :VehicleMessageUnit!
   // dictionary holding name/value from measurement messages
   var dashDict: NSMutableDictionary!
   
@@ -47,6 +50,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     
     // grab VM instance
     vm = VehicleManager.sharedInstance
+    vmu = VehicleMessageUnit.sharedInstance
+    bm = BluetoothManager.sharedInstance
+    tfm = TraceFileManager.sharedInstance
     
     // initialize dictionary/table
     dashDict = NSMutableDictionary()
@@ -68,6 +74,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
+    if !bm.isBleConnected {
+    dashDict = NSMutableDictionary()
+      dashTable.reloadData()
+    }
     sensorLoop.invalidate()
     locationManager.stopUpdatingLocation()
     motionManager.stopDeviceMotionUpdates()
@@ -100,10 +110,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
       dweetLoop = Timer.scheduledTimer(timeInterval: 1.5, target:self, selector:#selector(sendDweet), userInfo: nil, repeats:true)
     }
 
-    if(!vm.isBleConnected){
-        
+    if(!bm.isBleConnected && !vm.isTraceFileConnected && !vm.isNetworkConnected){
         AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
-        
+        dashDict = NSMutableDictionary()
+        dashTable.reloadData()
     }
   }
 
@@ -162,10 +172,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
   }
 
-  
-  
-  
-  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     // table size based on what's in the dictionary
     return dashDict.count
@@ -187,27 +193,42 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // grab the value based on the name key
     let v = dashDict.object(forKey: k)
 
+    //let valueMeasurement  = vmu.getMesurementUnit(key: k, value: v as AnyObject)
+
+   //print(valueMeasurement)
     // main text in table is the measurement name
     cell!.textLabel?.text = k
-    cell!.textLabel?.font = UIFont(name:"Arial", size: 14.0)
+    cell!.textLabel?.font = UIFont(name:"Arial", size: 13.0)
     cell!.textLabel?.textColor = UIColor.lightGray
     
     // figure out if the value is a bool/number/string
     if v is NSNumber {
       let nv = v as! NSNumber
       if nv.isEqual(to: NSNumber(value: true as Bool)) {
-        cell!.detailTextLabel?.text = "true"
+        cell!.detailTextLabel?.text = "On"
       } else if nv.isEqual(to: NSNumber(value: false as Bool)) {
-        cell!.detailTextLabel?.text = "false"
+        cell!.detailTextLabel?.text = "Off"
       } else {
         // round any floating points
         let nvr = Double(round(10.0*Double(nv))/10)
-        cell!.detailTextLabel?.text = String(nvr)
+        let valueMeasure1 = String(format:"%.2f",nvr)
+        let valueMeasure = vmu.getMesurementUnit(key: k, value: valueMeasure1 as AnyObject)
+        cell!.detailTextLabel?.text = (valueMeasure as! String)
       }
     } else {
-      cell!.detailTextLabel?.text = (v! as AnyObject).description
+       // if valueMeasurement is NSNumber {
+        let floatvalue = (v as AnyObject).doubleValue
+        let nvr = Double(round(10.0*Double(floatvalue!))/10)
+        if nvr != 0.0{
+            let valueMeasure1 = String(format:"%.2f",nvr)
+            let valueMeasure = vmu.getMesurementUnit(key: k, value: valueMeasure1 as AnyObject)
+            cell!.detailTextLabel?.text = (valueMeasure as! String)//(valueMeasurement as AnyObject).description
+        }
+       else{
+            cell!.detailTextLabel?.text = (v as AnyObject).description
+        }
     }
-    cell!.detailTextLabel?.font = UIFont(name:"Arial", size: 14.0)
+    cell!.detailTextLabel?.font = UIFont(name:"Arial", size: 13.0)
     cell!.detailTextLabel?.textColor = UIColor.lightGray
     
     cell!.backgroundColor = UIColor.clear

@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Installation &amp; Setup  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Installation &amp; Setup  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html">HockeySDK Docs</a> (95% documented)</p>
+        <p class="header-right"><a href="https://github.com/bitstadium/HockeySDK-iOS/"><img src="img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fsupport%2Ehockeyapp%2Enet%2Fkb%2Fdocsets%2FHockeySDK%2Exml"><img src="img/dash.png"/>Install in Dash</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html">HockeySDK Reference</a>
+        <img id="carat" src="img/carat.png" />
+        Installation &amp; Setup  Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Guides.html">Guides</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="installation--setup.html">Installation &amp; Setup</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="migration-kits.html">Migration Kits</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="How To.html">How To</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="app-versioning.html">App Versioning</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="set-custom-alertviewhandler.html">Set Custom AlertViewHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="upload-symbols.html">Upload Symbols</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Troubleshooting.html">Troubleshooting</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="crash-reporting-not-working.html">Crash Reporting Not Working</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Release Notes.html">Release Notes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="changelog.html">Changelog</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Classes.html">Other Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/BITAuthenticator.html">BITAuthenticator</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BITCrashAttachment.html">BITCrashAttachment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BITCrashDetails.html">BITCrashDetails</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BITCrashManager.html">BITCrashManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BITCrashMetaData.html">BITCrashMetaData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BITFeedbackActivity.html">BITFeedbackActivity</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BITFeedbackComposeViewController.html">BITFeedbackComposeViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Classes.html#/c:objc(cs)BITFeedbackListViewController">BITFeedbackListViewController</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BITFeedbackManager.html">BITFeedbackManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BITHockeyAttachment.html">BITHockeyAttachment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BITHockeyBaseManager.html">BITHockeyBaseManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BITMetricsManager.html">BITMetricsManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BITStoreUpdateManager.html">BITStoreUpdateManager</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/BITUpdateManager.html">BITUpdateManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Enumerations.html">Other Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/BITAuthenticatorAppRestrictionEnforcementFrequency.html">BITAuthenticatorAppRestrictionEnforcementFrequency</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITAuthenticatorIdentificationType.html">BITAuthenticatorIdentificationType</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITAuthenticatorReason.html">BITAuthenticatorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITCrashErrorReason.html">BITCrashErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITCrashManagerStatus.html">BITCrashManagerStatus</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITCrashManagerUserInput.html">BITCrashManagerUserInput</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITEnvironment.html">BITEnvironment</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITFeedbackComposeResult.html">BITFeedbackComposeResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITFeedbackErrorReason.html">BITFeedbackErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITFeedbackObservationMode.html">BITFeedbackObservationMode</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITFeedbackUserDataElement.html">BITFeedbackUserDataElement</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITHockeyErrorReason.html">BITHockeyErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITLogLevel.html">BITLogLevel</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITStoreUpdateSetting.html">BITStoreUpdateSetting</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITUpdateErrorReason.html">BITUpdateErrorReason</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/BITUpdateSetting.html">BITUpdateSetting</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Protocols.html">Other Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/BITAuthenticatorDelegate.html">BITAuthenticatorDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/BITCrashManagerDelegate.html">BITCrashManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/BITFeedbackComposeViewControllerDelegate.html">BITFeedbackComposeViewControllerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/BITFeedbackManagerDelegate.html">BITFeedbackManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/BITHockeyManagerDelegate.html">BITHockeyManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/BITStoreUpdateManagerDelegate.html">BITStoreUpdateManagerDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Protocols/BITUpdateManagerDelegate.html">BITUpdateManagerDelegate</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Type Definitions.html">Other Type Definitions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Other Type Definitions.html#/c:BITCrashManager.h@T@BITCrashManagerPostCrashSignalCallback">BITCrashManagerPostCrashSignalCallback</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Other Type Definitions.html#/c:BITCrashManager.h@T@BITCustomAlertViewHandler">BITCustomAlertViewHandler</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Other Structures.html">Other Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Structs/BITCrashManagerCallbacks.html">BITCrashManagerCallbacks</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <p><a href="https://www.bitrise.io/app/30bf519f6bd0a5e2"><img src="https://www.bitrise.io/app/30bf519f6bd0a5e2/status.svg?token=RKqHc7-ojjLiEFds53d-ZA&branch=master" alt="Build Status"></a>
+<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" alt="Carthage compatible"></a>
+<a href="http://cocoadocs.org/docsets/HockeySDK"><img src="http://cocoapod-badges.herokuapp.com/v/HockeySDK/badge.png" alt="Version"></a>
+ <a href="https://slack.hockeyapp.net"><img src="https://slack.hockeyapp.net/badge.svg" alt="Slack Status"></a></p>
+<h2 id='version-5-1-2' class='heading'>Version 5.1.2</h2>
+
+<ul>
+<li><a href="http://www.hockeyapp.net/help/sdk/ios/5.1.2/docs/docs/Changelog.html">Changelog</a></li>
+</ul>
+
+<p><strong>NOTE</strong> If your are using the binary integration of our SDK, make sure that the <code>HockeySDKResources.bundle</code> inside the <code>HockeySDK.embeddedframework</code>-folder has been added to your application.</p>
+<h3 id='feedback-and-ios-10' class='heading'>Feedback and iOS 10</h3>
+
+<p><strong>4.1.1 and later of the HockeySDK remove the Feedback feature from the default version of the SDK.</strong>
+The reason for this is that iOS 10 requires developers to add a usage string to their Info.plist in case they include the photos framework in their app. If this string is missing, the app will be rejected when submitting the app to the app store. As HockeyApp&rsquo;s Feedback feature includes a dependency to the photos framework. This means that if you include HockeyApp into your app, adding the usage string would be a requirement even for developers who don&rsquo;t use the Feedback feature. If you don&rsquo;t use Feedback in your app, simply upgrade HockeySDK to version 4.1.1 or newer. If you are using Feedback, please have a look at the <a href="#feedback">Feedback section</a>.</p>
+
+<p>We <strong>strongly</strong> suggest upgrading to version 4.1.1 or a later version of the SDK. Not specifying the usage description string and using previous versions of the HockeySDK-iOS will cause the app to crash at runtime as soon as the user taps the <q>attach image</q>-button or in case you have enabled <code>BITFeedbackObservationModeOnScreenshot</code>.</p>
+
+<p>If you are using an older version of the SDK, you must add a <code>NSPhotoLibraryUsageDescription</code> to your <code>Info.plist</code> to avoid a AppStore rejection during upload of your app (please have a look at the <a href="#feedback">Feedback section</a>).</p>
+<h2 id='introduction' class='heading'>Introduction</h2>
+
+<p>HockeySDK-iOS implements support for using HockeyApp in your iOS applications.</p>
+
+<p>The following features are currently supported:</p>
+
+<ol>
+<li><p><strong>Collect crash reports:</strong> If your app crashes, a crash log with the same format as from the Apple Crash Reporter is written to the device&rsquo;s storage. If the user starts the app again, they are asked to submit the crash report to HockeyApp. This works for both beta and live apps, i.e. those submitted to the App Store.</p></li>
+<li><p><strong>User Metrics:</strong> Understand user behavior to improve your app. Track usage through daily and monthly active users, monitor crash impacted users, as well as customer engagement through session count.You can now track <strong>Custom Events</strong> in your app, understand user actions and see the aggregates on the HockeyApp portal.</p></li>
+<li><p><strong>Update Ad-Hoc / Enterprise apps:</strong> The app will check with HockeyApp if a new version for your Ad-Hoc or Enterprise build is available. If yes, it will show an alert view to the user and let them see the release notes, the version history and start the installation process right away. </p></li>
+<li><p><strong>Update notification for app store:</strong> The app will check if a new version for your app store release is available. If yes, it will show an alert view to the user and let them open your app in the App Store app. (Disabled by default!)</p></li>
+<li><p><strong>Feedback:</strong> Collect feedback from your users from within your app and communicate directly with them using the HockeyApp backend.</p></li>
+<li><p><strong>Authenticate:</strong> Identify and authenticate users of Ad-Hoc or Enterprise builds</p></li>
+</ol>
+
+<p>This document contains the following sections:</p>
+
+<ol>
+<li><a href="#requirements">Requirements</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#advancedsetup">Advanced Setup</a> 
+
+<ol>
+<li><a href="#linkmanually">Linking System Frameworks manually</a><br></li>
+<li><a href="#cocoapods">CocoaPods</a></li>
+<li><a href="#carthage">Carthage</a></li>
+<li><a href="#extensions">iOS Extensions</a></li>
+<li><a href="#watchkit">WatchKit 1 Extensions</a></li>
+<li><a href="#crashreporting">Crash Reporting</a></li>
+<li><a href="#user-metrics">User Metrics</a></li>
+<li><a href="#feedback">Feedback</a></li>
+<li><a href="#storeupdates">Store Updates</a></li>
+<li><a href="#betaupdates">In-App-Updates (Beta &amp; Enterprise only)</a></li>
+<li><a href="#debug">Debug information</a></li>
+</ol></li>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#contributing">Contributing</a>
+
+<ol>
+<li><a href="#developmentenvironment">Development Environment</a></li>
+<li><a href="#codeofconduct">Code of Conduct</a></li>
+<li><a href="#contributorlicense">Contributor License</a></li>
+</ol></li>
+<li><a href="#contact">Contact</a></li>
+</ol>
+
+<p><a id="requirements"></a> </p>
+<h2 id='1-requirements' class='heading'>1. Requirements</h2>
+
+<ol>
+<li>We assume that you already have a project in Xcode and that this project is opened in Xcode 8 or later.</li>
+<li>The SDK supports iOS 8.0 and later.</li>
+</ol>
+
+<p><a id="setup"></a></p>
+<h2 id='2-setup' class='heading'>2. Setup</h2>
+
+<p>We recommend integration of our binary into your Xcode project to setup HockeySDK for your iOS app. You can also use our interactive SDK integration wizard in <a href="http://hockeyapp.net/mac/">HockeyApp for Mac</a> which covers all the steps from below. For other ways to setup the SDK, see <a href="#advancedsetup">Advanced Setup</a>.</p>
+<h3 id='2-1-obtain-an-app-identifier' class='heading'>2.1 Obtain an App Identifier</h3>
+
+<p>Please see the <q>[How to create a new app](http://support.hockeyapp.net/kb/about-general-faq/how-to-create-a-new-app)</q> tutorial. This will provide you with an HockeyApp specific App Identifier to be used to initialize the SDK.</p>
+<h3 id='2-2-download-the-sdk' class='heading'>2.2 Download the SDK</h3>
+
+<ol>
+<li>Download the latest <a href="http://www.hockeyapp.net/releases/">HockeySDK-iOS</a> framework which is provided as a zip-File.</li>
+<li>Unzip the file and you will see a folder called <code>HockeySDK-iOS</code>. (Make sure not to use 3rd party unzip tools!)</li>
+</ol>
+<h3 id='2-3-copy-the-sdk-into-your-projects-directory-in-finder' class='heading'>2.3 Copy the SDK into your projects directory in Finder</h3>
+
+<p>From our experience, 3rd-party libraries usually reside inside a subdirectory (let&rsquo;s call our subdirectory <code>Vendor</code>), so if you don&rsquo;t have your project organized with a subdirectory for libraries, now would be a great start for it. To continue our example,  create a folder called <code>Vendor</code> inside your project directory and move the unzipped <code>HockeySDK-iOS</code>-folder into it. </p>
+
+<p>The SDK comes in four flavors:</p>
+
+<ul>
+<li>Default SDK without Feedback: <code>HockeySDK.embeddedframework</code></li>
+<li>Full featured SDK with Feedback: <code>HockeySDK.embeddedframework</code> in the subfolder <code>HockeySDKAllFeatures</code>.</li>
+<li>Crash reporting only: <code>HockeySDK.framework</code> in the subfolder <code>HockeySDKCrashOnly</code>.</li>
+<li>Crash reporting only for extensions: <code>HockeySDK.framework</code> in the subfolder <code>HockeySDKCrashOnlyExtension</code> (which is required to be used for extensions).</li>
+</ul>
+
+<p>Our examples will use the <strong>default</strong> SDK (<code>HockeySDK.embeddedframework</code>).</p>
+
+<p><a id="setupxcode"></a></p>
+<h3 id='2-4-add-the-sdk-to-the-project-in-xcode' class='heading'>2.4 Add the SDK to the project in Xcode</h3>
+
+<blockquote>
+<p>We recommend using Xcode&rsquo;s group-feature to create a group for 3rd-party-libraries similar to the structure of our files on disk. For example, similar to the file structure in 2.3 above, our projects have a group called <code>Vendor</code>.</p>
+</blockquote>
+
+<ol>
+<li>Make sure the <code>Project Navigator</code> is visible (⌘+1).</li>
+<li>Drag &amp; drop <code>HockeySDK.embeddedframework</code> from your <code>Finder</code> to the <code>Vendor</code> group in <code>Xcode</code> using the <code>Project Navigator</code> on the left side.</li>
+<li>An overlay will appear. Select <code>Create groups</code> and set the checkmark for your target. Then click <code>Finish</code>.</li>
+</ol>
+
+<p><a id="modifycode"></a></p>
+<h3 id='2-5-modify-code' class='heading'>2.5 Modify Code</h3>
+
+<p><strong>Objective-C</strong></p>
+
+<ol>
+<li>Open your <code>AppDelegate.m</code> file.</li>
+<li>Add the following line at the top of the file below your own <code>import</code> statements:</li>
+</ol>
+<pre class="highlight objective_c"><code>  <span class="k">@import</span> <span class="n">HockeySDK</span><span class="p">;</span>
+</code></pre>
+
+<ol>
+<li>Search for the method <code>application:didFinishLaunchingWithOptions:</code></li>
+<li>Add the following lines to setup and start the HockeyApp SDK:</li>
+</ol>
+<pre class="highlight objective_c"><code>  <span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">configureWithIdentifier</span><span class="p">:</span><span class="s">@"APP_IDENTIFIER"</span><span class="p">];</span>
+  <span class="c1">// Do some additional configuration if needed here</span>
+  <span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">startManager</span><span class="p">];</span>
+  <span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">].</span><span class="n">authenticator</span> <span class="nf">authenticateInstallation</span><span class="p">];</span> <span class="c1">// This line is obsolete in the crash only builds</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+
+<ol>
+<li>Open your <code>AppDelegate.swift</code> file.</li>
+<li>Add the following line at the top of the file below your own import statements:</li>
+</ol>
+<pre class="highlight swift"><code>  <span class="kd">import</span> <span class="kt">HockeySDK</span>
+</code></pre>
+
+<ol>
+<li>Search for the method</li>
+</ol>
+<pre class="highlight swift"><code>  <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+</code></pre>
+
+<ol>
+<li>Add the following lines to setup and start the HockeyApp SDK:</li>
+</ol>
+<pre class="highlight swift"><code>  <span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="nv">withIdentifier</span><span class="p">:</span> <span class="s">"APP_IDENTIFIER"</span><span class="p">)</span>
+  <span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+  <span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="n">authenticator</span><span class="o">.</span><span class="nf">authenticateInstallation</span><span class="p">()</span> <span class="c1">// This line is obsolete in the crash only builds</span>
+
+</code></pre>
+
+<p><em>Note:</em> The SDK is optimized to defer everything possible to a later time while making sure e.g. crashes on start-up can also be caught and each module executes other code with a delay some seconds. This ensures that <code>applicationDidFinishLaunching</code> will process as fast as possible and the SDK will not block the start-up sequence resulting in a possible kill by the watchdog process.</p>
+
+<p><strong>Congratulation, now you&rsquo;re all set to use HockeySDK!</strong></p>
+
+<p><a id="advancedsetup"></a> </p>
+<h2 id='3-advanced-setup' class='heading'>3. Advanced Setup</h2>
+
+<p><a id="linkmanually"></a></p>
+<h3 id='3-1-linking-system-frameworks-manually' class='heading'>3.1 Linking System Frameworks manually</h3>
+
+<p>If you are working with an older project which doesn&rsquo;t support clang modules yet or you for some reason turned off the <code>Enable Modules (C and Objective-C</code> and <code>Link Frameworks Automatically</code> options in Xcode, you have to manually link some system frameworks:</p>
+
+<ol>
+<li>Select your project in the <code>Project Navigator</code> (⌘+1).</li>
+<li>Select your app target.</li>
+<li>Select the tab <code>Build Phases</code>.</li>
+<li>Expand <code>Link Binary With Libraries</code>.</li>
+<li>Add the following system frameworks, if they are missing:
+
+<ol>
+<li>Default SDK:</li>
+<li><code>CoreText</code></li>
+<li><code>CoreGraphics</code></li>
+<li><code>Foundation</code></li>
+<li><code>MobileCoreServices</code></li>
+<li><code>QuartzCore</code></li>
+<li><code>QuickLook</code></li>
+<li><code>Security</code></li>
+<li><code>SystemConfiguration</code></li>
+<li><code>UIKit</code></li>
+<li><code>libc++</code></li>
+<li><code>libz</code></li>
+<li>SDK with all features:</li>
+<li><code>CoreText</code></li>
+<li><code>CoreGraphics</code></li>
+<li><code>Foundation</code></li>
+<li><code>MobileCoreServices</code></li>
+<li><code>QuartzCore</code></li>
+<li><code>QuickLook</code></li>
+<li><code>Photos</code></li>
+<li><code>Security</code></li>
+<li><code>SystemConfiguration</code></li>
+<li><code>UIKit</code></li>
+<li><code>libc++</code></li>
+<li><code>libz</code></li>
+<li>Crash reporting only:</li>
+<li><code>Foundation</code></li>
+<li><code>Security</code></li>
+<li><code>SystemConfiguration</code></li>
+<li><code>UIKit</code></li>
+<li><code>libc++</code></li>
+<li>Crash reporting only for extensions:</li>
+<li><code>Foundation</code></li>
+<li><code>Security</code></li>
+<li><code>SystemConfiguration</code></li>
+<li><code>libc++</code></li>
+</ol></li>
+</ol>
+
+<p>Note that not using clang modules also means that you can&rsquo;t use the <code>@import</code> syntax mentioned in the <a href="#modify">Modify Code</a> section but have to stick to the old <code>#import &lt;HockeySDK/HockeySDK.h&gt;</code> imports.</p>
+
+<p><a id="cocoapods"></a></p>
+<h3 id='3-2-cocoapods' class='heading'>3.2 CocoaPods</h3>
+
+<p><a href="http://cocoapods.org">CocoaPods</a> is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like HockeySDK in your projects. To learn how to setup CocoaPods for your project, visit the <a href="http://cocoapods.org/">official CocoaPods website</a>.</p>
+
+<p><strong>Podfile</strong></p>
+<pre class="highlight ruby"><code><span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'8.0'</span>
+<span class="n">pod</span> <span class="s2">"HockeySDK"</span>
+</code></pre>
+<h4 id='3-2-1-binary-distribution-options' class='heading'>3.2.1 Binary Distribution Options</h4>
+
+<p>The default and recommended distribution is a binary (static library) and a resource bundle with translations and images for all SDK features.</p>
+<pre class="highlight ruby"><code><span class="n">platform</span> <span class="ss">:ios</span><span class="p">,</span> <span class="s1">'8.0'</span>
+<span class="n">pod</span> <span class="s2">"HockeySDK"</span>
+</code></pre>
+
+<p>Will integrate the <em>default</em> configuration of the SDK, with all features except the Feedback feature.</p>
+
+<p>For the SDK with all features, including Feedback, add</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s2">"HockeySDK"</span><span class="p">,</span> <span class="ss">:subspecs</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'AllFeaturesLib'</span><span class="p">]</span>
+</code></pre>
+
+<p>to your podfile.</p>
+
+<p>To add the variant that only includes crash reporting, use</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s2">"HockeySDK"</span><span class="p">,</span> <span class="ss">:subspecs</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'CrashOnlyLib'</span><span class="p">]</span>
+</code></pre>
+
+<p>Or you can use the Crash Reporting build only for extensions by using the following line in your <code>Podfile</code>:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s2">"HockeySDK"</span><span class="p">,</span> <span class="ss">:subspecs</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'CrashOnlyExtensionsLib'</span><span class="p">]</span>
+</code></pre>
+<h4 id='3-2-2-source-integration-options' class='heading'>3.2.2 Source Integration Options</h4>
+
+<p>Alternatively, you can integrate the SDK by source if you want to do modifications or want a different feature set. The following entry will integrate the SDK:</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s2">"HockeySDK-Source"</span>
+</code></pre>
+
+<p><a id="carthage"></a></p>
+<h3 id='3-3-carthage' class='heading'>3.3 Carthage</h3>
+
+<p><a href="https://github.com/Carthage/Carthage">Carthage</a> is an alternative way to add frameworks to your app. For general information about how to use Carthage, please follow their <a href="https://github.com/Carthage/Carthage#adding-frameworks-to-an-application">documentation</a>.</p>
+
+<p>To add HockeySDK to your project, simply put this line into your <code>Cartfile</code>:</p>
+
+<p><code>github &quot;bitstadium/HockeySDK-iOS&quot;</code></p>
+
+<p>and then follow the steps described in the <a href="https://github.com/Carthage/Carthage#if-youre-building-for-ios-tvos-or-watchos">Carthage documentation</a>.</p>
+
+<p>This will integrate the <strong>full-featured SDK</strong> so you must include the <code>NSPhotoLibraryUsageDescription</code> and read the <a href="#feedback">feedback section</a>. If you want to include any other version of the SDK, version 4.1.4 added the ability to do that. You need to specify the configuration that you want to use</p>
+<h4 id='version-without-feedback' class='heading'>Version without Feedback</h4>
+
+<p><code>carthage build --platform iOS --configuration ReleaseDefault HockeySDK-iOS</code></p>
+<h4 id='crash-only-version' class='heading'>Crash-only version</h4>
+
+<p><code>carthage build --platform iOS --configuration ReleaseCrashOnly HockeySDK-iOS</code></p>
+<h3 id='crash-only-extension' class='heading'>Crash-only extension</h3>
+
+<p><code>carthage build --platform iOS --configuration ReleaseCrashOnlyExtension HockeySDK-iOS</code></p>
+
+<p><a id="extensions"></a></p>
+<h3 id='3-4-ios-extensions' class='heading'>3.4 iOS Extensions</h3>
+
+<p>The following points need to be considered to use the HockeySDK SDK with iOS Extensions:</p>
+
+<ol>
+<li>Each extension is required to use the same values for version (<code>CFBundleShortVersionString</code>) and build number (<code>CFBundleVersion</code>) as the main app uses. (This is required only if you are using the same <code>APP_IDENTIFIER</code> for your app and extensions).</li>
+<li>You need to make sure the SDK setup code is only invoked <strong>once</strong>. Since there is no <code>applicationDidFinishLaunching:</code> equivalent and <code>viewDidLoad</code> can run multiple times, you need to use a setup like the following example:</li>
+</ol>
+
+<p><strong>Objective-C</strong></p>
+<pre class="highlight objective_c"><code>  <span class="k">static</span> <span class="n">BOOL</span> <span class="n">didSetupHockeySDK</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
+
+  <span class="k">@interface</span> <span class="nc">TodayViewController</span> <span class="p">()</span> <span class="o">&lt;</span><span class="n">NCWidgetProviding</span><span class="o">&gt;</span>
+
+  <span class="k">@end</span>
+
+  <span class="k">@implementation</span> <span class="nc">TodayViewController</span>
+
+  <span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">viewDidLoad</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">didSetupHockeySDK</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">configureWithIdentifier</span><span class="p">:</span><span class="s">@"APP_IDENTIFIER"</span><span class="p">];</span>
+      <span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">startManager</span><span class="p">];</span>
+      <span class="n">didSetupHockeySDK</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre class="highlight swift"><code>  <span class="kd">class</span> <span class="kt">TodayViewController</span><span class="p">:</span> <span class="kt">UIViewController</span><span class="p">,</span> <span class="nf">NCWidgetProviding</span> <span class="p">{</span>
+
+    <span class="kd">static</span> <span class="k">var</span> <span class="nv">didSetupHockeySDK</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+      <span class="k">if</span> <span class="o">!</span><span class="kt">TodayViewController</span><span class="o">.</span><span class="nf">didSetupHockeySDK</span> <span class="p">{</span>
+        <span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="nv">withIdentifier</span><span class="p">:</span> <span class="s">"APP_IDENTIFIER"</span><span class="p">)</span>
+        <span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+        <span class="kt">TodayViewController</span><span class="o">.</span><span class="n">didSetupHockeySDK</span> <span class="o">=</span> <span class="kc">true</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre>
+
+<ol>
+<li>The binary distribution provides a special framework build in the <code>HockeySDKCrashOnly</code> or <code>HockeySDKCrashOnlyExtension</code> folder of the distribution zip file, which only contains crash reporting functionality (also automatic sending crash reports only).</li>
+</ol>
+
+<p><a id="watchkit"></a></p>
+<h3 id='3-5-watchkit-1-extensions' class='heading'>3.5 WatchKit 1 Extensions</h3>
+
+<p>The following points need to be considered to use HockeySDK with WatchKit 1 Extensions:</p>
+
+<ol>
+<li>WatchKit extensions don&rsquo;t use regular <code>UIViewControllers</code> but rather <code>WKInterfaceController</code> subclasses. These have a different lifecycle than you might be used to.</li>
+</ol>
+
+<p>To make sure that the HockeySDK is only instantiated once in the WatchKit extension&rsquo;s lifecycle we recommend using a helper class similar to this:</p>
+
+<p><strong>Objective-C</strong></p>
+<pre class="highlight objective_c"><code>  <span class="k">@import</span> <span class="n">Foundation</span><span class="p">;</span>
+
+  <span class="k">@interface</span> <span class="nc">BITWatchSDKSetup</span> <span class="p">:</span> <span class="nc">NSObject</span>
+
+  <span class="o">*</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupHockeySDKIfNeeded</span><span class="p">;</span>
+
+  <span class="k">@end</span>
+</code></pre>
+<pre class="highlight objective_c"><code>  <span class="cp">#import "BITWatchSDKSetup.h"
+</span>  <span class="k">@import</span> <span class="n">HockeySDK</span>
+
+  <span class="k">static</span> <span class="n">BOOL</span> <span class="n">hockeySDKIsSetup</span> <span class="o">=</span> <span class="nb">NO</span><span class="p">;</span>
+
+  <span class="k">@implementation</span> <span class="nc">BITWatchSDKSetup</span>
+
+  <span class="o">*</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">setupHockeySDKIfNeeded</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">hockeySDKIsSetup</span><span class="p">)</span> <span class="p">{</span>
+      <span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">configureWithIdentifier</span><span class="p">:</span><span class="s">@"APP_IDENTIFIER"</span><span class="p">];</span>
+      <span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">startManager</span><span class="p">];</span>
+      <span class="n">hockeySDKIsSetup</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">@end</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre class="highlight swift"><code>  <span class="kd">import</span> <span class="kt">HockeySDK</span>
+
+  <span class="kd">class</span> <span class="nf">BITWatchSDKSetup</span> <span class="p">{</span>
+
+    <span class="kd">static</span> <span class="k">var</span> <span class="nv">hockeySDKIsSetup</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+    <span class="kd">static</span> <span class="kd">func</span> <span class="nf">setupHockeySDKIfNeeded</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="o">!</span><span class="kt">BITWatchSDKSetup</span><span class="o">.</span><span class="nf">hockeySDKIsSetup</span> <span class="p">{</span>
+        <span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="nv">withIdentifier</span><span class="p">:</span> <span class="s">"APP_IDENTIFIER"</span><span class="p">)</span>
+        <span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+        <span class="kt">BITWatchSDKSetup</span><span class="o">.</span><span class="n">hockeySDKIsSetup</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+</code></pre>
+
+<p>Then, in each of your WKInterfaceControllers where you want to use the HockeySDK, you should do this:</p>
+
+<p><strong>Objective-C</strong></p>
+<pre class="highlight objective_c"><code>  <span class="cp">#import "InterfaceController.h"
+</span>  <span class="k">@import</span> <span class="n">HockeySDK</span>
+  <span class="cp">#import "BITWatchSDKSetup.h"
+</span>
+  <span class="k">@implementation</span> <span class="nc">InterfaceController</span>
+
+  <span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">awakeWithContext</span><span class="p">:(</span><span class="n">id</span><span class="p">)</span><span class="nv">context</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">awakeWithContext</span><span class="p">:</span><span class="n">context</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">BITWatchSDKSetup</span> <span class="nf">setupHockeySDKIfNeeded</span><span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="k">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">willActivate</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">willActivate</span><span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="o">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">didDeactivate</span> <span class="p">{</span>
+    <span class="p">[</span><span class="n">super</span> <span class="nf">didDeactivate</span><span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="k">@end</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre class="highlight swift"><code>  <span class="kd">class</span> <span class="kt">InterfaceController</span><span class="p">:</span> <span class="nf">WKInterfaceController</span> <span class="p">{</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">awake</span><span class="p">(</span><span class="n">withContext</span> <span class="nv">context</span><span class="p">:</span> <span class="kt">Any</span><span class="p">?)</span> <span class="p">{</span>
+      <span class="k">super</span><span class="o">.</span><span class="nf">awake</span><span class="p">(</span><span class="nv">withContext</span><span class="p">:</span> <span class="n">context</span><span class="p">)</span>
+      <span class="kt">BITWatchSDKSetup</span><span class="o">.</span><span class="nf">setupHockeySDKIfNeeded</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">willActivate</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">super</span><span class="o">.</span><span class="nf">willActivate</span><span class="p">()</span>
+    <span class="p">}</span>
+
+    <span class="k">override</span> <span class="kd">func</span> <span class="nf">didDeactivate</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">super</span><span class="o">.</span><span class="nf">didDeactivate</span><span class="p">()</span>
+    <span class="p">}</span>
+
+  <span class="p">}</span>
+</code></pre>
+
+<ol>
+<li>The binary distribution provides a special framework build in the <code>HockeySDKCrashOnly</code> or <code>HockeySDKCrashOnlyExtension</code> folder of the distribution zip file, which only contains crash reporting functionality (also automatic sending crash reports only).</li>
+</ol>
+
+<p><a name="crashreporting"></a></p>
+<h3 id='3-6-crash-reporting' class='heading'>3.6 Crash Reporting</h3>
+
+<p>The following options only show some of the possibilities to interact and fine-tune the crash reporting feature. For more please check the full documentation of the <code><a href="Classes/BITCrashManager.html">BITCrashManager</a></code> class in our <a href="#documentation">documentation</a>.</p>
+<h4 id='3-6-1-disable-crash-reporting' class='heading'>3.6.1 Disable Crash Reporting</h4>
+
+<p>The HockeySDK enables crash reporting <strong>per default</strong>. Crashes will be immediately sent to the server the next time the app is launched.</p>
+
+<p>To provide you with the best crash reporting, we are using a build of <a href="%22https://github.com/plausiblelabs/plcrashreporter%22">PLCrashReporter</a> based on <a href="%22https://github.com/plausiblelabs/plcrashreporter/commit/356901d7f3ca3d46fbc8640f469304e2b755e461%22">Version 1.2.1 / Commit 356901d7f3ca3d46fbc8640f469304e2b755e461</a>.</p>
+
+<p>This feature can be disabled as follows:</p>
+
+<p><strong>Objective-C</strong></p>
+<pre class="highlight objective_c"><code><span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">configureWithIdentifier</span><span class="p">:</span><span class="s">@"APP_IDENTIFIER"</span><span class="p">];</span>
+
+<span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">setDisableCrashManager</span><span class="p">:</span> <span class="nb">YES</span><span class="p">];</span> <span class="c1">//disable crash reporting</span>
+
+<span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">startManager</span><span class="p">];</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre class="highlight swift"><code><span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="nv">withIdentifier</span><span class="p">:</span> <span class="s">"APP_IDENTIFIER"</span><span class="p">)</span>
+<span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="n">isCrashManagerDisabled</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre>
+<h4 id='3-6-2-auto-send-crash-reports' class='heading'>3.6.2 Auto send crash reports</h4>
+
+<p>Crashes are send the next time the app starts. If <code>crashManagerStatus</code> is set to <code>BITCrashManagerStatusAutoSend</code>, crashes will be send without any user interaction, otherwise an alert will appear allowing the users to decide whether they want to send the report or not.</p>
+
+<p><strong>Objective-C</strong></p>
+<pre class="highlight objective_c"><code><span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">configureWithIdentifier</span><span class="p">:</span><span class="s">@"APP_IDENTIFIER"</span><span class="p">];</span>
+
+<span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">].</span><span class="n">crashManager</span> <span class="nf">setCrashManagerStatus</span><span class="p">:</span> <span class="n">BITCrashManagerStatusAutoSend</span><span class="p">];</span>
+
+<span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">startManager</span><span class="p">];</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre class="highlight swift"><code><span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="nv">withIdentifier</span><span class="p">:</span> <span class="s">"APP_IDENTIFIER"</span><span class="p">)</span>
+<span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="n">crashManager</span><span class="o">.</span><span class="n">crashManagerStatus</span> <span class="o">=</span> <span class="kt">BITCrashManagerStatus</span><span class="o">.</span><span class="n">autoSend</span>
+<span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre>
+
+<p>The SDK is not sending the reports right when the crash happens deliberately, because if is not safe to implement such a mechanism while being async-safe (any Objective-C code is <em>NOT</em> async-safe!) and not causing more danger like a deadlock of the device, than helping. We found that users do start the app again because most don&rsquo;t know what happened, and you will get by far most of the reports.</p>
+
+<p>Sending the reports on start-up is done asynchronously (non-blocking). This is the only safe way to ensure that the app won&rsquo;t be possibly killed by the iOS watchdog process, because start-up could take too long and the app could not react to any user input when network conditions are bad or connectivity might be very slow.</p>
+<h4 id='3-6-3-mach-exception-handling' class='heading'>3.6.3 Mach Exception Handling</h4>
+
+<p>By default the SDK is using the safe and proven in-process BSD Signals for catching crashes. This option provides an option to enable catching fatal signals via a Mach exception server instead.</p>
+
+<p>We strongly advise <em>NOT</em> to enable Mach exception handler in release versions of your apps!</p>
+
+<p><em>Warning:</em> The Mach exception handler executes in-process, and will interfere with debuggers when they attempt to suspend all active threads (which will include the Mach exception handler). Mach-based handling should <em>NOT</em> be used when a debugger is attached. The SDK will not enable catching exceptions if the app is started with the debugger running. If you attach the debugger during runtime, this may cause issues the Mach exception handler is enabled!</p>
+
+<p><strong>Objective-C</strong></p>
+<pre class="highlight objective_c"><code><span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">configureWithIdentifier</span><span class="p">:</span><span class="s">@"APP_IDENTIFIER"</span><span class="p">];</span>
+
+<span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">].</span><span class="n">crashManager</span> <span class="nf">setEnableMachExceptionHandler</span><span class="p">:</span> <span class="nb">YES</span><span class="p">];</span>
+
+<span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">startManager</span><span class="p">];</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre class="highlight swift"><code><span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="nv">withIdentifier</span><span class="p">:</span> <span class="s">"APP_IDENTIFIER"</span><span class="p">)</span>
+<span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="n">crashManager</span><span class="o">.</span><span class="n">isMachExceptionHandlerEnabled</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre>
+<h4 id='3-6-4-attach-additional-data' class='heading'>3.6.4 Attach additional data</h4>
+
+<p>The <code><a href="Protocols/BITHockeyManagerDelegate.html">BITHockeyManagerDelegate</a></code> protocol provides methods to add additional data to a crash report:</p>
+
+<ol>
+<li>UserID:</li>
+</ol>
+
+<p><strong>Objective-C</strong></p>
+
+<p><code>- (NSString *)userIDForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager;</code></p>
+
+<p><strong>Swift</strong></p>
+
+<p><code>optional public func userID(for hockeyManager: BITHockeyManager!, componentManager: BITHockeyBaseManager!) -&gt; String!</code></p>
+
+<ol>
+<li>UserName:</li>
+</ol>
+
+<p><strong>Objective-C</strong></p>
+
+<p><code>- (NSString *)userNameForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager;</code></p>
+
+<p><strong>Swift</strong></p>
+
+<p><code>optional public func userName(for hockeyManager: BITHockeyManager!, componentManager: BITHockeyBaseManager!) -&gt; String!</code></p>
+
+<ol>
+<li>UserEmail:</li>
+</ol>
+
+<p><strong>Objective-C</strong></p>
+
+<p><code>- (NSString *)userEmailForHockeyManager:(BITHockeyManager *)hockeyManager componentManager:(BITHockeyBaseManager *)componentManager;</code></p>
+
+<p><strong>Swift</strong></p>
+
+<p><code>optional public func userEmail(for hockeyManager: BITHockeyManager!, componentManager: BITHockeyBaseManager!) -&gt; String!</code></p>
+
+<p>The <code><a href="Protocols/BITCrashManagerDelegate.html">BITCrashManagerDelegate</a></code> protocol (which is automatically included in <code><a href="Protocols/BITHockeyManagerDelegate.html">BITHockeyManagerDelegate</a></code>) provides methods to add more crash specific data to a crash report:</p>
+
+<ol>
+<li>Text attachments:</li>
+</ol>
+
+<p><strong>Objective-C</strong></p>
+
+<p><code>-(NSString *)applicationLogForCrashManager:(BITCrashManager *)crashManager</code></p>
+
+<p><strong>Swift</strong></p>
+
+<p><code>optional public func applicationLog(for crashManager: BITCrashManager!) -&gt; String!</code></p>
+
+<p>Check the following tutorial for an example on how to add CocoaLumberjack log data: <a href="http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/how-to-add-application-specific-log-data-on-ios-or-os-x">How to Add Application Specific Log Data on iOS or OS X</a></p>
+
+<ol>
+<li>Binary attachments:</li>
+</ol>
+
+<p><strong>Objective-C</strong></p>
+
+<p><code>-(BITHockeyAttachment *)attachmentForCrashManager:(BITCrashManager *)crashManager</code></p>
+
+<p><strong>Swift</strong></p>
+
+<p><code>optional public func attachment(for crashManager: BITCrashManager!) -&gt; BITHockeyAttachment!</code></p>
+
+<p>Make sure to implement the protocol</p>
+
+<p><strong>Objective-C</strong></p>
+<pre class="highlight objective_c"><code><span class="k">@interface</span> <span class="nc">YourAppDelegate</span> <span class="p">()</span> <span class="o">&lt;</span><span class="n">BITHockeyManagerDelegate</span><span class="o">&gt;</span> <span class="p">{}</span>
+
+<span class="k">@end</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre class="highlight swift"><code><span class="kd">class</span> <span class="kt">YourAppDelegate</span><span class="p">:</span> <span class="nf">BITHockeyManagerDelegate</span> <span class="p">{</span>
+
+<span class="p">}</span>
+</code></pre>
+
+<p>and set the delegate:</p>
+
+<p><strong>Objective-C</strong></p>
+<pre class="highlight objective_c"><code><span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">configureWithIdentifier</span><span class="p">:</span><span class="s">@"APP_IDENTIFIER"</span><span class="p">];</span>
+
+<span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">setDelegate</span><span class="p">:</span> <span class="n">self</span><span class="p">];</span>
+
+<span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">startManager</span><span class="p">];</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre class="highlight swift"><code><span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="nv">withIdentifier</span><span class="p">:</span> <span class="s">"APP_IDENTIFIER"</span><span class="p">)</span>
+<span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="k">self</span>
+<span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre>
+
+<p><a name="user-metrics"></a></p>
+<h3 id='3-7-user-metrics' class='heading'>3.7 User Metrics</h3>
+
+<p>HockeyApp automatically provides you with nice, intelligible, and informative metrics about how your app is used and by whom. </p>
+
+<ul>
+<li><strong>Sessions</strong>: A new session is tracked by the SDK whenever the containing app is restarted (this refers to a &lsquo;cold start&rsquo;, i.e., when the app has not already been in memory prior to being launched) or whenever it becomes active again after having been in the background for 20 seconds or more.</li>
+<li><strong>Users</strong>: The SDK anonymously tracks the users of your app by creating a random UUID that is then securely stored in the iOS keychain. This anonymous ID is stored in the keychain, as of iOS 10, it no longer persists across re-installations.</li>
+<li><strong>Custom Events</strong>: With HockeySDK 4.1.0 and later, you can now track Custom Events in your app, understand user actions and see the aggregates on the HockeyApp portal.</li>
+<li><strong>Batching &amp; offline behavior</strong>: The SDK batches up to 50 events or waits for 15s and then persist and send the events, whichever comes first. So for sessions, this might actually mean we send 1 single event per batch. If you are sending Custom Events, it can be 1 session event plus X of your Custom Events (up to 50 events per batch total). In case the device is offline, up to 300 events are stored until the SDK starts to drop new events.</li>
+</ul>
+
+<p>Just in case you want to opt-out of the automatic collection of anonymous users and sessions statistics, there is a way to turn this functionality off at any time:</p>
+
+<p><strong>Objective-C</strong></p>
+<pre class="highlight objective_c"><code><span class="p">[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">].</span><span class="n">disableMetricsManager</span> <span class="o">=</span> <span class="nb">YES</span><span class="p">;</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre class="highlight swift"><code><span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="n">isMetricsManagerDisabled</span> <span class="o">=</span> <span class="kc">true</span>
+</code></pre>
+<h4 id='3-7-1-custom-events' class='heading'>3.7.1 Custom Events</h4>
+
+<p>By tracking custom events, you can now get insight into how your customers use your app, understand their behavior and answer important business or user experience questions while improving your app.</p>
+
+<ul>
+<li>Before starting to track events, ask yourself the questions that you want to get answers to. For instance, you might be interested in business, performance/quality or user experience aspects.</li>
+<li>Name your events in a meaningful way and keep in mind that you will use these names when searching for events in the HockeyApp web portal. It is your responsibility to not collect personal information as part of the events tracking.</li>
+</ul>
+
+<p><strong>Objective-C</strong></p>
+<pre class="highlight objective_c"><code><span class="n">BITMetricsManager</span> <span class="o">*</span><span class="n">metricsManager</span> <span class="o">=</span> <span class="p">[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">].</span><span class="n">metricsManager</span><span class="p">;</span>
+
+<span class="p">[</span><span class="n">metricsManager</span> <span class="nf">trackEventWithName</span><span class="p">:</span><span class="n">eventName</span><span class="p">]</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">metricsManager</span> <span class="o">=</span> <span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="n">metricsManager</span>
+
+<span class="n">metricsManager</span><span class="o">.</span><span class="nf">trackEvent</span><span class="p">(</span><span class="nv">withName</span><span class="p">:</span> <span class="n">eventName</span><span class="p">)</span>
+</code></pre>
+
+<p><strong>Limitations</strong></p>
+
+<ul>
+<li>Accepted characters for tracking events are: [a-zA-Z0-9_. -]. If you use other than the accepted characters, your events will not show up in the HockeyApp web portal.</li>
+<li>There is currently a limit of 300 unique event names per app per week.</li>
+<li>There is <em>no</em> limit on the number of times an event can happen.</li>
+</ul>
+<h4 id='3-7-2-attaching-custom-properties-and-measurements-to-a-custom-event' class='heading'>3.7.2 Attaching custom properties and measurements to a custom event</h4>
+
+<p>It&rsquo;s possible to attach properties and/or measurements to a custom event. There is one limitation to attaching properties and measurements. They currently don&rsquo;t show up in the HockeyApp dashboard but you have to link your app to Application Insights to be able to query them. Please have a look at <a href="https://www.hockeyapp.net/blog/2016/08/30/custom-events-public-preview.html">our blog post</a> to find out how to do that. </p>
+
+<ul>
+<li>Properties have to be a string.</li>
+<li>Measurements have to be of a numeric type.</li>
+</ul>
+
+<p><strong>Objective-C</strong></p>
+<pre class="highlight objective_c"><code><span class="n">BITMetricsManager</span> <span class="o">*</span><span class="n">metricsManager</span> <span class="o">=</span> <span class="p">[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">].</span><span class="n">metricsManager</span><span class="p">;</span>
+
+<span class="n">NSDictionary</span> <span class="o">*</span><span class="n">myProperties</span> <span class="o">=</span> <span class="p">@{</span><span class="s">@"Property 1"</span> <span class="o">:</span> <span class="s">@"Something"</span><span class="p">,</span>
+                               <span class="s">@"Property 2"</span> <span class="o">:</span> <span class="s">@"Other thing"</span><span class="p">,</span>
+                               <span class="s">@"Property 3"</span> <span class="o">:</span> <span class="s">@"Totally different thing"</span><span class="p">};</span>
+<span class="n">NSDictionary</span> <span class="o">*</span><span class="n">myMeasurements</span> <span class="o">=</span> <span class="p">@{</span><span class="s">@"Measurement 1"</span> <span class="o">:</span> <span class="mi">@1</span><span class="p">,</span>
+                                 <span class="s">@"Measurement 2"</span> <span class="o">:</span> <span class="mf">@2.34</span><span class="p">,</span>
+                                 <span class="s">@"Measurement 3"</span> <span class="o">:</span> <span class="mi">@2000000</span><span class="p">};</span>
+
+<span class="p">[</span><span class="n">metricsManager</span> <span class="nf">trackEventWithName</span><span class="p">:</span><span class="n">eventName</span> <span class="nf">properties</span><span class="p">:</span><span class="n">myProperties</span> <span class="n">measurements</span><span class="o">:</span><span class="n">myMeasurements</span><span class="p">]</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">myProperties</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Property 1"</span><span class="p">:</span> <span class="s">"Something"</span><span class="p">,</span> <span class="s">"Property 2"</span><span class="p">:</span> <span class="s">"Other thing"</span><span class="p">,</span> <span class="s">"Property 3"</span> <span class="p">:</span> <span class="s">"Totally different thing."</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">myMeasurements</span> <span class="o">=</span> <span class="p">[</span><span class="s">"Measurement 1"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s">"Measurement 2"</span><span class="p">:</span> <span class="mf">2.3</span><span class="p">,</span> <span class="s">"Measurement 3"</span> <span class="p">:</span> <span class="mi">30000</span><span class="p">]</span>
+
+<span class="k">let</span> <span class="nv">metricsManager</span> <span class="o">=</span> <span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="n">metricsManager</span>
+<span class="n">metricsManager</span><span class="o">.</span><span class="nf">trackEvent</span><span class="p">(</span><span class="nv">withName</span><span class="p">:</span> <span class="n">eventName</span><span class="p">,</span> <span class="nv">properties</span><span class="p">:</span> <span class="n">myProperties</span><span class="p">,</span> <span class="nv">measurements</span><span class="p">:</span> <span class="n">myMeasurements</span><span class="p">)</span>
+</code></pre>
+
+<p><a name="feedback"></a></p>
+<h3 id='3-8-feedback' class='heading'>3.8 Feedback</h3>
+
+<p>As of HockeySDK 4.1.1, Feedback is no longer part of the default SDK. To use feedback in your app, integrate the SDK with all features as follows:</p>
+<h4 id='3-8-1-integrate-the-full-featured-sdk' class='heading'>3.8.1 Integrate the full-featured SDK.</h4>
+
+<p>If you&rsquo;re integrating the binary yourself, use the <code>HockeySDK.embeddedframework</code> in the subfolder <code>HockeySDKAllFeatures</code>. If you&rsquo;re using CocoaPods, use</p>
+<pre class="highlight ruby"><code><span class="n">pod</span> <span class="s2">"HockeySDK"</span><span class="p">,</span> <span class="ss">:subspecs</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">'AllFeaturesLib'</span><span class="p">]</span>
+</code></pre>
+
+<p>in your podfile.</p>
+
+<p><code><a href="Classes/BITFeedbackManager.html">BITFeedbackManager</a></code> lets your users communicate directly with you via the app and an integrated user interface. It provides a single threaded discussion with a user running your app. This feature is only enabled if you integrate the actual view controllers into your app.</p>
+
+<p>You should never create your own instance of <code><a href="Classes/BITFeedbackManager.html">BITFeedbackManager</a></code> but use the one provided by the <code>[BITHockeyManager sharedHockeyManager]</code>:</p>
+
+<p><strong>Objective-C</strong></p>
+<pre class="highlight objective_c"><code><span class="p">[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">].</span><span class="n">feedbackManager</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre class="highlight swift"><code><span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="n">feedbackManager</span>
+</code></pre>
+
+<p>Please check the <a href="#documentation">documentation</a> of the <code><a href="Classes/BITFeedbackManager.html">BITFeedbackManager</a></code> and <code><a href="Protocols/BITFeedbackManagerDelegate.html">BITFeedbackManagerDelegate</a></code> classes on more information on how to leverage this feature.</p>
+<h4 id='3-8-2-add-the-nsphotolibraryusagedescription-to-your-info-plist' class='heading'>3.8.2 Add the NSPhotoLibraryUsageDescription to your Info.plist.</h4>
+
+<p>As of iOS 10, developers have to add UsageDescription-strings before using system frameworks with privacy features (read more on this in <a href="https://developer.apple.com/library/prerelease/content/releasenotes/General/WhatsNewIniOS/Articles/iOS10.html#//apple_ref/doc/uid/TP40017084-SW3">Apple&rsquo;s own documentation</a>). To make allow users to attach photos to feedback, add the <code>NSPhotoLibraryUsageDescription</code> to your <code>Info.plist</code> and provide a description. Make sure to localize your description as described in <a href="https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/AboutInformationPropertyListFiles.html">Apple&rsquo;s documentation about localizing Info.plist strings</a>.</p>
+
+<p>If the value is missing from your <code>Info.plist</code>, the SDK will disable attaching photos to feedback and disable the creation of a new feedback item in case of a screenshot. </p>
+
+<p><a name="storeupdates"></a></p>
+<h3 id='3-9-store-updates' class='heading'>3.9 Store Updates</h3>
+
+<p>This is the HockeySDK module for handling app updates when having your app released in the App Store.</p>
+
+<p>When an update is detected, this module will show an alert asking the user if he/she wants to update or ignore this version. If the update was chosen, it will open the apps page in the app store app.</p>
+
+<p>By default this module is <strong>NOT</strong> enabled! To enable it use the following code:</p>
+
+<p><strong>Objective-C</strong></p>
+<pre class="highlight objective_c"><code><span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">configureWithIdentifier</span><span class="p">:</span><span class="s">@"APP_IDENTIFIER"</span><span class="p">];</span>
+
+<span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">setEnableStoreUpdateManager</span><span class="p">:</span> <span class="nb">YES</span><span class="p">];</span>
+
+<span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">startManager</span><span class="p">];</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre class="highlight swift"><code><span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="nv">withIdentifier</span><span class="p">:</span> <span class="s">"APP_IDENTIFIER"</span><span class="p">)</span>
+<span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="n">isStoreUpdateManagerEnabled</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre>
+
+<p>When this module is enabled and <strong>NOT</strong> running in an App Store build/environment, it won&rsquo;t do any checks!</p>
+
+<p>Please check the <a href="#documentation">documentation</a> of the <code><a href="Classes/BITStoreUpdateManager.html">BITStoreUpdateManager</a></code> class on more information on how to leverage this feature and know about its limits.</p>
+
+<p><a name="betaupdates"></a></p>
+<h3 id='3-10-in-app-updates-beta-amp-enterprise-only' class='heading'>3.10 In-App-Updates (Beta &amp; Enterprise only)</h3>
+
+<p>The following options only show some of the possibilities to interact and fine-tune the update feature when using Ad-Hoc or Enterprise provisioning profiles. For more please check the full documentation of the <code><a href="Classes/BITUpdateManager.html">BITUpdateManager</a></code> class in our <a href="#documentation">documentation</a>.</p>
+
+<p>The feature handles version updates, presents the update and version information in a App Store like user interface, collects usage information and provides additional authorization options when using Ad-Hoc provisioning profiles.</p>
+
+<p>This module automatically disables itself when running in an App Store build by default!</p>
+
+<p>This feature can be disabled manually as follows:</p>
+
+<p><strong>Objective-C</strong></p>
+<pre class="highlight objective_c"><code><span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">configureWithIdentifier</span><span class="p">:</span><span class="s">@"APP_IDENTIFIER"</span><span class="p">];</span>
+
+<span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">setDisableUpdateManager</span><span class="p">:</span> <span class="nb">YES</span><span class="p">];</span> <span class="c1">//disable auto updating</span>
+
+<span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">startManager</span><span class="p">];</span>
+</code></pre>
+
+<p><strong>Swift</strong></p>
+<pre class="highlight swift"><code><span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">configure</span><span class="p">(</span><span class="nv">withIdentifier</span><span class="p">:</span> <span class="s">"APP_IDENTIFIER"</span><span class="p">)</span>
+<span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="n">isUpdateManagerDisabled</span> <span class="o">=</span> <span class="kc">true</span>
+<span class="kt">BITHockeyManager</span><span class="o">.</span><span class="nf">shared</span><span class="p">()</span><span class="o">.</span><span class="nf">start</span><span class="p">()</span>
+</code></pre>
+
+<p>Please note that the SDK expects your CFBundleVersion values to always increase and never reset to detect a new update.</p>
+
+<p>If you want to see beta analytics, use the beta distribution feature with in-app updates, restrict versions to specific users, or want to know who is actually testing your app, you need to follow the instructions on our guide <a href="http://support.hockeyapp.net/kb/client-integration-ios-mac-os-x/authenticating-users-on-ios">Authenticating Users on iOS</a></p>
+
+<p><a id="debug"></a></p>
+<h3 id='3-11-debug-information' class='heading'>3.11 Debug information</h3>
+
+<p>To check if data is send properly to HockeyApp and also see some additional SDK debug log data in the console, add the following line before <code>startManager</code>:</p>
+<pre class="highlight objective_c"><code><span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">configureWithIdentifier</span><span class="p">:</span><span class="s">@"APP_IDENTIFIER"</span><span class="p">];</span>
+
+<span class="p">[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">].</span><span class="n">logLevel</span> <span class="o">=</span> <span class="n">BITLogLevelDebug</span><span class="p">;</span>
+
+<span class="p">[[</span><span class="n">BITHockeyManager</span> <span class="nf">sharedHockeyManager</span><span class="p">]</span> <span class="nf">startManager</span><span class="p">];</span>
+</code></pre>
+
+<p><a id="documentation"></a></p>
+<h2 id='4-documentation' class='heading'>4. Documentation</h2>
+
+<p>Our documentation can be found on <a href="http://hockeyapp.net/help/sdk/ios/5.1.2/index.html">HockeyApp</a>.</p>
+
+<p><a id="troubleshooting"></a></p>
+<h2 id='5-troubleshooting' class='heading'>5.Troubleshooting</h2>
+<h3 id='linker-warnings' class='heading'>Linker warnings</h3>
+
+<p>Make sure that all mentioned frameworks and libraries are linked</p>
+<h3 id='itunes-connect-rejection' class='heading'>iTunes Connect rejection</h3>
+
+<p>Make sure none of the following files are copied into your app bundle, check under app target, <code>Build Phases</code>, <code>Copy Bundle Resources</code> or in the <code>.app</code> bundle after building:</p>
+
+<ul>
+<li><code>HockeySDK.framework</code> (except if you build a dynamic framework version of the SDK yourself!)</li>
+<li><code>de.bitstadium.HockeySDK-iOS-5.1.2.docset</code></li>
+</ul>
+<h3 id='features-are-not-working-as-expected' class='heading'>Features are not working as expected</h3>
+
+<p>Enable debug output to the console to see additional information from the SDK initializing the modules,  sending and receiving network requests and more by adding the following code before calling <code>startManager</code>:</p>
+
+<p><code>[BITHockeyManager sharedHockeyManager].logLevel = BITLogLevelDebug;</code></p>
+<h3 id='wrong-strings-or-q-missing-hockeysdkresources-bundle-q-error' class='heading'>Wrong strings or <q>Missing HockeySDKResources.bundle</q> error</h3>
+
+<ol>
+<li><p>Please check if the <code>HockeySDKResources.bundle</code> is added to your app bundle. Use Finder to inspect your <code>.app</code> bundle to see if the bundle is added.</p></li>
+<li><p>If it is missing, please check if the resources bundle is mentioned in your app target&rsquo;s <code>Copy Bundle Resources</code> build step in the <code>Build Phases</code> tab. Add the resource bundle manually if necessary.  </p></li>
+<li><p>Make a clean build and try again.</p></li>
+</ol>
+
+<p><img src="https://support.hockeyapp.net/help/assets/0e9d2eb58de8355363b89bd491d6fcf4c14f596e/normal/Screenshot_2015-12-22_01.07.27.png" alt="Screenshot_2015-12-22_01.07.27.png"></p>
+
+<p><a id="contributing"></a></p>
+<h2 id='6-contributing' class='heading'>6. Contributing</h2>
+
+<p>We&rsquo;re looking forward to your contributions via pull requests on our <a href="https://github.com/bitstadium/HockeySDK-iOS">GitHub repository</a>.</p>
+
+<p><a id="developmentenvironment"></a></p>
+<h3 id='6-1-development-environment' class='heading'>6.1 Development environment</h3>
+
+<ul>
+<li>A Mac running the latest version of macOS.</li>
+<li>Get the latest Xcode from the Mac App Store.</li>
+<li><a href="https://github.com/realm/jazzy">Jazzy</a> to generate documentation.</li>
+<li><a href="https://cocoapods.org/">CocoaPods</a> to test integration with CocoaPods.</li>
+<li><a href="https://github.com/Carthage/Carthage">Carthage</a> to test integration with Carthage.</li>
+</ul>
+
+<p><a id="codeofconduct"></a></p>
+<h3 id='6-2-code-of-conduct' class='heading'>6.2 Code of Conduct</h3>
+
+<p>This project has adopted the <a href="https://opensource.microsoft.com/codeofconduct/">Microsoft Open Source Code of Conduct</a>. For more information see the <a href="https://opensource.microsoft.com/codeofconduct/faq/">Code of Conduct FAQ</a> or contact <a href="mailto:opencode@microsoft.com">opencode@microsoft.com</a> with any additional questions or comments.</p>
+
+<p><a id="contributorlicense"></a></p>
+<h3 id='6-3-contributor-license' class='heading'>6.3 Contributor License</h3>
+
+<p>You must sign a <a href="https://cla.microsoft.com/">Contributor License Agreement</a> before submitting your pull request. To complete the Contributor License Agreement (CLA), you will need to submit a request via the <a href="https://cla.microsoft.com/">form</a> and then electronically sign the CLA when you receive the email containing the link to the document. You need to sign the CLA only once to cover submission to any Microsoft OSS project. </p>
+
+<p><a id="contact"></a></p>
+<h2 id='7-contact' class='heading'>7. Contact</h2>
+
+<p>If you have further questions or are running into trouble that cannot be resolved by any of the steps here, feel free to open <a href="https://github.com/bitstadium/HockeySDK-iOS/issues">a GitHub issue</a>, contact us at <a href="mailto:support@hockeyapp.net">support@hockeyapp.net</a> or join our <a href="https://slack.hockeyapp.net">Slack</a>.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://www.microsoft.com" target="_blank" rel="external">Microsoft Corp</a>. All rights reserved. (Last updated: 2018-01-08)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
