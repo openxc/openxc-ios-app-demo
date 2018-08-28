@@ -5,8 +5,8 @@ UI: Custom command UI added in Commands Page.
 UI: Settings screen cosmetic changes.
 UI: Disconnect Button on status page.
 Enhancement: Timestamp added in tracefile.
-Enhancement: Alert message to on the device bluetooth if its off.
-Enhancement: Alert messages on every page if trying to do some operation on C5 VI on its disconnected state.
+Enhancement: Alert message if the device bluetooth is off.
+Enhancement: Alert messages on every page if trying to do some operation on C5 BLE if its disconnected state.
 ## v2.0
 
 * Improvement: Support for iOS 11
