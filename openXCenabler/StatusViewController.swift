@@ -88,6 +88,28 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
                 }
                 return
+
+            }
+            else if vm.isBleConnected {
+                DispatchQueue.main.async {
+                    self.peripheralTable.isHidden = true
+                    self.actConLab.text = "✅"
+                    self.NetworkImg.isHidden = true
+                    self.searchBtn.setTitle("BLE VI CONNECTED",for:UIControlState())
+                }
+            }
+            else{
+                
+                self.NetworkImg.isHidden = true
+                self.actConLab.text = "---"
+                self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
+                let networkOn = UserDefaults.standard.bool(forKey: "networkdataOn")
+                if(networkOn){
+                    let alertController = UIAlertController(title: "", message:
+                        "No Data please check the host adress", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                    self.present(alertController, animated: true, completion: nil)
+
                 
             }
             
@@ -144,6 +166,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     self.platformLab.text = "---"
                     self.searchBtn.setTitle("None",for:UIControlState())
                     self.searchBtn.isEnabled = false
+
                 }
                 return
             }
