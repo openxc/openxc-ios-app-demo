@@ -3,16 +3,13 @@
 
 target 'openXCenabler' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
-  use_frameworks!
+  #use_frameworks!
 
   # Pods for openXCenabler
-source 'https://github.com/CocoaPods/Specs.git'
-
-  #pod 'openxc-ios-framework', :git => 'https://github.com/openxc/openxc-ios-framework.git', :branch => 'next'
 
 pod "HockeySDK"
 pod 'ProtocolBuffers-Swift' ,'2.4.3'
-pod 'OpenXCFramework-Swift',:path => '../CocoapodSetup'
+pod 'OpenXCFramework-Swift', :path => '../CocoapodSetup'
 
   target 'openXCenablerTests' do
     inherit! :search_paths
