@@ -1,7 +1,6 @@
 # OpenXC iOS App Demo Changelog
 ## v2.1.0
 
-
 * Feature: Hockey App SDK Integration for crash Annalytics.
 * UI: Custom command UI added in Commands Page.
 * UI: Settings screen cosmetic changes.
@@ -9,7 +8,7 @@
 * Enhancement: Timestamp added in tracefile.
 * Enhancement: Alert message if the device bluetooth is off.
 * Enhancement: Alert messages on every page if trying to do some operation on C5 BLE if its disconnected state.
-
+* Feature: Adding feature to send commands to VI if its connected
 
 ## v2.0.0
 

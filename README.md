@@ -16,7 +16,6 @@ Once the application & framework is downloaded, add both the frameworks(openxc-i
 * XCode - upto 9
 * Swift - Swift3
 
-
 ## Building from XCode
 XCode9 and iOS11 must be installed to build the application. Refer to this [step by step guide](https://github.com/openxc/openxc-ios-framework/blob/master/StepsToBuildOpenXCiOSFrameworkAndDemoApp.docx) for more details.
 

@@ -25,7 +25,9 @@ class CanViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     
     // grab VM instance
     vm = VehicleManager.sharedInstance
+
     bm = BluetoothManager.sharedInstance
+
     // initialize dictionary/table
     canDict = NSMutableDictionary()
     canTable.reloadData()

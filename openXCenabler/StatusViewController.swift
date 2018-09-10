@@ -36,6 +36,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var cm: Command!
     var tfm: TraceFileManager!
     var bm: BluetoothManager!
+
     // timer for UI counter updates
     var timer: Timer!
     
@@ -53,6 +54,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         cm = Command.sharedInstance
         tfm = TraceFileManager.sharedInstance
         bm = BluetoothManager.sharedInstance
+
         // setup the status callback, and the command response callback
         vm.setManagerCallbackTarget(self, action: StatusViewController.manager_status_updates)
         //vm.setCanDefaultTarget(self, action: StatusViewController.handle_cmd_response)
@@ -277,6 +279,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             // start the VI scan
             bm.scan(completionHandler:{(success) in
+
                 // update the UI
                 if(!success){
                     let alertController = UIAlertController (title: "Setting", message: "Please enable Bluetooth", preferredStyle: .alert)
@@ -368,6 +371,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
                 self.disconnectBtn.isHidden = true
             }
+
             }
         }
         
@@ -404,7 +408,6 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // extract the command response message
         let cr = rsp.object(forKey: "vehiclemessage") as! VehicleCommandResponse
         
-        
         // update the UI depending on the command type- version,device_id works for JSON mode, not in protobuf - TODO
         
         var cvc:CommandsViewController?
@@ -416,8 +419,6 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 self.verLab.text = cr.message as String
             }
             cvc?.versionResp = String(cr.message)
-            
-            
         }
         if cr.command_response.isEqual(to: "device_id") || cr.command_response.isEqual(to: ".deviceid"){
             DispatchQueue.main.async {
@@ -427,6 +428,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         }
         if cr.command_response.isEqual(to: "platform") || cr.command_response.isEqual(to: ".platform") {
+
             DispatchQueue.main.async {
                 self.platformLab.text = cr.message as String
             }

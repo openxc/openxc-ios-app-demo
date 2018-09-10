@@ -17,6 +17,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     var bm: BluetoothManager!
     var cm: Command!
     var ObjectDic : NSMutableDictionary = NSMutableDictionary()
+
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var responseLab: UILabel!
     
@@ -53,6 +54,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         hideAll()
         customCommandTF.delegate = self
@@ -205,13 +207,12 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             showActivityIndicator()
             break
         case 2:
+
             
             //let cm = VehicleCommandRequest()
             
             // look at segmented control for bus
             vcm.bus = busSeg.selectedSegmentIndex + 1
-            
-            
             
             if enabSeg.selectedSegmentIndex==0 {
                 vcm.enabled = true
@@ -231,13 +232,12 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             //let cm = VehicleCommandRequest()
             // look at segmented control for bus
             vcm.bus = busSeg.selectedSegmentIndex + 1
-            
             if bypassSeg.selectedSegmentIndex==0 {
                 vcm.bypass = true
             } else {
                 vcm.bypass = false
             }
-        
+
             vcm.command = .af_bypass
             self.cm.sendCommand(vcm)
             showActivityIndicator()
@@ -262,7 +262,6 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             }
             break
         case 5:
-            
             //let cm = VehicleCommandRequest()
             vcm.command = .platform
             self.cm.sendCommand(vcm)
@@ -347,7 +346,6 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
             self.populateCommandResponseLabel(rowNum: self.selectedRowInPicker)
         }
     }
-    
     
     // MARK: Picker Delgate Function
     

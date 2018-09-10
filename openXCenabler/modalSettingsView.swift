@@ -26,12 +26,12 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
     super.viewDidLoad()
 
     let versionNumberString = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-   
     
     appVersion.text = versionNumberString
 
     
   }
+
 
   // close modal view
   @IBAction func hideHit(_ sender: AnyObject) {
@@ -48,6 +48,7 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
   // show 'record' view
   @IBAction func recHit(_ sender: AnyObject) {
   
+
   }
 
     
@@ -56,8 +57,5 @@ class modalSettingsView: UIViewController, UITextFieldDelegate {
  
     aboutView.removeFromSuperview()
   }
- 
-  
 
-  
 }
