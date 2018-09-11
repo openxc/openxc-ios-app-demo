@@ -6,11 +6,8 @@ The OpenXC iOS Framework must be downloaded and included in this app. Make sure 
 
 Once the application & framework is downloaded, add both the frameworks(openxc-ios & protobuf) in "Link Binary with Libraries" under "Build Phases" and "Embedded Binary". 
 
-## OpenXC-iOS-App-Demo-Version:
 
-* V2.1.0
-
-## Supported versions:
+##Supported versions:
 
 * iOS - upto 11.2.5
 * XCode - upto 9
