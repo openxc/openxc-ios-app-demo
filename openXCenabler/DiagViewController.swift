@@ -35,9 +35,9 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     bm = BluetoothManager.sharedInstance
     // set default diag response target
     vm.setDiagnosticDefaultTarget(self, action: DiagViewController.default_diag_rsp)
-
     // set custom target for specific Diagnostic request
     vm.addDiagnosticTarget([1,2015,1], target: self, action: DiagViewController.new_diag_rsp)
+
     
   }
   
@@ -120,7 +120,6 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     // look at segmented control for bus
     cmd.bus = bussel.selectedSegmentIndex + 1
     
-    
     // check that the msg id field is valid
     if let mid = idField.text as String? {
         let midtrim = mid.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -138,7 +137,6 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
         lastReq.text = "Invalid command : need a message_id"
         return
     }
-    
     // check that the mode field is valid
     if let mode = modeField.text as String? {
         let modetrim = mode.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -174,7 +172,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     if cmd.pid==nil {
         
     } else {
-        
+
     }
     
     
@@ -187,7 +185,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
             // its optional
         }
         if mloadtrim.characters.count%2==0 { //payload must be even length
-            
+
             let appendedStr = "0x" + mloadtrim
             
             cmd.payload = appendedStr as NSString

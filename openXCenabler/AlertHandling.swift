@@ -8,8 +8,6 @@
 
 import UIKit
 
-
-
 open class AlertHandling : NSObject {
 
     static let _sharedInstance = AlertHandling()
