@@ -1,5 +1,5 @@
 # OpenXC iOS App Demo Changelog
-## v2.1.0
+## v3.0.0
 
 * Feature: Hockey App SDK Integration for crash Annalytics.
 * UI: Custom command UI added in Commands Page.
