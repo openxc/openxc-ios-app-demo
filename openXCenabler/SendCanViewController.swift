@@ -19,14 +19,14 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
   @IBOutlet weak var lastReq: UILabel!
 
   var vm: VehicleManager!
-
+    var bm: BluetoothManager!
   override func viewDidLoad() {
     super.viewDidLoad()
     
     
     // grab VM instance
     vm = VehicleManager.sharedInstance
-
+    bm = BluetoothManager.sharedInstance
   }
 
   override func didReceiveMemoryWarning() {
@@ -42,7 +42,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     return true;
   }
     override func viewDidAppear(_ animated: Bool) {
-        if(!vm.isBleConnected){
+        if(!bm.isBleConnected){
             
             AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
         }
@@ -57,7 +57,7 @@ class SendCanViewController: UIViewController, UITextFieldDelegate {
     }
     
     // if the VM isn't operational, don't send anything
-    if vm.connectionState != VehicleManagerConnectionState.operational {
+    if bm.connectionState != VehicleManagerConnectionState.operational {
       lastReq.text = "Not connected to VI"
       return
     }
