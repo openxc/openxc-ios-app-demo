@@ -9,7 +9,9 @@ target 'openXCenabler' do
 
 pod "HockeySDK"
 pod 'ProtocolBuffers-Swift' ,'2.4.3'
-pod 'OpenXCFramework-Swift', :path => '../CocoapodSetup'
+pod 'OpenXCFramework-Swift'
+
+#'https://github.com/openxc/openxc-ios-framework/blob/1.2.2/OpenXCFramework-Swift.podspec'
 
   target 'openXCenablerTests' do
     inherit! :search_paths
