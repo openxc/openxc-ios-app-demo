@@ -49,6 +49,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     fileprivate var traceConn: NSURLConnection?
     fileprivate var traceRspData: NSMutableData?
     fileprivate var traceSinkLoop: Timer = Timer()
+    var myTraceArr = [AnyObject]()
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -165,6 +166,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     // save the name key and value in the dictionary
     dashDict.setObject(val, forKey:name)
+    //myTraceArr.append(dashDict)
 if UserDefaults.standard.bool(forKey: "uploadTaraceOn") {
     // UserDefaults.standard.set(textField.text, forKey:"traceURLname")
     if let urlname = (UserDefaults.standard.value(forKey: "traceURLname") as? String) {
