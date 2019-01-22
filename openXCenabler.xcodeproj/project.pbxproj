@@ -21,6 +21,7 @@
 		7D06AAD72118801100B27CDE /* ProtocolBuffers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D06AAD62118801100B27CDE /* ProtocolBuffers.framework */; };
 		7D06AAD82118801100B27CDE /* ProtocolBuffers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7D06AAD62118801100B27CDE /* ProtocolBuffers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7D33AE312019E71100224782 /* openXCiOSFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D33AE2F2019E71000224782 /* openXCiOSFramework.framework */; };
+		7D45DCCC21EF2C3B00774056 /* OutputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D45DCCB21EF2C3B00774056 /* OutputViewController.swift */; };
 		7D790ADA2063C1B9004AAD5E /* DataSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D790AD92063C1B9004AAD5E /* DataSourceController.swift */; };
 		7D790ADC2063C1DC004AAD5E /* RecordingSourceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D790ADB2063C1DC004AAD5E /* RecordingSourceController.swift */; };
 		7D81B7992119C1A700C435E3 /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DA9BED52119B875004E6DB1 /* HockeySDK.framework */; };
@@ -98,6 +99,7 @@
 		3AE834441D5ED054003FD370 /* CanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanViewController.swift; sourceTree = "<group>"; };
 		7D06AAD62118801100B27CDE /* ProtocolBuffers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ProtocolBuffers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D33AE2F2019E71000224782 /* openXCiOSFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = openXCiOSFramework.framework; path = "../../../Library/Developer/Xcode/DerivedData/openXCenabler-aqgcinribrasdxdcauflwrtjddga/Build/Products/Debug-iphonesimulator/openXCiOSFramework.framework"; sourceTree = "<group>"; };
+		7D45DCCB21EF2C3B00774056 /* OutputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutputViewController.swift; sourceTree = "<group>"; };
 		7D6C02782119847500C80569 /* project.pbxproj */ = {isa = PBXFileReference; lastKnownFileType = text.pbxproject; name = project.pbxproj; path = openXCenabler.xcodeproj/project.pbxproj; sourceTree = "<group>"; };
 		7D790AD92063C1B9004AAD5E /* DataSourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceController.swift; sourceTree = "<group>"; };
 		7D790ADB2063C1DC004AAD5E /* RecordingSourceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingSourceController.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				3ABA7F5A1D88FB2700D75846 /* modalSettingsView.swift */,
 				7D790AD92063C1B9004AAD5E /* DataSourceController.swift */,
 				7D790ADB2063C1DC004AAD5E /* RecordingSourceController.swift */,
+				7D45DCCB21EF2C3B00774056 /* OutputViewController.swift */,
 				3A1016CA1D5417AD006C5E93 /* Main.storyboard */,
 				3A1016CD1D5417AD006C5E93 /* Assets.xcassets */,
 				3A1016CF1D5417AD006C5E93 /* LaunchScreen.storyboard */,
@@ -354,18 +357,18 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Ford Motor Company";
 				TargetAttributes = {
 					3A1016C01D5417AD006C5E93 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = D95XHVNG2Z;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Manual;
 					};
 					E75EE68F1E110ED400B2AE3B = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0940;
 						TestTargetID = 3A1016C01D5417AD006C5E93;
 					};
 				};
@@ -447,6 +450,7 @@
 				7D790ADC2063C1DC004AAD5E /* RecordingSourceController.swift in Sources */,
 				7D87B41020AAB44E008AC5D2 /* DiagViewController.swift in Sources */,
 				3ABA7F5B1D88FB2700D75846 /* modalSettingsView.swift in Sources */,
+				7D45DCCC21EF2C3B00774056 /* OutputViewController.swift in Sources */,
 				7DA27A282085F28000089514 /* CommandsViewController.swift in Sources */,
 				3AE834471D5ED054003FD370 /* CanViewController.swift in Sources */,
 				3A1016C51D5417AD006C5E93 /* AppDelegate.swift in Sources */,
@@ -512,12 +516,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -566,12 +572,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -618,7 +626,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5437cd9f-41e7-4e97-8599-4cf4a06aaf8f";
 				PROVISIONING_PROFILE_SPECIFIER = "OpenXC Dev profile";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -639,7 +648,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "5437cd9f-41e7-4e97-8599-4cf4a06aaf8f";
 				PROVISIONING_PROFILE_SPECIFIER = "OpenXC Dev profile";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -655,7 +665,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ford.openXCenablerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/openXCenabler.app/openXCenabler";
 			};
 			name = Debug;
@@ -672,7 +683,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ford.openXCenablerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/openXCenabler.app/openXCenabler";
 			};
 			name = Release;

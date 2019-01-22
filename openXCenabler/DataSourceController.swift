@@ -470,14 +470,14 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     
     //ranjan added code for Network data
     // trace file output file name changed, save it in nsuserdefaults
-    func networkDataFieldDidChange(_ textField: UITextField) {
+    @objc func networkDataFieldDidChange(_ textField: UITextField) {
         //UserDefaults.standard.set(textField.text, forKey:"networkAdress")
     }
-    func networkPortFieldDidChange(_ textField: UITextField) {
+    @objc func networkPortFieldDidChange(_ textField: UITextField) {
         //UserDefaults.standard.set(textField.text, forKey:"networkAdress")
     }
     // trace file input file name changed, save it in nsuserdefaults
-    func playFieldDidChange(_ textField: UITextField) {
+    @objc func playFieldDidChange(_ textField: UITextField) {
         UserDefaults.standard.set(textField.text, forKey:"traceInputFilename")
     }
     

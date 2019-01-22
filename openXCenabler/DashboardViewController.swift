@@ -44,7 +44,11 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   fileprivate var dweetConn: NSURLConnection?
   fileprivate var dweetRspData: NSMutableData?
   
-  
+    // TraceURL related vars
+    fileprivate var traceURLLoop: Timer = Timer()
+    fileprivate var traceConn: NSURLConnection?
+    fileprivate var traceRspData: NSMutableData?
+    fileprivate var traceSinkLoop: Timer = Timer()
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -66,8 +70,6 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     locationManager.distanceFilter=500;
     locationManager.requestWhenInUseAuthorization()
 
-    
-   
     
   }
   
@@ -109,6 +111,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     if UserDefaults.standard.bool(forKey: "dweetOutputOn") {
       dweetLoop = Timer.scheduledTimer(timeInterval: 1.5, target:self, selector:#selector(sendDweet), userInfo: nil, repeats:true)
     }
+    //Used for checking the trece sink is enabled or not then start the timer if on.
+//    if UserDefaults.standard.bool(forKey: "uploadTaraceOn") {
+//        traceSinkLoop = Timer.scheduledTimer(timeInterval: 1.5, target:self, selector:#selector(sendTraceURLData), userInfo: nil, repeats:true)
+//    }
     if(!bm.isBleConnected && !vm.isTraceFileConnected && !vm.isNetworkConnected){
         AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
         dashDict = NSMutableDictionary()
@@ -149,7 +155,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
           e = "true";
         } else {
           // round any floating points
-          let ner = Double(round(10.0*Double(ne))/10)
+            let ner = Double(round(10.0*Double(truncating: ne))/10)
           e = String(ner) as NSString
         }
       } else {
@@ -159,7 +165,12 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     // save the name key and value in the dictionary
     dashDict.setObject(val, forKey:name)
-
+if UserDefaults.standard.bool(forKey: "uploadTaraceOn") {
+    // UserDefaults.standard.set(textField.text, forKey:"traceURLname")
+    if let urlname = (UserDefaults.standard.value(forKey: "traceURLname") as? String) {
+        vm.sendTraceURLData(urlName:urlname,rspdict:dashDict )
+    }
+    }
     // update the table
     DispatchQueue.main.async {
         self.dashTable.reloadData()
@@ -242,7 +253,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
 
   
   
-  func sensorUpdate() {
+  @objc func sensorUpdate() {
     
     if isHeadsetPluggedIn() {
       dashDict.setObject("Yes", forKey:"phone_headphones_attached" as NSCopying)
@@ -298,7 +309,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   }
   
 
-  func sendDweet() {
+  @objc func sendDweet() {
     
     if let conn = dweetConn {
       // connection already exists!
@@ -314,7 +325,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         let urlStr = URL(string:"https://dweet.io/dweet/for/"+dweetname)
         let postLength = String(format:"%lu", Double(jsonData.count))
         
-        let request = NSMutableURLRequest()
+       // let request = NSMutableURLRequest()
+        var request:URLRequest = URLRequest(url: urlStr!)
+        let session = URLSession.shared
         request.url = urlStr
         request.httpMethod = "POST"
         request.setValue(postLength,forHTTPHeaderField:"Content-Length")
@@ -322,7 +335,10 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
         request.httpBody = jsonData
         
         // TODO: ToDo - Change NSURLConnection to NSURLSession
-        dweetConn = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately:true)
+        //dweetConn = NSURLConnection(request: request as URLRequest, delegate: self, startImmediately:true)
+        //[[[URLSession, sharedSession] dataTaskWithRequest:request] resume]
+        let task = session.dataTask(with: request)
+        task.resume()
       }
       
     } catch {
@@ -332,9 +348,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
   
     
   }
-  
     private func connection(_ connection: NSURLConnection!, didReceiveData data: Data!){
     dweetRspData?.append(data)
+  
     
   }
   

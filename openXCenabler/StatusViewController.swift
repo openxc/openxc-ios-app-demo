@@ -45,8 +45,8 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         self.disconnectBtn.isHidden = true
         // change tab bar text colors
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.gray], for:UIControlState())
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.white], for:.selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.gray], for:UIControlState())
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for:.selected)
         
         
         // instantiate the VM
@@ -439,7 +439,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     
     // this function is called by the timer, it updates the UI
-    func msgRxdUpdate(_ t:Timer) {
+    @objc func msgRxdUpdate(_ t:Timer) {
         if bm.connectionState == VehicleManagerConnectionState.operational || vm.isNetworkConnected || vm.isTraceFileConnected{
            
              DispatchQueue.main.async {

@@ -360,7 +360,7 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         var rowTitle:NSAttributedString!
         
-        rowTitle = NSAttributedString(string: commands[row], attributes: [NSForegroundColorAttributeName : UIColor.white])
+        rowTitle = NSAttributedString(string: commands[row], attributes: [NSAttributedStringKey.foregroundColor : UIColor.white])
         return rowTitle
     }
     
