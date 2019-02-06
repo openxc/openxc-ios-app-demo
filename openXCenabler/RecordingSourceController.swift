@@ -197,7 +197,6 @@ class RecordingSourceController: UIViewController,UITextFieldDelegate {
             print(textField.text as Any)
             if textField.text != "http://"{
                  UserDefaults.standard.set(textField.text, forKey:"traceURLname")
-                 //vm.sendTraceURLData(urlName:textField.text!)
                 
             }else{
                 let alertController = UIAlertController(title: "", message:
@@ -220,7 +219,7 @@ class RecordingSourceController: UIViewController,UITextFieldDelegate {
     // trace file output file name changed, save it in nsuserdefaults
     @objc func traceURLFieldDidChange(_ textField: UITextField) {
         
-        UserDefaults.standard.set(textField.text, forKey:"traceURLname")
+       // UserDefaults.standard.set(textField.text, forKey:"traceURLname")
         
     }
     @objc func keyboardWillShow() {

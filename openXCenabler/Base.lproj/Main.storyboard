@@ -1471,10 +1471,10 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VSn-sJ-ltf" userLabel="recswitch">
                                         <rect key="frame" x="310" y="299" width="51" height="31"/>
                                         <connections>
-                                            <action selector="uploadTraceChange:" destination="ubb-Oq-AZH" eventType="touchUpInside" id="9ak-Gb-pnH"/>
+                                            <action selector="uploadTraceChange:" destination="ubb-Oq-AZH" eventType="touchUpInside" id="Uqf-KB-WhK"/>
                                         </connections>
                                     </switch>
-                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ysh-11-I85" userLabel="filename">
+                                    <textField hidden="YES" opaque="NO" clipsSubviews="YES" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="https://openxc-openxc-message-stream-dev.apps.pp01i.edc1.cf.ford.com/api/v1/message/ranjansiphone/save" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ysh-11-I85" userLabel="filename">
                                         <rect key="frame" x="23" y="348" width="248" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="248" id="VTg-0v-zxz"/>
@@ -1553,6 +1553,7 @@
                         <outlet property="recswitch" destination="fJi-1d-iwc" id="DBJ-gg-nph"/>
                         <outlet property="tergetURLnamelabel" destination="lHN-0f-nsv" id="6hF-rF-HDm"/>
                         <outlet property="traceURLname" destination="Ysh-11-I85" id="vhQ-Ik-qhM"/>
+                        <outlet property="uploadtraceswitch" destination="VSn-sJ-ltf" id="Acz-vn-Xah"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivK-fn-F1n" userLabel="First Responder" sceneMemberID="firstResponder"/>

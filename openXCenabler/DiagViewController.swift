@@ -21,7 +21,8 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     
   @IBOutlet weak var lastReq: UILabel!
   @IBOutlet weak var rspText: UITextView!
-  
+    
+  var dashDict: NSMutableDictionary!
   var vm: VehicleManager!
     var bm : BluetoothManager!
   // string array holding last X diag responses
@@ -58,6 +59,10 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
         }
     }
   func default_diag_rsp(_ rsp:NSDictionary) {
+    
+     if UserDefaults.standard.bool(forKey: "uploadTaraceOn") {
+        self.sendTraceURLData(rsp: rsp)
+    }
     // extract the diag resp message
     let vr = rsp.object(forKey: "vehiclemessage") as! VehicleDiagnosticResponse
     
@@ -69,6 +74,7 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     newTxt = newTxt+" success:"+vr.success.description
     if vr.value != nil {
         newTxt = newTxt+" value:"+vr.value!.description
+        
     }else{
         newTxt = newTxt+" payload:"+(vr.payload.description)
     }
@@ -90,7 +96,27 @@ class DiagViewController: UIViewController, UITextFieldDelegate {
     print("Daignostic Value..........\(self.rspStrings)")
   }
   
-  
+    @objc func sendTraceURLData(rsp:NSDictionary) {
+        let vr = rsp.object(forKey: "vehiclemessage") as! VehicleDiagnosticResponse
+        
+        dashDict.setObject(vr.bus.description,forKey: "bus" as NSCopying)
+        dashDict.setObject(String(format:"%x",vr.message_id),forKey: "id" as NSCopying)
+        dashDict.setObject(String(format:"%x",vr.success.description),forKey: "success" as NSCopying)
+        if vr.pid != nil {
+            dashDict.setObject(String(format:"%x",vr.pid!),forKey: "pid" as NSCopying)
+        }
+        if vr.value != nil {
+            dashDict.setObject(vr.value!.description,forKey: "value" as NSCopying)
+            
+        }else{
+            dashDict.setObject(vr.payload.description,forKey: "payload" as NSCopying)
+        }
+       
+            if let urlname = (UserDefaults.standard.value(forKey: "traceURLname") as? String) {
+                vm.sendTraceURLData(urlName:urlname,rspdict: dashDict , isdrrsp: true)
+            }
+
+    }
   
   // text view delegate to clear keyboard
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -17,7 +17,8 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     var bm: BluetoothManager!
     var cm: Command!
     var ObjectDic : NSMutableDictionary = NSMutableDictionary()
-
+    var dashDict: NSMutableDictionary!
+    
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var responseLab: UILabel!
     
@@ -295,6 +296,9 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
     // this function handles all command responses
     // this function handles all command responses
     func handle_cmd_response(_ rsp:NSDictionary) {
+        if UserDefaults.standard.bool(forKey: "uploadTaraceOn") {
+            self.sendTraceURLData(rsp: rsp)
+        }
         // extract the command response message
         let cr = rsp.object(forKey: "vehiclemessage") as! VehicleCommandResponse
         
@@ -347,6 +351,22 @@ class CommandsViewController:UIViewController,UIPickerViewDelegate,UIPickerViewD
         }
     }
     
+    @objc func sendTraceURLData(rsp:NSDictionary) {
+        let cr = rsp.object(forKey: "vehiclemessage") as! VehicleCommandResponse
+        
+        if rsp.allKeys.count > 2 {
+        dashDict.setObject(cr.command_response,forKey: "command_response" as NSCopying)
+        dashDict.setObject(cr.message,forKey: "message" as NSCopying)
+        dashDict.setObject(cr.status,forKey: "status" as NSCopying)
+        }else{
+            dashDict.setObject(cr.command_response,forKey: "command_response" as NSCopying)
+            dashDict.setObject(cr.status,forKey: "status" as NSCopying)
+        }
+        if let urlname = (UserDefaults.standard.value(forKey: "traceURLname") as? String) {
+            vm.sendTraceURLData(urlName:urlname,rspdict: dashDict , isdrrsp: true)
+        }
+        
+    }
     // MARK: Picker Delgate Function
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

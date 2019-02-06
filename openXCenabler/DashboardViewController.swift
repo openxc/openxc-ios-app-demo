@@ -71,9 +71,19 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     locationManager.distanceFilter=500;
     locationManager.requestWhenInUseAuthorization()
 
-    
+    self.sendTraceURLData()
   }
-  
+    @objc func sendTraceURLData() {
+        if UserDefaults.standard.bool(forKey: "uploadTaraceOn") {
+               if let urlname = (UserDefaults.standard.value(forKey: "traceURLname") as? String) {
+                if dashDict.allKeys.count>0{
+                vm.sendTraceURLData(urlName:urlname,rspdict: dashDict,isdrrsp:false)
+                }
+                }
+             }
+        
+        
+    }
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
@@ -113,9 +123,9 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
       dweetLoop = Timer.scheduledTimer(timeInterval: 1.5, target:self, selector:#selector(sendDweet), userInfo: nil, repeats:true)
     }
     //Used for checking the trece sink is enabled or not then start the timer if on.
-//    if UserDefaults.standard.bool(forKey: "uploadTaraceOn") {
-//        traceSinkLoop = Timer.scheduledTimer(timeInterval: 1.5, target:self, selector:#selector(sendTraceURLData), userInfo: nil, repeats:true)
-//    }
+    if UserDefaults.standard.bool(forKey: "uploadTaraceOn") {
+        traceSinkLoop = Timer.scheduledTimer(timeInterval: 2.5, target:self, selector:#selector(sendTraceURLData), userInfo: nil, repeats:true)
+    }
     if(!bm.isBleConnected && !vm.isTraceFileConnected && !vm.isNetworkConnected){
         AlertHandling.sharedInstance.showAlert(onViewController: self, withText: errorMSG, withMessage:errorMsgBLE)
         dashDict = NSMutableDictionary()
@@ -167,12 +177,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     // save the name key and value in the dictionary
     dashDict.setObject(val, forKey:name)
     //myTraceArr.append(dashDict)
-if UserDefaults.standard.bool(forKey: "uploadTaraceOn") {
-    // UserDefaults.standard.set(textField.text, forKey:"traceURLname")
-    if let urlname = (UserDefaults.standard.value(forKey: "traceURLname") as? String) {
-        vm.sendTraceURLData(urlName:urlname,rspdict:dashDict )
-    }
-    }
+
     // update the table
     DispatchQueue.main.async {
         self.dashTable.reloadData()
@@ -261,6 +266,7 @@ if UserDefaults.standard.bool(forKey: "uploadTaraceOn") {
       dashDict.setObject("Yes", forKey:"phone_headphones_attached" as NSCopying)
     } else {
       dashDict.setObject("No", forKey:"phone_headphones_attached" as NSCopying)
+       
     }
 
     dashDict.setObject(UIScreen.main.brightness, forKey:"phone_brightness" as NSCopying)
@@ -273,7 +279,7 @@ if UserDefaults.standard.bool(forKey: "uploadTaraceOn") {
       dashDict.setObject(r, forKey:"phone_motion_roll" as NSCopying)
       dashDict.setObject(y, forKey:"phone_motion_yaw" as NSCopying)
     }
-    
+   
     // update the table
     DispatchQueue.main.async {
       self.dashTable.reloadData()
@@ -281,7 +287,7 @@ if UserDefaults.standard.bool(forKey: "uploadTaraceOn") {
     
   }
   
-  
+
   func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     
     if locations.count>0 {
