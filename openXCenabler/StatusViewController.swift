@@ -22,8 +22,10 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var verLab: UILabel!
     @IBOutlet weak var devidLab: UILabel!
     @IBOutlet weak var platformLab: UILabel!
-     @IBOutlet weak var NetworkImg: UIImageView!
+    @IBOutlet weak var throughputLab: UILabel!
+    @IBOutlet weak var NetworkImg: UIImageView!
     
+    fileprivate var troughputLoop: Timer!
     // scan/connect button
     @IBOutlet weak var searchBtn: UIButton!
     // disconnect button
@@ -135,7 +137,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
                 return
             }
-            
+         
             
             if name == "None"{
                 DispatchQueue.main.async {
@@ -183,6 +185,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //            self.searchBtn.setTitle("SEARCH FOR BLE VI",for:UIControlState())
             
         }
+       
         // check to see if a trace input file has been set up
 
 }
@@ -239,7 +242,10 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    
+    @objc func calculateThroughput(){
+     let value = bm.calculateThroughput()
+        self.throughputLab.text = value
+    }
     // this function is called when the scan button is hit
     @IBAction func searchHit(_ sender: UIButton) {
         
@@ -254,7 +260,12 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if UserDefaults.standard.bool(forKey: "autoConnectOn") {
                 bm.setAutoconnect(true)
             }
-            
+                vm.setThroughput(false)
+            if  UserDefaults.standard.bool(forKey: "throughputOn"){
+                //print(UserDefaults.standard.bool(forKey: "throughputOn"))
+                vm.setThroughput(true)
+                troughputLoop = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector:#selector(calculateThroughput), userInfo: nil, repeats:true)
+            }
             // check to see if the config is set for protobuf mode
             self.vm.setProtobufMode(false)
             if UserDefaults.standard.bool(forKey: "protobufOn") {
@@ -270,10 +281,18 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                // }
            // }
             
+            
             // check to see if a trace output file has been configured
             if UserDefaults.standard.bool(forKey: "traceOutputOn") {
                 if let name = UserDefaults.standard.value(forKey: "traceOutputFilename") as? NSString {
-                    tfm.enableTraceFileSink(name)
+                    
+                    if !vm.isTraceFileConnected == true{
+                             tfm.enableTraceFileSink(name)
+                    }else{
+                        let alertController = UIAlertController (title: "Setting", message: "Please Disable pre record tracefile in data source", preferredStyle: .alert)
+                        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                        self.present(alertController, animated: true, completion: nil)
+                    }
                 }
             }
             
@@ -326,7 +345,7 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // extract the status message
         let status = rsp.object(forKey: "status") as! Int
         let msg = VehicleManagerStatusMessage(rawValue: status)
-        
+       
         
         // show/reload the table showing detected VIs
         if msg==VehicleManagerStatusMessage.c5DETECTED {
@@ -402,9 +421,17 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
  
     }
     
+//    if  UserDefaults.standard.bool(forKey: "throughputOn"){
+//    if bm.isBleConnected{
+//    //print(UserDefaults.standard.bool(forKey: "throughputOn"))
+//    vm.setThroughput(true)
+//    troughputLoop = Timer.scheduledTimer(timeInterval: 5.0, target:self, selector:#selector(calculateThroughput), userInfo: nil, repeats:true)
+//    }
+//    }
     // this function handles all command responses
     func handle_cmd_response(_ rsp:NSDictionary) {
-         
+        
+      
         // extract the command response message
         let cr = rsp.object(forKey: "vehiclemessage") as! VehicleCommandResponse
         

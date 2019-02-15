@@ -32,6 +32,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     @IBOutlet weak var sensorswitch: UISwitch!
     
     //ranjan added code for Network data
+    @IBOutlet weak var throughputswitch: UISwitch!
     @IBOutlet weak var networkDataswitch: UISwitch!
     @IBOutlet weak var networkDataHost: UITextField!
     @IBOutlet weak var networkDataPort: UITextField!
@@ -51,7 +52,7 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     override func viewDidLoad() {
         super.viewDidLoad()
  
-        NM = NetworkDataManager.sharedInstance
+         NM = NetworkDataManager.sharedInstance
          vm = VehicleManager.sharedInstance
          tfm = TraceFileManager.sharedInstance
          bm = BluetoothManager.sharedInstance
@@ -88,6 +89,12 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
         // update UI if necessary
         if sensorOn == true {
             sensorswitch.setOn(true, animated:false)
+        }
+        // check saved value of throughput switch
+        let throughputOn = UserDefaults.standard.bool(forKey: "throughputOn")
+        // update UI if necessary
+        if throughputOn == true {
+            throughputswitch.setOn(true, animated:false)
         }
         // check saved value of protobuf switch
         let protobufOn = UserDefaults.standard.bool(forKey: "protobufOn")
@@ -341,6 +348,10 @@ class DataSourceController: UIViewController,UITextFieldDelegate,CLLocationManag
     // include sensor switch changed, save it's value
     @IBAction func sensorChange(_ sender: UISwitch) {
         UserDefaults.standard.set(sender.isOn, forKey:"sensorsOn")
+    }
+    // throughput mode switch changed, save it's value
+    @IBAction func throughputswitch(_ sender: UISwitch) {
+        UserDefaults.standard.set(sender.isOn, forKey:"throughputOn")
     }
     // protbuf mode switch changed, save it's value
     @IBAction func protoChange(_ sender: UISwitch) {

@@ -49,7 +49,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     fileprivate var traceConn: NSURLConnection?
     fileprivate var traceRspData: NSMutableData?
     fileprivate var traceSinkLoop: Timer = Timer()
-    var myTraceArr = [AnyObject]()
+   
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -71,7 +71,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     locationManager.distanceFilter=500;
     locationManager.requestWhenInUseAuthorization()
 
-    self.sendTraceURLData()
+   self.sendTraceURLData()
   }
     @objc func sendTraceURLData() {
         if UserDefaults.standard.bool(forKey: "uploadTaraceOn") {
@@ -118,7 +118,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
       motionManager.startDeviceMotionUpdates()
       
     }
-    
+  
     if UserDefaults.standard.bool(forKey: "dweetOutputOn") {
       dweetLoop = Timer.scheduledTimer(timeInterval: 1.5, target:self, selector:#selector(sendDweet), userInfo: nil, repeats:true)
     }
@@ -176,7 +176,7 @@ class DashboardViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     // save the name key and value in the dictionary
     dashDict.setObject(val, forKey:name)
-    //myTraceArr.append(dashDict)
+ 
 
     // update the table
     DispatchQueue.main.async {

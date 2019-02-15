@@ -46,6 +46,9 @@ class RecordingSourceController: UIViewController,UITextFieldDelegate {
         traceURLname.isHidden = true
         tergetURLnamelabel.isHidden = true
         
+        //UserDefaults.standard.set(interfaceValue, forKey:"vehicleInterface")
+        let value =  UserDefaults.standard.string(forKey: "vehicleInterface")
+        print(value)
         // check saved value of trace Sink switch
         let traceOutOn = UserDefaults.standard.bool(forKey: "uploadTaraceOn")
         print(traceOutOn)
