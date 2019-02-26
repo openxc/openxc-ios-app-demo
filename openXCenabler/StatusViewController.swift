@@ -95,7 +95,9 @@ class StatusViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 
             }
             
-            
+            if (bm.isBleConnected && !UserDefaults.standard.bool(forKey: "throughputOn")) {
+                throughputLab.text = "Off"
+            }
             if name == "Network"{
                 if (!vm.isNetworkConnected){
                     if let name = (UserDefaults.standard.value(forKey: "networkHostName") as? String) {
