@@ -1,3 +1,6 @@
+# Archive Note
+***This repository is no longer being actively maintained and is archived. All the latest changes to the OpenXC iOS library and sample application are now located at [openxc-ios-library](https://github.com/openxc/openxc-ios-library).***
+
 # OpenXC-iOS-App-Demo
 
 OpenXC Enabler app that use all of the features of the [openxc-ios-framework](https://github.com/openxc/openxc-ios-framework). This can be a starting app for any OpenXC iOS application that wishes to use the C5 BLE device.
